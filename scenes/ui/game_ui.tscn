@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://co1ratfpk0ju8"]
+
+[ext_resource type="Script" uid="uid://cpiee8jsiyuf2" path="res://scripts/ui/game_ui.gd" id="1_bma8u"]
+[ext_resource type="Texture2D" uid="uid://ba4m6avpxdqnk" path="res://assets/cozy icons/Assets/Menu Buttons/Clear Menu Buttons/Buttons-=.png" id="1_xjfbv"]
+[ext_resource type="Texture2D" uid="uid://c2aioj75mfo8k" path="res://assets/cozy icons/Assets/Menu Buttons/Clear Menu Buttons/Pressed/Buttons-pressed-=.png" id="2_bma8u"]
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bma8u")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("1_xjfbv")
+texture_pressed = ExtResource("2_bma8u")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="GameMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -400.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="GameMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameMenu/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Exit" type="Button" parent="GameMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Salir"
+
+[connection signal="pressed" from="GameMenu/PanelContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

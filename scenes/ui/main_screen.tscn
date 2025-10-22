@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjm5lytghbhii"]
+[gd_scene load_steps=5 format=3 uid="uid://cjm5lytghbhii"]
 
 [ext_resource type="Script" uid="uid://cuu8umxjba07i" path="res://scripts/screen_state_machine.gd" id="1_7fvvs"]
 [ext_resource type="PackedScene" uid="uid://0fxrhieww8y3" path="res://scenes/ui/main_menu.tscn" id="2_lushf"]
-[ext_resource type="PackedScene" uid="uid://btrw7gm53yrcs" path="res://scenes/ui/scene_selector.tscn" id="3_lushf"]
-[ext_resource type="Script" uid="uid://dus15ltfttjix" path="res://scripts/ui/scene_selector.gd" id="4_lushf"]
+[ext_resource type="PackedScene" uid="uid://btrw7gm53yrcs" path="res://scenes/ui/scenario_selector.tscn" id="3_lushf"]
 [ext_resource type="Script" uid="uid://bxjn2pu3t0upm" path="res://scripts/ui/settings.gd" id="5_25c13"]
 
 [node name="MainScreen" type="Control"]
@@ -19,9 +18,8 @@ script = ExtResource("1_7fvvs")
 
 [node name="MainMenu" parent="ScreenStateMachine" instance=ExtResource("2_lushf")]
 
-[node name="SceneSelector" parent="ScreenStateMachine" instance=ExtResource("3_lushf")]
+[node name="ScenarioSelector" parent="ScreenStateMachine" instance=ExtResource("3_lushf")]
 visible = false
-script = ExtResource("4_lushf")
 
 [node name="Settings" type="Control" parent="ScreenStateMachine"]
 visible = false

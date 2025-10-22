@@ -1,14 +1,17 @@
 extends Node
 
-var carousel_scenes_array: Array[CarouselSceneRes]
+var carousel_scenarios_array: Array[CarouselScenarioRes]
+var game_controller: GameController = null
 
 func _ready() -> void:
-	for scene in Carousel_Scenes:
-		carousel_scenes_array.append(load(Carousel_Scenes[scene]))
+	game_controller = get_node("/root/GameController")
+	
+	for scenario in Carousel_Scenarios:
+		carousel_scenarios_array.append(load(Carousel_Scenarios[scenario]))
 
-const CAROUSEL_SCENES_PATH = "res://resource/CarouselScenes/"
+const CAROUSEL_SCENARIOS_PATH = "res://resource/CarouselScenes/"
 
-const Carousel_Scenes := {
-	"Classroom1": CAROUSEL_SCENES_PATH + "classroom1.tres",
-	"Library1": CAROUSEL_SCENES_PATH + "library1.tres"
+const Carousel_Scenarios := {
+	"Classroom1": CAROUSEL_SCENARIOS_PATH + "classroom1.tres",
+	"Library1": CAROUSEL_SCENARIOS_PATH + "library1.tres"
 }

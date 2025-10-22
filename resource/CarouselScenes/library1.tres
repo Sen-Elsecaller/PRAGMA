@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="CarouselSceneRes" load_steps=3 format=3 uid="uid://b2kcsus6e0lkj"]
+[gd_resource type="Resource" script_class="CarouselScenarioRes" load_steps=4 format=3 uid="uid://b2kcsus6e0lkj"]
 
 [ext_resource type="Texture2D" uid="uid://b34rnn7f112eg" path="res://assets/cozy icons/Assets/Backgound/Background_Green.png" id="1_qrp7x"]
-[ext_resource type="Script" uid="uid://cmq63fqdo5u2k" path="res://resource/carousel_scene.gd" id="1_x2h2x"]
+[ext_resource type="Script" uid="uid://cmq63fqdo5u2k" path="res://resource/carousel_scenario.gd" id="1_x2h2x"]
+[ext_resource type="PackedScene" uid="uid://dcx307owexl5f" path="res://scenes/scenarios/library1.tscn" id="2_jlter"]
 
 [resource]
 script = ExtResource("1_x2h2x")
 main_photo = ExtResource("1_qrp7x")
-scene_name = "Biblioteca"
+scenario_name = "Biblioteca"
+scene = ExtResource("2_jlter")
 metadata/_custom_type_script = "uid://cmq63fqdo5u2k"

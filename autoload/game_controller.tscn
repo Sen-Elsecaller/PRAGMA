@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw3r131lp707i"]
+
+[ext_resource type="Script" uid="uid://baic2ff1ag35o" path="res://scripts/game_controller.gd" id="1_axcch"]
+[ext_resource type="PackedScene" uid="uid://cjm5lytghbhii" path="res://scenes/ui/main_screen.tscn" id="2_p2c1n"]
+
+[node name="GameController" type="Node"]
+script = ExtResource("1_axcch")
+
+[node name="GUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainScreen" parent="GUI" instance=ExtResource("2_p2c1n")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="SceneTransition" type="CanvasLayer" parent="."]
+
+[node name="FadeEffect" type="ColorRect" parent="SceneTransition"]
+modulate = Color(1, 1, 1, 0)
+z_index = 128
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

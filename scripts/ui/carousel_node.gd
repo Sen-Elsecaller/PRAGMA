@@ -1,9 +1,9 @@
 extends Control
 
-var base_carousel_scene = preload("res://scenes/ui/carousel_scene.tscn")
+var base_carousel_scenario = preload("res://scenes/ui/carousel_scene.tscn")
 
 func _ready() -> void:
-	for scene in Utils.carousel_scenes_array:
-		var carousel_scene_instance = base_carousel_scene.instantiate()
-		carousel_scene_instance.scene_resource = scene
-		add_child(carousel_scene_instance)
+	for scenario in Utils.carousel_scenarios_array:
+		var carousel_scenario_instance = base_carousel_scenario.instantiate()
+		carousel_scenario_instance.scenario_resource = scenario
+		add_child(carousel_scenario_instance)

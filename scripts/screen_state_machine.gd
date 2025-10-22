@@ -2,12 +2,12 @@ class_name ScreenStateMachine extends Node
 
 
 # Enumeración que define los identificadores de las pestañas principales.
-enum SCREENS {MAIN, SCENESELECTOR, SETTINGS}
+enum SCREENS {MAIN, SCENARIOSELECTOR, SETTINGS}
 
 # Diccionario que asocia cada tipo de screen con su nodo correspondiente dentro del árbol de la escena.
 @onready var screens: Dictionary = {
 	SCREENS.MAIN: $MainMenu,
-	SCREENS.SCENESELECTOR: $SceneSelector
+	SCREENS.SCENARIOSELECTOR: $ScenarioSelector
 }
 
 # Referencia al screen actualmente activo.
