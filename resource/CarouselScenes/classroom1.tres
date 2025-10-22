@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CarouselSceneRes" load_steps=3 format=3 uid="uid://dj52bdxci6l5w"]
+
+[ext_resource type="Texture2D" uid="uid://b5eyhcii6bg41" path="res://assets/cozy icons/Assets/Backgound/Background_Blue.png" id="1_u46pm"]
+[ext_resource type="Script" uid="uid://cmq63fqdo5u2k" path="res://resource/carousel_scene.gd" id="1_xc7ng"]
+
+[resource]
+script = ExtResource("1_xc7ng")
+main_photo = ExtResource("1_u46pm")
+scene_name = "Sala de clases"
+metadata/_custom_type_script = "uid://cmq63fqdo5u2k"

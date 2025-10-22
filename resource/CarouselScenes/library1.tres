@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CarouselSceneRes" load_steps=3 format=3 uid="uid://b2kcsus6e0lkj"]
+
+[ext_resource type="Texture2D" uid="uid://b34rnn7f112eg" path="res://assets/cozy icons/Assets/Backgound/Background_Green.png" id="1_qrp7x"]
+[ext_resource type="Script" uid="uid://cmq63fqdo5u2k" path="res://resource/carousel_scene.gd" id="1_x2h2x"]
+
+[resource]
+script = ExtResource("1_x2h2x")
+main_photo = ExtResource("1_qrp7x")
+scene_name = "Biblioteca"
+metadata/_custom_type_script = "uid://cmq63fqdo5u2k"
