@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bysqqqtqyvu0"]
+[gd_scene load_steps=4 format=3 uid="uid://bysqqqtqyvu0"]
 
+[ext_resource type="Texture2D" uid="uid://b5eyhcii6bg41" path="res://assets/cozy icons/Assets/Backgound/Background_Blue.png" id="1_0r4fx"]
 [ext_resource type="PackedScene" uid="uid://co1ratfpk0ju8" path="res://scenes/ui/game_ui.tscn" id="1_452pb"]
+[ext_resource type="Script" uid="uid://7pwdv6cgu6hg" path="res://scripts/scenarios/classroom_1.gd" id="1_rw1mm"]
 
 [node name="Classroom1" type="Control"]
 layout_mode = 3
@@ -9,6 +11,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rw1mm")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0r4fx")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="GameUI" parent="." instance=ExtResource("1_452pb")]
 layout_mode = 1

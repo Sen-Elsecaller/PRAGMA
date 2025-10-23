@@ -1,8 +1,101 @@
-[gd_scene load_steps=4 format=3 uid="uid://co1ratfpk0ju8"]
+[gd_scene load_steps=11 format=3 uid="uid://co1ratfpk0ju8"]
 
 [ext_resource type="Script" uid="uid://cpiee8jsiyuf2" path="res://scripts/ui/game_ui.gd" id="1_bma8u"]
 [ext_resource type="Texture2D" uid="uid://ba4m6avpxdqnk" path="res://assets/cozy icons/Assets/Menu Buttons/Clear Menu Buttons/Buttons-=.png" id="1_xjfbv"]
 [ext_resource type="Texture2D" uid="uid://c2aioj75mfo8k" path="res://assets/cozy icons/Assets/Menu Buttons/Clear Menu Buttons/Pressed/Buttons-pressed-=.png" id="2_bma8u"]
+[ext_resource type="StyleBox" uid="uid://bl6jaxq6rr6bm" path="res://resource/styles/game_menu.tres" id="4_fct72"]
+[ext_resource type="Texture2D" uid="uid://byfkx0cl0u3bf" path="res://assets/cozy icons/Assets/Menu Buttons/Clear Menu Buttons/Buttons-x.png" id="5_v1bdg"]
+[ext_resource type="Texture2D" uid="uid://cl37twctsnl5t" path="res://assets/cozy icons/Assets/Menu Buttons/Clear Menu Buttons/Pressed/Buttons-pressed-x.png" id="6_qrkc0"]
+
+[sub_resource type="Animation" id="Animation_ru5ln"]
+resource_name = "open_game_menu"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameMenu/MenuButtonContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(320, 0), Vector2(500, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameMenu/MenuPanelContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(522, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_v1bdg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameMenu/MenuButtonContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameMenu/MenuPanelContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(522, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fct72"]
+resource_name = "close_game_menu"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameMenu/MenuButtonContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(500, 0), Vector2(320, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameMenu/MenuPanelContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(522, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qrkc0"]
+_data = {
+&"RESET": SubResource("Animation_v1bdg"),
+&"close_game_menu": SubResource("Animation_fct72"),
+&"open_game_menu": SubResource("Animation_ru5ln")
+}
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -12,28 +105,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bma8u")
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-texture_normal = ExtResource("1_xjfbv")
-texture_pressed = ExtResource("2_bma8u")
-ignore_texture_size = true
-stretch_mode = 5
 
 [node name="GameMenu" type="Control" parent="."]
 layout_mode = 1
@@ -45,21 +116,71 @@ offset_left = -400.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="GameMenu"]
+[node name="MenuButtonContainer" type="MarginContainer" parent="GameMenu"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_right = 0.00012207031
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="MenuButton" type="TextureButton" parent="GameMenu/MenuButtonContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("1_xjfbv")
+texture_pressed = ExtResource("2_bma8u")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MenuPanelContainer" type="PanelContainer" parent="GameMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 522.0
+offset_right = 522.00037
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("4_fct72")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameMenu/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameMenu/MenuPanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Exit" type="Button" parent="GameMenu/PanelContainer/VBoxContainer"]
+[node name="DialogueHistory" type="Button" parent="GameMenu/MenuPanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Registro de dialogo"
+
+[node name="Exit" type="Button" parent="GameMenu/MenuPanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Salir"
 
-[connection signal="pressed" from="GameMenu/PanelContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[node name="CloseMenu" type="TextureButton" parent="GameMenu/MenuPanelContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("5_v1bdg")
+texture_pressed = ExtResource("6_qrkc0")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qrkc0")
+}
+
+[connection signal="pressed" from="GameMenu/MenuButtonContainer/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="GameMenu/MenuPanelContainer/VBoxContainer/DialogueHistory" to="." method="_on_dialogue_history_pressed"]
+[connection signal="pressed" from="GameMenu/MenuPanelContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="GameMenu/MenuPanelContainer/CloseMenu" to="." method="_on_close_menu_pressed"]
