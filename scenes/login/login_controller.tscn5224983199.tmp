@@ -197,8 +197,3 @@ horizontal_alignment = 1
 [connection signal="pressed" from="Login/TextureRect/VBoxContainer/Iniciar sesión" to="Login" method="_on_login_button_pressed"]
 [connection signal="pressed" from="Login/TextureRect/VBoxContainer/Iniciar sesión" to="Login" method="_on_iniciar_sesión_pressed"]
 [connection signal="pressed" from="Login/TextureRect/MarginContainer/HBoxContainer/Register" to="." method="_on_show_register"]
-[connection signal="text_submitted" from="Register/TextureRect/MarginContainer/VBoxContainer/Nombre" to="Register" method="_on_nombre_submitted"]
-[connection signal="text_submitted" from="Register/TextureRect/MarginContainer/VBoxContainer/EmailR" to="Register" method="_on_email_submitted"]
-[connection signal="text_submitted" from="Register/TextureRect/MarginContainer/VBoxContainer/PasswordR" to="Register" method="_on_password_submitted"]
-[connection signal="text_submitted" from="Register/TextureRect/MarginContainer/VBoxContainer/PasswordR2" to="Register" method="_on_password_confirm_submitted"]
-[connection signal="pressed" from="Register/TextureRect/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Registerr" to="Register" method="_on_register_button_pressed"]

@@ -27,42 +27,17 @@ var http_request: HTTPRequest
 # ========== INICIALIZACIÓN ==========
 func _ready() -> void:
 	_setup_http_request()
-	_setup_ui()
-	_connect_signals()
 
 func _setup_http_request() -> void:
 	http_request = HTTPRequest.new()
 	add_child(http_request)
 	http_request.request_completed.connect(_on_request_completed)
 
-func _setup_ui() -> void:
-	nombre_input.placeholder_text = "Nombre completo"
-	email_input.placeholder_text = "Email"
-	password_input.placeholder_text = "Contraseña (mínimo 8 caracteres)"
-	password_confirm_input.placeholder_text = "Confirmar contraseña"
-	password_input.secret = true
-	password_confirm_input.secret = true
-	validation_label.text = ""
-	validation_label.modulate = Color.WHITE
-	
+
 	# Configurar límites de caracteres
 	nombre_input.max_length = MAX_NOMBRE_LENGTH
 	password_input.max_length = MAX_PASSWORD_LENGTH
 	password_confirm_input.max_length = MAX_PASSWORD_LENGTH
-
-func _connect_signals() -> void:
-	# Conectar eventos de UI
-	register_button.pressed.connect(_on_register_button_pressed)
-	nombre_input.text_submitted.connect(_on_nombre_submitted)
-	email_input.text_submitted.connect(_on_email_submitted)
-	password_input.text_submitted.connect(_on_password_submitted)
-	password_confirm_input.text_submitted.connect(_on_password_confirm_submitted)
-	
-	# Conectar cambios de texto para validación en tiempo real (opcional)
-	nombre_input.text_changed.connect(_on_text_changed)
-	email_input.text_changed.connect(_on_text_changed)
-	password_input.text_changed.connect(_on_text_changed)
-	password_confirm_input.text_changed.connect(_on_text_changed)
 
 # ========== EVENTOS DE UI ==========
 
@@ -170,12 +145,6 @@ func _validate_nombre(nombre: String) -> bool:
 	# Solo espacios en blanco
 	if nombre.strip_edges().is_empty():
 		_show_error("El nombre no puede contener solo espacios")
-		nombre_input.grab_focus()
-		return false
-	
-	# Longitud mínima
-	if nombre.length() < MIN_NOMBRE_LENGTH:
-		_show_error("El nombre debe tener al menos " + str(MIN_NOMBRE_LENGTH) + " caracteres")
 		nombre_input.grab_focus()
 		return false
 	
@@ -462,4 +431,4 @@ func _exit_tree() -> void:
 
 
 func _on_register_pressed() -> void:
-	pass # Replace with function body.
+	pass
