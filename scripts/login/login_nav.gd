@@ -1,6 +1,6 @@
 # login_nav.gd
 # SOLO maneja la navegación entre Login y Register
-extends Control
+extends ScreenState
 
 # ========== REFERENCIAS A NODOS ==========
 @onready var login_node: Control = $Login

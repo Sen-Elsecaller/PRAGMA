@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://p6evf4ydsqe1" path="res://assets/cozy icons/Assets/Backgound/Background_Yellow.png" id="2_bqqt6"]
 [ext_resource type="FontFile" uid="uid://0xi0cdkqxxee" path="res://assets/cozy icons/Font for text/Gluten-VariableFont_slnt,wght.ttf" id="3_wu84c"]
 
-
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -65,9 +64,15 @@ custom_minimum_size = Vector2(240, 60)
 layout_mode = 2
 text = "Ajustes"
 
+[node name="Login" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(240, 60)
+layout_mode = 2
+text = "Login"
+
 [node name="Leave" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(240, 60)
 layout_mode = 2
 text = "Salir"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/SelectScene" to="." method="_on_select_scene_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Login" to="." method="_on_login_pressed"]

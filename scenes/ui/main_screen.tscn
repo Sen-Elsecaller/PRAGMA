@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjm5lytghbhii"]
+[gd_scene load_steps=6 format=3 uid="uid://cjm5lytghbhii"]
 
 [ext_resource type="Script" uid="uid://cuu8umxjba07i" path="res://scripts/screen_state_machine.gd" id="1_7fvvs"]
 [ext_resource type="PackedScene" uid="uid://0fxrhieww8y3" path="res://scenes/ui/main_menu.tscn" id="2_lushf"]
 [ext_resource type="PackedScene" uid="uid://btrw7gm53yrcs" path="res://scenes/ui/scenario_selector.tscn" id="3_lushf"]
 [ext_resource type="Script" uid="uid://bxjn2pu3t0upm" path="res://scripts/ui/settings.gd" id="5_25c13"]
+[ext_resource type="PackedScene" uid="uid://ddevs601qf8c1" path="res://scenes/login/login_controller.tscn" id="5_odiyu"]
 
 [node name="MainScreen" type="Control"]
 layout_mode = 3
@@ -29,3 +30,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_25c13")
 metadata/_custom_type_script = "uid://cobqsrqfsrbwt"
+
+[node name="login_controller" parent="ScreenStateMachine" instance=ExtResource("5_odiyu")]
+visible = false
