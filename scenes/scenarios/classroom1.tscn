@@ -24,5 +24,7 @@ texture = ExtResource("1_0r4fx")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="GameUI" parent="." instance=ExtResource("1_452pb")]
-layout_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="GameUI" parent="CanvasLayer" instance=ExtResource("1_452pb")]

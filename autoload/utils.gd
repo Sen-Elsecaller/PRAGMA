@@ -9,7 +9,7 @@ func _ready() -> void:
 	for scenario in Carousel_Scenarios:
 		carousel_scenarios_array.append(load(Carousel_Scenarios[scenario]))
 
-const CAROUSEL_SCENARIOS_PATH = "res://resource/CarouselScenes/"
+const CAROUSEL_SCENARIOS_PATH = "res://resource/carousel_scenarios/"
 
 const Carousel_Scenarios := {
 	"Classroom1": CAROUSEL_SCENARIOS_PATH + "classroom1.tres",
