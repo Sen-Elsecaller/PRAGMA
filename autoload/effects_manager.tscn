@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://2ctn7t2c2x3s"]
+
+[ext_resource type="Script" uid="uid://cgdsned25jfc4" path="res://autoload/effects_manager.gd" id="1_1d2mk"]
+[ext_resource type="AudioStream" uid="uid://dkca16k5vdceb" path="res://assets/SFX/slow-heartbeat.wav" id="2_2guwm"]
+[ext_resource type="AudioStream" uid="uid://dsy7no3r6yrn5" path="res://assets/SFX/heartbeat-medium-speed.wav" id="2_4d4j0"]
+[ext_resource type="AudioStream" uid="uid://bfl8jxrf7jodj" path="res://assets/SFX/fast-heartbeat.wav" id="4_e43wv"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_o086f"]
+clip_count = 3
+clip_0/name = &"SlowHearthbeat"
+clip_0/stream = ExtResource("2_2guwm")
+clip_0/auto_advance = 0
+clip_1/name = &"MediumHeartbeat"
+clip_1/stream = ExtResource("2_4d4j0")
+clip_1/auto_advance = 0
+clip_2/name = &"FastHeartbeat"
+clip_2/stream = ExtResource("4_e43wv")
+clip_2/auto_advance = 0
+_transitions = {
+Vector2i(0, 1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(1, 2): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(2, 0): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+}
+}
+
+[node name="Effects" type="CanvasLayer"]
+script = ExtResource("1_1d2mk")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamInteractive_o086f")

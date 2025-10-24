@@ -1,5 +1,13 @@
 join steve left
 steve: Grupo 7, les toca presentar.
 Sientes un nudo en el estomago. Tus manos sudan. Tu mente se acelera.
-- ¿Que haces?
-- asdasdas
+[signal arg="FastHeartbeat"]
+¿Que hago ahora?
+- Conmienzas de inmediato
+	La ansiedad baja lentamente
+- Decides esperar unos segundos
+	La ansiedad baja lentamente
+- Te bloqueas
+	"No puedo... ¿Qué hago?"
+Fin
+[end_timeline]

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Utils="*res://autoload/utils.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+EffectsManager="*res://autoload/effects_manager.tscn"
 
 [debug]
 
@@ -32,10 +33,13 @@ directories/dch_directory={
 directories/dtl_directory={
 "classroom1": "res://dialogic/timelines/classroom1.dtl"
 }
-layout/style_directory={}
-glossary/default_case_sensitive=true
-layout/style_list=[]
-layout/default_style="Default"
+layout/style_directory={
+"": "res://dialogic/styles/custom_style.tres",
+"custom_style": "res://dialogic/styles/custom_style.tres"
+}
+glossary/default_case_sensitive=false
+layout/style_list=["res://dialogic/styles/custom_style.tres"]
+layout/default_style="res://dialogic/styles/custom_style.tres"
 variables={}
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
@@ -70,10 +74,20 @@ audio/channel_defaults={
 "volume": 0.0
 }
 }
+audio/type_sound_bus="Master"
+glossary/glossary_files=["res://dialogic/glossary/default_glossary.tres"]
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://resource/": "yellow",
+"res://scenes/": "green",
+"res://scripts/": "blue"
+}
 
 [input]
 
