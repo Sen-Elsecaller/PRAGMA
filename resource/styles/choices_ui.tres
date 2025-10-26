@@ -1,0 +1,47 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://d17ne0jlh3v2f"]
+
+[ext_resource type="FontFile" uid="uid://0xi0cdkqxxee" path="res://assets/cozy icons/Font for text/Gluten-VariableFont_slnt,wght.ttf" id="1_3bdqi"]
+[ext_resource type="FontFile" uid="uid://kh3agb772tqc" path="res://assets/fonts/WalterTurncoat-Regular.ttf" id="1_jolkq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5xlc"]
+bg_color = Color(0.9490196, 0.827451, 0.67058825, 1)
+shadow_size = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3bdqi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3bdqi"]
+bg_color = Color(0.9490196, 0.827451, 0.67058825, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bjgby"]
+bg_color = Color(0.9490196, 0.827451, 0.67058825, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jolkq"]
+bg_color = Color(0.9490196, 0.827451, 0.67058825, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qvuq"]
+bg_color = Color(0.15294118, 0.15294118, 0.26666668, 1)
+border_width_right = 25
+border_color = Color(0.0864201, 0.08636487, 0.16431776, 1)
+border_blend = true
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_jolkq")
+Button/styles/focus = SubResource("StyleBoxFlat_k5xlc")
+Button/styles/hover = SubResource("StyleBoxEmpty_3bdqi")
+Button/styles/normal = SubResource("StyleBoxFlat_3bdqi")
+Button/styles/pressed = SubResource("StyleBoxFlat_bjgby")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/fonts/font = ExtResource("1_3bdqi")
+Label/styles/normal = SubResource("StyleBoxFlat_jolkq")
+Panel/styles/panel = SubResource("StyleBoxFlat_5qvuq")

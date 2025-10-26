@@ -1,10 +1,182 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjm5lytghbhii"]
+[gd_scene load_steps=12 format=3 uid="uid://cjm5lytghbhii"]
 
 [ext_resource type="Script" uid="uid://cuu8umxjba07i" path="res://scripts/screen_state_machine.gd" id="1_7fvvs"]
 [ext_resource type="PackedScene" uid="uid://0fxrhieww8y3" path="res://scenes/ui/main_menu.tscn" id="2_lushf"]
 [ext_resource type="PackedScene" uid="uid://btrw7gm53yrcs" path="res://scenes/ui/scenario_selector.tscn" id="3_lushf"]
 [ext_resource type="Script" uid="uid://bxjn2pu3t0upm" path="res://scripts/ui/settings.gd" id="5_25c13"]
 [ext_resource type="PackedScene" uid="uid://ddevs601qf8c1" path="res://scenes/login/login_controller.tscn" id="5_odiyu"]
+
+[sub_resource type="Animation" id="Animation_51vel"]
+resource_name = "close_MainMenu"
+length = 0.35
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("MainMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.34, 0.35),
+"transitions": PackedFloat32Array(2, 2, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 800), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("MainMenu:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.34),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_s4t25"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8g1xw"]
+_data = {
+&"RESET": SubResource("Animation_s4t25"),
+&"close_MainMenu": SubResource("Animation_51vel")
+}
+
+[sub_resource type="Animation" id="Animation_25c13"]
+resource_name = "open_ScenarioSelector"
+length = 0.35
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScenarioSelector:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ScenarioSelector:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.35),
+"transitions": PackedFloat32Array(1, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -800), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenu:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.04, 0.34, 0.35),
+"transitions": PackedFloat32Array(1, 1, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 800), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainMenu:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.04, 0.34),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_odiyu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScenarioSelector:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ScenarioSelector:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenu:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainMenu:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_51vel"]
+_data = {
+&"RESET": SubResource("Animation_odiyu"),
+&"open_ScenarioSelector": SubResource("Animation_25c13")
+}
 
 [node name="MainScreen" type="Control"]
 layout_mode = 3
@@ -18,6 +190,7 @@ grow_vertical = 2
 script = ExtResource("1_7fvvs")
 
 [node name="MainMenu" parent="ScreenStateMachine" instance=ExtResource("2_lushf")]
+offset_bottom = 0.0024414063
 
 [node name="ScenarioSelector" parent="ScreenStateMachine" instance=ExtResource("3_lushf")]
 visible = false
@@ -33,3 +206,13 @@ metadata/_custom_type_script = "uid://cobqsrqfsrbwt"
 
 [node name="login_controller" parent="ScreenStateMachine" instance=ExtResource("5_odiyu")]
 visible = false
+
+[node name="CloseAnimations" type="AnimationPlayer" parent="ScreenStateMachine"]
+libraries = {
+&"": SubResource("AnimationLibrary_8g1xw")
+}
+
+[node name="OpenAnimations" type="AnimationPlayer" parent="ScreenStateMachine"]
+libraries = {
+&"": SubResource("AnimationLibrary_51vel")
+}

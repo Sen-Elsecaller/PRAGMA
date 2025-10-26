@@ -1,0 +1,16 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6g3jqxtqcjye"]
+
+[ext_resource type="Script" uid="uid://scdror3bmdgr" path="res://autoload/audio_manager.gd" id="1_u6vuv"]
+[ext_resource type="Script" uid="uid://cjtni7y10t1" path="res://resource/sound_effect.gd" id="2_0kjgv"]
+[ext_resource type="Resource" uid="uid://di6xmfb1n2a8l" path="res://resource/SoundEffects/heartbeat_fast.tres" id="3_5l778"]
+[ext_resource type="Resource" uid="uid://bfeyyvohypdgw" path="res://resource/SoundEffects/heartbeat_medium.tres" id="4_f0pwr"]
+[ext_resource type="Resource" uid="uid://c8ssjgkkd6a1f" path="res://resource/SoundEffects/heartbeat_slow.tres" id="5_kipf1"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_u6vuv"]
+
+[node name="AudioManager" type="Node2D"]
+script = ExtResource("1_u6vuv")
+sound_effects = Array[ExtResource("2_0kjgv")]([ExtResource("3_5l778"), ExtResource("4_f0pwr"), ExtResource("5_kipf1")])
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamInteractive_u6vuv")

@@ -44,10 +44,15 @@ extends DialogicLayoutLayer
 @export var maximum_choices: int = 10
 @export_file('*.tscn') var choices_custom_button: String = ""
 
-func get_choices() -> VBoxContainer:
-	print("Choices conseguidas!!")
-	return $Choices
+@onready var full_choices_ui: Control = $FullChoicesUI
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+func _init() -> void:
+	Dialogic.Choices.question_shown.connect(show_full_choices_ui)
+	Dialogic.Choices.choice_selected.connect(hide_full_choices_ui)
+
+func get_choices() -> VBoxContainer:
+	return $Choices
 
 func get_button_sound() -> DialogicNode_ButtonSound:
 	return %DialogicNode_ButtonSound
@@ -143,3 +148,9 @@ func _apply_export_overrides() -> void:
 	button_sound.sound_pressed = load(sounds_pressed)
 	button_sound.sound_hover = load(sounds_hover)
 	button_sound.sound_focus = load(sounds_focus)
+
+func show_full_choices_ui(_argumento: Dictionary):
+	animation_player.play("open_ChoicesUI")
+	
+func hide_full_choices_ui(_argumento: Dictionary):
+	animation_player.play("close_ChoicesUI")

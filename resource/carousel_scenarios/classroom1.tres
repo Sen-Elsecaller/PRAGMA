@@ -8,5 +8,6 @@
 script = ExtResource("1_xc7ng")
 main_photo = ExtResource("1_u46pm")
 scenario_name = "Sala de clases"
+timeline_name = "Classroom1"
 scene = ExtResource("2_lceld")
 metadata/_custom_type_script = "uid://cmq63fqdo5u2k"

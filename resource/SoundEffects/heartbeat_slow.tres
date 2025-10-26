@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://c8ssjgkkd6a1f"]
+
+[ext_resource type="Script" uid="uid://cjtni7y10t1" path="res://resource/sound_effect.gd" id="1_i0jnp"]
+[ext_resource type="AudioStream" uid="uid://dkca16k5vdceb" path="res://assets/SFX/slow-heartbeat.wav" id="2_m0tdw"]
+
+[resource]
+script = ExtResource("1_i0jnp")
+type = 2
+sound_effect = ExtResource("2_m0tdw")
+metadata/_custom_type_script = "uid://cjtni7y10t1"

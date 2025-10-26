@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6aujwmhwy2vf"]
+
+[ext_resource type="Theme" uid="uid://d17ne0jlh3v2f" path="res://resource/styles/choices_ui.tres" id="1_0dgbr"]
+[ext_resource type="Script" uid="uid://bldt7xlfum7ov" path="res://addons/dialogic/Modules/Choice/node_choice_button.gd" id="2_4x5m6"]
+
+[node name="Button" type="Button"]
+offset_right = 336.0
+offset_bottom = 154.0
+theme = ExtResource("1_0dgbr")
+theme_type_variation = &"FlatButton"
+text = "hola que tal como te encuentras amigo"
+script = ExtResource("2_4x5m6")
+metadata/_custom_type_script = "uid://bldt7xlfum7ov"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 16.0
+offset_right = 189.0
+offset_bottom = 31.0
+grow_vertical = 0
+text = "asdasdasdsadasdasdasdasd"

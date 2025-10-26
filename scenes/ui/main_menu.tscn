@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://0fxrhieww8y3"]
+[gd_scene load_steps=5 format=3 uid="uid://0fxrhieww8y3"]
 
 [ext_resource type="Script" uid="uid://cqno7bsqpuloq" path="res://scripts/ui/main_menu.gd" id="1_l6cm7"]
-[ext_resource type="Texture2D" uid="uid://p6evf4ydsqe1" path="res://assets/cozy icons/Assets/Backgound/Background_Yellow.png" id="2_bqqt6"]
+[ext_resource type="Theme" uid="uid://ylvbucdf207r" path="res://resource/styles/main_menu.tres" id="1_m1kxf"]
+[ext_resource type="Texture2D" uid="uid://dbyo5vw8rfoh8" path="res://assets/images/Intro.jpg" id="3_m1kxf"]
 [ext_resource type="FontFile" uid="uid://0xi0cdkqxxee" path="res://assets/cozy icons/Font for text/Gluten-VariableFont_slnt,wght.ttf" id="3_wu84c"]
 
 [node name="MainMenu" type="Control"]
@@ -11,16 +12,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_m1kxf")
 script = ExtResource("1_l6cm7")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_bqqt6")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2"]
+layout_mode = 2
+texture = ExtResource("3_m1kxf")
 expand_mode = 1
 stretch_mode = 5
 
@@ -36,18 +41,19 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="Title" type="Label" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-
-[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("3_wu84c")
-theme_override_font_sizes/font_size = 52
+theme_override_font_sizes/font_size = 72
 text = "PRAGMA"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
 
 [node name="SelectScene" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(240, 60)

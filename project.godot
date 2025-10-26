@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Utils="*res://autoload/utils.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 EffectsManager="*res://autoload/effects_manager.tscn"
+AudioManager="*res://autoload/audio_manager.tscn"
 
 [debug]
 
@@ -28,17 +29,19 @@ gdscript/warnings/unused_signal=0
 [dialogic]
 
 directories/dch_directory={
-"steve": "res://dialogic/characters/steve.dch"
+"p1": "res://dialogic/characters/p1.dch",
+"steve": "res://dialogic/characters/steve.dch",
+"usuario": "res://dialogic/characters/usuario.dch"
 }
 directories/dtl_directory={
 "classroom1": "res://dialogic/timelines/classroom1.dtl"
 }
 layout/style_directory={
-"": "res://dialogic/styles/custom_style.tres",
-"custom_style": "res://dialogic/styles/custom_style.tres"
+"characters": "res://dialogic/styles/characters.tres",
+"narrator_choices": "res://dialogic/styles/narrator_choices.tres"
 }
 glossary/default_case_sensitive=false
-layout/style_list=["res://dialogic/styles/custom_style.tres"]
+layout/style_list=["res://dialogic/styles/characters.tres", "res://dialogic/styles/narrator_choices.tres"]
 layout/default_style="res://dialogic/styles/custom_style.tres"
 variables={}
 extensions_folder="res://addons/dialogic_additions"

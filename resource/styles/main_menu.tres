@@ -1,0 +1,33 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://ylvbucdf207r"]
+
+[ext_resource type="FontFile" uid="uid://kh3agb772tqc" path="res://assets/fonts/WalterTurncoat-Regular.ttf" id="1_5gor7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hh6qg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxbtq"]
+bg_color = Color(0.14509805, 0.08235294, 0.24705882, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hh6qg"]
+bg_color = Color(0.14509805, 0.08235294, 0.24705882, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5gor7"]
+bg_color = Color(0.14509805, 0.08235294, 0.24705882, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[resource]
+Button/fonts/font = ExtResource("1_5gor7")
+Button/styles/focus = SubResource("StyleBoxEmpty_hh6qg")
+Button/styles/hover = SubResource("StyleBoxFlat_vxbtq")
+Button/styles/normal = SubResource("StyleBoxFlat_hh6qg")
+Button/styles/pressed = SubResource("StyleBoxFlat_5gor7")

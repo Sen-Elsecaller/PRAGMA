@@ -7,25 +7,15 @@
 "prefix": "",
 "sound_mood_default": "",
 "sound_moods": {},
-"style": "characters",
+"style": "narrator_choices",
 "suffix": ""
 },
-&"default_portrait": "default",
+&"default_portrait": "",
 &"description": "",
-&"display_name": "steve",
+&"display_name": "",
 &"mirror": false,
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
-&"portraits": {
-"default": {
-"export_overrides": {
-"image": "\"res://assets/characters/SteveMinecraft.png\""
-},
-"mirror": true,
-"offset": Vector2(0, 0),
-"scale": 0.8,
-"scene": ""
-}
-},
+&"portraits": {},
 &"scale": 1.0
 }
