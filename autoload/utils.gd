@@ -10,8 +10,10 @@ const Carousel_Scenarios := {
 	"Library1": preload(CAROUSEL_SCENARIOS_PATH + "library1.tres")
 }
 
-func _ready() -> void:
+var game_variables_dict: Dictionary = {}
 
+func _ready() -> void:
+		
 	game_controller = get_node("/root/GameController")
 	rng = RandomNumberGenerator.new()
 	

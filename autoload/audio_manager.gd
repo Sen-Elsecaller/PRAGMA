@@ -54,3 +54,9 @@ func create_audio(type: SoundEffect.SOUND_EFFECT_TYPE) -> void:
 			new_audio.play()
 	else:
 		push_error("Audio Manager failed to find setting for type ", type)
+
+func string_bypass(sound_type: String):
+	if SoundEffect.SOUND_EFFECT_TYPE.has(sound_type):
+		create_audio(SoundEffect.SOUND_EFFECT_TYPE.get(sound_type))
+	else:
+		push_error("No se encontro el sonido necesario")

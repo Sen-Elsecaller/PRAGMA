@@ -1,5 +1,6 @@
 extends ScenarioBase
 
 func _ready() -> void:
-	Dialogic.start("classroom1")
+	DIALOGUE_RESOURCE = load("uid://brk4sf8ay717o")
+	DialogueManager.show_dialogue_balloon(DIALOGUE_RESOURCE, "start")
 	setup_signals()

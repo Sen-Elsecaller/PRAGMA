@@ -1,0 +1,55 @@
+~ start
+Felipe: Ahora te toca presentar tu proyecto frente a la clase.
+Narrador: Sientes un nudo en el estómago. Tus manos sudan. Tu mente se acelera.
+#do GameManager.trigger_anxiety_event()
+¿Qué hago ahora?
+do AudioManager.string_bypass("HEARTBEAT_FAST")
+- Comienzas de inmediato
+	Narrador: Tu voz tiembla un poco, pero avanzas.
+	Narrador: Empiezas a enfocarte en tus palabras.
+	Narrador: La atención del público te ayuda a estabilizarte.
+	Narrador: Confianza y superación personal.
+	do Utils.manage_variable("CORRECT_ANSWER", 1)
+	=> pausa_clase
+- Decides esperar unos segundos
+	Narrador: Tomas aire, cierras tus ojos.
+	Narrador: El profesor asiente con calma.
+	Narrador: Inicias con voz firme.
+	do Utils.manage_variable("MEDIUM_ANSWER", 1)
+	Narrador: Control emocional y claridad mental.
+	=> pausa_clase
+- Te bloqueas
+	do Utils.manage_variable("BAD_ANSWER", 1)
+	Narrador: Tu mente se queda en blanco.
+	Narrador: Sientes las miradas. Nadie habla.
+	Narrador: "No puedo... ¿Qué hago?"
+	- Sigues adelante
+		Narrador: Balbuceas un poco pero logras continuar.
+		Narrador: "Fue difícil pero no me rendí"
+		do Utils.manage_variable("CORRECT_ANSWER", 1)
+		Narrador: El curso te escucha con respeto.
+		=> pausa_clase
+	- Pides ayuda
+		Narrador: El profesor interviene y te da un momento.
+		Narrador: "No fue mi mejor día, pero lo intenté de nuevo"
+		do Utils.manage_variable("MEDIUM_ANSWER", 1)
+		Narrador: Vuelves a tu puesto algo frustrado.
+		=> pausa_clase
+
+~ pausa_clase
+Narrador: Ocurre una pausa y la clase continúa.
+Narrador: Al finalizar, reflexionas sobre lo que pasó...
+- Afrontar = crecimiento
+	do Utils.manage_variable("CORRECT_ANSWER", 1)
+	=> final_reflection
+- Evasión = alivio temporal
+	do Utils.manage_variable("MEDIUM_ANSWER", 1)
+	=> final_reflection
+- Bloqueo = frustración pasajera, aprendizaje futuro
+	do Utils.manage_variable("BAD_ANSWER", 1)
+	=> final_reflection
+
+~ final_reflection
+Narrador: Enfrentar el miedo me ayuda a reducirlo.
+Narrador: Evitarlo solo lo hace más grande.
+=> END
