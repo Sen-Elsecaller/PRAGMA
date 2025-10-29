@@ -6,13 +6,12 @@ var DIALOGUE_RESOURCE: DialogueResource
 var ballon_instance: CanvasLayer
 
 func setup_signals() -> void:
-	#ballon_instance = get_tree().get_
 	DialogueManager.dialogue_started.connect(_on_dialogue_started)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 	game_ui.returned_to_main_menu.connect(_stop_scenario)
 	
 func _stop_scenario():
-	pass
+	Utils.balloon_instance.queue_free()
 	
 func on_dialogic_signal(function: String):
 	if function.begins_with("sound_"):
@@ -28,5 +27,5 @@ func _on_dialogue_started(_dialogue):
 	pass
 
 func _on_dialogue_ended(_dialogue):
-	print(Utils.game_variables_dict)
+	print(Database.game_variables_dict)
 	Utils.game_controller.change_gui_scene(SCENARIO_SELECTOR, false, false)

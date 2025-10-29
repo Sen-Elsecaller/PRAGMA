@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dw3r131lp707i"]
 
-[ext_resource type="Script" uid="uid://baic2ff1ag35o" path="res://scripts/game_controller.gd" id="1_axcch"]
+[ext_resource type="Script" uid="uid://baic2ff1ag35o" path="res://autoload/game_controller.gd" id="1_axcch"]
 [ext_resource type="PackedScene" uid="uid://cjm5lytghbhii" path="res://scenes/ui/main_screen.tscn" id="2_p2c1n"]
 
 [node name="GameController" type="Node"]

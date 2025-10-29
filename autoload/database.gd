@@ -10,7 +10,6 @@ enum GAME_VARIABLES {
 var game_sessions: Array [Dictionary]
 
 
-
 func _ready() -> void:
 	for game_variable in GAME_VARIABLES:
 		game_variables_dict[game_variable] = 0

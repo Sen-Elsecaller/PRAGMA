@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Utils="*res://autoload/utils.gd"
-Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 EffectsManager="*res://autoload/effects_manager.tscn"
 AudioManager="*res://autoload/audio_manager.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
@@ -30,18 +29,9 @@ gdscript/warnings/unused_signal=0
 
 [dialogic]
 
-directories/dch_directory={
-"p1": "res://dialogic/characters/p1.dch",
-"steve": "res://dialogic/characters/steve.dch",
-"usuario": "res://dialogic/characters/usuario.dch"
-}
-directories/dtl_directory={
-"classroom1": "res://dialogic/timelines/classroom1.dtl"
-}
-layout/style_directory={
-"characters": "res://dialogic/styles/characters.tres",
-"narrator_choices": "res://dialogic/styles/narrator_choices.tres"
-}
+directories/dch_directory={}
+directories/dtl_directory={}
+layout/style_directory={}
 glossary/default_case_sensitive=false
 layout/style_list=["res://dialogic/styles/characters.tres", "res://dialogic/styles/narrator_choices.tres"]
 layout/default_style="res://dialogic/styles/custom_style.tres"
@@ -88,7 +78,7 @@ runtime/balloon_path="res://dialogue_manager/balloon.tscn"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [file_customization]
 
