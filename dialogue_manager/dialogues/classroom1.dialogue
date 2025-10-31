@@ -1,55 +1,51 @@
 ~ start
-Felipe: Ahora te toca presentar tu proyecto frente a la clase.
-Narrador: Sientes un nudo en el estómago. Tus manos sudan. Tu mente se acelera.
-#do GameManager.trigger_anxiety_event()
-¿Qué hago ahora?
-do AudioManager.string_bypass("HEARTBEAT_FAST")
-- Comienzas de inmediato
-	Narrador: Tu voz tiembla un poco, pero avanzas.
-	Narrador: Empiezas a enfocarte en tus palabras.
-	Narrador: La atención del público te ayuda a estabilizarte.
-	Narrador: Confianza y superación personal.
-	do Database.manage_variable("CORRECT_ANSWER", 1)
-	=> pausa_clase
-- Decides esperar unos segundos
-	Narrador: Tomas aire, cierras tus ojos.
-	Narrador: El profesor asiente con calma.
-	Narrador: Inicias con voz firme.
-	do Database.manage_variable("MEDIUM_ANSWER", 1)
-	Narrador: Control emocional y claridad mental.
-	=> pausa_clase
-- Te bloqueas
-	do Database.manage_variable("BAD_ANSWER", 1)
-	Narrador: Tu mente se queda en blanco.
-	Narrador: Sientes las miradas. Nadie habla.
-	Narrador: "No puedo... ¿Qué hago?"
-	- Sigues adelante
-		Narrador: Balbuceas un poco pero logras continuar.
-		Narrador: "Fue difícil pero no me rendí"
-		do Database.manage_variable("CORRECT_ANSWER", 1)
-		Narrador: El curso te escucha con respeto.
-		=> pausa_clase
-	- Pides ayuda
-		Narrador: El profesor interviene y te da un momento.
-		Narrador: "No fue mi mejor día, pero lo intenté de nuevo"
-		do Database.manage_variable("MEDIUM_ANSWER", 1)
-		Narrador: Vuelves a tu puesto algo frustrado.
-		=> pausa_clase
+Hoy es día de presentaciones de proyectos.
+Estás en el tercer alumno, tú eres el quinto. Queda poco para tu turno.
+[#sound=HEARTBEAT_FAST, #effect=CHROMATIC_ABERRATION] Sabes lo que tienes que decir, pero estás nervioso. Te sudan las manos, tu corazón se acelera.
+~ esperando_presentacion
+- Respiro lentamente => respirar_lentamente
+- Voy a repasar la materia => repasar_materia
+- [#emotion=bad, #outcome_text=Los nervios empeoran] Mi mente divaga 
+[next=0.01] [#emotion=bad, #outcome_text=Los nervios empeoran] => siguiente_presentacion
+#TODO: Aqui arriba se esta creando una linea vacia, lo que puede ser un problema a futuro
 
-~ pausa_clase
-Narrador: Ocurre una pausa y la clase continúa.
-Narrador: Al finalizar, reflexionas sobre lo que pasó...
-- Afrontar = crecimiento
-	do Database.manage_variable("CORRECT_ANSWER", 1)
-	=> final_reflection
-- Evasión = alivio temporal
-	do Database.manage_variable("MEDIUM_ANSWER", 1)
-	=> final_reflection
-- Bloqueo = frustración pasajera, aprendizaje futuro
-	do Database.manage_variable("BAD_ANSWER", 1)
-	=> final_reflection
+~ respirar_lentamente
+¿Cuantas respiraciones hago?
+- Más de 5 [if true]
+	#do GameManager.decrease_nervios()
+	Ganas control sobre la situacion. Tu cuerpo se relaja.
+	[#sound=calm] Sonido de latidos tranquilos
+	[#camera=normal] La cámara vuelve a la normalidad
+	[#emotion=calm] "Tu cuerpo se relaja."
+	=> siguiente_presentacion
+- Entre 3 y 5 [if true]
+	#do GameManager.control_nervios()
+	[#emotion=good] Te calmas levemente.
+	=> siguiente_presentacion
+- Menos de 1 [if true]
+	#do GameManager.increase_nervios()
+	[#emotion=bad] Los nervios siguen.
+	=> siguiente_presentacion
 
-~ final_reflection
-Narrador: Enfrentar el miedo me ayuda a reducirlo.
-Narrador: Evitarlo solo lo hace más grande.
-=> END
+~ repasar_materia
+%
+	Repasas algo que no entendías bien. Estás un poco mejor preparado.
+	Repasar ayuda a controlar un poco la situación. => siguiente_presentacion
+% 
+	No logras concentrarte. Leer el contenido no parece tener significado.
+	Los nervios siguen. => siguiente_presentacion
+
+~ siguiente_presentacion
+Viene la siguiente presentación
+% Aún tienes unos minutos. => esperando_presentacion
+% El estudiante que seguía pide presentar al final. Es tu turno.
+- Presento de inmediato, apresuradamente.
+	#[#sound=fast_heartbeat] Sonido de latidos rápidos
+	#[#camera=shake] Cámara borrosa o inquieta
+	[#emotion=bad] Empiezas tartamudeando. Te quedas sin aire rápidamente.
+		
+- Intento calmarme mientras preparo mi presentacion. Respiro profundamente.
+	[#emotion=good]"Te calmas levemente."
+
+- Explico que necesitas unos minutos.
+	#=> explicar_necesitas_minutos

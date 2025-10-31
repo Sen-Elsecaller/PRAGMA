@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://53enixu47jw4"
-path="res://.godot/imported/SteveMinecraft.png-a991517bcc194a550ecf903d34a88274.ctex"
+uid="uid://bki5wyaoc6ceh"
+path="res://.godot/imported/Profe Felipe Saludando.png-27055d36fdaae39a725eeceddc036b66.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/SteveMinecraft.png"
-dest_files=["res://.godot/imported/SteveMinecraft.png-a991517bcc194a550ecf903d34a88274.ctex"]
+source_file="res://assets/characters/Profe Felipe Saludando.png"
+dest_files=["res://.godot/imported/Profe Felipe Saludando.png-27055d36fdaae39a725eeceddc036b66.ctex"]
 
 [params]
 

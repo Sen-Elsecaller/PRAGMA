@@ -8,24 +8,32 @@ var ballon_instance: CanvasLayer
 func setup_signals() -> void:
 	DialogueManager.dialogue_started.connect(_on_dialogue_started)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+	DialogueManager.got_dialogue.connect(_on_line_emited)
 	game_ui.returned_to_main_menu.connect(_stop_scenario)
 	
 func _stop_scenario():
 	Utils.balloon_instance.queue_free()
 	
-func on_dialogic_signal(function: String):
-	if function.begins_with("sound_"):
-		call_audio_manager(function.get_slice("sound_", 1))
-
-func call_audio_manager(sound_type: String):
-	if SoundEffect.SOUND_EFFECT_TYPE.has(sound_type):
-		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.get(sound_type))
-	else:
-		push_error("No se encontro el sonido necesario")
-
 func _on_dialogue_started(_dialogue):
 	pass
 
 func _on_dialogue_ended(_dialogue):
 	print(Database.game_variables_dict)
 	Utils.game_controller.change_gui_scene(SCENARIO_SELECTOR, false, false)
+
+func _on_line_emited(line: DialogueLine):
+	var sound_tag = line.get_tag_value("sound")
+	var emotion_tag = line.get_tag_value("emotion")
+	var effect_tag = line.get_tag_value("effect")
+	var outcome_text_tag = line.get_tag_value("outcome_text")
+	if sound_tag != "" and SoundEffect.SOUND_EFFECT_TYPE.has(sound_tag): 
+		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.get(sound_tag))
+	
+	if effect_tag != "":
+		print(effect_tag)
+		
+	if emotion_tag != "":
+		print(emotion_tag)
+
+	if outcome_text_tag != "":
+		print(outcome_text_tag)
