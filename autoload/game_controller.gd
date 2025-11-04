@@ -8,6 +8,10 @@ class_name GameController extends Node
 
 var main_screen_scene = preload("res://scenes/ui/main_screen.tscn")
 
+
+
+
+
 func change_gui_scene(new_scene: PackedScene, delete: bool = true, keep_running: bool = false) -> void:
 	await _fade_out()
 	

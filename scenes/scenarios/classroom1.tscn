@@ -1,8 +1,114 @@
-[gd_scene load_steps=4 format=3 uid="uid://bysqqqtqyvu0"]
+[gd_scene load_steps=15 format=3 uid="uid://bysqqqtqyvu0"]
 
 [ext_resource type="PackedScene" uid="uid://co1ratfpk0ju8" path="res://scenes/ui/game_ui.tscn" id="1_452pb"]
 [ext_resource type="Script" uid="uid://7pwdv6cgu6hg" path="res://scripts/scenarios/classroom_1.gd" id="1_rw1mm"]
-[ext_resource type="Texture2D" uid="uid://cinqjq8uo2tj4" path="res://assets/images/placeholder_game_ui.jpeg" id="2_rw1mm"]
+[ext_resource type="Theme" uid="uid://5lacq73qg3pw" path="res://assets/styles/theme.tres" id="1_vcs8o"]
+[ext_resource type="PackedScene" uid="uid://4cyajmpvya0t" path="res://scenes/dialogue_box.tscn" id="2_b0gqd"]
+[ext_resource type="Shader" uid="uid://l68wcfihhi6m" path="res://resource/shaders/line_jitter.gdshader" id="2_tt7rt"]
+[ext_resource type="Texture2D" uid="uid://spxac1w5vhjy" path="res://assets/backgrounds/classroom1.png" id="3_5h52x"]
+[ext_resource type="Texture2D" uid="uid://cdh24bfb3abso" path="res://assets/interfaz/Fondo-Escenario.png" id="4_em4vr"]
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="8_5h52x"]
+[ext_resource type="PackedScene" uid="uid://b0q1nwm6l051j" path="res://scenes/custom_response.tscn" id="9_5h52x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vcs8o"]
+shader = ExtResource("2_tt7rt")
+shader_parameter/shaking = false
+shader_parameter/amplitude = 1.0
+shader_parameter/noise_scale = 20.0
+shader_parameter/noise_speed = 20.0
+shader_parameter/frame_rate = 12.0
+
+[sub_resource type="Animation" id="Animation_wx3lt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%ResponsesContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(716, 700)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogueContainer:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(436, 648)]
+}
+
+[sub_resource type="Animation" id="Animation_l7buf"]
+resource_name = "close_responses_menu"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%ResponsesContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(716, 374), Vector2(716, 700)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogueContainer:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(436, 380), Vector2(436, 648)]
+}
+
+[sub_resource type="Animation" id="Animation_5h52x"]
+resource_name = "open_responses_menu"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%ResponsesContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(716, 700), Vector2(716, 374)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogueContainer:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(436, 648), Vector2(436, 380)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6jlmd"]
+_data = {
+&"RESET": SubResource("Animation_wx3lt"),
+&"close_responses_menu": SubResource("Animation_l7buf"),
+&"open_responses_menu": SubResource("Animation_5h52x")
+}
 
 [node name="Classroom1" type="Control"]
 layout_mode = 3
@@ -11,20 +117,117 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_vcs8o")
 script = ExtResource("1_rw1mm")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -156.0
+offset_top = 24.0
+offset_right = -156.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("3_5h52x")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Frame" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_vcs8o")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_rw1mm")
+mouse_filter = 2
+texture = ExtResource("4_em4vr")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="GameUICanvas" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="GameUI" parent="CanvasLayer" instance=ExtResource("1_452pb")]
+[node name="GameUI" parent="GameUICanvas" instance=ExtResource("1_452pb")]
+
+[node name="DialogueCanvas" type="CanvasLayer" parent="."]
+
+[node name="DialogueContainer" type="Control" parent="DialogueCanvas"]
+layout_mode = 3
+anchor_left = 0.62200004
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.5440674
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 2
+mouse_filter = 2
+
+[node name="Margin" type="MarginContainer" parent="DialogueCanvas/DialogueContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Scroll" type="ScrollContainer" parent="DialogueCanvas/DialogueContainer/Margin"]
+unique_name_in_owner = true
+layout_mode = 2
+follow_focus = true
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="Content" type="VBoxContainer" parent="DialogueCanvas/DialogueContainer/Margin/Scroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="DialogueBox" parent="DialogueCanvas/DialogueContainer/Margin/Scroll/Content" instance=ExtResource("2_b0gqd")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 170)
+layout_mode = 2
+
+[node name="ResponsesContainer" type="MarginContainer" parent="DialogueCanvas"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.62200004
+anchor_top = 0.577
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.5440674
+offset_top = 326.10397
+offset_bottom = 325.9972
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_bottom = 60
+
+[node name="ResponsesMenu" type="GridContainer" parent="DialogueCanvas/ResponsesContainer" node_paths=PackedStringArray("response_template")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+columns = 2
+script = ExtResource("8_5h52x")
+response_template = NodePath("CustomResponse")
+
+[node name="CustomResponse" parent="DialogueCanvas/ResponsesContainer/ResponsesMenu" instance=ExtResource("9_5h52x")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogueCanvas"]
+libraries = {
+&"": SubResource("AnimationLibrary_6jlmd")
+}
+
+[connection signal="response_selected" from="DialogueCanvas/ResponsesContainer/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

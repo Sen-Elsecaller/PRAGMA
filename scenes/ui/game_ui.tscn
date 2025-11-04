@@ -1,11 +1,23 @@
-[gd_scene load_steps=11 format=3 uid="uid://co1ratfpk0ju8"]
+[gd_scene load_steps=19 format=3 uid="uid://co1ratfpk0ju8"]
 
 [ext_resource type="Script" uid="uid://cpiee8jsiyuf2" path="res://scripts/ui/game_ui.gd" id="1_bma8u"]
-[ext_resource type="Texture2D" uid="uid://ba4m6avpxdqnk" path="res://assets/cozy icons/Assets/Menu Buttons/Clear Menu Buttons/Buttons-=.png" id="1_xjfbv"]
-[ext_resource type="Texture2D" uid="uid://c2aioj75mfo8k" path="res://assets/cozy icons/Assets/Menu Buttons/Clear Menu Buttons/Pressed/Buttons-pressed-=.png" id="2_bma8u"]
-[ext_resource type="StyleBox" uid="uid://bl6jaxq6rr6bm" path="res://resource/styles/game_menu.tres" id="4_fct72"]
-[ext_resource type="Texture2D" uid="uid://byfkx0cl0u3bf" path="res://assets/cozy icons/Assets/Menu Buttons/Clear Menu Buttons/Buttons-x.png" id="5_v1bdg"]
-[ext_resource type="Texture2D" uid="uid://cl37twctsnl5t" path="res://assets/cozy icons/Assets/Menu Buttons/Clear Menu Buttons/Pressed/Buttons-pressed-x.png" id="6_qrkc0"]
+[ext_resource type="Theme" uid="uid://bfqpykpplmek7" path="res://resource/styles/game_ui.tres" id="1_fftnl"]
+[ext_resource type="Texture2D" uid="uid://cpxdqsxe3xvlg" path="res://assets/interfaz/Menu-1.png" id="2_v1bdg"]
+[ext_resource type="Texture2D" uid="uid://dnfwr5hjv5411" path="res://assets/interfaz/Menu-1A.png" id="3_qrkc0"]
+[ext_resource type="Texture2D" uid="uid://svn8vrm1orb7" path="res://assets/interfaz/Fondo-Ajustes.png" id="4_v1bdg"]
+[ext_resource type="Texture2D" uid="uid://brtytm6ivlywn" path="res://assets/interfaz/Cerrar-1.png" id="5_v1bdg"]
+[ext_resource type="Texture2D" uid="uid://b5he7eaw55254" path="res://assets/interfaz/Ajustes-1.png" id="5_yvtb5"]
+[ext_resource type="Texture2D" uid="uid://dobyvr42t3pw" path="res://assets/interfaz/Ajustes-1A.png" id="6_k7elv"]
+[ext_resource type="Texture2D" uid="uid://dv5rg64t6nx4p" path="res://assets/interfaz/Cerrar-1A.png" id="6_qrkc0"]
+[ext_resource type="FontFile" uid="uid://oha0sxnndksa" path="res://assets/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf" id="8_bxde6"]
+
+[sub_resource type="FontVariation" id="FontVariation_opxtl"]
+
+[sub_resource type="FontVariation" id="FontVariation_crnce"]
+
+[sub_resource type="FontVariation" id="FontVariation_x0n6o"]
+
+[sub_resource type="FontVariation" id="FontVariation_aq72h"]
 
 [sub_resource type="Animation" id="Animation_v1bdg"]
 length = 0.001
@@ -103,9 +115,12 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1041.0
+offset_left = 1030.0
+offset_right = -11.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_fftnl")
 script = ExtResource("1_bma8u")
 
 [node name="GameMenu" type="Control" parent="."]
@@ -117,17 +132,17 @@ anchor_bottom = 1.0
 offset_left = -400.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="MenuButtonContainer" type="MarginContainer" parent="GameMenu"]
 layout_mode = 1
-anchors_preset = 11
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
 offset_left = -80.0
 offset_right = 0.00012207031
+offset_bottom = 80.0
 grow_horizontal = 0
-grow_vertical = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -138,38 +153,200 @@ custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
-texture_normal = ExtResource("1_xjfbv")
-texture_pressed = ExtResource("2_bma8u")
+texture_normal = ExtResource("2_v1bdg")
+texture_pressed = ExtResource("3_qrkc0")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="MenuPanelContainer" type="PanelContainer" parent="GameMenu"]
+[node name="MenuPanelContainer" type="TextureRect" parent="GameMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 522.0
-offset_right = 522.00037
+offset_right = 522.0004
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = ExtResource("4_fct72")
+texture = ExtResource("4_v1bdg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="RichTextLabel" parent="GameMenu/MenuPanelContainer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -137.00021
+offset_top = 55.0
+offset_right = 136.99979
+offset_bottom = 99.99994
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("8_bxde6")
+theme_override_fonts/bold_font = SubResource("FontVariation_opxtl")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_crnce")
+theme_override_fonts/italics_font = SubResource("FontVariation_x0n6o")
+theme_override_fonts/mono_font = SubResource("FontVariation_aq72h")
+theme_override_font_sizes/bold_font_size = 34
+bbcode_enabled = true
+text = "[b]Opciones"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameMenu/MenuPanelContainer"]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="DialogueHistory" type="Button" parent="GameMenu/MenuPanelContainer/VBoxContainer"]
+[node name="Jugabilidad" type="TextureButton" parent="GameMenu/MenuPanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(360, 100)
 layout_mode = 2
-text = "Registro de dialogo"
+size_flags_vertical = 3
+texture_normal = ExtResource("5_yvtb5")
+texture_pressed = ExtResource("6_k7elv")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Exit" type="Button" parent="GameMenu/MenuPanelContainer/VBoxContainer"]
+[node name="Label" type="RichTextLabel" parent="GameMenu/MenuPanelContainer/VBoxContainer/Jugabilidad"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -22.5
+offset_right = 137.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("8_bxde6")
+theme_override_fonts/bold_font = SubResource("FontVariation_opxtl")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_crnce")
+theme_override_fonts/italics_font = SubResource("FontVariation_x0n6o")
+theme_override_fonts/mono_font = SubResource("FontVariation_aq72h")
+bbcode_enabled = true
+text = "[b]Jugabilidad"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Audio" type="TextureButton" parent="GameMenu/MenuPanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(360, 100)
 layout_mode = 2
-text = "Salir"
+size_flags_vertical = 3
+texture_normal = ExtResource("5_yvtb5")
+texture_pressed = ExtResource("6_k7elv")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="RichTextLabel" parent="GameMenu/MenuPanelContainer/VBoxContainer/Audio"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -22.5
+offset_right = 137.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("8_bxde6")
+theme_override_fonts/bold_font = SubResource("FontVariation_opxtl")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_crnce")
+theme_override_fonts/italics_font = SubResource("FontVariation_x0n6o")
+theme_override_fonts/mono_font = SubResource("FontVariation_aq72h")
+bbcode_enabled = true
+text = "[b]Audio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DialogueHistory" type="TextureButton" parent="GameMenu/MenuPanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(360, 100)
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("5_yvtb5")
+texture_pressed = ExtResource("6_k7elv")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="RichTextLabel" parent="GameMenu/MenuPanelContainer/VBoxContainer/DialogueHistory"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -22.5
+offset_right = 137.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("8_bxde6")
+theme_override_fonts/bold_font = SubResource("FontVariation_opxtl")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_crnce")
+theme_override_fonts/italics_font = SubResource("FontVariation_x0n6o")
+theme_override_fonts/mono_font = SubResource("FontVariation_aq72h")
+bbcode_enabled = true
+text = "[b]Registro de Dialogo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="TextureButton" parent="GameMenu/MenuPanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(360, 100)
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("5_yvtb5")
+texture_pressed = ExtResource("6_k7elv")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="RichTextLabel" parent="GameMenu/MenuPanelContainer/VBoxContainer/Exit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -22.5
+offset_right = 137.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("8_bxde6")
+theme_override_fonts/bold_font = SubResource("FontVariation_opxtl")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_crnce")
+theme_override_fonts/italics_font = SubResource("FontVariation_x0n6o")
+theme_override_fonts/mono_font = SubResource("FontVariation_aq72h")
+bbcode_enabled = true
+text = "[b]Volver al menu"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CloseMenu" type="TextureButton" parent="GameMenu/MenuPanelContainer"]
 custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
+layout_mode = 0
+offset_left = 340.0
+offset_top = 60.0
+offset_right = 380.0
+offset_bottom = 100.0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 texture_normal = ExtResource("5_v1bdg")

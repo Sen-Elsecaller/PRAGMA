@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="VignetteFX" load_steps=2 format=3 uid="uid://c4et2lk0w606f"]
+
+[ext_resource type="Script" uid="uid://cqqc7s7kp8uem" path="res://addons/postfx/effects/VignetteFX.gd" id="1_qgrb7"]
+
+[resource]
+script = ExtResource("1_qgrb7")
+intensity = 0.2
+metadata/_custom_type_script = "uid://cqqc7s7kp8uem"

@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bfqpykpplmek7"]
+
+[ext_resource type="FontFile" uid="uid://oha0sxnndksa" path="res://assets/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf" id="1_qi6vp"]
+
+[resource]
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("1_qi6vp")
+RichTextLabel/colors/default_color = Color(0.11115896, 0.07705062, 0.12932855, 1)
+RichTextLabel/font_sizes/bold_font_size = 28
+RichTextLabel/font_sizes/bold_italics_font_size = 21
+RichTextLabel/font_sizes/normal_font_size = 20
+RichTextLabel/fonts/bold_italics_font = ExtResource("1_qi6vp")

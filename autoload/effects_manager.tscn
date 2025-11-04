@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://2ctn7t2c2x3s"]
+[gd_scene load_steps=7 format=3 uid="uid://2ctn7t2c2x3s"]
 
 [ext_resource type="Script" uid="uid://cgdsned25jfc4" path="res://autoload/effects_manager.gd" id="1_1d2mk"]
+[ext_resource type="Script" uid="uid://d15nobs3uuxeb" path="res://addons/postfx/nodes/PostFX.gd" id="2_o086f"]
+[ext_resource type="Script" uid="uid://bvbw3ejkm2bck" path="res://addons/postfx/scripts/FXBase.gd" id="3_2bw1p"]
+[ext_resource type="Resource" uid="uid://dx34scy8jj7k6" path="res://resource/shaders/ChromaticAberrationFX.tres" id="4_53ady"]
+[ext_resource type="Resource" uid="uid://c4et2lk0w606f" path="res://resource/shaders/VignetteFX.tres" id="5_o086f"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e43wv"]
+load_path = "res://.godot/imported/placeholder_game_ui.jpeg-75d1ca8a624d1ad4c02ef71095f8cd48.ctex"
 
 [node name="Effects" type="CanvasLayer"]
 script = ExtResource("1_1d2mk")
@@ -13,3 +20,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="PostFX" type="CanvasLayer" parent="."]
+script = ExtResource("2_o086f")
+effects = Array[ExtResource("3_2bw1p")]([ExtResource("4_53ady"), ExtResource("5_o086f")])
+metadata/_custom_type_script = "uid://d15nobs3uuxeb"
+
+[node name="PlaceholderGameUi" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(859.0294, 192.14087)
+scale = Vector2(0.3652651, 0.4268278)
+texture = SubResource("CompressedTexture2D_e43wv")

@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=6 format=3 uid="uid://ylvbucdf207r"]
 
-[ext_resource type="FontFile" uid="uid://kh3agb772tqc" path="res://assets/fonts/WalterTurncoat-Regular.ttf" id="1_5gor7"]
+[ext_resource type="FontFile" uid="uid://oha0sxnndksa" path="res://assets/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf" id="1_5gor7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hh6qg"]
 

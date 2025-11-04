@@ -59,7 +59,6 @@ func get_menu_items() -> Array:
 		if not child.visible: continue
 		if "Disallowed" in child.name: continue
 		items.append(child)
-
 	return items
 
 
@@ -67,7 +66,7 @@ func get_menu_items() -> Array:
 func configure_focus() -> void:
 	var items = get_menu_items()
 	for i in items.size():
-		var item: Control = items[i]
+		var item: BaseButton = items[i]
 
 		item.focus_mode = Control.FOCUS_ALL
 
@@ -93,7 +92,8 @@ func configure_focus() -> void:
 			item.focus_next = items[i + 1].get_path()
 
 		item.mouse_entered.connect(_on_response_mouse_entered.bind(item))
-		item.gui_input.connect(_on_response_gui_input.bind(item, item.get_meta("response")))
+		#item.gui_input.connect(_on_response_gui_input.bind(item, item.get_meta("response")))
+		item.pressed.connect(_on_response_pressed.bind(item, item.get_meta("response")))
 
 	_previously_focused_item = items[0]
 
@@ -115,6 +115,7 @@ func _apply_responses() -> void:
 
 	# Add new items
 	if responses.size() > 0:
+		var index = 1
 		for response in responses:
 			if hide_failed_responses and not response.is_allowed: continue
 
@@ -137,7 +138,11 @@ func _apply_responses() -> void:
 				item.text = response.text
 
 			item.set_meta("response", response)
-
+			
+			if "response_index" in item:
+				item.response_index = index
+				index += 1
+				
 			add_child(item)
 
 		if auto_configure_focus:
@@ -174,5 +179,8 @@ func _on_response_gui_input(event: InputEvent, item: Control, response) -> void:
 		get_viewport().set_input_as_handled()
 		response_selected.emit(response)
 
+func _on_response_pressed(item: Control, response) -> void:
+	if "Disallowed" in item.name: return
+	response_selected.emit(response)
 
 #endregion

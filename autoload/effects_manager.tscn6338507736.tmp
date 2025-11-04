@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://2ctn7t2c2x3s"]
+
+[ext_resource type="Script" uid="uid://cgdsned25jfc4" path="res://autoload/effects_manager.gd" id="1_1d2mk"]
+[ext_resource type="Script" uid="uid://d15nobs3uuxeb" path="res://addons/postfx/nodes/PostFX.gd" id="2_o086f"]
+[ext_resource type="Script" uid="uid://bvbw3ejkm2bck" path="res://addons/postfx/scripts/FXBase.gd" id="3_2bw1p"]
+[ext_resource type="Resource" uid="uid://dx34scy8jj7k6" path="res://resource/shaders/chromatic_aberration.tres" id="4_53ady"]
+[ext_resource type="Texture2D" uid="uid://cinqjq8uo2tj4" path="res://assets/images/placeholder_game_ui.jpeg" id="6_4c4ff"]
+
+[node name="Effects" type="CanvasLayer"]
+script = ExtResource("1_1d2mk")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PostFX" type="CanvasLayer" parent="."]
+script = ExtResource("2_o086f")
+effects = Array[ExtResource("3_2bw1p")]([ExtResource("4_53ady")])
+metadata/_custom_type_script = "uid://d15nobs3uuxeb"
+
+[node name="PlaceholderGameUi" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(859.0294, 192.14087)
+scale = Vector2(0.3652651, 0.4268278)
+texture = ExtResource("6_4c4ff")

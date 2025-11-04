@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ChromaticAberrationFX" load_steps=2 format=3 uid="uid://dx34scy8jj7k6"]
+
+[ext_resource type="Script" uid="uid://bxsk7uywkd145" path="res://addons/postfx/effects/ChromaticAberrationFX.gd" id="1_piv8m"]
+
+[resource]
+script = ExtResource("1_piv8m")
+strength = 0.0
+metadata/_custom_type_script = "uid://bxsk7uywkd145"

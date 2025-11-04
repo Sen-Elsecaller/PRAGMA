@@ -1,0 +1,144 @@
+[gd_scene load_steps=12 format=3 uid="uid://bysqqqtqyvu0"]
+
+[ext_resource type="PackedScene" uid="uid://co1ratfpk0ju8" path="res://scenes/ui/game_ui.tscn" id="1_452pb"]
+[ext_resource type="Script" uid="uid://7pwdv6cgu6hg" path="res://scripts/scenarios/classroom_1.gd" id="1_rw1mm"]
+[ext_resource type="Theme" uid="uid://5lacq73qg3pw" path="res://assets/styles/theme.tres" id="1_vcs8o"]
+[ext_resource type="PackedScene" uid="uid://4cyajmpvya0t" path="res://scenes/dialogue_box.tscn" id="2_b0gqd"]
+[ext_resource type="Shader" uid="uid://l68wcfihhi6m" path="res://resource/shaders/line_jitter.gdshader" id="2_tt7rt"]
+[ext_resource type="Texture2D" uid="uid://spxac1w5vhjy" path="res://assets/backgrounds/classroom1.png" id="3_5h52x"]
+[ext_resource type="Texture2D" uid="uid://cdh24bfb3abso" path="res://assets/interfaz/Fondo-Escenario.png" id="4_em4vr"]
+[ext_resource type="Texture2D" uid="uid://drw50ijdvlbtl" path="res://assets/characters/Alumna 2 Neutra.png" id="5_b0gqd"]
+[ext_resource type="Script" uid="uid://cuho3foi6kha4" path="res://dialogue_manager/balloon_response.gd" id="8_em4vr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vcs8o"]
+shader = ExtResource("2_tt7rt")
+shader_parameter/shaking = false
+shader_parameter/amplitude = 1.0
+shader_parameter/noise_scale = 20.0
+shader_parameter/noise_speed = 20.0
+shader_parameter/frame_rate = 12.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_em4vr"]
+shader = ExtResource("2_tt7rt")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 2.5
+shader_parameter/noise_scale = 500.0
+shader_parameter/noise_speed = 2.5
+shader_parameter/frame_rate = 10.0
+
+[node name="Classroom1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vcs8o")
+script = ExtResource("1_rw1mm")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -156.0
+offset_top = 24.0
+offset_right = -156.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("3_5h52x")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Frame" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_vcs8o")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_em4vr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GameUICanvas" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="GameUI" parent="GameUICanvas" instance=ExtResource("1_452pb")]
+
+[node name="Alumna2Neutra" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_em4vr")
+position = Vector2(897, 316)
+scale = Vector2(0.6175926, 0.6175926)
+texture = ExtResource("5_b0gqd")
+
+[node name="DialogueCanvas" type="CanvasLayer" parent="."]
+
+[node name="DialogueContainer" type="Control" parent="DialogueCanvas"]
+layout_mode = 3
+anchor_left = 0.62200004
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.5440674
+offset_bottom = -168.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 2
+mouse_filter = 2
+
+[node name="Margin" type="MarginContainer" parent="DialogueCanvas/DialogueContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Scroll" type="ScrollContainer" parent="DialogueCanvas/DialogueContainer/Margin"]
+unique_name_in_owner = true
+layout_mode = 2
+follow_focus = true
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="Content" type="VBoxContainer" parent="DialogueCanvas/DialogueContainer/Margin/Scroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="DialogueBox" parent="DialogueCanvas/DialogueContainer/Margin/Scroll/Content" instance=ExtResource("2_b0gqd")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 123.36)
+layout_mode = 2
+
+[node name="ResponsesContainer" type="MarginContainer" parent="DialogueCanvas"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.62200004
+anchor_top = 0.73600006
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.5440674
+offset_top = 0.07196045
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="ResponsesMenu" type="VBoxContainer" parent="DialogueCanvas/ResponsesContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 2
+alignment = 1
+script = ExtResource("8_em4vr")
+
+[node name="ResponseExample" type="Button" parent="DialogueCanvas/ResponsesContainer/ResponsesMenu"]
+visible = false
+layout_mode = 2
+text = "Response example"

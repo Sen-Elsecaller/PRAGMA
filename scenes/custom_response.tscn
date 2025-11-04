@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0q1nwm6l051j"]
+
+[ext_resource type="Script" uid="uid://vemur1745npq" path="res://scripts/custom_response.gd" id="1_7n5ix"]
+[ext_resource type="Texture2D" uid="uid://cd20dpem8rasj" path="res://assets/interfaz/Opcion-1.png" id="2_binjn"]
+[ext_resource type="Texture2D" uid="uid://c262wertm0621" path="res://assets/interfaz/Opcion-1A.png" id="3_tgd6f"]
+[ext_resource type="Theme" uid="uid://bfqpykpplmek7" path="res://resource/styles/game_ui.tres" id="4_binjn"]
+
+[node name="CustomResponse" type="TextureButton"]
+custom_minimum_size = Vector2(180, 100)
+anchors_preset = -1
+anchor_right = 0.156
+anchor_bottom = 0.15400001
+offset_right = -29.712006
+offset_bottom = -19.792007
+texture_normal = ExtResource("2_binjn")
+texture_pressed = ExtResource("3_tgd6f")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("1_7n5ix")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_binjn")
+theme_override_font_sizes/normal_font_size = 15
+text = "Respuesta predeterminadaa asdasdasdasd dasdasdasd"
+horizontal_alignment = 1
+vertical_alignment = 1

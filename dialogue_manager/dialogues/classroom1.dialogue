@@ -1,12 +1,11 @@
 ~ start
-Hoy es día de presentaciones de proyectos.
-Estás en el tercer alumno, tú eres el quinto. Queda poco para tu turno.
-[#sound=HEARTBEAT_FAST, #effect=CHROMATIC_ABERRATION] Sabes lo que tienes que decir, pero estás nervioso. Te sudan las manos, tu corazón se acelera.
+Narrador: Hoy es día de presentaciones de proyectos.
+Narrador: Estás en el tercer alumno, tú eres el quinto. Queda poco para tu turno.
+Narrador: Sabes lo que tienes que decir, pero estás nervioso. Te sudan las manos, tu corazón se acelera. [#sound=HEARTBEAT_FAST, #effect=ChromaticAberrationFX, #effect_duration=3]
 ~ esperando_presentacion
 - Respiro lentamente => respirar_lentamente
 - Voy a repasar la materia => repasar_materia
-- [#emotion=bad, #outcome_text=Los nervios empeoran] Mi mente divaga 
-[next=0.01] [#emotion=bad, #outcome_text=Los nervios empeoran] => siguiente_presentacion
+- [#emotion=bad, #outcome_text=Los nervios empeoran] Mi mente divaga => siguiente_presentacion
 #TODO: Aqui arriba se esta creando una linea vacia, lo que puede ser un problema a futuro
 
 ~ respirar_lentamente
@@ -37,15 +36,43 @@ Estás en el tercer alumno, tú eres el quinto. Queda poco para tu turno.
 
 ~ siguiente_presentacion
 Viene la siguiente presentación
-% Aún tienes unos minutos. => esperando_presentacion
-% El estudiante que seguía pide presentar al final. Es tu turno.
+if not Database.already_skipped
+	Aún tienes unos minutos. 
+	set Database.already_skipped = true 
+	=> esperando_presentacion
+	
+else
+	Es tu turno. => tu_turno
+
+~ tu_turno
 - Presento de inmediato, apresuradamente.
 	#[#sound=fast_heartbeat] Sonido de latidos rápidos
 	#[#camera=shake] Cámara borrosa o inquieta
-	[#emotion=bad] Empiezas tartamudeando. Te quedas sin aire rápidamente.
-		
-- Intento calmarme mientras preparo mi presentacion. Respiro profundamente.
+	[#emotion=bad] Empiezas tartamudeando. Te quedas sin aire rápidamente. => empieza_presentacion
+	
+- Intento calmarme mientras preparo mi presentacion. Respiro profundamente. => empieza_presentacion
 	[#emotion=good]"Te calmas levemente."
 
 - Explico que necesitas unos minutos.
-	#=> explicar_necesitas_minutos
+	=> explicar_necesitas_minutos
+
+~ explicar_necesitas_minutos
+- Profesor, estoy un poco nervioso, ¿podria presentar despues y salir unos minutos?
+	%7 => profesor_insiste
+	%3 => no_presentas
+	
+- Profe, ¿puedo presentar despues?
+	%9 => profesor_insiste
+	%1 => no_presentas
+	
+~ profesor_insiste
+Profesor: Es su turno joven. Pase adelante a presentar.
+Algunas veces los profesores te presionaran. Lo hacen para sacar lo mejor de ti y prepararte para el mundo laboral.
+Pero tu decides como tomarte su ayuda. => END
+#TODO: terminar esta rama
+
+~ no_presentas
+~ empieza_presentacion
+Todos te miran fijamente.
+- No le dare importancia.
+- Estan esperando a que me equivoque.
