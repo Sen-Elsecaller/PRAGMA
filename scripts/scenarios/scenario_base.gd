@@ -73,7 +73,6 @@ func next_line(next_id: String) -> void:
 		responses_menu.get_menu_items()[0].grab_focus()
 		
 	elif next_dialogue_line.text == "":
-		print(next_dialogue_line)
 		dialogue_box.dialogue_line = next_dialogue_line
 		
 	else:

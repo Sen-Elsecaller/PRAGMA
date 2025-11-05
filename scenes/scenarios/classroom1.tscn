@@ -192,6 +192,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+alignment = 2
 
 [node name="DialogueBox" parent="DialogueCanvas/DialogueContainer/Margin/Scroll/Content" instance=ExtResource("2_b0gqd")]
 unique_name_in_owner = true
