@@ -74,6 +74,7 @@ func next_line(next_id: String) -> void:
 		
 	else:
 		var copy: DialogueBox = last_dialogue.duplicate()
+		copy.scale = Vector2.ZERO
 		content.add_child(copy)
 		if content.get_child_count() > 3:
 			content.get_child(0).burn_card_out()
@@ -90,4 +91,19 @@ func _on_gui_input(event: InputEvent) -> void:
 
 func _on_responses_menu_response_selected(response: Variant) -> void:
 	Utils.tween_scale_bounce_in(responses_container, Utils.PivotPosition.BOTTOM_CENTER)
+	
+	# Crear burbuja con la respuesta del usuario
+	var copy: DialogueBox = last_dialogue.duplicate()
+	copy.scale = Vector2.ZERO
+	content.add_child(copy)
+	if content.get_child_count() > 3:
+		content.get_child(0).burn_card_out()
+	
+	var response_line = last_dialogue.dialogue_line
+	response_line.character = "Player"  # O tu nombre
+	response_line.text = response.text
+	copy.dialogue_line = response_line
+	
+	await get_tree().create_timer(2).timeout
+	
 	next_line(response.next_id)

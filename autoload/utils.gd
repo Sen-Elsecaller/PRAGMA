@@ -100,13 +100,13 @@ static func tween_fade_in_with_children(
 
 	return tween
 
-static func tween_scale_bounce_out(
+func tween_scale_bounce_out(
 	node: Node,
 	pivot_pos: PivotPosition = PivotPosition.CENTER,
 	duration: float = 0.2,
-	overshoot: float = 1.2  # Escala máxima antes de volver a 1
+	overshoot: float = 1.02  # Escala máxima antes de volver a 1
 	) -> Tween:
-	
+		
 	var tween = node.get_tree().create_tween()
 	if node is Control:
 		set_pivot(node, pivot_pos)
@@ -116,7 +116,7 @@ static func tween_scale_bounce_out(
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
 
-	tween.tween_property(node, "scale", Vector2.ONE * overshoot, duration * 0.6)
+	tween.tween_property(node, "scale", Vector2.ONE * overshoot, duration * 0.6).from(Vector2.ZERO)
 	tween.tween_property(node, "scale", Vector2.ONE, duration * 0.4)
 
 	return tween

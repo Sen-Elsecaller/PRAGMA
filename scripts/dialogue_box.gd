@@ -9,11 +9,11 @@ const ACTORS = {
 	},
 	narrator = {
 		texture_type = preload("res://assets/interfaz/Fondo-Ajustes.png"),
-		pivot_side = Utils.PivotPosition.CENTER_LEFT,
+		pivot_side = Utils.PivotPosition.CENTER,
 	},
 	player = {
 		texture_type = preload("res://assets/interfaz/Texto-1.png"),
-		pivot_side = Utils.PivotPosition.CENTER_LEFT,
+		pivot_side = Utils.PivotPosition.CENTER_RIGHT
 	}
 }
 
@@ -46,16 +46,19 @@ func skip_typing() -> void:
 
 func update_dialogue() -> void:
 	dialogue.show()
-	
+	print(dialogue_line.character)
 	if dialogue_line.character != "Narrador":
 		character_name.text = dialogue_line.character
 		if dialogue_line.character != "Player":
 			background.texture = ACTORS["character"]["texture_type"]
-			Utils.tween_scale_bounce_out(self, ACTORS["character"]["pivot_side"], 0.2)
+			Utils.tween_fade_in_with_children(self, [background, dialogue_label], ACTORS["character"]["pivot_side"], 1)
+		elif dialogue_line.character == "Player":
+			background.texture = ACTORS["player"]["texture_type"]
+			Utils.tween_fade_in_with_children(self, [background, dialogue_label], ACTORS["player"]["pivot_side"], 1)
 	else:
 		character_name.text = ""
 		background.texture = ACTORS["narrator"]["texture_type"]
-		Utils.tween_scale_bounce_out(self, ACTORS["narrator"]["pivot_side"], 0.2)
+		Utils.tween_fade_in_with_children(self, [background, dialogue_label], ACTORS["narrator"]["pivot_side"], 1)
 		
 	dialogue_label.dialogue_line = dialogue_line
 
