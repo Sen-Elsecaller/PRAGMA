@@ -14,7 +14,11 @@ enum GAME_VARIABLES {
 var game_sessions: Array [Dictionary]
 
 
-
+enum {
+	CHARACTER,
+	NARRATOR,
+	PLAYER
+}
 
 var responses_textures_normal: Dictionary = {
 	1: preload("res://assets/interfaz/Opcion-1.png"),
@@ -28,8 +32,14 @@ var responses_textures_pressed: Dictionary = {
 	3: preload("res://assets/interfaz/Opcion-3A.png"),
 	4: preload("res://assets/interfaz/Opcion-4A.png")
 }
+var dialogue_textures: Dictionary = {
+	CHARACTER: preload("res://assets/interfaz/Texto-1.png"),
+	NARRATOR: preload("res://assets/interfaz/Fondo-Ajustes.png"),
+	PLAYER: preload("res://assets/interfaz/Texto-2.png"),
+}
 
 func _ready() -> void:
+	
 	for game_variable in GAME_VARIABLES:
 		game_variables_dict[game_variable] = 0
 		

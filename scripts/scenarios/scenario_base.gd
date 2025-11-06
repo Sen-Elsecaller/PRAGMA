@@ -1,7 +1,6 @@
 class_name ScenarioBase extends Control
 
 @onready var dialogue_box: DialogueBox = %DialogueBox
-@onready var scroll: ScrollContainer = %Scroll
 #@onready var v_scroll_bar: VScrollBar = %VScrollBar
 @onready var content: VBoxContainer = %Content
 #@onready var answer_overlay: ColorRect = %AnswerOverlay
@@ -10,11 +9,10 @@ class_name ScenarioBase extends Control
 @onready var responses_container: MarginContainer = %ResponsesContainer
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 @onready var game_ui: GameUI = $GameUICanvas/GameUI
-@onready var animation_player: AnimationPlayer = $DialogueCanvas/AnimationPlayer
 const SCENARIO_SELECTOR = preload("uid://btrw7gm53yrcs")
 var DIALOGUE_RESOURCE: DialogueResource
 var ballon_instance: CanvasLayer
-
+@onready var last_dialogue: DialogueBox = %DialogueBox
 
 func setup_signals() -> void:
 	EffectsManager.post_fx.toggle_fx("VignetteFX", true)
@@ -56,39 +54,40 @@ func handle_click(event: InputEvent) -> void:
 	var is_accept_key: bool = event.is_action_pressed("ui_accept")
 	if is_left_click or is_accept_key:
 		get_viewport().set_input_as_handled()
-		if dialogue_box.is_typing:
-			dialogue_box.skip_typing()
+		if last_dialogue.is_typing:
+			last_dialogue.skip_typing()
 		else:
-			next_line(dialogue_box.dialogue_line.next_id)
+			next_line(last_dialogue.dialogue_line.next_id)
 
 func next_line(next_id: String) -> void:
 	var next_dialogue_line: DialogueLine = await DIALOGUE_RESOURCE.get_next_dialogue_line(next_id, [self])
 	if not is_instance_valid(next_dialogue_line): return
 
 	if next_dialogue_line.type == DMConstants.TYPE_RESPONSE:
-		animation_player.play("open_responses_menu")
+		Utils.tween_scale_bounce_out(responses_container, Utils.PivotPosition.BOTTOM_CENTER)
 		responses_menu.responses = next_dialogue_line.responses
-		await get_tree().create_timer(0.5).timeout
-		scroll.set_deferred("scroll_vertical", 10000)
+		await get_tree().create_timer(0.3).timeout
 		responses_menu.get_menu_items()[0].grab_focus()
 		
 	elif next_dialogue_line.text == "":
-		dialogue_box.dialogue_line = next_dialogue_line
+		last_dialogue.dialogue_line = next_dialogue_line
 		
 	else:
-		var copy: DialogueBox = dialogue_box.duplicate()
+		var copy: DialogueBox = last_dialogue.duplicate()
 		content.add_child(copy)
-		content.move_child(copy, dialogue_box.get_index())
-		dialogue_box.dialogue_line = next_dialogue_line
+		if content.get_child_count() > 3:
+			content.get_child(0).burn_card_out()
+			
+		copy.dialogue_line = next_dialogue_line
 
-		await get_tree().create_timer(0.2).timeout
-		scroll.set_deferred("scroll_vertical", 10000)
+		await get_tree().create_timer(0.3).timeout
 
-		dialogue_box.grab_focus()
+		last_dialogue = copy
+		copy.grab_focus()
 
 func _on_gui_input(event: InputEvent) -> void:
 	handle_click(event)
 
 func _on_responses_menu_response_selected(response: Variant) -> void:
-	animation_player.play("close_responses_menu")
+	Utils.tween_scale_bounce_in(responses_container, Utils.PivotPosition.BOTTOM_CENTER)
 	next_line(response.next_id)

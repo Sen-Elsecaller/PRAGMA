@@ -1,19 +1,19 @@
 class_name DialogueBox extends MarginContainer
 
-
 signal finished_typing()
 
-
-const CHARACTERS = {
-	nathan = {
-		portrait = preload("res://assets/portraits/nathan.svg"),
-		side = "left",
-		color = Color(1, 0.869, 0.776)
+const ACTORS = {
+	character = {
+		texture_type = preload("res://assets/interfaz/Texto-2.png"),
+		pivot_side = Utils.PivotPosition.CENTER_LEFT,
 	},
-	coco = {
-		portrait = preload("res://assets/portraits/coco.svg"),
-		side = "right",
-		color = Color(0.755, 0.908, 1)
+	narrator = {
+		texture_type = preload("res://assets/interfaz/Fondo-Ajustes.png"),
+		pivot_side = Utils.PivotPosition.CENTER_LEFT,
+	},
+	player = {
+		texture_type = preload("res://assets/interfaz/Texto-1.png"),
+		pivot_side = Utils.PivotPosition.CENTER_LEFT,
 	}
 }
 
@@ -36,29 +36,9 @@ var is_typing:
 @onready var action_label: Label = %ActionLabel
 
 func _ready() -> void:
+	
 	pass
-
-func _tween_entrance():
-	var tween = get_tree().create_tween()
-	var tween_time = 2
 	
-	var target_size = size.y
-	
-	custom_minimum_size.y = 0
-	modulate.a = 0
-	dialogue_label.modulate.a = 0
-	
-	# Primera fase: contenedor (en paralelo)
-	tween.set_parallel(true)
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_SINE)
-	tween.tween_property(self, "custom_minimum_size:y", target_size, tween_time)
-	tween.tween_property(self, "modulate:a", 1.0, tween_time)
-	
-	# Segunda fase: label (secuencial)
-	tween.set_parallel(false)
-	tween.tween_property(dialogue_label, "modulate:a", 1.0, tween_time * 0.5)
-
 ## Finish typing instantly
 func skip_typing() -> void:
 	dialogue_label.skip_typing()
@@ -66,8 +46,16 @@ func skip_typing() -> void:
 
 func update_dialogue() -> void:
 	dialogue.show()
+	
 	if dialogue_line.character != "Narrador":
 		character_name.text = dialogue_line.character
+		if dialogue_line.character != "Player":
+			background.texture = ACTORS["character"]["texture_type"]
+			Utils.tween_scale_bounce_out(self, ACTORS["character"]["pivot_side"], 0.2)
+	else:
+		character_name.text = ""
+		background.texture = ACTORS["narrator"]["texture_type"]
+		Utils.tween_scale_bounce_out(self, ACTORS["narrator"]["pivot_side"], 0.2)
 		
 	dialogue_label.dialogue_line = dialogue_line
 
@@ -76,10 +64,35 @@ func update_dialogue() -> void:
 
 #region Signals
 
-
 func _on_dialogue_label_finished_typing() -> void:
 	if is_inside_tree():
 		finished_typing.emit()
 
+#endregion
 
+#region Animations
+
+func burn_card_out():
+	if material and material is ShaderMaterial:
+		background.material = background.material.duplicate()
+		var tween: Tween = get_tree().create_tween()
+		# set burning direction in degrees
+		background.material.set_shader_parameter("direction", 270.0)
+		# use tweens to animate the progress value
+		tween.tween_method(
+			func(val): background.material.set_shader_parameter("progress", val),
+			-1.5, 1.5, 0.2
+		)
+		tween.tween_callback(queue_free)
+
+func burn_card_in():
+	if material and material is ShaderMaterial:
+		background.material = background.material.duplicate()
+		var tween: Tween = get_tree().create_tween()
+		background.material.set_shader_parameter("direction", 90.0)
+		
+		tween.tween_method(
+			func(val): background.material.set_shader_parameter("progress", val),
+			1.5, -1.5, 0.2
+		)
 #endregion

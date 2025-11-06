@@ -1,6 +1,7 @@
 ~ start
-Narrador: Hoy es día de presentaciones de proyectos.
-Narrador: Estás en el tercer alumno, tú eres el quinto. Queda poco para tu turno.
+Felipe: Excelente presentacion Maria Jose Antonieta!
+Narrador: Hoy es dia de evaluacion. Tienes que presentar los diagramas de tu proyecto.
+Narrador: Estan en el tercer alumno, tú eres el quinto. Queda poco para tu turno.
 Narrador: Sabes lo que tienes que decir, pero estás nervioso. Te sudan las manos, tu corazón se acelera. [#sound=HEARTBEAT_FAST, #effect=ChromaticAberrationFX, #effect_duration=3]
 ~ esperando_presentacion
 - Respiro lentamente => respirar_lentamente
@@ -12,37 +13,37 @@ Narrador: Sabes lo que tienes que decir, pero estás nervioso. Te sudan las mano
 ¿Cuantas respiraciones hago?
 - Más de 5 [if true]
 	#do GameManager.decrease_nervios()
-	Ganas control sobre la situacion. Tu cuerpo se relaja.
-	[#sound=calm] Sonido de latidos tranquilos
-	[#camera=normal] La cámara vuelve a la normalidad
-	[#emotion=calm] "Tu cuerpo se relaja."
+	Narrador: Ganas control sobre la situacion. Tu cuerpo se relaja.
+	Narrador: [#sound=calm] Sonido de latidos tranquilos
+	[#camera=normal] Narrador: La cámara vuelve a la normalidad
+	[#emotion=calm] Narrador: "Tu cuerpo se relaja."
 	=> siguiente_presentacion
 - Entre 3 y 5 [if true]
 	#do GameManager.control_nervios()
-	[#emotion=good] Te calmas levemente.
+	[#emotion=good] Narrador: Te calmas levemente.
 	=> siguiente_presentacion
 - Menos de 1 [if true]
 	#do GameManager.increase_nervios()
-	[#emotion=bad] Los nervios siguen.
+	[#emotion=bad] Narrador: Los nervios siguen.
 	=> siguiente_presentacion
 
 ~ repasar_materia
 %
-	Repasas algo que no entendías bien. Estás un poco mejor preparado.
-	Repasar ayuda a controlar un poco la situación. => siguiente_presentacion
+	Narrador: Repasas algo que no entendías bien. Estás un poco mejor preparado.
+	Narrador: Repasar ayuda a controlar un poco la situación. => siguiente_presentacion
 % 
-	No logras concentrarte. Leer el contenido no parece tener significado.
-	Los nervios siguen. => siguiente_presentacion
+	Narrador: No logras concentrarte. Leer el contenido no parece tener significado.
+	Narrador: Los nervios siguen. => siguiente_presentacion
 
 ~ siguiente_presentacion
-Viene la siguiente presentación
+Narrador: Viene la siguiente presentación
 if not Database.already_skipped
-	Aún tienes unos minutos. 
+	Narrador: Aún tienes unos minutos. 
 	set Database.already_skipped = true 
 	=> esperando_presentacion
 	
 else
-	Es tu turno. => tu_turno
+	Narrador: Es tu turno. => tu_turno
 
 ~ tu_turno
 - Presento de inmediato, apresuradamente.

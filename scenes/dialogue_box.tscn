@@ -1,14 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://4cyajmpvya0t"]
+[gd_scene load_steps=10 format=3 uid="uid://4cyajmpvya0t"]
 
 [ext_resource type="Theme" uid="uid://5lacq73qg3pw" path="res://assets/styles/theme.tres" id="1_yaf6g"]
 [ext_resource type="Script" uid="uid://ccava50u55qgg" path="res://scripts/dialogue_box.gd" id="2_l304u"]
 [ext_resource type="Script" uid="uid://g32um0mltv5d" path="res://addons/dialogue_manager/dialogue_label.gd" id="2_qkucv"]
 [ext_resource type="Texture2D" uid="uid://dj11klyrvhnxo" path="res://assets/interfaz/Texto-2.png" id="3_hvmm2"]
+[ext_resource type="Shader" uid="uid://bml3y1uj7b6ie" path="res://resource/shaders/burn.gdshader" id="3_p0wdv"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pehjr"]
+noise_type = 3
+frequency = 0.025
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_c26ww"]
+width = 1024
+noise = SubResource("FastNoiseLite_pehjr")
+seamless = true
+normalize = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yhmkw"]
+shader = ExtResource("3_p0wdv")
+shader_parameter/progress = -1.5
+shader_parameter/noiseForce = -0.2
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_c26ww")
+shader_parameter/burnColor = Color(0.16235459, 0.15246284, 0.024062151, 1)
+shader_parameter/borderWidth = 0.025
+shader_parameter/direction = 270.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_cs1qt"]
 font_color = Color(1, 0.512959, 0, 1)
 
 [node name="DialogueBox" type="MarginContainer"]
+custom_minimum_size = Vector2(396, 170)
 anchors_preset = -1
 anchor_right = 0.344
 anchor_bottom = 0.26200002
@@ -30,11 +51,11 @@ theme = ExtResource("1_yaf6g")
 
 [node name="Background" type="TextureRect" parent="Dialogue"]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_yhmkw")
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("3_hvmm2")
 expand_mode = 1
-stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="Dialogue/Background"]
 layout_mode = 1
