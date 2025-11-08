@@ -2,7 +2,7 @@ extends Node
 
 var already_skipped: bool = false
 
-
+var player_name: String = "Gerald"
 
 var game_variables_dict: Dictionary = {}
 enum GAME_VARIABLES {

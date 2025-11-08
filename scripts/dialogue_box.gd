@@ -22,6 +22,7 @@ var dialogue_line: DialogueLine:
 	set(value):
 		dialogue_line = value
 		update_dialogue()
+		
 	get:
 		return dialogue_line
 
@@ -29,14 +30,13 @@ var is_typing:
 	get:
 		return dialogue_label.is_typing
 
-@onready var dialogue: HBoxContainer = %Dialogue
+@onready var dialogue: MarginContainer = %Dialogue
 @onready var background: TextureRect = %Background
 @onready var character_name: Label = %CharacterName
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
 @onready var action_label: Label = %ActionLabel
 
 func _ready() -> void:
-	
 	pass
 	
 ## Finish typing instantly
@@ -46,25 +46,43 @@ func skip_typing() -> void:
 
 func update_dialogue() -> void:
 	dialogue.show()
-	print(dialogue_line.character)
-	if dialogue_line.character != "Narrador":
-		character_name.text = dialogue_line.character
-		if dialogue_line.character != "Player":
-			background.texture = ACTORS["character"]["texture_type"]
-			Utils.tween_fade_in_with_children(self, [background, dialogue_label], ACTORS["character"]["pivot_side"], 1)
-		elif dialogue_line.character == "Player":
-			background.texture = ACTORS["player"]["texture_type"]
-			Utils.tween_fade_in_with_children(self, [background, dialogue_label], ACTORS["player"]["pivot_side"], 1)
-	else:
-		character_name.text = ""
-		background.texture = ACTORS["narrator"]["texture_type"]
-		Utils.tween_fade_in_with_children(self, [background, dialogue_label], ACTORS["narrator"]["pivot_side"], 1)
-		
+	
+	# Ajusta el size de DialogueBox a la cantidad de texto
+	set_deferred("size", Vector2.ZERO)
+	custom_minimum_size = Vector2.ZERO
+	
 	dialogue_label.dialogue_line = dialogue_line
+	var actor_key: String
+	if dialogue_line.character == "Narrador":
+		character_name.text = ""
+		actor_key = "narrator"
+		character_name.hide()
+		set("theme_override_constants/margin_left", 0)
+		set("theme_override_constants/margin_right", 0)
+		dialogue_label.set("horizontal_alignment", 1)
+	elif dialogue_line.character == "Player" or dialogue_line.character == Database.player_name:
+		
+		character_name.text = Database.player_name
+		actor_key = "player"
+		character_name.show()
+		set("theme_override_constants/margin_left", 0)
+		set("theme_override_constants/margin_right", -15)
+		dialogue_label.set("horizontal_alignment", 0)
+	else:
+		character_name.text = dialogue_line.character
+		actor_key = "character"
+		set("theme_override_constants/margin_left", -15)
+		set("theme_override_constants/margin_right", 0)
+		dialogue_label.set("horizontal_alignment", 0)
+		character_name.show()
+	
+	var actor = ACTORS[actor_key]
+	background.texture = actor["texture_type"]
 
 	if not dialogue_line.character.is_empty():
+		
 		dialogue_label.type_out()
-
+	
 #region Signals
 
 func _on_dialogue_label_finished_typing() -> void:

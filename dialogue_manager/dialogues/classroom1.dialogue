@@ -1,39 +1,38 @@
 ~ start
-Felipe: Excelente presentacion Maria Jose Antonieta!
-Narrador: Hoy es dia de evaluacion. Tienes que presentar los diagramas de tu proyecto.
-Narrador: Estan en el tercer alumno, tú eres el quinto. Queda poco para tu turno.
-Narrador: Sabes lo que tienes que decir, pero estás nervioso. Te sudan las manos, tu corazón se acelera. [#sound=HEARTBEAT_FAST, #effect=ChromaticAberrationFX, #effect_duration=3]
+Profesor Felipe: ¡Excelente presentacion Juan!
+Narrador: Hoy es dia de evaluacion. Estan en el tercer alumno, tú eres el quinto. 
+	Queda poco para tu turno.
+Narrador: Conoces tu presentacion, pero como suele ocurrir empiezas a ponerte nervioso. 
+	Te sudan las manos, tu corazón se acelera. 
+	[#sound=HEARTBEAT_FAST, #effect=ChromaticAberrationFX, #effect_duration=3, #effect_overall=true]
 ~ esperando_presentacion
 - Respiro lentamente => respirar_lentamente
 - Voy a repasar la materia => repasar_materia
-- [#emotion=bad, #outcome_text=Los nervios empeoran] Mi mente divaga => siguiente_presentacion
+- Mi mente divaga [#emotion=bad, #outcome_text=Los nervios empeoran] => siguiente_presentacion
 #TODO: Aqui arriba se esta creando una linea vacia, lo que puede ser un problema a futuro
 
 ~ respirar_lentamente
-¿Cuantas respiraciones hago?
-- Más de 5 [if true]
-	#do GameManager.decrease_nervios()
-	Narrador: Ganas control sobre la situacion. Tu cuerpo se relaja.
-	Narrador: [#sound=calm] Sonido de latidos tranquilos
-	[#camera=normal] Narrador: La cámara vuelve a la normalidad
-	[#emotion=calm] Narrador: "Tu cuerpo se relaja."
+Narrador: ¿Cuantas respiraciones haces?
+- Más de 5
+	Narrador: Tu cuerpo y tu mente se relajan. 
+		[#emotion=good, #outcome_text=Ganas control sobre la situacion.]
 	=> siguiente_presentacion
-- Entre 3 y 5 [if true]
+- Entre 3 y 5
 	#do GameManager.control_nervios()
 	[#emotion=good] Narrador: Te calmas levemente.
 	=> siguiente_presentacion
-- Menos de 1 [if true]
+- Menos de 1
 	#do GameManager.increase_nervios()
 	[#emotion=bad] Narrador: Los nervios siguen.
 	=> siguiente_presentacion
 
 ~ repasar_materia
 %
-	Narrador: Repasas algo que no entendías bien. Estás un poco mejor preparado.
-	Narrador: Repasar ayuda a controlar un poco la situación. => siguiente_presentacion
+	Narrador: Repasas algo que no entendías bien. Estás mejor preparado.
+		[#emotion=good, #outcome_text=Repasar puede ayudar a controlar la situación, #feedback=Si ya sabes la materia, respirar lentamente puede ser mejor que repasar] => siguiente_presentacion
 % 
 	Narrador: No logras concentrarte. Leer el contenido no parece tener significado.
-	Narrador: Los nervios siguen. => siguiente_presentacion
+		[#emotion=bad, #outcome_text=Los nervios siguen, #feedback=Si ya sabes la materia, respirar lentamente puede ser mejor que repasar] => siguiente_presentacion
 
 ~ siguiente_presentacion
 Narrador: Viene la siguiente presentación
@@ -43,36 +42,43 @@ if not Database.already_skipped
 	=> esperando_presentacion
 	
 else
-	Narrador: Es tu turno. => tu_turno
+	Profesor Felipe: {{Database.player_name}}, adelante por favor. => tu_turno
 
 ~ tu_turno
-- Presento de inmediato, apresuradamente.
-	#[#sound=fast_heartbeat] Sonido de latidos rápidos
-	#[#camera=shake] Cámara borrosa o inquieta
-	[#emotion=bad] Empiezas tartamudeando. Te quedas sin aire rápidamente. => empieza_presentacion
-	
-- Intento calmarme mientras preparo mi presentacion. Respiro profundamente. => empieza_presentacion
-	[#emotion=good]"Te calmas levemente."
-
-- Explico que necesitas unos minutos.
-	=> explicar_necesitas_minutos
+- Presento de inmediato, apresuradamente. [#sound=HEARTBEAT_FAST, #background=from_board, #effect=SHAKE, #emotion=bad, #outcome_text=Empiezas tartamudeando. Te quedas sin aire rápidamente.] => empieza_presentacion
+- Intento calmarme mientras preparo mi presentacion. Respiro profundamente. [#sound=HEARTBEAT_SLOW, #emotion=good, #outcome_text=Te calmas levemente] => empieza_presentacion
+- Explico que necesito unos minutos => explicar_necesitas_minutos
 
 ~ explicar_necesitas_minutos
-- Profesor, estoy un poco nervioso, ¿podria presentar despues y salir unos minutos?
-	%7 => profesor_insiste
-	%3 => no_presentas
+- Player: Profesor, no me siento bien, ¿podria presentar despues y salir unos minutos?
+	%9 Profesor Felipe: Entiendo. Tomese unos minutos. => no_presentas
+	%1 => profesor_insiste
 	
-- Profe, ¿puedo presentar despues?
-	%9 => profesor_insiste
-	%1 => no_presentas
+- Player: Profe, ¿puedo presentar despues?
+	%3 Profesor Felipe: Entiendo. Tomese unos minutos. => no_presentas
+	%7 => profesor_insiste
+
 	
 ~ profesor_insiste
-Profesor: Es su turno joven. Pase adelante a presentar.
-Algunas veces los profesores te presionaran. Lo hacen para sacar lo mejor de ti y prepararte para el mundo laboral.
-Pero tu decides como tomarte su ayuda. => END
-#TODO: terminar esta rama
+Profesor Felipe: Es su turno joven. Pase adelante a presentar.
+Narrador: Algunas veces los profesores te presionaran. 
+	Lo hacen para sacar lo mejor de ti y prepararte para el mundo laboral.
+Narrador: Tu decides como tomarte su ayuda. 
+	¿Aceptas la indicacion?
+- Si
+	Narrador: ¿Que piensas?
+	- Lo hace para ayudarme.
+		Player: Bueno profe, voy. => empieza_presentacion
+	- [i]Viejo #$%&[i]
+		Player: Ya. => empieza_presentacion
+- No
+	- Player: Profesor, disculpeme pero de verdad necesito unos minutos. No me siento bien. [#emotion=good, #outcome_text=Control sobre la situacion. Sinceridad con como te sientes.] => no_presentas
+	- Player: No voy a pasar ahora profe. Permiso. [#emotion=bad, #outcome_text=Se tensa el ambiente. Aumentan los nervios.] => no_presentas
 
 ~ no_presentas
+Narrador: Mientras esperas, piensas en lo que ocurrio.
+
+
 ~ empieza_presentacion
 Todos te miran fijamente.
 - No le dare importancia.

@@ -66,7 +66,7 @@ func get_menu_items() -> Array:
 func configure_focus() -> void:
 	var items = get_menu_items()
 	for i in items.size():
-		var item: BaseButton = items[i]
+		var item: CustomResponse = items[i]
 
 		item.focus_mode = Control.FOCUS_ALL
 
@@ -93,7 +93,7 @@ func configure_focus() -> void:
 
 		item.mouse_entered.connect(_on_response_mouse_entered.bind(item))
 		#item.gui_input.connect(_on_response_gui_input.bind(item, item.get_meta("response")))
-		item.pressed.connect(_on_response_pressed.bind(item, item.get_meta("response")))
+		item.texture_button.pressed.connect(_on_response_pressed.bind(item, item.get_meta("response")))
 
 	_previously_focused_item = items[0]
 
@@ -144,6 +144,7 @@ func _apply_responses() -> void:
 				index += 1
 				
 			add_child(item)
+
 
 		if auto_configure_focus:
 			configure_focus()

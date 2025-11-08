@@ -10,7 +10,7 @@ func disable_all_effects() -> void:
 		if fx != null:
 			fx.enabled = false
 
-func animate_fx(fx_name: String, property: String, max_value: float, duration: float, ease_type: Tween.EaseType = Tween.EASE_OUT, trans_type: Tween.TransitionType = Tween.TRANS_QUAD) -> void:
+func animate_fx(fx_name: String, property: String, max_value: float, duration: float = 2, ease_type: Tween.EaseType = Tween.EASE_OUT, trans_type: Tween.TransitionType = Tween.TRANS_CUBIC) -> Tween:
 	var fx := post_fx.get_fx(fx_name)
 	if fx == null:
 		push_warning("Efecto %s no encontrado." % fx_name)
@@ -28,3 +28,5 @@ func animate_fx(fx_name: String, property: String, max_value: float, duration: f
 	tween.tween_property(fx, property, max_value, duration / 2.0)
 	
 	tween.tween_property(fx, property, initial_value, duration / 2.0)
+	
+	return tween

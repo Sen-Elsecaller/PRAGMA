@@ -4,9 +4,9 @@ class_name GameUI extends Control
 signal returned_to_main_menu
 
 func _on_exit_pressed() -> void:
-	returned_to_main_menu.emit()
+	EffectsManager.post_fx.toggle_fx("VignetteFX", false)
 	Utils.game_controller.return_to_main_menu()
-
+	
 func _on_menu_button_pressed() -> void:
 	animations.play("open_game_menu")
 

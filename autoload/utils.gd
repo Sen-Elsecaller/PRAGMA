@@ -34,29 +34,30 @@ func _ready() -> void:
 		carousel_scenarios_array.append(Carousel_Scenarios[scenario])
 
 # Función helper para configurar el pivot
-static func set_pivot(node: Control, pivot_pos: PivotPosition) -> void:
+func set_pivot(node: Control, pivot_pos: PivotPosition) -> Vector2:
 	match pivot_pos:
 		PivotPosition.TOP_LEFT:
-			node.pivot_offset = Vector2.ZERO
+			return Vector2.ZERO
 		PivotPosition.TOP_CENTER:
-			node.pivot_offset = Vector2(node.size.x / 2, 0)
+			return Vector2(node.size.x / 2, 0)
 		PivotPosition.TOP_RIGHT:
-			node.pivot_offset = Vector2(node.size.x, 0)
+			return Vector2(node.size.x, 0)
 		PivotPosition.CENTER_LEFT:
-			node.pivot_offset = Vector2(0, node.size.y / 2)
+			return Vector2(0, node.size.y / 2)
 		PivotPosition.CENTER:
-			node.pivot_offset = Vector2(node.size.x / 2, node.size.y / 2)
+			return Vector2(node.size.x / 2, node.size.y / 2)
 		PivotPosition.CENTER_RIGHT:
-			node.pivot_offset = Vector2(node.size.x, node.size.y / 2)
+			return Vector2(node.size.x, node.size.y / 2)
 		PivotPosition.BOTTOM_LEFT:
-			node.pivot_offset = Vector2(0, node.size.y)
+			return Vector2(0, node.size.y)
 		PivotPosition.BOTTOM_CENTER:
-			node.pivot_offset = Vector2(node.size.x / 2, node.size.y)
+			return Vector2(node.size.x / 2, node.size.y)
 		PivotPosition.BOTTOM_RIGHT:
-			node.pivot_offset = Vector2(node.size.x, node.size.y)
+			return Vector2(node.size.x, node.size.y)
+		_:
+			return Vector2.ZERO
 
-
-static func tween_fade_in_with_children(
+func tween_fade_in_with_children(
 	main_node: Control, 
 	children: Array[Node] = [], 
 	pivot_position: PivotPosition = PivotPosition.CENTER,
@@ -102,14 +103,12 @@ static func tween_fade_in_with_children(
 
 func tween_scale_bounce_out(
 	node: Node,
-	pivot_pos: PivotPosition = PivotPosition.CENTER,
 	duration: float = 0.2,
 	overshoot: float = 1.02  # Escala máxima antes de volver a 1
 	) -> Tween:
 		
 	var tween = node.get_tree().create_tween()
-	if node is Control:
-		set_pivot(node, pivot_pos)
+
 	node.scale = Vector2.ZERO
 
 	# Primera fase: crece más de lo normal
@@ -121,21 +120,19 @@ func tween_scale_bounce_out(
 
 	return tween
 
-static func tween_scale_bounce_in(
+func tween_scale_bounce_in(
 	node: Node,
-	pivot_pos: PivotPosition = PivotPosition.CENTER,
 	duration: float = 0.2,
 	) -> Tween:
 	
 	var tween = node.get_tree().create_tween()
-	if node is Control:
-		set_pivot(node, pivot_pos)
+
 	tween.set_ease(Tween.EASE_OUT)
 	
 	tween.tween_property(node, "scale", Vector2.ZERO, duration)
 
-	
 	return tween
+	
 func _set_balloon_instance(_dialogue):
 	balloon_instance = game_controller.find_child("ExampleBalloon", true, false)
 	print(balloon_instance)

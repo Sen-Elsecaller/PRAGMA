@@ -1,1 +1,1 @@
-class_name SceneSelector extends ScreenState
+extends ScreenState
