@@ -3,6 +3,7 @@ extends Node
 var already_skipped: bool = false
 
 var player_name: String = "Gerald"
+var stress_level: int = 0
 
 var game_variables_dict: Dictionary = {}
 enum GAME_VARIABLES {
@@ -20,18 +21,21 @@ enum {
 	PLAYER
 }
 
-var responses_textures_normal: Dictionary = {
-	1: preload("res://assets/interfaz/Opcion-1.png"),
-	2: preload("res://assets/interfaz/Opcion-2.png"),
-	3: preload("res://assets/interfaz/Opcion-3.png"),
-	4: preload("res://assets/interfaz/Opcion-4.png")
+const ACTORS = {
+	character = {
+		texture_type = preload("res://assets/nueva_interfaz/Bloque_Chat_Personaje_Largo_2.svg"),
+		pivot_side = Utils.PivotPosition.CENTER_LEFT,
+	},
+	narrator = {
+		texture_type = preload("res://assets/nueva_interfaz/Bloque_Chat_Narrador_Largo.svg"),
+		pivot_side = Utils.PivotPosition.CENTER,
+	},
+	player = {
+		texture_type = preload("res://assets/nueva_interfaz/Bloque_Chat_Personaje_Largo_1.svg"),
+		pivot_side = Utils.PivotPosition.CENTER_RIGHT
+	}
 }
-var responses_textures_pressed: Dictionary = {
-	1: preload("res://assets/interfaz/Opcion-1A.png"),
-	2: preload("res://assets/interfaz/Opcion-2A.png"),
-	3: preload("res://assets/interfaz/Opcion-3A.png"),
-	4: preload("res://assets/interfaz/Opcion-4A.png")
-}
+
 var dialogue_textures: Dictionary = {
 	CHARACTER: preload("res://assets/interfaz/Texto-1.png"),
 	NARRATOR: preload("res://assets/interfaz/Fondo-Ajustes.png"),

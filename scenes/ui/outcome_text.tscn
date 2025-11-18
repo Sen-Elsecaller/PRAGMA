@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2k5sqx0lswhk"]
+
+[ext_resource type="Script" uid="uid://dfc1s7hx0m8o" path="res://scripts/outcome_text.gd" id="1_wmyiq"]
+[ext_resource type="Texture2D" uid="uid://1butysd6xcyy" path="res://assets/nueva_interfaz/Bloque_Decision_Amarilla.svg" id="2_int51"]
+[ext_resource type="Theme" uid="uid://c6x0uvrt3fadx" path="res://resource/styles/custom_response.tres" id="3_7ntql"]
+
+[node name="OutcomeText" type="MarginContainer"]
+anchors_preset = -1
+anchor_right = 0.21700001
+anchor_bottom = 0.185
+offset_right = 0.015991211
+offset_bottom = 0.11999512
+pivot_offset = Vector2(125, 0)
+script = ExtResource("1_wmyiq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(250, 120)
+layout_mode = 2
+texture = ExtResource("2_int51")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_7ntql")
+bbcode_enabled = true
+text = "dasdasda"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -132,7 +132,80 @@ func tween_scale_bounce_in(
 	tween.tween_property(node, "scale", Vector2.ZERO, duration)
 
 	return tween
+
+func tween_fade_in_simple(
+	node: CanvasItem,
+	duration: float = 0.3,
+	ease_type: Tween.EaseType = Tween.EASE_OUT,
+	trans_type: Tween.TransitionType = Tween.TRANS_SINE
+) -> Tween:
+	var tween = node.get_tree().create_tween()
+	if node.visible == false:
+		node.show()
+		
+	node.modulate.a = 0
 	
+	tween.set_ease(ease_type)
+	tween.set_trans(trans_type)
+	tween.tween_property(node, "modulate:a", 1.0, duration)
+	
+	return tween
+
+# Fade out simple
+func tween_fade_out_simple(
+	node: CanvasItem,
+	duration: float = 0.2,
+	ease_type: Tween.EaseType = Tween.EASE_IN,
+	trans_type: Tween.TransitionType = Tween.TRANS_SINE
+) -> Tween:
+	var tween = node.get_tree().create_tween()
+	
+	tween.set_ease(ease_type)
+	tween.set_trans(trans_type)
+	tween.tween_property(node, "modulate:a", 0.0, duration)
+	
+	return tween
+
+# Entra deslizándose (funciona con Node2D y Control)
+func tween_slide_in(
+	node: Node,
+	direction: Vector2,
+	duration: float = 0.12,
+	distance: float = 650
+) -> Tween:
+	var tween = node.get_tree().create_tween()
+	
+	var start_offset = direction * distance
+	var target_pos = node.position
+	
+	tween.set_ease(Tween.EASE_IN)  # ← Mismo ease
+	tween.set_trans(Tween.TRANS_SINE)   # ← Misma transición
+	tween.tween_property(node, "position", target_pos, duration).from(target_pos + start_offset)
+	
+	return tween
+
+# Sale deslizándose (funciona con Node2D y Control)
+func tween_slide_out(
+	node: Node,
+	direction: Vector2,
+	duration: float = 0.12,
+	distance: float = 650
+) -> Tween:
+	var tween = node.get_tree().create_tween()
+	var initial_position = node.position
+	var end_position = node.position + (direction * distance)
+	
+	tween.set_ease(Tween.EASE_IN)  # ← Mismo ease
+	tween.set_trans(Tween.TRANS_SINE)   # ← Misma transición
+	tween.tween_property(node, "position", end_position, duration)
+	
+	tween.tween_callback(func(): node.position = initial_position)
+	return tween
+
+func strip_bbcode(source:String) -> String:
+	var regex = RegEx.new()
+	regex.compile("\\[.+?\\]")
+	return regex.sub(source, "", true)
+
 func _set_balloon_instance(_dialogue):
 	balloon_instance = game_controller.find_child("ExampleBalloon", true, false)
-	print(balloon_instance)

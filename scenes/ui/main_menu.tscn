@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cqno7bsqpuloq" path="res://scripts/ui/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="Theme" uid="uid://ylvbucdf207r" path="res://resource/styles/main_menu.tres" id="1_m1kxf"]
-[ext_resource type="Texture2D" uid="uid://dbyo5vw8rfoh8" path="res://assets/Intro.jpg" id="3_m1kxf"]
+[ext_resource type="Texture2D" uid="uid://ddrxyx0scuu7a" path="res://assets/Inicio (1).png" id="3_m1kxf"]
 [ext_resource type="Texture2D" uid="uid://bimm0vr7q6ilt" path="res://assets/logo/Proyecto-Pragma-Logo.png" id="4_m1kxf"]
 
 [node name="MainMenu" type="Control"]
@@ -44,8 +44,8 @@ theme_override_constants/margin_bottom = 12
 [node name="Title" type="TextureRect" parent="MarginContainer"]
 custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
+size_flags_horizontal = 4
+size_flags_vertical = 0
 texture = ExtResource("4_m1kxf")
 expand_mode = 1
 stretch_mode = 5

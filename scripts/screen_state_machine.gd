@@ -70,4 +70,5 @@ func get_topmost_screen() -> ScreenState:
 # Cambia de una screen a otra, ejecutando la animación de salida de la actual y la de entrada de la nueva.
 func change_screen(screen: SCREENS):
 	current_screen.Exit()
+	current_screen = screens[screen]
 	screens[screen].Enter()

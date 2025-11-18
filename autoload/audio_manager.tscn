@@ -1,16 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6g3jqxtqcjye"]
+[gd_scene load_steps=12 format=3 uid="uid://c6g3jqxtqcjye"]
 
 [ext_resource type="Script" uid="uid://scdror3bmdgr" path="res://autoload/audio_manager.gd" id="1_u6vuv"]
 [ext_resource type="Script" uid="uid://cjtni7y10t1" path="res://resource/sound_effect.gd" id="2_0kjgv"]
 [ext_resource type="Resource" uid="uid://di6xmfb1n2a8l" path="res://resource/SoundEffects/heartbeat_fast.tres" id="3_5l778"]
 [ext_resource type="Resource" uid="uid://bfeyyvohypdgw" path="res://resource/SoundEffects/heartbeat_medium.tres" id="4_f0pwr"]
 [ext_resource type="Resource" uid="uid://c8ssjgkkd6a1f" path="res://resource/SoundEffects/heartbeat_slow.tres" id="5_kipf1"]
+[ext_resource type="Resource" uid="uid://dmuxdpkiab0nw" path="res://resource/SoundEffects/bad_emotion.tres" id="6_pp21f"]
+[ext_resource type="Resource" uid="uid://btp0q3aba5a6o" path="res://resource/SoundEffects/good_emotion.tres" id="7_eg3rh"]
+[ext_resource type="Resource" uid="uid://dpiad1tlqebxx" path="res://resource/SoundEffects/ui_back.tres" id="8_q0reb"]
+[ext_resource type="Resource" uid="uid://wv2eowm0yec2" path="res://resource/SoundEffects/ui_select.tres" id="9_iyo06"]
+[ext_resource type="Resource" uid="uid://bpp6wnskyahim" path="res://resource/SoundEffects/speaking.tres" id="10_eg3rh"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_u6vuv"]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_u6vuv")
-sound_effects = Array[ExtResource("2_0kjgv")]([ExtResource("3_5l778"), ExtResource("4_f0pwr"), ExtResource("5_kipf1")])
+sound_effects = Array[ExtResource("2_0kjgv")]([ExtResource("3_5l778"), ExtResource("4_f0pwr"), ExtResource("5_kipf1"), ExtResource("6_pp21f"), ExtResource("7_eg3rh"), ExtResource("8_q0reb"), ExtResource("9_iyo06"), ExtResource("10_eg3rh")])
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_u6vuv")

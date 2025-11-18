@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 364.22 163.3">
+  <defs>
+    <style>
+      .cls-1 {
+        opacity: .05;
+      }
+
+      .cls-2 {
+        fill: #80ba97;
+      }
+
+      .cls-3, .cls-4 {
+        fill: none;
+      }
+
+      .cls-5 {
+        fill: #2e2034;
+      }
+
+      .cls-4 {
+        stroke: #2e2034;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-3" x="5.35" width="358.87" height="155.96" rx="20" ry="20"/>
+    </clipPath>
+  </defs>
+  <g id="Capa_1-2" data-name="Capa 1">
+    <g>
+      <rect class="cls-5" y="7.34" width="358.87" height="155.96" rx="20" ry="20"/>
+      <g>
+        <rect class="cls-2" x="5.35" width="358.87" height="155.96" rx="20" ry="20"/>
+        <g class="cls-1">
+          <g class="cls-6">
+            <g>
+              <g>
+                <path class="cls-4" d="M16.27-29v213.96"/>
+                <path class="cls-4" d="M38.74-29v213.96"/>
+                <path class="cls-4" d="M61.21-29v213.96"/>
+                <path class="cls-4" d="M83.68-29v213.96"/>
+                <path class="cls-4" d="M106.14-29v213.96"/>
+                <path class="cls-4" d="M128.61-29v213.96"/>
+                <path class="cls-4" d="M151.08-29v213.96"/>
+                <path class="cls-4" d="M173.55-29v213.96"/>
+                <path class="cls-4" d="M196.02-29v213.96"/>
+                <path class="cls-4" d="M218.48-29v213.96"/>
+                <path class="cls-4" d="M240.95-29v213.96"/>
+                <path class="cls-4" d="M263.42-29v213.96"/>
+                <path class="cls-4" d="M285.89-29v213.96"/>
+                <path class="cls-4" d="M308.36-29v213.96"/>
+                <path class="cls-4" d="M330.82-29v213.96"/>
+                <path class="cls-4" d="M353.29-29v213.96"/>
+              </g>
+              <g>
+                <path class="cls-4" d="M-164.62,2.41h698.81"/>
+                <path class="cls-4" d="M-164.62,21.3h698.81"/>
+                <path class="cls-4" d="M-164.62,40.2h698.81"/>
+                <path class="cls-4" d="M-164.62,59.09h698.81"/>
+                <path class="cls-4" d="M-164.62,77.98h698.81"/>
+                <path class="cls-4" d="M-164.62,96.88h698.81"/>
+                <path class="cls-4" d="M-164.62,115.77h698.81"/>
+                <path class="cls-4" d="M-164.62,134.66h698.81"/>
+                <path class="cls-4" d="M-164.62,153.56h698.81"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

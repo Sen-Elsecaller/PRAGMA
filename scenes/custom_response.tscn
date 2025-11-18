@@ -1,17 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://b0q1nwm6l051j"]
 
 [ext_resource type="Script" uid="uid://vemur1745npq" path="res://scripts/custom_response.gd" id="1_7n5ix"]
-[ext_resource type="Texture2D" uid="uid://cd20dpem8rasj" path="res://assets/interfaz/Opcion-1.png" id="2_binjn"]
-[ext_resource type="Texture2D" uid="uid://c262wertm0621" path="res://assets/interfaz/Opcion-1A.png" id="3_tgd6f"]
+[ext_resource type="Texture2D" uid="uid://c5s0pjn7coptp" path="res://assets/nueva_interfaz/Boton_Opcion.svg" id="2_binjn"]
+[ext_resource type="Texture2D" uid="uid://7tyr8jxtipi4" path="res://assets/nueva_interfaz/Boton_Opcion_Activado.svg" id="3_tgd6f"]
 [ext_resource type="Theme" uid="uid://c6x0uvrt3fadx" path="res://resource/styles/custom_response.tres" id="4_binjn"]
 
 [node name="CustomResponse" type="MarginContainer"]
-custom_minimum_size = Vector2(200, 100)
+custom_minimum_size = Vector2(180, 120)
 anchors_preset = -1
-anchor_right = 0.17400001
-anchor_bottom = 0.15400001
-offset_right = -0.4480133
-offset_bottom = 0.20799255
+anchor_right = 0.156
+anchor_bottom = 0.185
+offset_right = 0.28799438
+offset_bottom = 0.11999512
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
@@ -22,7 +22,7 @@ layout_mode = 2
 texture_normal = ExtResource("2_binjn")
 texture_pressed = ExtResource("3_tgd6f")
 ignore_texture_size = true
-stretch_mode = 5
+stretch_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

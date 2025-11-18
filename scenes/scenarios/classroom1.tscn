@@ -1,14 +1,20 @@
-[gd_scene load_steps=14 format=3 uid="uid://bysqqqtqyvu0"]
+[gd_scene load_steps=19 format=3 uid="uid://bysqqqtqyvu0"]
 
 [ext_resource type="PackedScene" uid="uid://co1ratfpk0ju8" path="res://scenes/ui/game_ui.tscn" id="1_452pb"]
 [ext_resource type="Script" uid="uid://7pwdv6cgu6hg" path="res://scripts/scenarios/classroom_1.gd" id="1_rw1mm"]
-[ext_resource type="Theme" uid="uid://5lacq73qg3pw" path="res://assets/styles/theme.tres" id="1_vcs8o"]
+[ext_resource type="Theme" uid="uid://5lacq73qg3pw" path="res://resource/styles/theme.tres" id="1_vcs8o"]
 [ext_resource type="PackedScene" uid="uid://4cyajmpvya0t" path="res://scenes/dialogue_box.tscn" id="2_b0gqd"]
 [ext_resource type="Texture2D" uid="uid://spxac1w5vhjy" path="res://assets/backgrounds/classroom1.png" id="3_5h52x"]
-[ext_resource type="Texture2D" uid="uid://cdh24bfb3abso" path="res://assets/interfaz/Fondo-Escenario.png" id="4_em4vr"]
+[ext_resource type="Script" uid="uid://ckqr52cu5nflw" path="res://scripts/characters.gd" id="4_cpsr0"]
+[ext_resource type="SpriteFrames" uid="uid://cch124g5y3qju" path="res://resource/animations/alumno1.tres" id="5_uiipq"]
+[ext_resource type="SpriteFrames" uid="uid://ekdgihaau7av" path="res://resource/animations/profesor_felipe.tres" id="6_ama0l"]
+[ext_resource type="Texture2D" uid="uid://bvkeo3vltqyeo" path="res://assets/nueva_interfaz/Fondo_Escenario_Personajes_Extendido.png" id="7_ookd1"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="8_5h52x"]
 [ext_resource type="Shader" uid="uid://bml3y1uj7b6ie" path="res://resource/shaders/burn.gdshader" id="8_wx3lt"]
 [ext_resource type="PackedScene" uid="uid://b0q1nwm6l051j" path="res://scenes/custom_response.tscn" id="9_5h52x"]
+[ext_resource type="PackedScene" uid="uid://c2k5sqx0lswhk" path="res://scenes/ui/outcome_text.tscn" id="13_ookd1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cpsr0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vcs8o"]
 
@@ -41,28 +47,64 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -156.0
-offset_top = 24.0
-offset_right = -156.0
-offset_bottom = 24.0
+offset_left = -181.0
+offset_right = -299.0
+offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.9, 0.9)
 texture = ExtResource("3_5h52x")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Frame" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_vcs8o")
+[node name="Characters" type="Node2D" parent="."]
+position = Vector2(367, 333)
+script = ExtResource("4_cpsr0")
+
+[node name="LeftMarker" type="Marker2D" parent="Characters"]
+position = Vector2(-180, 0)
+
+[node name="CenterMarker" type="Marker2D" parent="Characters"]
+
+[node name="RightMarker" type="Marker2D" parent="Characters"]
+position = Vector2(180, 0)
+
+[node name="Alumno1" type="AnimatedSprite2D" parent="Characters"]
+material = SubResource("ShaderMaterial_cpsr0")
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("5_uiipq")
+animation = &"neutro"
+
+[node name="Alumno2" type="AnimatedSprite2D" parent="Characters"]
+material = SubResource("ShaderMaterial_cpsr0")
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("5_uiipq")
+animation = &"neutro"
+
+[node name="ProfesorFelipe" type="AnimatedSprite2D" parent="Characters"]
+material = SubResource("ShaderMaterial_cpsr0")
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("6_ama0l")
+animation = &"neutro"
+metadata/name = ""
+
+[node name="Images" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Frame" type="TextureRect" parent="Images"]
+material = SubResource("ShaderMaterial_vcs8o")
+layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("4_em4vr")
-expand_mode = 1
+texture = ExtResource("7_ookd1")
+expand_mode = 3
 stretch_mode = 5
 
 [node name="GameUICanvas" type="CanvasLayer" parent="."]
@@ -82,9 +124,9 @@ grow_horizontal = 0
 grow_vertical = 2
 focus_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 20
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 40
+theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="Content" type="VBoxContainer" parent="DialogueCanvas/DialogueContainer"]
@@ -105,15 +147,15 @@ unique_name_in_owner = true
 anchors_preset = -1
 anchor_left = 0.032
 anchor_top = 0.674
-anchor_right = 0.60800004
+anchor_right = 0.573
 anchor_bottom = 1.0
 offset_left = 0.13599777
 offset_top = 0.24798584
-offset_right = -0.41601563
+offset_right = -0.0960083
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(332, 211)
-theme_override_constants/margin_bottom = 60
+theme_override_constants/margin_bottom = 90
 
 [node name="ResponsesMenu" type="HBoxContainer" parent="DialogueCanvas/ResponsesContainer" node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
@@ -128,5 +170,13 @@ response_template = NodePath("CustomResponse")
 [node name="CustomResponse" parent="DialogueCanvas/ResponsesContainer/ResponsesMenu" instance=ExtResource("9_5h52x")]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="OutcomeText" parent="." instance=ExtResource("13_ookd1")]
+layout_mode = 1
+anchor_right = 0.252
+anchor_bottom = 0.216
+offset_right = -0.3040161
+offset_bottom = 0.03199768
+pivot_offset = Vector2(0, 0)
 
 [connection signal="response_selected" from="DialogueCanvas/ResponsesContainer/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

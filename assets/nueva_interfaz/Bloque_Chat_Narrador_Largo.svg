@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 653.7 209.97">
+  <defs>
+    <style>
+      .cls-1 {
+        opacity: .05;
+      }
+
+      .cls-2 {
+        fill: #ffd487;
+      }
+
+      .cls-3 {
+        fill: #733e39;
+      }
+
+      .cls-4, .cls-5 {
+        fill: none;
+      }
+
+      .cls-6 {
+        fill: #4b3f51;
+      }
+
+      .cls-7 {
+        fill: #f8f6cd;
+      }
+
+      .cls-8 {
+        fill: #241c28;
+      }
+
+      .cls-5 {
+        stroke: #f8f6cd;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-9 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-4" y="17.49" width="653.7" height="182.31" rx="20" ry="20"/>
+    </clipPath>
+  </defs>
+  <g id="Capa_1-2" data-name="Capa 1">
+    <g>
+      <g>
+        <rect class="cls-8" y="27.66" width="653.7" height="182.31" rx="20" ry="20"/>
+        <rect class="cls-6" y="17.49" width="653.7" height="182.31" rx="20" ry="20"/>
+        <g class="cls-1">
+          <g class="cls-9">
+            <g>
+              <path class="cls-5" d="M71.27,2.54v213.96"/>
+              <path class="cls-5" d="M93.74,2.54v213.96"/>
+              <path class="cls-5" d="M116.21,2.54v213.96"/>
+              <path class="cls-5" d="M138.67,2.54v213.96"/>
+              <path class="cls-5" d="M161.14,2.54v213.96"/>
+              <path class="cls-5" d="M183.61,2.54v213.96"/>
+              <path class="cls-5" d="M206.08,2.54v213.96"/>
+              <path class="cls-5" d="M228.55,2.54v213.96"/>
+              <path class="cls-5" d="M251.02,2.54v213.96"/>
+              <path class="cls-5" d="M273.48,2.54v213.96"/>
+              <path class="cls-5" d="M295.95,2.54v213.96"/>
+              <path class="cls-5" d="M318.42,2.54v213.96"/>
+              <path class="cls-5" d="M340.89,2.54v213.96"/>
+              <path class="cls-5" d="M363.36,2.54v213.96"/>
+              <path class="cls-5" d="M385.82,2.54v213.96"/>
+              <path class="cls-5" d="M408.29,2.54v213.96"/>
+              <path class="cls-5" d="M430.76,2.54v213.96"/>
+              <path class="cls-5" d="M453.23,2.54v213.96"/>
+              <path class="cls-5" d="M475.7,2.54v213.96"/>
+              <path class="cls-5" d="M498.16,2.54v213.96"/>
+              <path class="cls-5" d="M520.63,2.54v213.96"/>
+              <path class="cls-5" d="M543.1,2.54v213.96"/>
+              <path class="cls-5" d="M565.57,2.54v213.96"/>
+              <path class="cls-5" d="M588.04,2.54v213.96"/>
+              <path class="cls-5" d="M610.51,2.54v213.96"/>
+              <path class="cls-5" d="M632.97,2.54v213.96"/>
+            </g>
+            <g>
+              <path class="cls-5" d="M2.72,33.94h698.81"/>
+              <path class="cls-5" d="M2.72,52.83h698.81"/>
+              <path class="cls-5" d="M2.72,71.73h698.81"/>
+              <path class="cls-5" d="M2.72,90.62h698.81"/>
+              <path class="cls-5" d="M2.72,109.52h698.81"/>
+              <path class="cls-5" d="M2.72,128.41h698.81"/>
+              <path class="cls-5" d="M2.72,147.3h698.81"/>
+              <path class="cls-5" d="M2.72,166.2h698.81"/>
+              <path class="cls-5" d="M2.72,185.09h698.81"/>
+            </g>
+          </g>
+        </g>
+        <path class="cls-6" d="M55.75,17.49v182.31H20c-11.05,0-20-8.96-20-20V37.49c0-11.05,8.95-20,20-20h35.75Z"/>
+        <rect class="cls-7" x="47.57" y="17.49" width="8.18" height="182.31"/>
+      </g>
+      <g>
+        <rect class="cls-3" x="63.49" y="1.56" width="13.15" height="15.93"/>
+        <rect class="cls-2" x="65.14" y=".68" width="17.87" height="40.06" transform="translate(-1.47 6.28) rotate(-4.8)"/>
+      </g>
+    </g>
+  </g>
+</svg>

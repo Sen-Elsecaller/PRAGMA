@@ -6,7 +6,12 @@ extends Resource
 enum SOUND_EFFECT_TYPE {
 	HEARTBEAT_FAST,
 	HEARTBEAT_MEDIUM,
-	HEARTBEAT_SLOW
+	HEARTBEAT_SLOW,
+	BAD_EMOTION,
+	GOOD_EMOTION,
+	UI_SELECT,
+	UI_BACK,
+	SPEAKING
 }
 
 @export_range(0, 10) var limit: int = 5 ## Maximum number of this SoundEffect to play simultaneously before culled.

@@ -1,0 +1,130 @@
+[gd_resource type="SpriteFrames" load_steps=31 format=3 uid="uid://ekdgihaau7av"]
+
+[ext_resource type="Texture2D" uid="uid://jyogu4k7fay5" path="res://assets/characters/animations/profe felipe saludando/P3_00000.png" id="61_n42ht"]
+[ext_resource type="Texture2D" uid="uid://dmu30ryk327ok" path="res://assets/characters/animations/profe felipe saludando/P3_00001.png" id="62_hxcjf"]
+[ext_resource type="Texture2D" uid="uid://cgl7074b8ao6j" path="res://assets/characters/animations/profe felipe saludando/P3_00002.png" id="63_xjh8l"]
+[ext_resource type="Texture2D" uid="uid://5ampm7pi7off" path="res://assets/characters/animations/profe felipe saludando/P3_00003.png" id="64_0ij6x"]
+[ext_resource type="Texture2D" uid="uid://bv0uehvaijv4e" path="res://assets/characters/animations/profe felipe saludando/P3_00004.png" id="65_o3qds"]
+[ext_resource type="Texture2D" uid="uid://dap5fx2pa6gcq" path="res://assets/characters/animations/profe felipe saludando/P3_00005.png" id="66_jtifc"]
+[ext_resource type="Texture2D" uid="uid://br8pddpeeerpd" path="res://assets/characters/animations/profe felipe saludando/P3_00006.png" id="67_67i5l"]
+[ext_resource type="Texture2D" uid="uid://bxxru2s8a6jbg" path="res://assets/characters/animations/profe felipe saludando/P3_00007.png" id="68_t0xkl"]
+[ext_resource type="Texture2D" uid="uid://u0y7oob5sa6f" path="res://assets/characters/animations/profe felipe saludando/P3_00008.png" id="69_q1bqd"]
+[ext_resource type="Texture2D" uid="uid://duxqsc6s3uuyr" path="res://assets/characters/animations/profe felipe saludando/P3_00009.png" id="70_s0d04"]
+[ext_resource type="Texture2D" uid="uid://cmponxjxl8s0k" path="res://assets/characters/animations/profe felipe saludando/P3_00010.png" id="71_ggj3l"]
+[ext_resource type="Texture2D" uid="uid://c25bh5lkkxl3n" path="res://assets/characters/animations/profe felipe saludando/P3_00011.png" id="72_micn3"]
+[ext_resource type="Texture2D" uid="uid://dfxfo1br4l36x" path="res://assets/characters/animations/profe felipe saludando/P3_00012.png" id="73_bleb7"]
+[ext_resource type="Texture2D" uid="uid://c3i4r536v7mir" path="res://assets/characters/animations/profe felipe saludando/P3_00013.png" id="74_f1c0t"]
+[ext_resource type="Texture2D" uid="uid://cmho8st5gqq84" path="res://assets/characters/animations/profe felipe saludando/P3_00014.png" id="75_ug53r"]
+[ext_resource type="Texture2D" uid="uid://84y4ftbsqeqv" path="res://assets/characters/animations/profe felipe saludando/P3_00015.png" id="76_qk4g8"]
+[ext_resource type="Texture2D" uid="uid://dhdpub1ggrppc" path="res://assets/characters/animations/profe felipe saludando/P3_00016.png" id="77_a41yv"]
+[ext_resource type="Texture2D" uid="uid://oxnp32wghade" path="res://assets/characters/animations/profe felipe saludando/P3_00017.png" id="78_hyp3w"]
+[ext_resource type="Texture2D" uid="uid://h34keh158kdw" path="res://assets/characters/animations/profe felipe saludando/P3_00018.png" id="79_vakwy"]
+[ext_resource type="Texture2D" uid="uid://6gsu7o2ykvmr" path="res://assets/characters/animations/profe felipe saludando/P3_00019.png" id="80_lvet6"]
+[ext_resource type="Texture2D" uid="uid://dkyl2g04b8afi" path="res://assets/characters/animations/profe felipe saludando/P3_00020.png" id="81_vrn5x"]
+[ext_resource type="Texture2D" uid="uid://dnnlqtqvpg4hq" path="res://assets/characters/animations/profe felipe saludando/P3_00021.png" id="82_xbl3x"]
+[ext_resource type="Texture2D" uid="uid://wh3wauij7gov" path="res://assets/characters/animations/profe felipe saludando/P3_00022.png" id="83_pmaq2"]
+[ext_resource type="Texture2D" uid="uid://ct0gvkun4blu" path="res://assets/characters/animations/profe felipe saludando/P3_00023.png" id="84_rhtbr"]
+[ext_resource type="Texture2D" uid="uid://0x05o4t4v83a" path="res://assets/characters/animations/profe felipe saludando/P3_00024.png" id="85_7xqnh"]
+[ext_resource type="Texture2D" uid="uid://ghxdbr3ex5j3" path="res://assets/characters/animations/profe felipe saludando/P3_00025.png" id="86_3275n"]
+[ext_resource type="Texture2D" uid="uid://bk08uer43vck3" path="res://assets/characters/animations/profe felipe saludando/P3_00026.png" id="87_rqfhp"]
+[ext_resource type="Texture2D" uid="uid://pyk14dh0bjyy" path="res://assets/characters/animations/profe felipe saludando/P3_00027.png" id="88_m82us"]
+[ext_resource type="Texture2D" uid="uid://b40nwtg6gbbrv" path="res://assets/characters/animations/profe felipe saludando/P3_00028.png" id="89_g23ec"]
+[ext_resource type="Texture2D" uid="uid://bgpm6pba7ybw7" path="res://assets/characters/animations/profe felipe saludando/P3_00029.png" id="90_orhkm"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("61_n42ht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_hxcjf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_xjh8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_0ij6x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_o3qds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_jtifc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_67i5l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_t0xkl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_q1bqd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_s0d04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_ggj3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_micn3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_bleb7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_f1c0t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_ug53r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_qk4g8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_a41yv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_hyp3w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_vakwy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_lvet6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_vrn5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_xbl3x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_pmaq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_rhtbr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_7xqnh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_3275n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_rqfhp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_m82us")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_g23ec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_orhkm")
+}],
+"loop": true,
+"name": &"neutro",
+"speed": 12.0
+}]

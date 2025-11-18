@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 228.5 184.9">
+  <!-- Generator: Adobe Illustrator 30.0.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 123)  -->
+  <defs>
+    <style>
+      .st0, .st1 {
+        fill: none;
+      }
+
+      .st1 {
+        stroke: #2e2034;
+        stroke-miterlimit: 10;
+      }
+
+      .st2 {
+        fill: #f8f6cd;
+      }
+
+      .st3 {
+        opacity: 0;
+      }
+
+      .st4 {
+        fill: #241c28;
+      }
+
+      .st5 {
+        clip-path: url(#clippath);
+      }
+
+      .st6 {
+        fill: #ffd487;
+        isolation: isolate;
+      }
+    </style>
+    <clipPath id="clippath">
+      <path class="st0" d="M226.4,20v130.6c0,11-8.9,20-20,20H22.1c-11,0-20-9-20-20V20c0-1.7.2-3.3.6-4.9C4.9,6.4,12.7,0,22.1,0h184.4c9.4,0,17.2,6.4,19.4,15.1.4,1.6.6,3.2.6,4.9Z"/>
+    </clipPath>
+  </defs>
+  <rect class="st4" x="2" y="14.4" width="224.4" height="170.5" rx="20" ry="20"/>
+  <g>
+    <path class="st6" d="M226.4,20v130.6c0,11-8.9,20-20,20H22.1c-11,0-20-9-20-20V20c0-1.7.2-3.3.6-4.9C4.9,6.4,12.7,0,22.1,0h184.4c9.4,0,17.2,6.4,19.4,15.1.4,1.6.6,3.2.6,4.9Z"/>
+    <g id="Capa_1-2">
+      <g>
+        <g class="st3">
+          <g class="st5">
+            <g>
+              <g>
+                <path class="st1" d="M13.2-21.7v214"/>
+                <path class="st1" d="M35.6-21.7v214"/>
+                <path class="st1" d="M58.1-21.7v214"/>
+                <path class="st1" d="M80.6-21.7v214"/>
+                <path class="st1" d="M103-21.7v214"/>
+                <path class="st1" d="M125.5-21.7v214"/>
+                <path class="st1" d="M147.9-21.7v214"/>
+                <path class="st1" d="M170.4-21.7v214"/>
+                <path class="st1" d="M192.9-21.7v214"/>
+                <path class="st1" d="M215.4-21.7v214"/>
+              </g>
+              <g>
+                <path class="st1" d="M-235.1,9.7H463.7"/>
+                <path class="st1" d="M-235.1,28.6H463.7"/>
+                <path class="st1" d="M-235.1,47.5H463.7"/>
+                <path class="st1" d="M-235.1,66.4H463.7"/>
+                <path class="st1" d="M-235.1,85.3H463.7"/>
+                <path class="st1" d="M-235.1,104.2H463.7"/>
+                <path class="st1" d="M-235.1,123.1H463.7"/>
+                <path class="st1" d="M-235.1,142H463.7"/>
+                <path class="st1" d="M-235.1,160.9H463.7"/>
+              </g>
+            </g>
+          </g>
+        </g>
+        <path class="st2" d="M226.4,20v3.3H2.1v-3.3c0-1.7.2-3.3.6-4.9C4.9,6.4,12.7,0,22.1,0h184.4c9.4,0,17.2,6.4,19.4,15.1.4,1.6.6,3.2.6,4.9Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

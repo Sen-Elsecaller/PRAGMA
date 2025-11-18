@@ -7,7 +7,7 @@ class_name GameController extends Node
 @onready var fade_rect: ColorRect = $SceneTransition/FadeEffect
 
 var main_screen_scene = preload("res://scenes/ui/main_screen.tscn")
-
+var current_feedback: FeedbackData
 
 func change_gui_scene(new_scene: PackedScene, delete: bool = true, keep_running: bool = false) -> void:
 	await _fade_out()

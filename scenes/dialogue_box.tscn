@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://4cyajmpvya0t"]
 
-[ext_resource type="Theme" uid="uid://5lacq73qg3pw" path="res://assets/styles/theme.tres" id="1_yaf6g"]
 [ext_resource type="Script" uid="uid://ccava50u55qgg" path="res://scripts/dialogue_box.gd" id="2_l304u"]
 [ext_resource type="Script" uid="uid://g32um0mltv5d" path="res://addons/dialogue_manager/dialogue_label.gd" id="2_qkucv"]
 [ext_resource type="Texture2D" uid="uid://dj11klyrvhnxo" path="res://assets/interfaz/Texto-2.png" id="3_hvmm2"]
 [ext_resource type="Shader" uid="uid://bml3y1uj7b6ie" path="res://resource/shaders/burn.gdshader" id="3_p0wdv"]
+[ext_resource type="Theme" uid="uid://5ev7ecmv357e" path="res://resource/styles/dialogue_box.tres" id="4_p0wdv"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_pehjr"]
 noise_type = 3
@@ -54,8 +54,10 @@ expand_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
-theme = ExtResource("1_yaf6g")
-theme_override_constants/margin_left = 30
+theme = ExtResource("4_p0wdv")
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Dialogue"]
 layout_mode = 2
@@ -84,4 +86,4 @@ label_settings = SubResource("LabelSettings_cs1qt")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="finished_typing" from="Dialogue/VBoxContainer/DialogueLabel" to="Dialogue" method="_on_dialogue_label_finished_typing"]
+[connection signal="finished_typing" from="Dialogue/VBoxContainer/DialogueLabel" to="." method="_on_dialogue_label_finished_typing"]

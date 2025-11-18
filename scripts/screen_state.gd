@@ -10,9 +10,9 @@ signal change_screen
 @onready var open_animations: AnimationPlayer
 
 func Enter():
-	visible = true
+	pass
 	#open_animations.play("open_" + str(name))
 
 func Exit():
-	visible = false
+	pass
 	#close_animations.play("close_" + str(name))

@@ -13,6 +13,7 @@ config_version=5
 config/name="PRAGMA"
 run/main_scene="uid://dw3r131lp707i"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+run/max_fps=144
 config/icon="res://icon.svg"
 
 [autoload]
@@ -76,6 +77,11 @@ glossary/glossary_files=["res://dialogic/glossary/default_glossary.tres"]
 
 runtime/balloon_path="res://dialogue_manager/balloon.tscn"
 
+[display]
+
+window/stretch/mode="viewport"
+window/max_fps=144
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/postfx/plugin.cfg")
@@ -100,6 +106,10 @@ dialogic_default_action={
 ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [internationalization]
 
 locale/translations_pot_files=PackedStringArray("res://dialogue_manager/dialogues/classroom1.dialogue")
@@ -108,3 +118,4 @@ locale/translations_pot_files=PackedStringArray("res://dialogue_manager/dialogue
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

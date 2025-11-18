@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://dmuxdpkiab0nw"]
+
+[ext_resource type="Script" uid="uid://cjtni7y10t1" path="res://resource/sound_effect.gd" id="1_32obf"]
+[ext_resource type="AudioStream" uid="uid://c3td7xfojf2w2" path="res://assets/SFX/UI/emotion_bad.wav" id="2_x0tjt"]
+
+[resource]
+script = ExtResource("1_32obf")
+type = 3
+sound_effect = ExtResource("2_x0tjt")
+metadata/_custom_type_script = "uid://cjtni7y10t1"
