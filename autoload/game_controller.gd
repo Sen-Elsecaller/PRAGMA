@@ -1,13 +1,22 @@
 class_name GameController extends Node
 
 @onready var gui: Control = $GUI
-@export var fade_duration: float = 0.6
-
 @onready var current_gui_scene: Control = $GUI/MainScreen
 @onready var fade_rect: ColorRect = $SceneTransition/FadeEffect
 
+@export var fade_duration: float = 0.6
+
 var main_screen_scene = preload("res://scenes/ui/main_screen.tscn")
 var current_feedback: FeedbackData
+var current_scenario_name: String
+
+signal scenario_ended
+
+func _ready() -> void:
+	scenario_ended.connect(_on_scenario_ended)
+
+func _on_scenario_ended():
+	ConfigFileHandler.save_session(current_feedback)
 
 func change_gui_scene(new_scene: PackedScene, delete: bool = true, keep_running: bool = false) -> void:
 	await _fade_out()
@@ -25,6 +34,9 @@ func change_gui_scene(new_scene: PackedScene, delete: bool = true, keep_running:
 	current_gui_scene = new_instance
 
 	await _fade_in()
+
+func get_current_scene():
+	return current_gui_scene
 
 func return_to_main_menu():
 	change_gui_scene(main_screen_scene)

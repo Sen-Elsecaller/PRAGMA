@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="DitherFX" load_steps=2 format=3 uid="uid://b4ctlscivytmb"]
+
+[ext_resource type="Script" uid="uid://by5ki703mfn6x" path="res://addons/postfx/effects/DitherFX.gd" id="1_ackgd"]
+
+[resource]
+script = ExtResource("1_ackgd")
+metadata/_custom_type_script = "uid://by5ki703mfn6x"

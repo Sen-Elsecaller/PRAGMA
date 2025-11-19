@@ -16,24 +16,16 @@ func _ready() -> void:
 	enter.connect(_on_enter)
 	exit.connect(_on_exit)
 	await get_tree().process_frame
-	var max_height = label.size.y
-	var content_height = label.get_content_height()
 
-	if content_height > max_height:
-		var ratio = max_height / content_height
-		var new_size = int(16 * ratio)
-		label.add_theme_font_size_override("normal_font_size", new_size)
-		label.add_theme_font_size_override("bold_font_size", new_size)
-		label.add_theme_font_size_override("bold_italics_font_size", new_size)
-		label.add_theme_font_size_override("italics_font_size", new_size)
-		label.add_theme_font_size_override("mono_font_size", new_size)
 		
 func _on_enter(text: String, emotion: String, keep: bool):
 	label.text = text
 	if emotion == "good":
 		texture_rect.texture = BLOQUE_DECISION_VERDE
+		if !keep: AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.GOOD_EMOTION)
 	elif emotion == "bad":
 		texture_rect.texture = BLOQUE_DECISION_ROJO
+		if !keep: AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.BAD_EMOTION)
 	else:
 		texture_rect.texture = BLOQUE_DECISION_AMARILLA
 	

@@ -16,3 +16,10 @@ func _get_iso_timestamp() -> String:
 	return "%04d-%02d-%02dT%02d:%02d:%02d" % [
 		dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second
 	]
+
+func to_dict() -> Dictionary:
+	return {
+		"timestamp_inicio": timestamp_inicio,
+		"timestamp_fin": timestamp_fin,
+		"decisiones": elecciones.map(func(choice): return choice.to_dict())
+	}

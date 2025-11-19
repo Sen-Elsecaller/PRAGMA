@@ -17,8 +17,7 @@ script = ExtResource("1_wmyiq")
 custom_minimum_size = Vector2(250, 120)
 layout_mode = 2
 texture = ExtResource("2_int51")
-expand_mode = 1
-stretch_mode = 5
+expand_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -27,7 +26,9 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("3_7ntql")
+theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "dasdasda"
+fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1

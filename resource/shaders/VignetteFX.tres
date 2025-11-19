@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_qgrb7")
 intensity = 0.2
+enabled = false
 metadata/_custom_type_script = "uid://cqqc7s7kp8uem"

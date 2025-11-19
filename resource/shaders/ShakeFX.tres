@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ShakeFX" load_steps=2 format=3 uid="uid://bo7skn2rq0pg1"]
+
+[ext_resource type="Script" uid="uid://derxl15wxdwxi" path="res://resource/shaders/ShakeFX.gd" id="1_esink"]
+
+[resource]
+script = ExtResource("1_esink")
+strength = 0.0
+metadata/_custom_type_script = "uid://bvbw3ejkm2bck"

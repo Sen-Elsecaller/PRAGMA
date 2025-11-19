@@ -9,11 +9,11 @@ signal validation_error(message: String)
 signal validation_success(message: String)
 
 # ========== REFERENCIAS A NODOS UI ==========
-@onready var user_input: LineEdit = $TextureRect/VBoxContainer/User
-@onready var password_input: LineEdit = $TextureRect/VBoxContainer/Password
-@onready var login_button: Button = $"TextureRect/VBoxContainer/Iniciar sesión"
-@onready var register_button: Button = $TextureRect/MarginContainer/HBoxContainer/Register
-@onready var validation_label: Label = $TextureRect/VBoxContainer/ValidationLabel
+@onready var user_input: LineEdit = %UserInputLogin
+@onready var password_input: LineEdit = %PasswordInputLogin
+@onready var validation_label: Label = %ValidationLabelLogin
+@onready var login_button: Button = %LoginButtonLogin
+@onready var register_button: Button = %RegisterButtonLogin
 
 # ========== INSTANCIA LOCAL DE CLIENT ==========
 var client = null

@@ -96,3 +96,6 @@ func _down():
 	selected_index += 1
 	if selected_index > position_offset_node.get_child_count() - 1:
 		selected_index = position_offset_node.get_child_count() - 1
+
+func _get_current_player_choice() -> PlayerChoice:
+	return position_offset_node.get_child(selected_index).player_choice

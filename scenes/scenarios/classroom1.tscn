@@ -145,23 +145,23 @@ layout_mode = 2
 [node name="ResponsesContainer" type="MarginContainer" parent="DialogueCanvas"]
 unique_name_in_owner = true
 anchors_preset = -1
-anchor_left = 0.032
-anchor_top = 0.674
+anchor_left = 0.062000003
+anchor_top = 0.642
 anchor_right = 0.573
 anchor_bottom = 1.0
-offset_left = 0.13599777
-offset_top = 0.24798584
+offset_left = -0.4240036
+offset_top = -0.016021729
 offset_right = -0.0960083
 grow_horizontal = 2
 grow_vertical = 0
-pivot_offset = Vector2(332, 211)
-theme_override_constants/margin_bottom = 90
+pivot_offset = Vector2(295, 211)
+theme_override_constants/margin_top = 10
 
 [node name="ResponsesMenu" type="HBoxContainer" parent="DialogueCanvas/ResponsesContainer" node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_vertical = 0
 theme_override_constants/separation = 5
 alignment = 1
 script = ExtResource("8_5h52x")

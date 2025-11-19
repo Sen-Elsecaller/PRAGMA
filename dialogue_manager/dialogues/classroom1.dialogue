@@ -5,21 +5,24 @@ Narrador: Hoy es dia de evaluacion. Estan en el tercer alumno, tú eres el quint
 Narrador: Conoces tu presentacion, pero como suele ocurrir empiezas a ponerte nervioso. 
 	Te sudan las manos, tu corazón se acelera. 
 	[#sound=HEARTBEAT_FAST, #effect=ChromaticAberrationFX, #effect_duration=3, #effect_overall=true]
+set Database.stress_level += 1
 
 ~ esperando_presentacion
 Narrador: ¿Que haces mientras esperas?
 - Respiro lentamente => respirar_lentamente
 - Voy a repasar la materia => repasar_materia
-- Mi mente divaga [#emotion=bad, #outcome_text=Los nervios empeoran, #feedback=Dejar los pensamientos correr libremente en situaciones de ansiedad es una invitacion al malestar] => siguiente_presentacion
+- Mi mente divaga [#emotion=bad, #outcome_text=Los nervios empeoran, #feedback=Dejar los pensamientos correr libremente en situaciones de ansiedad es una invitacion al malestar] [set Database.stress_level += 1] => siguiente_presentacion
 #TODO: Aqui arriba se esta creando una linea vacia, lo que puede ser un problema a futuro
 
 ~ respirar_lentamente
 Narrador: ¿Cuantas respiraciones haces?
 - Más de 5
+	set Database.stress_level -= 1
 	Narrador: Tu cuerpo y tu mente se relajan. 
 		[#emotion=good, #outcome_text=Ganas control sobre la situacion., #feedback=Respirar profundamente varias veces no solo calma la mente; regula el cuerpo a distintos niveles que bajan significativamente el estres y los sintomas de ansiedad. Te ayuda a estar mas presente.]
 	=> siguiente_presentacion
 - Entre 3 y 5
+	set Database.stress_level -= 1
 	Narrador: Te calmas levemente.
 		[#emotion=good, #outcome_text=Te calmas levemente, #feedback=Respirar profundamente ayuda a volver al momento presente y regular el cuerpo y la mente. Entre mas respiraciones mejor.] 
 	=> siguiente_presentacion
@@ -30,8 +33,10 @@ Narrador: ¿Cuantas respiraciones haces?
 
 ~ repasar_materia
 %
-	Narrador: Repasas algo que no entendías bien. Estás mejor preparado. [#emotion=good, #outcome_text=Repasar puede ayudar a controlar la situación, #feedback=Repasar puede ayudar a algunas personas a calmarse; pero tambien puede dejarte mas intranquilo. En situaciones asi respiraciones profundas o ejercicios similares pueden ser mejor idea] => siguiente_presentacion
+	set Database.stress_level -= 1
+	Narrador: Repasas algo que no entendías bien. Estás mejor preparado. [#emotion=good, #outcome_text=Te sientes mas en control, #feedback=Repasar puede ayudar a algunas personas a calmarse; pero tambien puede dejarte mas intranquilo. En situaciones asi respiraciones profundas o ejercicios similares pueden ser mejor idea] => siguiente_presentacion
 % 
+	set Database.stress_level += 1
 	Narrador: No logras concentrarte. Leer el contenido no parece tener significado. [#emotion=bad, #outcome_text=Los nervios siguen, #feedback=Cuando estas cerca a presentar; es mejor respirar lentamente o hacer algun otro ejercicio que te ayude a calmarte. ] => siguiente_presentacion
 
 ~ siguiente_presentacion
@@ -42,10 +47,12 @@ if not Database.already_skipped
 	=> esperando_presentacion
 	
 else
-	Profesor Felipe: {{Database.player_name}}, adelante por favor. => END
-
+	Profesor Felipe: {{Database.player_name}}, adelante por favor. [#character_enter=profesor_felipe, #character_emotion=neutro]
+	Narrador: Pasas adelante [#character_exit=profesor_felipe]
 ~ tu_turno
-- Presento de inmediato, apresuradamente. [#sound=HEARTBEAT_FAST, #background=from_board, #effect=SHAKE, #emotion=bad, #outcome_text=Empiezas tartamudeando. Te quedas sin aire rápidamente., #feedback=Aunque la situacion pueda ser dificil o quieras que acabe cuanto antes; tu siempre tienes el control.] => empieza_presentacion
+if Database.stress_level > 2
+	[#effect=ChromaticAberrationFX, #effect_duration=3]
+- Presento de inmediato, apresuradamente. [#sound=HEARTBEAT_FAST, #background=from_board, #effect=ShakeFX, #effect_duration=4 #emotion=bad, #outcome_text=Empiezas tartamudeando. Te quedas sin aire rápidamente., #feedback=Aunque la situacion pueda ser dificil o quieras que acabe cuanto antes; tu siempre tienes el control.] => empieza_presentacion
 - Intento calmarme mientras preparo mi presentacion. Respiro profundamente. [#sound=HEARTBEAT_SLOW, #emotion=good, #outcome_text=Te calmas levemente, #feedback=Tu siempre tienes el control sobre la situacion.] => empieza_presentacion
 - Explico que necesito unos minutos => explicar_necesitas_minutos
 
@@ -93,7 +100,7 @@ Narrador: El profesor pone cara de duda
 - Lo ignoro [#emotion=good, #outcome_text=Te concentras en tu presentacion, #feedback=Tienes que mantener el flujo de la presentacion; si el profesor quiere preguntarte algo lo hara.]
 - Chuta, ¿Que dije mal? [b]¿Que dije mal?[/b] [#emotion=bad, #outcome_text= Tartamudeas, #feedback=Si tiene una pregunta; te la hara. La gente puede poner caras que no reflejen lo que estan pensando.]
 	set Database.stress_level += 1
-	Narrador: Esta pensando en si se le quedo el almuerzo en la casa
+	Narrador: Esta pensando [wait=1]en [speed=0.5]si se le quedo el almuerzo en la casa
 Narrador: Un grupo al fondo se rie 
 - Respiro 
 - Acelero
@@ -108,7 +115,7 @@ Profesor Felipe: Disculpa {{Database.player_name}}, no me quedo claro el diagram
 
 Narrador: Termina la presentacion.
 Narrador: Te sientas. Un par de chicos detras tuyo con quienes a veces hablas estan susurrando. 
-	Escuchas unas leves risas. Ellos aun no presentan.
+Narrador: Escuchas unas leves risas. Ellos aun no presentan.
 - Hare un poco de conversacion [#emotion=good, #outcome_text=Conversar ayuda a relajarse, #feedback=Socializar puede ser bueno para volver al presente y recordar que ninguna situacion es tan mala como parece.] => compas_presentacion
 - Los ignoro => compas_ignorar
 - Player: ¿De que se rien? [#emotion=neutral, #outcome_text=Segun el tono que ocupes, puede sonar casual o interrogatorio, #feedback=Empezar preguntando puede sonar interrogatorio; pero todo va a depender de la forma en que se pregunte.]
@@ -116,12 +123,12 @@ Narrador: Te sientas. Un par de chicos detras tuyo con quienes a veces hablas es
 	% Compa 1: De nada hermano... [#character_enter=Alumno1] => END
 
 ~ compas_presentacion
-Player: Buena, ¿Como estan para la presentacion?
+Player: Buena, ¿Como estan para la presentacion? => END
 
 ~ compas_ignorar
 Narrador: ¿Que piensas?
-- Deben estar hablando sobre cualquier cosa 
-- ¿Estaran hablando de mi?
+- Deben estar hablando sobre cualquier cosa => END
+- ¿Estaran hablando de mi? [#emotion=bad, #outcome_text=Empiezas a sobrepensar y sentirte incomodo, #feedback=A veces nos echamos encima el peso de las miradas o los susurros de los demas. La verdad es que cada uno esta en lo suyo, y el unico que realmente te juzga eres tu.] => END
 
 ~ compas_chiste
 Compa 2: De un chiste malisimo que se tiro este cabro [#character_enter=Alumno2]
@@ -129,21 +136,21 @@ Compa 1: Me lo conto el Julian, culpalo a el [#character_enter=Alumno1]
 - Player: ¿Como es el chiste? => chiste
 - Player: Me quedo callado
 	% Compa 1: Mira te cuento pa ver que te parece
-	% Narrador: Todos se miran raro sin decir nada, hasta que cada uno vuelve a lo suyo
+	% Narrador: Todos se miran raro sin decir nada, hasta que cada uno vuelve a lo suyo [#emotion=good, #outcome_text=El ambiente se tensa, #feedback=Tal vez hubiera sido mejor decir algo] => END
 
 ~ chiste
 Compa 1: Iban dos soldados rajaos en una moto en carretera, llegan a una curva y queda la embarra, sale la moto volando y to' pero ninguno se cae de la moto. ¿Como?
 - Player: Ahm... No cacho, ¿como?
 	Compa 1: Porque iban [speed=0.2][i]soldados[/i]
-	- Me rio [#emotion=good, #outcome_text=Reirse; aunque sea de un chiste malisimo; ayuda a aliviar la tension, #feedback=Se dice que reir es la mejor medicina; el cuerpo literalmente libera oxitocina y otros quimicos que ayudan a aliviar la tension y sentirse mejor. Aunque sea reirse de alguna estupidez.] => pre_final
+	- Me rio [#emotion=good, #outcome_text=Te relajas y bajan los nervios, #feedback=Se dice que reir es la mejor medicina; el cuerpo literalmente libera oxitocina y otros quimicos que ayudan a aliviar la tension y sentirse mejor. Aunque sea reirse de alguna estupidez.] => pre_final
 	- ...
 		%3 Narrador: El silencio incomodo hace que todos se terminen riendo => pre_final
 		%2 => malisimo
 	- Player: Oh la vola mala => malisimo
 
-- Player: Porque iban [b]soldados[b].
-	Compa 2: No me lesi que tu igual te lo sabi
-	Compa 1: [wave]kajskjaskjask[wave]
+#- Player: Porque iban [b]soldados[b]. [if Database.played_scenarios.get(Database.SCENARIOS.CLASSROOM1)]
+#	Compa 2: No me lesi que tu igual te lo sabi
+#	Compa 1: [wave]kajskjaskjask[wave]
 	
 ~ malisimo
 Compa 2: Malisimo hermano ajsjasj

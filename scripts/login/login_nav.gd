@@ -7,6 +7,16 @@ extends ScreenState
 @onready var register_node: Control = $Register
 
 # ========== INICIALIZACIÓN ==========
+
+func Enter():
+	Utils.tween_slide_in(self, Vector2.DOWN)
+	visible = true
+
+func Exit():
+	var tween = Utils.tween_slide_out(self, Vector2.DOWN)
+	tween.tween_callback(hide)
+
+
 func _ready() -> void:
 	register_node.visible = false
 	login_node.visible = true
@@ -41,3 +51,7 @@ func _on_show_login() -> void:
 	login_node.show()
 	login_node.set_process_input(true)
 	login_node.set_process_unhandled_input(true)
+
+
+func _on_close_menu_pressed() -> void:
+	change_screen.emit(ScreenStateMachine.SCREENS.SETTINGS)

@@ -7,12 +7,12 @@ signal registro_completado(user_data: Dictionary)
 signal volver_a_login
 
 # ========== REFERENCIAS A NODOS ==========
-@onready var nombre_input: LineEdit = $TextureRect/MarginContainer/VBoxContainer/Nombre
-@onready var email_input: LineEdit = $TextureRect/MarginContainer/VBoxContainer/EmailR
-@onready var password_input: LineEdit = $TextureRect/MarginContainer/VBoxContainer/PasswordR
-@onready var password_confirm_input: LineEdit = $TextureRect/MarginContainer/VBoxContainer/PasswordR2
-@onready var register_button: Button = $TextureRect/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Registerr
-@onready var validation_label: Label = $TextureRect/MarginContainer/VBoxContainer/ValidationLabelR
+@onready var user_input_r: LineEdit = %UserInputR
+@onready var email_input_r: LineEdit = %EmailInputR
+@onready var password_input_r: LineEdit = %PasswordInputR
+@onready var password_confirm_input: LineEdit = %PasswordInputR2
+@onready var register_button_r: Button = %RegisterButtonR
+@onready var validation_label_r: Label = %ValidationLabelR
 
 # ========== CONFIGURACIÓN ==========
 const API_URL = "http://127.0.0.1:8000/api/usuarios/registro/"
@@ -35,8 +35,8 @@ func _setup_http_request() -> void:
 
 
 	# Configurar límites de caracteres
-	nombre_input.max_length = MAX_NOMBRE_LENGTH
-	password_input.max_length = MAX_PASSWORD_LENGTH
+	user_input_r.max_length = MAX_NOMBRE_LENGTH
+	password_input_r.max_length = MAX_PASSWORD_LENGTH
 	password_confirm_input.max_length = MAX_PASSWORD_LENGTH
 
 # ========== EVENTOS DE UI ==========
@@ -45,10 +45,10 @@ func _on_register_button_pressed() -> void:
 	_attempt_register()
 
 func _on_nombre_submitted(_text: String) -> void:
-	email_input.grab_focus()
+	email_input_r.grab_focus()
 
 func _on_email_submitted(_text: String) -> void:
-	password_input.grab_focus()
+	password_input_r.grab_focus()
 
 func _on_password_submitted(_text: String) -> void:
 	password_confirm_input.grab_focus()
@@ -58,22 +58,22 @@ func _on_password_confirm_submitted(_text: String) -> void:
 
 func _on_text_changed(_new_text: String) -> void:
 	# Limpiar mensaje de error cuando el usuario empiece a escribir
-	if validation_label.modulate == Color.RED:
-		validation_label.text = ""
+	if validation_label_r.modulate == Color.RED:
+		validation_label_r.text = ""
 
 # ========== LÓGICA DE REGISTRO ==========
 
 func _attempt_register() -> void:
-	var nombre = nombre_input.text.strip_edges()
-	var email = email_input.text.strip_edges()
-	var password = password_input.text
+	var nombre = user_input_r.text.strip_edges()
+	var email = email_input_r.text.strip_edges()
+	var password = password_input_r.text
 	var password_confirm = password_confirm_input.text
 	
 	if not _validate_all_fields(nombre, email, password, password_confirm):
 		return
 	
 	_show_message("Registrando usuario...")
-	register_button.disabled = true
+	register_button_r.disabled = true
 	
 	# Preparar datos para enviar
 	var body = JSON.stringify({
@@ -96,7 +96,7 @@ func _attempt_register() -> void:
 	
 	if error != OK:
 		_show_error("Error al conectar con el servidor")
-		register_button.disabled = false
+		register_button_r.disabled = false
 
 # ========== VALIDACIONES COMPLETAS ==========
 
@@ -139,31 +139,31 @@ func _validate_nombre(nombre: String) -> bool:
 	# Campo vacío
 	if nombre.is_empty():
 		_show_error("El nombre es obligatorio")
-		nombre_input.grab_focus()
+		user_input_r.grab_focus()
 		return false
 	
 	# Solo espacios en blanco
 	if nombre.strip_edges().is_empty():
 		_show_error("El nombre no puede contener solo espacios")
-		nombre_input.grab_focus()
+		user_input_r.grab_focus()
 		return false
 	
 	# Longitud máxima
 	if nombre.length() > MAX_NOMBRE_LENGTH:
 		_show_error("El nombre no puede exceder " + str(MAX_NOMBRE_LENGTH) + " caracteres")
-		nombre_input.grab_focus()
+		user_input_r.grab_focus()
 		return false
 	
 	# Solo contiene números
 	if nombre.is_valid_int() or nombre.is_valid_float():
 		_show_error("El nombre no puede contener solo números")
-		nombre_input.grab_focus()
+		user_input_r.grab_focus()
 		return false
 	
 	# Contiene caracteres especiales no permitidos
 	if not _is_valid_nombre(nombre):
 		_show_error("El nombre contiene caracteres no permitidos")
-		nombre_input.grab_focus()
+		user_input_r.grab_focus()
 		return false
 	
 	return true
@@ -172,31 +172,31 @@ func _validate_email(email: String) -> bool:
 	# Campo vacío
 	if email.is_empty():
 		_show_error("El email es obligatorio")
-		email_input.grab_focus()
+		email_input_r.grab_focus()
 		return false
 	
 	# Solo espacios en blanco
 	if email.strip_edges().is_empty():
 		_show_error("El email no puede contener solo espacios")
-		email_input.grab_focus()
+		email_input_r.grab_focus()
 		return false
 	
 	# Formato inválido
 	if not _is_valid_email_format(email):
 		_show_error("Formato de email inválido")
-		email_input.grab_focus()
+		email_input_r.grab_focus()
 		return false
 	
 	# Email demasiado largo
 	if email.length() > 254:  # RFC 5321
 		_show_error("El email es demasiado largo")
-		email_input.grab_focus()
+		email_input_r.grab_focus()
 		return false
 	
 	# Contiene espacios
 	if email.contains(" "):
 		_show_error("El email no puede contener espacios")
-		email_input.grab_focus()
+		email_input_r.grab_focus()
 		return false
 	
 	return true
@@ -205,25 +205,25 @@ func _validate_password(password: String) -> bool:
 	# Campo vacío
 	if password.is_empty():
 		_show_error("La contraseña es obligatoria")
-		password_input.grab_focus()
+		password_input_r.grab_focus()
 		return false
 	
 	# Solo espacios en blanco
 	if password.strip_edges().is_empty():
 		_show_error("La contraseña no puede contener solo espacios")
-		password_input.grab_focus()
+		password_input_r.grab_focus()
 		return false
 	
 	# Longitud mínima
 	if password.length() < MIN_PASSWORD_LENGTH:
 		_show_error("La contraseña debe tener al menos " + str(MIN_PASSWORD_LENGTH) + " caracteres")
-		password_input.grab_focus()
+		password_input_r.grab_focus()
 		return false
 	
 	# Longitud máxima
 	if password.length() > MAX_PASSWORD_LENGTH:
 		_show_error("La contraseña no puede exceder " + str(MAX_PASSWORD_LENGTH) + " caracteres")
-		password_input.grab_focus()
+		password_input_r.grab_focus()
 		return false
 	
 	# Validar complejidad de contraseña
@@ -299,13 +299,13 @@ func _is_strong_password(password: String) -> bool:
 	if missing_requirements.size() > 0:
 		var error_msg = "La contraseña debe contener: " + ", ".join(missing_requirements)
 		_show_error(error_msg)
-		password_input.grab_focus()
+		password_input_r.grab_focus()
 		return false
 	
 	# Validar que no sea una contraseña común
 	if _is_common_password(password):
 		_show_error("Esta contraseña es demasiado común. Elige una más segura")
-		password_input.grab_focus()
+		password_input_r.grab_focus()
 		return false
 	
 	return true
@@ -329,7 +329,7 @@ func _is_common_password(password: String) -> bool:
 # ========== CALLBACKS DE HTTP ==========
 
 func _on_request_completed(result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
-	register_button.disabled = false
+	register_button_r.disabled = false
 	
 	if result != HTTPRequest.RESULT_SUCCESS:
 		_show_error("Error de conexión con el servidor")
@@ -409,19 +409,19 @@ func _on_registro_failed(response: Dictionary) -> void:
 # ========== UTILIDADES DE UI ==========
 
 func _show_error(message: String) -> void:
-	validation_label.text = message
-	validation_label.modulate = Color.RED
+	validation_label_r.text = message
+	validation_label_r.modulate = Color.RED
 
 func _show_message(message: String) -> void:
-	validation_label.text = message
-	validation_label.modulate = Color.GREEN
+	validation_label_r.text = message
+	validation_label_r.modulate = Color.GREEN
 
 func _clear_fields() -> void:
-	nombre_input.text = ""
-	email_input.text = ""
-	password_input.text = ""
+	user_input_r.text = ""
+	email_input_r.text = ""
+	password_input_r.text = ""
 	password_confirm_input.text = ""
-	validation_label.text = ""
+	validation_label_r.text = ""
 
 # ========== CLEANUP ==========
 

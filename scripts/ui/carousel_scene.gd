@@ -11,4 +11,5 @@ func _ready() -> void:
 
 func _on_play_button_pressed() -> void:
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_SELECT)
+	Utils.game_controller.current_scenario_name = scenario_resource.scenario_name
 	Utils.game_controller.change_gui_scene(scenario_resource.scene, false, false)

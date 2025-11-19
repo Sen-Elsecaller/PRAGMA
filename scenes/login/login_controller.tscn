@@ -1,10 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddevs601qf8c1"]
+[gd_scene load_steps=9 format=3 uid="uid://ddevs601qf8c1"]
 
 [ext_resource type="Script" uid="uid://de5re2cqxdhjx" path="res://scripts/login/login_nav.gd" id="1_7hfhv"]
 [ext_resource type="Script" uid="uid://4v4lnafwj4uv" path="res://scripts/login/login_controller.gd" id="2_5uutl"]
 [ext_resource type="Texture2D" uid="uid://p6evf4ydsqe1" path="res://assets/cozy icons/Assets/Backgound/Background_Yellow.png" id="3_agx10"]
+[ext_resource type="Texture2D" uid="uid://cqut15hl54bqu" path="res://assets/nueva_interfaz/Icon_Cerrar.svg" id="4_no188"]
 [ext_resource type="FontFile" uid="uid://0xi0cdkqxxee" path="res://assets/cozy icons/Font for text/Gluten-VariableFont_slnt,wght.ttf" id="4_ntgc8"]
 [ext_resource type="Script" uid="uid://y7phh770hn6" path="res://scripts/login/register.gd" id="5_5uutl"]
+[ext_resource type="Texture2D" uid="uid://ceqojpwdxwff8" path="res://assets/nueva_interfaz/Icon_Cerrar_Activado.svg" id="5_js0hi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5uutl"]
+bg_color = Color(1, 0.83137256, 0.5294118, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
 [node name="login_controller" type="Control"]
 layout_mode = 3
@@ -13,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 1
 script = ExtResource("1_7hfhv")
 
 [node name="Login" type="Control" parent="."]
@@ -23,31 +32,34 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 1
 script = ExtResource("2_5uutl")
 
-[node name="TextureRect" type="TextureRect" parent="Login"]
+[node name="Panel" type="Panel" parent="Login"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_agx10")
-expand_mode = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_5uutl")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Login/TextureRect"]
-layout_mode = 0
-offset_left = 437.0
-offset_top = 224.0
-offset_right = 714.0
-offset_bottom = 423.0
+[node name="MarginContainer2" type="MarginContainer" parent="Login"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Login/MarginContainer2"]
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 9
 alignment = 1
 
-[node name="TitleLogin" type="Label" parent="Login/TextureRect/VBoxContainer"]
+[node name="TitleLogin" type="Label" parent="Login/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_ntgc8")
@@ -55,53 +67,61 @@ theme_override_font_sizes/font_size = 52
 text = "Inicia sesión"
 horizontal_alignment = 1
 
-[node name="User" type="LineEdit" parent="Login/TextureRect/VBoxContainer"]
+[node name="UserInputLogin" type="LineEdit" parent="Login/MarginContainer2/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "Email"
 
-[node name="Password" type="LineEdit" parent="Login/TextureRect/VBoxContainer"]
+[node name="PasswordInputLogin" type="LineEdit" parent="Login/MarginContainer2/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "Contraseña"
 secret = true
 
-[node name="ValidationLabel" type="Label" parent="Login/TextureRect/VBoxContainer"]
+[node name="ValidationLabelLogin" type="Label" parent="Login/MarginContainer2/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Iniciar sesión" type="Button" parent="Login/TextureRect/VBoxContainer"]
+[node name="LoginButtonLogin" type="Button" parent="Login/MarginContainer2/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Iniciar sesión"
 
-[node name="MarginContainer" type="MarginContainer" parent="Login/TextureRect"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -98.0
-offset_top = -192.0
-offset_right = 98.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="MarginContainer" type="MarginContainer" parent="Login/MarginContainer2"]
+layout_mode = 2
 theme_override_constants/margin_bottom = 130
 
-[node name="HBoxContainer" type="VBoxContainer" parent="Login/TextureRect/MarginContainer"]
+[node name="HBoxContainer" type="VBoxContainer" parent="Login/MarginContainer2/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 8
 
-[node name="Register" type="Button" parent="Login/TextureRect/MarginContainer/HBoxContainer"]
+[node name="RegisterButtonLogin" type="Button" parent="Login/MarginContainer2/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Registrate"
 
-[node name="Forget" type="Label" parent="Login/TextureRect/MarginContainer/HBoxContainer"]
+[node name="Forget" type="Label" parent="Login/MarginContainer2/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Olvistaste tu contraseña?"
+
+[node name="CloseMenu" type="TextureButton" parent="Login"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("4_no188")
+texture_pressed = ExtResource("5_js0hi")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="Register" type="Control" parent="."]
 visible = false
@@ -111,7 +131,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 1
 script = ExtResource("5_5uutl")
 
 [node name="TextureRect" type="TextureRect" parent="Register"]
@@ -150,25 +170,30 @@ theme_override_font_sizes/font_size = 52
 text = "Registrate"
 horizontal_alignment = 1
 
-[node name="Nombre" type="LineEdit" parent="Register/TextureRect/MarginContainer/VBoxContainer"]
+[node name="UserInputR" type="LineEdit" parent="Register/TextureRect/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "Nombre"
 
-[node name="EmailR" type="LineEdit" parent="Register/TextureRect/MarginContainer/VBoxContainer"]
+[node name="EmailInputR" type="LineEdit" parent="Register/TextureRect/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "Email"
 
-[node name="PasswordR" type="LineEdit" parent="Register/TextureRect/MarginContainer/VBoxContainer"]
+[node name="PasswordInputR" type="LineEdit" parent="Register/TextureRect/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "Contraseña"
 secret = true
 
-[node name="PasswordR2" type="LineEdit" parent="Register/TextureRect/MarginContainer/VBoxContainer"]
+[node name="PasswordInputR2" type="LineEdit" parent="Register/TextureRect/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "Repita contraseña"
 secret = true
 
 [node name="ValidationLabelR" type="Label" parent="Register/TextureRect/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Register/TextureRect/MarginContainer/VBoxContainer"]
@@ -180,7 +205,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 15
 
-[node name="Registerr" type="Button" parent="Register/TextureRect/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="RegisterButtonR" type="Button" parent="Register/TextureRect/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Registrarse"
 
@@ -190,15 +216,16 @@ theme_override_colors/font_color = Color(0.15776283, 0.39144087, 1, 1)
 text = "Iniciar sesión"
 horizontal_alignment = 1
 
-[connection signal="text_changed" from="Login/TextureRect/VBoxContainer/User" to="Login" method="_on_user_text_changed"]
-[connection signal="text_submitted" from="Login/TextureRect/VBoxContainer/User" to="Login" method="_on_user_text_submitted"]
-[connection signal="text_changed" from="Login/TextureRect/VBoxContainer/Password" to="Login" method="_on_password_text_changed"]
-[connection signal="text_submitted" from="Login/TextureRect/VBoxContainer/Password" to="Login" method="_on_password_text_submitted"]
-[connection signal="pressed" from="Login/TextureRect/VBoxContainer/Iniciar sesión" to="Login" method="_on_login_button_pressed"]
-[connection signal="pressed" from="Login/TextureRect/VBoxContainer/Iniciar sesión" to="Login" method="_on_iniciar_sesión_pressed"]
-[connection signal="pressed" from="Login/TextureRect/MarginContainer/HBoxContainer/Register" to="." method="_on_show_register"]
-[connection signal="text_submitted" from="Register/TextureRect/MarginContainer/VBoxContainer/Nombre" to="Register" method="_on_nombre_submitted"]
-[connection signal="text_submitted" from="Register/TextureRect/MarginContainer/VBoxContainer/EmailR" to="Register" method="_on_email_submitted"]
-[connection signal="text_submitted" from="Register/TextureRect/MarginContainer/VBoxContainer/PasswordR" to="Register" method="_on_password_submitted"]
-[connection signal="text_submitted" from="Register/TextureRect/MarginContainer/VBoxContainer/PasswordR2" to="Register" method="_on_password_confirm_submitted"]
-[connection signal="pressed" from="Register/TextureRect/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Registerr" to="Register" method="_on_register_button_pressed"]
+[connection signal="text_changed" from="Login/MarginContainer2/VBoxContainer/UserInputLogin" to="Login" method="_on_user_text_changed"]
+[connection signal="text_submitted" from="Login/MarginContainer2/VBoxContainer/UserInputLogin" to="Login" method="_on_user_text_submitted"]
+[connection signal="text_changed" from="Login/MarginContainer2/VBoxContainer/PasswordInputLogin" to="Login" method="_on_password_text_changed"]
+[connection signal="text_submitted" from="Login/MarginContainer2/VBoxContainer/PasswordInputLogin" to="Login" method="_on_password_text_submitted"]
+[connection signal="pressed" from="Login/MarginContainer2/VBoxContainer/LoginButtonLogin" to="Login" method="_on_iniciar_sesión_pressed"]
+[connection signal="pressed" from="Login/MarginContainer2/VBoxContainer/LoginButtonLogin" to="Login" method="_on_login_button_pressed"]
+[connection signal="pressed" from="Login/MarginContainer2/MarginContainer/HBoxContainer/RegisterButtonLogin" to="." method="_on_show_register"]
+[connection signal="pressed" from="Login/CloseMenu" to="." method="_on_close_menu_pressed"]
+[connection signal="text_submitted" from="Register/TextureRect/MarginContainer/VBoxContainer/UserInputR" to="Register" method="_on_nombre_submitted"]
+[connection signal="text_submitted" from="Register/TextureRect/MarginContainer/VBoxContainer/EmailInputR" to="Register" method="_on_email_submitted"]
+[connection signal="text_submitted" from="Register/TextureRect/MarginContainer/VBoxContainer/PasswordInputR" to="Register" method="_on_password_submitted"]
+[connection signal="text_submitted" from="Register/TextureRect/MarginContainer/VBoxContainer/PasswordInputR2" to="Register" method="_on_password_confirm_submitted"]
+[connection signal="pressed" from="Register/TextureRect/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/RegisterButtonR" to="Register" method="_on_register_button_pressed"]

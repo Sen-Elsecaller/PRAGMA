@@ -1,24 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://bk0ok7dhbcruf"]
+[gd_scene load_steps=9 format=3 uid="uid://du51bbb1b71c7"]
 
-[ext_resource type="Script" uid="uid://crub426w2dcig" path="res://scripts/ui/feedback_screen.gd" id="1_knyh8"]
-[ext_resource type="Texture2D" uid="uid://d1j8jho5cgwcc" path="res://assets/nueva_interfaz/Fondo_Chat.svg" id="2_hutip"]
-[ext_resource type="Script" uid="uid://bghjavy0eo3f7" path="res://scripts/ui/vertical_carousel_container.gd" id="2_k7o2x"]
-[ext_resource type="Script" uid="uid://2cewafsho1n5" path="res://scripts/ui/vertical_carousel_node.gd" id="3_phfix"]
-[ext_resource type="Texture2D" uid="uid://c75vyykpuo21l" path="res://assets/nueva_interfaz/Boton_Menu_Opciones.svg" id="4_d2ehq"]
-[ext_resource type="Texture2D" uid="uid://csf8i8nbxw1n6" path="res://assets/nueva_interfaz/Boton_Menu_Opciones_Activado.svg" id="5_1iffo"]
-[ext_resource type="Texture2D" uid="uid://ba7b5v2y8fvxu" path="res://assets/nueva_interfaz/Fondo_Opciones.svg" id="5_d2ehq"]
+[ext_resource type="Script" uid="uid://c8bdqw4vskm0c" path="res://scripts/ui/menu_screens/notes.gd" id="1_ai2ds"]
+[ext_resource type="Texture2D" uid="uid://d1j8jho5cgwcc" path="res://assets/nueva_interfaz/Fondo_Chat.svg" id="2_gaxfc"]
+[ext_resource type="Texture2D" uid="uid://ba7b5v2y8fvxu" path="res://assets/nueva_interfaz/Fondo_Opciones.svg" id="3_2td1e"]
+[ext_resource type="Texture2D" uid="uid://c75vyykpuo21l" path="res://assets/nueva_interfaz/Boton_Menu_Opciones.svg" id="4_ekbet"]
+[ext_resource type="Texture2D" uid="uid://csf8i8nbxw1n6" path="res://assets/nueva_interfaz/Boton_Menu_Opciones_Activado.svg" id="5_opbao"]
+[ext_resource type="Script" uid="uid://bghjavy0eo3f7" path="res://scripts/ui/vertical_carousel_container.gd" id="6_ivx3o"]
+[ext_resource type="Script" uid="uid://bm8cgctnsomgr" path="res://scripts/ui/notes_carousel_node.gd" id="7_2td1e"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2ehq"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uiwi"]
 bg_color = Color(0.1764706, 0.12156863, 0.20392157, 1)
 
-[node name="FeedbackScreen" type="Control"]
+[node name="Notes" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_knyh8")
+script = ExtResource("1_ai2ds")
+metadata/_custom_type_script = "uid://cobqsrqfsrbwt"
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -27,7 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_d2ehq")
+theme_override_styles/panel = SubResource("StyleBoxFlat_0uiwi")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -52,7 +53,7 @@ size_flags_horizontal = 3
 [node name="ChoicesBG" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("2_hutip")
+texture = ExtResource("2_gaxfc")
 expand_mode = 1
 
 [node name="Menu" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
@@ -67,7 +68,7 @@ size_flags_vertical = 3
 
 [node name="Panel" type="TextureRect" parent="MarginContainer/HBoxContainer/Menu/Feedback"]
 layout_mode = 2
-texture = ExtResource("5_d2ehq")
+texture = ExtResource("3_2td1e")
 expand_mode = 1
 
 [node name="FeedbackLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/Menu/Feedback/Panel"]
@@ -85,21 +86,21 @@ theme_override_font_sizes/bold_italics_font_size = 18
 theme_override_font_sizes/italics_font_size = 18
 theme_override_font_sizes/mono_font_size = 18
 bbcode_enabled = true
-text = "HOLA QUE TAL SOY UNA RETROALIMENTACION"
+text = "Notas generales"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AddTo" type="TextureButton" parent="MarginContainer/HBoxContainer/Menu"]
+[node name="ChangeNotes" type="TextureButton" parent="MarginContainer/HBoxContainer/Menu"]
 custom_minimum_size = Vector2(450, 90)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("4_d2ehq")
-texture_pressed = ExtResource("5_1iffo")
+texture_normal = ExtResource("4_ekbet")
+texture_pressed = ExtResource("5_opbao")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Menu/AddTo"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Menu/ChangeNotes"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -114,15 +115,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
-text = "Guardar Nota"
+text = "Ver notas rescatadas"
 
 [node name="BackToMenu" type="TextureButton" parent="MarginContainer/HBoxContainer/Menu"]
 custom_minimum_size = Vector2(450, 90)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("4_d2ehq")
-texture_pressed = ExtResource("5_1iffo")
+texture_normal = ExtResource("4_ekbet")
+texture_pressed = ExtResource("5_opbao")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -146,7 +147,7 @@ text = "Volver al menu principal"
 [node name="CarouselContainer" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(294, 349)
-script = ExtResource("2_k7o2x")
+script = ExtResource("6_ivx3o")
 
 [node name="CarouselNode" type="Control" parent="CarouselContainer"]
 unique_name_in_owner = true
@@ -157,7 +158,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("3_phfix")
+script = ExtResource("7_2td1e")
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Menu/AddTo" to="." method="_on_add_to_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Menu/BackToMenu" to="." method="_on_back_to_menu_pressed"]

@@ -4,6 +4,7 @@ var carousel_scenarios_array: Array[CarouselScenarioRes]
 var game_controller: GameController = null
 var rng: RandomNumberGenerator = null
 var balloon_instance: CanvasLayer
+const NOTIFICATION_SCENE = preload("res://scenes/ui/notification.tscn")
 
 enum PivotPosition {
 	TOP_LEFT,
@@ -17,11 +18,6 @@ enum PivotPosition {
 	BOTTOM_RIGHT
 }
 
-const CAROUSEL_SCENARIOS_PATH = "res://resource/carousel_scenarios/"
-const Carousel_Scenarios := {
-	"Classroom1": preload(CAROUSEL_SCENARIOS_PATH + "classroom1.tres"),
-	"Library1": preload(CAROUSEL_SCENARIOS_PATH + "library1.tres")
-}
 
 var game_variables_dict: Dictionary = {}
 
@@ -30,10 +26,21 @@ func _ready() -> void:
 	game_controller = get_node("/root/GameController")
 	rng = RandomNumberGenerator.new()
 	
-	for scenario in Carousel_Scenarios:
-		carousel_scenarios_array.append(Carousel_Scenarios[scenario])
+func show_notification(
+		message: String,
+		type: int = NotificationText.NotificationType.SUCCESS,
+		position: int = NotificationText.Position.TOP,
+		duration: float = 3.0
+	) -> void:
+		
+	var notification = NOTIFICATION_SCENE.instantiate()
+	notification.message = message
+	notification.type = type
+	notification.notification_position = position
+	notification.duration = duration
+	
+	game_controller.get_current_scene().add_child(notification)
 
-# Función helper para configurar el pivot
 func set_pivot(node: Control, pivot_pos: PivotPosition) -> Vector2:
 	match pivot_pos:
 		PivotPosition.TOP_LEFT:

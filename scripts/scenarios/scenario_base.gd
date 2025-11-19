@@ -15,9 +15,13 @@ var is_processing_line: bool = false
 var current_feedback: FeedbackData
 var current_choice: PlayerChoice
 var dialogue_history: Array[Dictionary] = []
+var response_timer: float
 
 signal update_history(character: String, text: String)
 
+func _process(delta: float) -> void:
+	response_timer += delta
+	
 func setup_signals() -> void:
 	current_feedback = FeedbackData.new()
 	EffectsManager.post_fx.toggle_fx("VignetteFX", true)
@@ -37,6 +41,7 @@ func _on_dialogue_ended(_dialogue):
 	EffectsManager.post_fx.toggle_fx("VignetteFX", false)
 	current_feedback.finalizar_sesion()
 	Utils.game_controller.current_feedback = current_feedback
+	Utils.game_controller.scenario_ended.emit()
 	Utils.game_controller.change_gui_scene(load("uid://bk0ok7dhbcruf"))
 
 func _on_dialogue_history_pressed():
@@ -61,17 +66,11 @@ func _use_tags(line: Variant) -> void:
 	if effect_tag != "" and effect_duration_tag != "":
 		if line.get_tag_value("effect_overall") == "true":
 			$DialogueCanvas.layer = 0
-		var callback = EffectsManager.animate_fx(effect_tag, "strength", 8, effect_duration_tag.to_int(), Tween.EaseType.EASE_IN_OUT)
-		callback.tween_callback(func(): $DialogueCanvas.layer = 1)
+		var tween = EffectsManager.animate_fx(effect_tag, "strength", effect_duration_tag.to_int(), Tween.EaseType.EASE_IN_OUT)
+		tween.tween_callback(func(): $DialogueCanvas.layer = 1)
 	
 	# Emociones
 	if emotion_tag != "":
-		if emotion_tag == "bad":
-			AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.BAD_EMOTION)
-		elif emotion_tag == "good":
-			AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.GOOD_EMOTION)
-		
-		# Solo guardar si existe current_choice (viene de respuesta)
 		if current_choice:
 			current_choice.emotion = emotion_tag
 	
@@ -84,6 +83,8 @@ func _use_tags(line: Variant) -> void:
 	# Feedback
 	if feedback_tag != "":
 		current_choice.feedback = feedback_tag.replace(";", ",")
+		current_choice.response_time = response_timer
+		current_choice.scenario_name = Utils.game_controller.current_scenario_name
 		current_feedback.elecciones.append(current_choice)
 	
 	# Personajes
@@ -118,6 +119,7 @@ func next_line(next_id: String) -> void:
 		current_choice.question = last_dialogue.dialogue_line.text
 		current_choice.character = last_dialogue.dialogue_line.character
 		Utils.tween_scale_bounce_out(responses_container)
+		response_timer = 0
 		responses_menu.responses = next_dialogue_line.responses
 		await get_tree().create_timer(0.3).timeout
 		responses_menu.get_menu_items()[0].grab_focus()

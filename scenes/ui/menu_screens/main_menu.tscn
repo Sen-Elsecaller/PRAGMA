@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://0fxrhieww8y3"]
 
-[ext_resource type="Script" uid="uid://cqno7bsqpuloq" path="res://scripts/ui/main_menu.gd" id="1_l6cm7"]
-[ext_resource type="Theme" uid="uid://ylvbucdf207r" path="res://resource/styles/main_menu.tres" id="1_m1kxf"]
-[ext_resource type="Texture2D" uid="uid://ddrxyx0scuu7a" path="res://assets/Inicio (1).png" id="3_m1kxf"]
-[ext_resource type="Texture2D" uid="uid://bimm0vr7q6ilt" path="res://assets/logo/Proyecto-Pragma-Logo.png" id="4_m1kxf"]
+[ext_resource type="Theme" uid="uid://ylvbucdf207r" path="res://resource/styles/main_menu.tres" id="1_i41eb"]
+[ext_resource type="Script" uid="uid://cqno7bsqpuloq" path="res://scripts/ui/menu_screens/main_menu.gd" id="2_0oog2"]
+[ext_resource type="Texture2D" uid="uid://ddrxyx0scuu7a" path="res://assets/Inicio (1).png" id="3_iy33p"]
+[ext_resource type="Texture2D" uid="uid://bimm0vr7q6ilt" path="res://assets/logo/Proyecto-Pragma-Logo.png" id="4_jdahc"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -12,8 +12,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_m1kxf")
-script = ExtResource("1_l6cm7")
+theme = ExtResource("1_i41eb")
+script = ExtResource("2_0oog2")
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -25,7 +25,7 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer2"]
 layout_mode = 2
-texture = ExtResource("3_m1kxf")
+texture = ExtResource("3_iy33p")
 expand_mode = 1
 stretch_mode = 5
 
@@ -46,7 +46,7 @@ custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = ExtResource("4_m1kxf")
+texture = ExtResource("4_jdahc")
 expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
@@ -87,4 +87,6 @@ theme_override_font_sizes/font_size = 20
 text = "Salir"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/SelectScene" to="." method="_on_select_scene_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SocialDict" to="." method="_on_social_dict_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Login" to="." method="_on_login_pressed"]
