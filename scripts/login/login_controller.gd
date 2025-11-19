@@ -1,6 +1,6 @@
 # login_controller.gd
 # Controlador que SOLO maneja la lógica, NO accede directamente a los nodos UI
-extends Control
+extends MarginContainer
 
 # ========== SEÑALES ==========
 signal go_to_register
@@ -12,8 +12,8 @@ signal validation_success(message: String)
 @onready var user_input: LineEdit = %UserInputLogin
 @onready var password_input: LineEdit = %PasswordInputLogin
 @onready var validation_label: Label = %ValidationLabelLogin
-@onready var login_button: Button = %LoginButtonLogin
-@onready var register_button: Button = %RegisterButtonLogin
+@onready var login_button: TextureButton = %LoginButtonLogin
+@onready var register_button: TextureButton = %RegisterButtonLogin
 
 # ========== INSTANCIA LOCAL DE CLIENT ==========
 var client = null

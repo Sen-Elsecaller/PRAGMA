@@ -7,6 +7,9 @@ func Enter():
 	visible = true
 
 func Exit():
+	if _get_target_direction() == Vector2.UP:
+		return
+		
 	var tween = Utils.tween_slide_out(self, _get_target_direction())
 	tween.tween_callback(hide)
 
@@ -43,3 +46,7 @@ func _on_settings_pressed() -> void:
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_SELECT)
 	target_screen = ScreenStateMachine.SCREENS.SETTINGS
 	change_screen.emit(target_screen)
+
+
+func _on_leave_pressed() -> void:
+	get_tree().quit()

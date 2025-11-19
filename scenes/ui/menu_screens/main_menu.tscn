@@ -74,12 +74,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Ajustes"
 
-[node name="Login" type="Button" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(240, 60)
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Login"
-
 [node name="Leave" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(240, 60)
 layout_mode = 2
@@ -89,4 +83,4 @@ text = "Salir"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/SelectScene" to="." method="_on_select_scene_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/SocialDict" to="." method="_on_social_dict_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Login" to="." method="_on_login_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Leave" to="." method="_on_leave_pressed"]

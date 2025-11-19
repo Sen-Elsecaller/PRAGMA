@@ -1,6 +1,6 @@
 # register_controller.gd
 # Controlador de la interfaz de Registro
-extends Control
+extends MarginContainer
 
 # ========== SEÑALES ==========
 signal registro_completado(user_data: Dictionary)
@@ -11,7 +11,7 @@ signal volver_a_login
 @onready var email_input_r: LineEdit = %EmailInputR
 @onready var password_input_r: LineEdit = %PasswordInputR
 @onready var password_confirm_input: LineEdit = %PasswordInputR2
-@onready var register_button_r: Button = %RegisterButtonR
+@onready var register_button_r: TextureButton = %RegisterButtonR
 @onready var validation_label_r: Label = %ValidationLabelR
 
 # ========== CONFIGURACIÓN ==========

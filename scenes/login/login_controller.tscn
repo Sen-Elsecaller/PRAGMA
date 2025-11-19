@@ -1,12 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddevs601qf8c1"]
+[gd_scene load_steps=12 format=3 uid="uid://ddevs601qf8c1"]
 
 [ext_resource type="Script" uid="uid://de5re2cqxdhjx" path="res://scripts/login/login_nav.gd" id="1_7hfhv"]
 [ext_resource type="Script" uid="uid://4v4lnafwj4uv" path="res://scripts/login/login_controller.gd" id="2_5uutl"]
-[ext_resource type="Texture2D" uid="uid://p6evf4ydsqe1" path="res://assets/cozy icons/Assets/Backgound/Background_Yellow.png" id="3_agx10"]
+[ext_resource type="Texture2D" uid="uid://c75vyykpuo21l" path="res://assets/nueva_interfaz/Boton_Menu_Opciones.svg" id="4_js0hi"]
 [ext_resource type="Texture2D" uid="uid://cqut15hl54bqu" path="res://assets/nueva_interfaz/Icon_Cerrar.svg" id="4_no188"]
 [ext_resource type="FontFile" uid="uid://0xi0cdkqxxee" path="res://assets/cozy icons/Font for text/Gluten-VariableFont_slnt,wght.ttf" id="4_ntgc8"]
 [ext_resource type="Script" uid="uid://y7phh770hn6" path="res://scripts/login/register.gd" id="5_5uutl"]
+[ext_resource type="Texture2D" uid="uid://csf8i8nbxw1n6" path="res://assets/nueva_interfaz/Boton_Menu_Opciones_Activado.svg" id="5_8l5xg"]
 [ext_resource type="Texture2D" uid="uid://ceqojpwdxwff8" path="res://assets/nueva_interfaz/Icon_Cerrar_Activado.svg" id="5_js0hi"]
+[ext_resource type="Theme" uid="uid://ckm5gw1dv6pnl" path="res://resource/styles/settings.tres" id="6_0uma6"]
+[ext_resource type="Script" uid="uid://rii2phyuhpdi" path="res://scripts/auto_size_label.gd" id="7_8l5xg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5uutl"]
 bg_color = Color(1, 0.83137256, 0.5294118, 1)
@@ -25,41 +28,40 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_7hfhv")
 
-[node name="Login" type="Control" parent="."]
+[node name="Login" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 40
 script = ExtResource("2_5uutl")
 
 [node name="Panel" type="Panel" parent="Login"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5uutl")
 
-[node name="MarginContainer2" type="MarginContainer" parent="Login"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="Login"]
+layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Login/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Login/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 70
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Login/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 9
 alignment = 1
 
-[node name="TitleLogin" type="Label" parent="Login/MarginContainer2/VBoxContainer"]
+[node name="TitleLogin" type="Label" parent="Login/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_ntgc8")
@@ -67,55 +69,92 @@ theme_override_font_sizes/font_size = 52
 text = "Inicia sesión"
 horizontal_alignment = 1
 
-[node name="UserInputLogin" type="LineEdit" parent="Login/MarginContainer2/VBoxContainer"]
+[node name="UserInputLogin" type="LineEdit" parent="Login/MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "Email"
 
-[node name="PasswordInputLogin" type="LineEdit" parent="Login/MarginContainer2/VBoxContainer"]
+[node name="PasswordInputLogin" type="LineEdit" parent="Login/MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "Contraseña"
 secret = true
 
-[node name="ValidationLabelLogin" type="Label" parent="Login/MarginContainer2/VBoxContainer"]
+[node name="LoginButtonLogin" type="TextureButton" parent="Login/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+texture_normal = ExtResource("4_js0hi")
+texture_pressed = ExtResource("5_8l5xg")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Login/MarginContainer/VBoxContainer/VBoxContainer/LoginButtonLogin"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.5
+offset_top = -17.5
+offset_right = 146.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_0uma6")
+theme_override_font_sizes/font_size = 23
+text = "Iniciar Sesion"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_8l5xg")
+
+[node name="ValidationLabelLogin" type="Label" parent="Login/MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="LoginButtonLogin" type="Button" parent="Login/MarginContainer2/VBoxContainer"]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="VBoxContainer" parent="Login/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Iniciar sesión"
-
-[node name="MarginContainer" type="MarginContainer" parent="Login/MarginContainer2"]
-layout_mode = 2
-theme_override_constants/margin_bottom = 130
-
-[node name="HBoxContainer" type="VBoxContainer" parent="Login/MarginContainer2/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 8
 
-[node name="RegisterButtonLogin" type="Button" parent="Login/MarginContainer2/MarginContainer/HBoxContainer"]
+[node name="RegisterButtonLogin" type="TextureButton" parent="Login/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "Registrate"
+texture_normal = ExtResource("4_js0hi")
+texture_pressed = ExtResource("5_8l5xg")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Forget" type="Label" parent="Login/MarginContainer2/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Login/MarginContainer/VBoxContainer/HBoxContainer/RegisterButtonLogin"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.5
+offset_top = -17.5
+offset_right = 146.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_0uma6")
+theme_override_font_sizes/font_size = 23
+text = "Iniciar Sesion"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_8l5xg")
+
+[node name="Forget" type="Label" parent="Login/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Olvistaste tu contraseña?"
 
 [node name="CloseMenu" type="TextureButton" parent="Login"]
 custom_minimum_size = Vector2(40, 40)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
-grow_horizontal = 0
+layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 texture_normal = ExtResource("4_no188")
@@ -123,7 +162,7 @@ texture_pressed = ExtResource("5_js0hi")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Register" type="Control" parent="."]
+[node name="Register" type="MarginContainer" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -131,36 +170,28 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 40
 script = ExtResource("5_5uutl")
 
-[node name="TextureRect" type="TextureRect" parent="Register"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_agx10")
-expand_mode = 1
+[node name="Panel" type="Panel" parent="Register"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5uutl")
 
-[node name="MarginContainer" type="MarginContainer" parent="Register/TextureRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="Register"]
+layout_mode = 2
 theme_override_constants/margin_top = 30
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Register/TextureRect/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Register/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="TitleRegister" type="Label" parent="Register/TextureRect/MarginContainer/VBoxContainer"]
+[node name="TitleRegister" type="Label" parent="Register/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -170,62 +201,85 @@ theme_override_font_sizes/font_size = 52
 text = "Registrate"
 horizontal_alignment = 1
 
-[node name="UserInputR" type="LineEdit" parent="Register/TextureRect/MarginContainer/VBoxContainer"]
+[node name="UserInputR" type="LineEdit" parent="Register/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "Nombre"
 
-[node name="EmailInputR" type="LineEdit" parent="Register/TextureRect/MarginContainer/VBoxContainer"]
+[node name="EmailInputR" type="LineEdit" parent="Register/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "Email"
 
-[node name="PasswordInputR" type="LineEdit" parent="Register/TextureRect/MarginContainer/VBoxContainer"]
+[node name="PasswordInputR" type="LineEdit" parent="Register/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "Contraseña"
 secret = true
 
-[node name="PasswordInputR2" type="LineEdit" parent="Register/TextureRect/MarginContainer/VBoxContainer"]
+[node name="PasswordInputR2" type="LineEdit" parent="Register/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "Repita contraseña"
 secret = true
 
-[node name="ValidationLabelR" type="Label" parent="Register/TextureRect/MarginContainer/VBoxContainer"]
+[node name="ValidationLabelR" type="Label" parent="Register/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Register/TextureRect/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Register/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="VBoxContainer" parent="Register/TextureRect/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="VBoxContainer" parent="Register/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 15
 
-[node name="RegisterButtonR" type="Button" parent="Register/TextureRect/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="RegisterButtonR" type="TextureButton" parent="Register/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "Registrarse"
+texture_normal = ExtResource("4_js0hi")
+texture_pressed = ExtResource("5_8l5xg")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Forget" type="Label" parent="Register/TextureRect/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Register/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/RegisterButtonR"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.5
+offset_top = -17.5
+offset_right = 146.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_0uma6")
+theme_override_font_sizes/font_size = 9
+text = "Iniciar Sesion"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_8l5xg")
+
+[node name="Forget" type="Label" parent="Register/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.15776283, 0.39144087, 1, 1)
 text = "Iniciar sesión"
 horizontal_alignment = 1
 
-[connection signal="text_changed" from="Login/MarginContainer2/VBoxContainer/UserInputLogin" to="Login" method="_on_user_text_changed"]
-[connection signal="text_submitted" from="Login/MarginContainer2/VBoxContainer/UserInputLogin" to="Login" method="_on_user_text_submitted"]
-[connection signal="text_changed" from="Login/MarginContainer2/VBoxContainer/PasswordInputLogin" to="Login" method="_on_password_text_changed"]
-[connection signal="text_submitted" from="Login/MarginContainer2/VBoxContainer/PasswordInputLogin" to="Login" method="_on_password_text_submitted"]
-[connection signal="pressed" from="Login/MarginContainer2/VBoxContainer/LoginButtonLogin" to="Login" method="_on_iniciar_sesión_pressed"]
-[connection signal="pressed" from="Login/MarginContainer2/VBoxContainer/LoginButtonLogin" to="Login" method="_on_login_button_pressed"]
-[connection signal="pressed" from="Login/MarginContainer2/MarginContainer/HBoxContainer/RegisterButtonLogin" to="." method="_on_show_register"]
+[connection signal="text_changed" from="Login/MarginContainer/VBoxContainer/VBoxContainer/UserInputLogin" to="Login" method="_on_user_text_changed"]
+[connection signal="text_submitted" from="Login/MarginContainer/VBoxContainer/VBoxContainer/UserInputLogin" to="Login" method="_on_user_text_submitted"]
+[connection signal="text_changed" from="Login/MarginContainer/VBoxContainer/VBoxContainer/PasswordInputLogin" to="Login" method="_on_password_text_changed"]
+[connection signal="text_submitted" from="Login/MarginContainer/VBoxContainer/VBoxContainer/PasswordInputLogin" to="Login" method="_on_password_text_submitted"]
+[connection signal="pressed" from="Login/MarginContainer/VBoxContainer/VBoxContainer/LoginButtonLogin" to="Login" method="_on_login_button_pressed"]
+[connection signal="pressed" from="Login/MarginContainer/VBoxContainer/HBoxContainer/RegisterButtonLogin" to="." method="_on_show_register"]
 [connection signal="pressed" from="Login/CloseMenu" to="." method="_on_close_menu_pressed"]
-[connection signal="text_submitted" from="Register/TextureRect/MarginContainer/VBoxContainer/UserInputR" to="Register" method="_on_nombre_submitted"]
-[connection signal="text_submitted" from="Register/TextureRect/MarginContainer/VBoxContainer/EmailInputR" to="Register" method="_on_email_submitted"]
-[connection signal="text_submitted" from="Register/TextureRect/MarginContainer/VBoxContainer/PasswordInputR" to="Register" method="_on_password_submitted"]
-[connection signal="text_submitted" from="Register/TextureRect/MarginContainer/VBoxContainer/PasswordInputR2" to="Register" method="_on_password_confirm_submitted"]
-[connection signal="pressed" from="Register/TextureRect/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/RegisterButtonR" to="Register" method="_on_register_button_pressed"]
+[connection signal="text_submitted" from="Register/MarginContainer/VBoxContainer/UserInputR" to="Register" method="_on_nombre_submitted"]
+[connection signal="text_submitted" from="Register/MarginContainer/VBoxContainer/EmailInputR" to="Register" method="_on_email_submitted"]
+[connection signal="text_submitted" from="Register/MarginContainer/VBoxContainer/PasswordInputR" to="Register" method="_on_password_submitted"]
+[connection signal="text_submitted" from="Register/MarginContainer/VBoxContainer/PasswordInputR2" to="Register" method="_on_password_confirm_submitted"]
+[connection signal="pressed" from="Register/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/RegisterButtonR" to="Register" method="_on_register_button_pressed"]

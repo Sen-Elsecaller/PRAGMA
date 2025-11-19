@@ -3,8 +3,8 @@
 extends ScreenState
 
 # ========== REFERENCIAS A NODOS ==========
-@onready var login_node: Control = $Login
-@onready var register_node: Control = $Register
+@onready var login_node: MarginContainer = $Login
+@onready var register_node: MarginContainer = $Register
 
 # ========== INICIALIZACIÓN ==========
 

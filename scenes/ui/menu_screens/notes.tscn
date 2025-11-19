@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://du51bbb1b71c7"]
+[gd_scene load_steps=10 format=3 uid="uid://du51bbb1b71c7"]
 
 [ext_resource type="Script" uid="uid://c8bdqw4vskm0c" path="res://scripts/ui/menu_screens/notes.gd" id="1_ai2ds"]
 [ext_resource type="Texture2D" uid="uid://d1j8jho5cgwcc" path="res://assets/nueva_interfaz/Fondo_Chat.svg" id="2_gaxfc"]
 [ext_resource type="Texture2D" uid="uid://ba7b5v2y8fvxu" path="res://assets/nueva_interfaz/Fondo_Opciones.svg" id="3_2td1e"]
 [ext_resource type="Texture2D" uid="uid://c75vyykpuo21l" path="res://assets/nueva_interfaz/Boton_Menu_Opciones.svg" id="4_ekbet"]
 [ext_resource type="Texture2D" uid="uid://csf8i8nbxw1n6" path="res://assets/nueva_interfaz/Boton_Menu_Opciones_Activado.svg" id="5_opbao"]
+[ext_resource type="Script" uid="uid://rii2phyuhpdi" path="res://scripts/auto_size_label.gd" id="6_ekbet"]
 [ext_resource type="Script" uid="uid://bghjavy0eo3f7" path="res://scripts/ui/vertical_carousel_container.gd" id="6_ivx3o"]
 [ext_resource type="Script" uid="uid://bm8cgctnsomgr" path="res://scripts/ui/notes_carousel_node.gd" id="7_2td1e"]
 
@@ -116,6 +117,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
 text = "Ver notas rescatadas"
+script = ExtResource("6_ekbet")
 
 [node name="BackToMenu" type="TextureButton" parent="MarginContainer/HBoxContainer/Menu"]
 custom_minimum_size = Vector2(450, 90)
@@ -143,6 +145,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
 text = "Volver al menu principal"
+script = ExtResource("6_ekbet")
 
 [node name="CarouselContainer" type="Node2D" parent="."]
 unique_name_in_owner = true

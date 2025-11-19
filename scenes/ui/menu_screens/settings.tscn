@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ci383xsy48l2e"]
+[gd_scene load_steps=12 format=3 uid="uid://ci383xsy48l2e"]
 
 [ext_resource type="Theme" uid="uid://ckm5gw1dv6pnl" path="res://resource/styles/settings.tres" id="1_6a2nt"]
 [ext_resource type="Script" uid="uid://bxjn2pu3t0upm" path="res://scripts/ui/settings.gd" id="1_nadmn"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://csf8i8nbxw1n6" path="res://assets/nueva_interfaz/Boton_Menu_Opciones_Activado.svg" id="3_6a2nt"]
 [ext_resource type="Texture2D" uid="uid://cqut15hl54bqu" path="res://assets/nueva_interfaz/Icon_Cerrar.svg" id="3_uhqlu"]
 [ext_resource type="Texture2D" uid="uid://ceqojpwdxwff8" path="res://assets/nueva_interfaz/Icon_Cerrar_Activado.svg" id="4_co0fq"]
+[ext_resource type="Script" uid="uid://rii2phyuhpdi" path="res://scripts/auto_size_label.gd" id="5_1eq3g"]
 [ext_resource type="Texture2D" uid="uid://cxeig1v1i4qa3" path="res://assets/nueva_interfaz/Icon_Info.svg" id="5_5o77p"]
 [ext_resource type="Texture2D" uid="uid://1w08ofriih81" path="res://assets/nueva_interfaz/Icon_Info_Activado.svg" id="6_1eq3g"]
 
@@ -91,6 +92,7 @@ grow_vertical = 2
 text = "Iniciar Sesion"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("5_1eq3g")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
