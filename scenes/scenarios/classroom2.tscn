@@ -1,0 +1,195 @@
+[gd_scene load_steps=19 format=3 uid="uid://cbu7wfbwleoe2"]
+
+[ext_resource type="Theme" uid="uid://5lacq73qg3pw" path="res://resource/styles/theme.tres" id="1_adku3"]
+[ext_resource type="Script" uid="uid://dxwikrfam00m0" path="res://scripts/scenarios/classroom_2.gd" id="2_adku3"]
+[ext_resource type="Texture2D" uid="uid://spxac1w5vhjy" path="res://assets/backgrounds/classroom_chair.png" id="3_s8vox"]
+[ext_resource type="Script" uid="uid://ckqr52cu5nflw" path="res://scripts/characters.gd" id="4_uqwil"]
+[ext_resource type="SpriteFrames" uid="uid://cch124g5y3qju" path="res://resource/animations/alumno1.tres" id="5_3dx6r"]
+[ext_resource type="SpriteFrames" uid="uid://ekdgihaau7av" path="res://resource/animations/profesor_felipe.tres" id="6_8dsik"]
+[ext_resource type="Texture2D" uid="uid://bvkeo3vltqyeo" path="res://assets/nueva_interfaz/Fondo_Escenario_Personajes_Extendido.png" id="7_0unn1"]
+[ext_resource type="PackedScene" uid="uid://co1ratfpk0ju8" path="res://scenes/ui/game_ui.tscn" id="8_67gco"]
+[ext_resource type="PackedScene" uid="uid://4cyajmpvya0t" path="res://scenes/dialogue_box.tscn" id="9_drgkh"]
+[ext_resource type="Shader" uid="uid://bml3y1uj7b6ie" path="res://resource/shaders/burn.gdshader" id="10_76bub"]
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="11_bwirg"]
+[ext_resource type="PackedScene" uid="uid://b0q1nwm6l051j" path="res://scenes/custom_response.tscn" id="12_85ilb"]
+[ext_resource type="PackedScene" uid="uid://c2k5sqx0lswhk" path="res://scenes/ui/outcome_text.tscn" id="13_4tm55"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cpsr0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vcs8o"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wx3lt"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l7buf"]
+noise = SubResource("FastNoiseLite_wx3lt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l7buf"]
+shader = ExtResource("10_76bub")
+shader_parameter/progress = 0.0
+shader_parameter/noiseForce = 0.2
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_l7buf")
+shader_parameter/burnColor = Color(0, 0, 0, 1)
+shader_parameter/borderWidth = 0.0
+shader_parameter/direction = 180.0
+
+[node name="Classroom2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_adku3")
+script = ExtResource("2_adku3")
+
+[node name="Background" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -181.0
+offset_right = -299.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_s8vox")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FadeEffect" type="ColorRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Characters" type="Node2D" parent="."]
+position = Vector2(367, 333)
+script = ExtResource("4_uqwil")
+
+[node name="LeftMarker" type="Marker2D" parent="Characters"]
+position = Vector2(-180, 0)
+
+[node name="CenterMarker" type="Marker2D" parent="Characters"]
+
+[node name="RightMarker" type="Marker2D" parent="Characters"]
+position = Vector2(180, 0)
+
+[node name="Alumno1" type="AnimatedSprite2D" parent="Characters"]
+material = SubResource("ShaderMaterial_cpsr0")
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("5_3dx6r")
+animation = &"neutro"
+
+[node name="Alumno2" type="AnimatedSprite2D" parent="Characters"]
+material = SubResource("ShaderMaterial_cpsr0")
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("5_3dx6r")
+animation = &"neutro"
+
+[node name="ProfesorFelipe" type="AnimatedSprite2D" parent="Characters"]
+material = SubResource("ShaderMaterial_cpsr0")
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("6_8dsik")
+animation = &"neutro"
+metadata/name = ""
+
+[node name="Images" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Frame" type="TextureRect" parent="Images"]
+material = SubResource("ShaderMaterial_vcs8o")
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("7_0unn1")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="GameUICanvas" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="GameUI" parent="GameUICanvas" instance=ExtResource("8_67gco")]
+
+[node name="DialogueCanvas" type="CanvasLayer" parent="."]
+
+[node name="DialogueContainer" type="MarginContainer" parent="DialogueCanvas"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Content" type="VBoxContainer" parent="DialogueCanvas/DialogueContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+alignment = 2
+
+[node name="DialogueBox" parent="DialogueCanvas/DialogueContainer/Content" instance=ExtResource("9_drgkh")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_l7buf")
+layout_mode = 2
+
+[node name="ResponsesContainer" type="MarginContainer" parent="DialogueCanvas"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.062000003
+anchor_top = 0.642
+anchor_right = 0.573
+anchor_bottom = 1.0
+offset_left = -0.4240036
+offset_top = -0.016021729
+offset_right = -0.0960083
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(295, 211)
+theme_override_constants/margin_top = 10
+
+[node name="ResponsesMenu" type="HBoxContainer" parent="DialogueCanvas/ResponsesContainer" node_paths=PackedStringArray("response_template")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+alignment = 1
+script = ExtResource("11_bwirg")
+response_template = NodePath("CustomResponse")
+
+[node name="CustomResponse" parent="DialogueCanvas/ResponsesContainer/ResponsesMenu" instance=ExtResource("12_85ilb")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OutcomeText" parent="." instance=ExtResource("13_4tm55")]
+layout_mode = 1
+anchor_right = 0.252
+anchor_bottom = 0.216
+offset_right = -0.3040161
+offset_bottom = 0.03199768
+pivot_offset = Vector2(0, 0)
+
+[connection signal="response_selected" from="DialogueCanvas/ResponsesContainer/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

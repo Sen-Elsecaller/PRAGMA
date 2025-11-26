@@ -1,5 +1,6 @@
 class_name ScenarioBase extends Control
 
+@onready var background: TextureRect = %Background
 @onready var dialogue_box: DialogueBox = %DialogueBox
 @onready var last_dialogue: DialogueBox = %DialogueBox
 @onready var content: VBoxContainer = %Content
@@ -8,6 +9,7 @@ class_name ScenarioBase extends Control
 @onready var game_ui: GameUI = $GameUICanvas/GameUI
 @onready var characters_node: Characters = $Characters
 @onready var outcome_text_node: OutcomeText = $OutcomeText
+@onready var fade_rect: ColorRect = %FadeEffect
 
 var DIALOGUE_RESOURCE: DialogueResource
 var responses_menu_visible: bool = false
@@ -54,6 +56,7 @@ func _use_tags(line: Variant) -> void:
 	var effect_duration_tag = line.get_tag_value("effect_duration")
 	var outcome_text_tag = line.get_tag_value("outcome_text")
 	var feedback_tag = line.get_tag_value("feedback")
+	var background_tag = line.get_tag_value("background")
 	var character_enter_tag = line.get_tag_value("character_enter")
 	var character_exit_tag = line.get_tag_value("character_exit")
 	var character_emotion_tag = line.get_tag_value("character_emotion")
@@ -69,6 +72,9 @@ func _use_tags(line: Variant) -> void:
 		var tween = EffectsManager.animate_fx(effect_tag, "strength", effect_duration_tag.to_int(), Tween.EaseType.EASE_IN_OUT)
 		tween.tween_callback(func(): $DialogueCanvas.layer = 1)
 	
+	if background_tag != "":
+		if Database.SCENARIOS_BACKGROUNDS.has(background_tag):
+			change_background(Database.SCENARIOS_BACKGROUNDS.get(background_tag))
 	# Emociones
 	if emotion_tag != "":
 		if current_choice:
@@ -185,3 +191,14 @@ func _on_responses_menu_response_selected(response: Variant) -> void:
 	
 	responses_menu_visible = false
 	next_line(response.next_id)
+
+func change_background(texture: Texture):
+	var tween = create_tween()
+	tween.tween_property(fade_rect, "modulate:a", 1, 0.5 / 2.0)
+	await tween.finished
+	background.texture = texture
+	tween.kill()
+	tween = create_tween()
+	tween.tween_property(fade_rect, "modulate:a", 0, 0.5 / 2.0)
+
+	

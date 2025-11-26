@@ -1,0 +1,157 @@
+[font_size=24][b]1. INTRODUCCIÓN[/b][/font_size]
+
+PRAGMA es un simulador de ambientes académicos diseñado para ayudar a estudiantes universitarios a desarrollar habilidades sociales en entornos seguros y controlados.
+
+Al usar PRAGMA, aceptas las prácticas descritas en esta política.
+
+[center]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/center]
+
+[font_size=24][b]2. INFORMACIÓN QUE RECOPILAMOS[/b][/font_size]
+
+[font_size=20][b]2.1 Información Proporcionada por Ti[/b][/font_size]
+
+Recopilamos únicamente la información que tú decides ingresar voluntariamente en la aplicación:
+
+[indent]• Nombre (opcional)
+• Correo electrónico (opcional)
+• Código de institución académica (opcional)[/indent]
+
+[font_size=20][b]2.2 Información de Uso[/b][/font_size]
+
+Registramos tu interacción con los escenarios de simulación:
+
+[indent]• Decisiones tomadas en cada escenario
+• Notas personales que guardas dentro de la aplicación
+• Patrones de comportamiento durante las sesiones
+• Métricas de desempeño en las simulaciones[/indent]
+
+[center]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/center]
+
+[font_size=24][b]3. BASE LEGAL Y USO DE LA INFORMACIÓN[/b][/font_size]
+
+[font_size=20][b]3.1 Base Legal para el Procesamiento[/b][/font_size]
+
+Procesamos tu información personal bajo las siguientes bases legales:
+
+[indent]• Consentimiento: Al crear tu cuenta y usar PRAGMA, nos das tu consentimiento para procesar tus datos de uso (decisiones, notas, métricas) con el fin de proporcionarte retroalimentación personalizada y mejorar tu experiencia.
+
+- Consentimiento explícito: Si decides vincular tu cuenta con una institución académica mediante un código, nos das tu consentimiento explícito y específico para compartir todos tus datos de uso con esa institución.
+
+- Interés legítimo: Procesamos datos agregados y anonimizados para mejorar la funcionalidad y el rendimiento de PRAGMA, basándonos en nuestro interés legítimo de ofrecer un mejor servicio.[/indent]
+
+[font_size=20][b]3.2 Uso de la Información[/b][/font_size]
+[font_size=18](Sin código institucional)[/font_size]
+
+Si NO has ingresado un código de institución académica:
+
+[indent]✓ Tu información permanece completamente privada
+✓ NO compartimos tus datos con terceros
+✓ Usamos tus datos únicamente para:
+  [indent]- Mejorar tu experiencia en la app
+  - Generar retroalimentación personalizada
+  - Mostrarte tu progreso y métricas
+  - Mejorar el funcionamiento de PRAGMA[/indent][/indent]
+
+[center]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/center]
+
+[font_size=24][b]4. COMPARTIR DATOS CON INSTITUCIONES[/b][/font_size]
+
+[font_size=20][b]4.1 ¿Cuándo se Comparten?[/b][/font_size]
+
+Si decides ingresar y validar un código de institución académica:
+
+[font_size=18]TODOS tus datos de uso serán compartidos automáticamente con esa institución.[/font_size]
+
+Esto incluye:
+[indent]• Decisiones tomadas en escenarios
+• Notas guardadas
+• Patrones de comportamiento
+• Métricas de desempeño[/indent]
+
+[font_size=20][b]4.2 ¿Por Qué Compartir?[/b][/font_size]
+
+El propósito es educativo y de apoyo estudiantil:
+
+[indent]Permite que profesionales de tu institución (bienestar estudiantil, dirección de asuntos estudiantiles) conozcan mejor tus fortalezas y áreas de mejora
+
+Facilita que puedan brindarte apoyo personalizado y contextualizado
+
+Te ayuda a trabajar de manera más efectiva en tu desarrollo personal y académico[/indent]
+
+[font_size=20][b]4.3 Responsabilidad Institucional[/b][/font_size]
+
+La institución debe asegurar que:
+
+[indent]Solo personal autorizado del área de bienestar/asuntos estudiantiles acceda a tus datos
+La información se use exclusivamente para tu apoyo educativo
+Se cumplan todas las normativas de protección de datos[/indent]
+
+Importante: Una vez vinculas tu cuenta, esta vinculación continúa hasta que la canceles o elimines tu cuenta.
+
+[center]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/center]
+
+[font_size=24][b]5. SEGURIDAD DE TUS DATOS[/b][/font_size]
+
+Implementamos medidas de seguridad para proteger tu información:
+
+[indent]• Encriptación de datos en tránsito
+• Acceso restringido a información personal
+• Servidores seguros[/indent]
+
+[i]Nota: Ningún sistema es 100% seguro. Hacemos nuestro mejor esfuerzo para proteger tu información.[/i]
+
+[center]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/center]
+
+[font_size=24][b]6. RETENCIÓN DE DATOS[/b][/font_size]
+
+Conservamos tu información mientras:
+
+[indent]• Mantengas tu cuenta activa
+• Sea necesario para cumplir obligaciones legales
+• Hayas dado consentimiento para un propósito específico[/indent]
+
+[center]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/center]
+
+[font_size=24][b]7. TUS DERECHOS[/b][/font_size]
+
+Tienes derecho a:
+
+[indent]Acceder a tu información personal
+Corregir datos incorrectos
+Eliminar tu cuenta y datos asociados
+Retirar consentimiento (desvincular código)
+Exportar tus datos en formato legible[/indent]
+
+Para ejercer estos derechos: tomas.sepulveda11@inacapmail.cl
+
+[center]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/center]
+
+[font_size=24][b]8. DATOS DE MENORES DE EDAD[/b][/font_size]
+
+Si eres menor de 18 años, necesitas el consentimiento de tus padres o tutores legales para usar PRAGMA, especialmente si vinculas tu cuenta con una institución.
+
+[center]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/center]
+
+[font_size=24][b]9. CAMBIOS A ESTA POLÍTICA[/b][/font_size]
+
+Podemos actualizar esta política ocasionalmente. Te notificaremos mediante:
+
+[indent]• Notificación dentro de la aplicación
+• Correo electrónico (si nos lo proporcionaste)[/indent]
+
+La fecha de "Última actualización" indica la versión actual.
+
+[center]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/center]
+
+[font_size=24][b]10. CONTACTO[/b][/font_size]
+
+Si tienes preguntas o deseas ejercer tus derechos:
+
+Email: tomas.sepulveda11@inacapmail.cl
+
+
+[center]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/center]
+
+Última actualización: 25/11/2025
+Desarrolladores: Tomas Benjamin Sepulveda Oñate y Juan Sebastian Hernandez Rincon
+Contacto: tomas.sepulveda11@inacapmail.cl

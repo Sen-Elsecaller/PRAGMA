@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://bfeyyvohypdgw"]
 
 [ext_resource type="Script" uid="uid://cjtni7y10t1" path="res://resource/sound_effect.gd" id="1_mhksn"]
-[ext_resource type="AudioStream" uid="uid://dsy7no3r6yrn5" path="res://assets/SFX/heartbeat-medium-speed.wav" id="2_mhksn"]
+[ext_resource type="AudioStream" uid="uid://dsy7no3r6yrn5" path="res://assets/sfx/heartbeat-medium-speed.wav" id="2_mhksn"]
 
 [resource]
 script = ExtResource("1_mhksn")

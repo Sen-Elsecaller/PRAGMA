@@ -15,7 +15,8 @@ var sound_effect_dict: Dictionary = {} ## Loads all registered SoundEffects on r
 func _ready() -> void:
 	for sound_effect: SoundEffect in sound_effects:
 		sound_effect_dict[sound_effect.type] = sound_effect
-
+	
+	bgm_player.play()
 
 ## Creates a sound effect at a specific location if the limit has not been reached. Pass [param location] for the global position of the audio effect, and [param type] for the SoundEffect to be queued.
 func create_2d_audio_at_location(location: Vector2, type: SoundEffect.SOUND_EFFECT_TYPE) -> void:
@@ -45,6 +46,7 @@ func create_audio(type: SoundEffect.SOUND_EFFECT_TYPE) -> void:
 			sound_effect.change_audio_count(1)
 			var new_audio: AudioStreamPlayer = AudioStreamPlayer.new()
 			add_child(new_audio)
+			new_audio.bus = &"SFX"
 			new_audio.stream = sound_effect.sound_effect
 			new_audio.volume_db = sound_effect.volume
 			new_audio.pitch_scale = sound_effect.pitch_scale
@@ -60,3 +62,6 @@ func string_bypass(sound_type: String):
 		create_audio(SoundEffect.SOUND_EFFECT_TYPE.get(sound_type))
 	else:
 		push_error("No se encontro el sonido necesario")
+
+func toggle_bgm_music():
+	bgm_player.playing = !bgm_player.playing

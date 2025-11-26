@@ -1,16 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://du51bbb1b71c7"]
+[gd_scene load_steps=13 format=3 uid="uid://du51bbb1b71c7"]
 
 [ext_resource type="Script" uid="uid://c8bdqw4vskm0c" path="res://scripts/ui/menu_screens/notes.gd" id="1_ai2ds"]
+[ext_resource type="Material" uid="uid://tjlab8kl611m" path="res://resource/shaders_materials/main_menu.tres" id="2_0ffvb"]
 [ext_resource type="Texture2D" uid="uid://d1j8jho5cgwcc" path="res://assets/nueva_interfaz/Fondo_Chat.svg" id="2_gaxfc"]
-[ext_resource type="Texture2D" uid="uid://ba7b5v2y8fvxu" path="res://assets/nueva_interfaz/Fondo_Opciones.svg" id="3_2td1e"]
+[ext_resource type="Texture2D" uid="uid://b4ds13xxshm4a" path="res://assets/backgrounds/menu/left.jpg" id="2_ivx3o"]
+[ext_resource type="Theme" uid="uid://c0jcpjda3cxye" path="res://resource/styles/feedback_text.tres" id="3_opbao"]
 [ext_resource type="Texture2D" uid="uid://c75vyykpuo21l" path="res://assets/nueva_interfaz/Boton_Menu_Opciones.svg" id="4_ekbet"]
-[ext_resource type="Texture2D" uid="uid://csf8i8nbxw1n6" path="res://assets/nueva_interfaz/Boton_Menu_Opciones_Activado.svg" id="5_opbao"]
+[ext_resource type="Script" uid="uid://b7c8g1uo4jfaq" path="res://scripts/nodes/animated_button.gd" id="5_ekbet"]
 [ext_resource type="Script" uid="uid://rii2phyuhpdi" path="res://scripts/auto_size_label.gd" id="6_ekbet"]
 [ext_resource type="Script" uid="uid://bghjavy0eo3f7" path="res://scripts/ui/vertical_carousel_container.gd" id="6_ivx3o"]
+[ext_resource type="Theme" uid="uid://ckm5gw1dv6pnl" path="res://resource/styles/settings.tres" id="6_opbao"]
 [ext_resource type="Script" uid="uid://bm8cgctnsomgr" path="res://scripts/ui/notes_carousel_node.gd" id="7_2td1e"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uiwi"]
-bg_color = Color(0.1764706, 0.12156863, 0.20392157, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekbet"]
+bg_color = Color(1, 0.83137256, 0.5294118, 1)
+border_width_bottom = 10
+border_color = Color(0.5981725, 0.42921597, 0, 1)
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 20
 
 [node name="Notes" type="Control"]
 layout_mode = 3
@@ -22,14 +30,17 @@ grow_vertical = 2
 script = ExtResource("1_ai2ds")
 metadata/_custom_type_script = "uid://cobqsrqfsrbwt"
 
-[node name="Panel" type="Panel" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+material = ExtResource("2_0ffvb")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0uiwi")
+texture = ExtResource("2_ivx3o")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -53,6 +64,7 @@ size_flags_horizontal = 3
 
 [node name="ChoicesBG" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer"]
 unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.9019608)
 layout_mode = 2
 texture = ExtResource("2_gaxfc")
 expand_mode = 1
@@ -67,10 +79,9 @@ alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Panel" type="TextureRect" parent="MarginContainer/HBoxContainer/Menu/Feedback"]
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/Menu/Feedback"]
 layout_mode = 2
-texture = ExtResource("3_2td1e")
-expand_mode = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_ekbet")
 
 [node name="FeedbackLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/Menu/Feedback/Panel"]
 unique_name_in_owner = true
@@ -80,26 +91,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 18
-theme_override_font_sizes/bold_font_size = 18
-theme_override_font_sizes/bold_italics_font_size = 18
-theme_override_font_sizes/italics_font_size = 18
-theme_override_font_sizes/mono_font_size = 18
+theme = ExtResource("3_opbao")
 bbcode_enabled = true
 text = "Notas generales"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ChangeNotes" type="TextureButton" parent="MarginContainer/HBoxContainer/Menu"]
+[node name="ChangeNotes" type="Button" parent="MarginContainer/HBoxContainer/Menu"]
 custom_minimum_size = Vector2(450, 90)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("4_ekbet")
-texture_pressed = ExtResource("5_opbao")
-ignore_texture_size = true
-stretch_mode = 5
+icon = ExtResource("4_ekbet")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("5_ekbet")
+metadata/_custom_type_script = "uid://b7c8g1uo4jfaq"
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Menu/ChangeNotes"]
 layout_mode = 1
@@ -114,20 +122,22 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
+theme = ExtResource("6_opbao")
+theme_override_font_sizes/font_size = 38
 text = "Ver notas rescatadas"
 script = ExtResource("6_ekbet")
 
-[node name="BackToMenu" type="TextureButton" parent="MarginContainer/HBoxContainer/Menu"]
+[node name="BackToMenu" type="Button" parent="MarginContainer/HBoxContainer/Menu"]
 custom_minimum_size = Vector2(450, 90)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("4_ekbet")
-texture_pressed = ExtResource("5_opbao")
-ignore_texture_size = true
-stretch_mode = 5
+icon = ExtResource("4_ekbet")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("5_ekbet")
+metadata/_custom_type_script = "uid://b7c8g1uo4jfaq"
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Menu/BackToMenu"]
 layout_mode = 1
@@ -142,14 +152,14 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
+theme = ExtResource("6_opbao")
+theme_override_font_sizes/font_size = 32
 text = "Volver al menu principal"
 script = ExtResource("6_ekbet")
 
 [node name="CarouselContainer" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(294, 349)
+position = Vector2(287, 349)
 script = ExtResource("6_ivx3o")
 
 [node name="CarouselNode" type="Control" parent="CarouselContainer"]

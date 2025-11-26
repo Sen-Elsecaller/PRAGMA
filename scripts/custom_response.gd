@@ -4,7 +4,7 @@ var response: DialogueResponse
 var response_index: int
 var disabled: bool = false
 
-@onready var label: RichTextLabel = $MarginContainer/RichTextLabel
+@onready var label: RichTextLabel = $TextureButton/RichTextLabel
 @onready var texture_button: TextureButton = $TextureButton
 
 

@@ -14,6 +14,9 @@ signal scenario_ended
 
 func _ready() -> void:
 	scenario_ended.connect(_on_scenario_ended)
+	AudioServer.set_bus_volume_linear(1, ConfigFileHandler.load_config_settings("settings").get("music_volume"))
+	AudioServer.set_bus_volume_linear(2, ConfigFileHandler.load_config_settings("settings").get("sfx_volume"))
+
 
 func _on_scenario_ended():
 	ConfigFileHandler.save_session(current_feedback)
@@ -34,6 +37,7 @@ func change_gui_scene(new_scene: PackedScene, delete: bool = true, keep_running:
 	current_gui_scene = new_instance
 
 	await _fade_in()
+
 
 func get_current_scene():
 	return current_gui_scene

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://csbc3dasi68r1"
+path="res://.godot/imported/4am - Lucas Rasente.mp3-b0f6e27ceb1d1be30d152c4320294604.mp3str"
+
+[deps]
+
+source_file="res://assets/music/4am - Lucas Rasente.mp3"
+dest_files=["res://.godot/imported/4am - Lucas Rasente.mp3-b0f6e27ceb1d1be30d152c4320294604.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

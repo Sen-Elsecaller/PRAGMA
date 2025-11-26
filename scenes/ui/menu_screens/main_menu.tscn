@@ -1,9 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://0fxrhieww8y3"]
+[gd_scene load_steps=9 format=3 uid="uid://0fxrhieww8y3"]
 
-[ext_resource type="Theme" uid="uid://ylvbucdf207r" path="res://resource/styles/main_menu.tres" id="1_i41eb"]
 [ext_resource type="Script" uid="uid://cqno7bsqpuloq" path="res://scripts/ui/menu_screens/main_menu.gd" id="2_0oog2"]
-[ext_resource type="Texture2D" uid="uid://ddrxyx0scuu7a" path="res://assets/Inicio (1).png" id="3_iy33p"]
-[ext_resource type="Texture2D" uid="uid://bimm0vr7q6ilt" path="res://assets/logo/Proyecto-Pragma-Logo.png" id="4_jdahc"]
+[ext_resource type="Texture2D" uid="uid://c2v8j0q5g0f1s" path="res://assets/backgrounds/menu/center.jpg" id="3_0oog2"]
+[ext_resource type="Material" uid="uid://tjlab8kl611m" path="res://resource/shaders_materials/main_menu.tres" id="3_iy33p"]
+[ext_resource type="Theme" uid="uid://cgj5r52tn5rff" path="res://resource/styles/title.tres" id="4_0oog2"]
+[ext_resource type="FontFile" uid="uid://di6usrmxba8gm" path="res://assets/fonts/FingerPaint-Regular.ttf" id="4_iy33p"]
+[ext_resource type="Script" uid="uid://b7c8g1uo4jfaq" path="res://scripts/nodes/animated_button.gd" id="5_0oog2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0oog2"]
+bg_color = Color(1, 0.83137256, 0.5294118, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.9182749, 0.6673438, 0, 1)
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="Theme" id="Theme_iy33p"]
+Button/colors/font_color = Color(0.2901961, 0.16470589, 0.31764707, 1)
+Button/colors/font_hover_color = Color(0.2901961, 0.16470589, 0.31764707, 1)
+Button/colors/font_outline_color = Color(0.2901961, 0.16470589, 0.31764707, 1)
+Button/colors/font_pressed_color = Color(0.2901961, 0.16470589, 0.31764707, 1)
+Button/colors/icon_focus_color = Color(0.2901961, 0.16470589, 0.31764707, 1)
+Button/constants/outline_size = 2
+Button/font_sizes/font_size = 27
+Button/fonts/font = ExtResource("4_iy33p")
+Button/styles/focus = SubResource("StyleBoxFlat_0oog2")
+Button/styles/hover = SubResource("StyleBoxFlat_0oog2")
+Button/styles/normal = SubResource("StyleBoxFlat_0oog2")
+Button/styles/pressed = SubResource("StyleBoxFlat_0oog2")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -12,10 +41,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_i41eb")
 script = ExtResource("2_0oog2")
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
+[node name="MarginBG" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,13 +51,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer2"]
+[node name="TextureRect" type="TextureRect" parent="MarginBG"]
+material = ExtResource("3_iy33p")
 layout_mode = 2
-texture = ExtResource("3_iy33p")
+texture = ExtResource("3_0oog2")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ButtonsContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,46 +71,102 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="Title" type="TextureRect" parent="MarginContainer"]
-custom_minimum_size = Vector2(300, 150)
+[node name="MarginStart" type="MarginContainer" parent="ButtonsContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 535
+theme_override_constants/margin_bottom = 185
+
+[node name="SelectScene" type="Button" parent="ButtonsContainer/MarginStart"]
+custom_minimum_size = Vector2(280, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_iy33p")
+theme_override_font_sizes/font_size = 34
+text = "Comenzar"
+script = ExtResource("5_0oog2")
+metadata/_custom_type_script = "uid://b7c8g1uo4jfaq"
+
+[node name="MarginDict" type="MarginContainer" parent="ButtonsContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_right = 770
+theme_override_constants/margin_bottom = -150
+
+[node name="SocialDict" type="Button" parent="ButtonsContainer/MarginDict"]
+custom_minimum_size = Vector2(260, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_iy33p")
+text = "Enciclopedia Social"
+script = ExtResource("5_0oog2")
+metadata/_custom_type_script = "uid://b7c8g1uo4jfaq"
+
+[node name="MarginSettings" type="MarginContainer" parent="ButtonsContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 560
+theme_override_constants/margin_bottom = 25
+
+[node name="Settings" type="Button" parent="ButtonsContainer/MarginSettings"]
+custom_minimum_size = Vector2(240, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_iy33p")
+text = "Ajustes"
+script = ExtResource("5_0oog2")
+metadata/_custom_type_script = "uid://b7c8g1uo4jfaq"
+
+[node name="MarginLeave" type="MarginContainer" parent="ButtonsContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_right = -890
+theme_override_constants/margin_bottom = -270
+
+[node name="Leave" type="Button" parent="ButtonsContainer/MarginLeave"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_iy33p")
+text = "Salir"
+script = ExtResource("5_0oog2")
+metadata/_custom_type_script = "uid://b7c8g1uo4jfaq"
+
+[node name="MarginTitle" type="MarginContainer" parent="ButtonsContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = -21
+theme_override_constants/margin_right = 95
+
+[node name="Label" type="Label" parent="ButtonsContainer/MarginTitle"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = ExtResource("4_jdahc")
-expand_mode = 1
-stretch_mode = 5
-metadata/_edit_use_anchors_ = true
+theme = ExtResource("4_0oog2")
+text = "Don't"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="MarginTitle2" type="MarginContainer" parent="ButtonsContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
+mouse_filter = 2
+theme_override_constants/margin_top = 56
 
-[node name="SelectScene" type="Button" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(240, 60)
+[node name="Label" type="Label" parent="ButtonsContainer/MarginTitle2"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Comenzar"
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("4_0oog2")
+text = "Overthink"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="SocialDict" type="Button" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(240, 60)
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Enciclopedia Social"
-
-[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(240, 60)
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Ajustes"
-
-[node name="Leave" type="Button" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(240, 60)
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Salir"
-
-[connection signal="pressed" from="MarginContainer/VBoxContainer/SelectScene" to="." method="_on_select_scene_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/SocialDict" to="." method="_on_social_dict_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Leave" to="." method="_on_leave_pressed"]
+[connection signal="pressed" from="ButtonsContainer/MarginStart/SelectScene" to="." method="_on_select_scene_pressed"]
+[connection signal="pressed" from="ButtonsContainer/MarginDict/SocialDict" to="." method="_on_social_dict_pressed"]
+[connection signal="pressed" from="ButtonsContainer/MarginSettings/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="ButtonsContainer/MarginLeave/Leave" to="." method="_on_leave_pressed"]

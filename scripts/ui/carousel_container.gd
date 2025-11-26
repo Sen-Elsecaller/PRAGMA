@@ -17,6 +17,8 @@ class_name CarouselContainer extends Node2D
 
 @export var position_offset_node: Control = null
 
+signal scenario_changed
+
 func _process(delta: float) -> void:
 	if !position_offset_node or position_offset_node.get_child_count() == 0:
 		return
@@ -70,8 +72,10 @@ func _right():
 
 
 func _on_left_pressed() -> void:
+	scenario_changed.emit()
 	_left()
 
 
 func _on_right_pressed() -> void:
+	scenario_changed.emit()
 	_right()

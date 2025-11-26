@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CarouselScenarioRes" load_steps=4 format=3 uid="uid://b2kcsus6e0lkj"]
 
-[ext_resource type="Texture2D" uid="uid://ddodst8k2e455" path="res://assets/backgrounds/classroom2.png" id="1_imi2s"]
+[ext_resource type="Texture2D" uid="uid://ddodst8k2e455" path="res://assets/backgrounds/classroom_whiteboard.png" id="1_imi2s"]
 [ext_resource type="Script" uid="uid://cmq63fqdo5u2k" path="res://resource/carousel_scenario.gd" id="1_x2h2x"]
 [ext_resource type="PackedScene" uid="uid://dcx307owexl5f" path="res://scenes/scenarios/library1.tscn" id="2_jlter"]
 

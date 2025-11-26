@@ -7,33 +7,53 @@ var already_skipped: bool = false
 enum SCENARIOS {
 	NA,
 	CLASSROOM1,
+	CLASSROOM2,
 	LIBRARY1
+}
+
+const SCENARIOS_BACKGROUNDS_PATH = "res://assets/backgrounds/"
+const SCENARIOS_BACKGROUNDS := {
+	"Sala de Clases - Silla": preload(SCENARIOS_BACKGROUNDS_PATH + "classroom_chair.png"),
+	"Sala de Clases - Pizarra": preload(SCENARIOS_BACKGROUNDS_PATH + "classroom_whiteboard.png"),
 }
 
 const SCENARIOS_RESOURCES_PATH = "res://resource/carousel_scenarios/"
 const SCENARIOS_RESOURCES := {
 	SCENARIOS.CLASSROOM1: preload(SCENARIOS_RESOURCES_PATH + "classroom1.tres"),
-	SCENARIOS.LIBRARY1: preload(SCENARIOS_RESOURCES_PATH + "library1.tres")
+	SCENARIOS.CLASSROOM2: preload(SCENARIOS_RESOURCES_PATH + "classroom2.tres"),
+	SCENARIOS.NA: preload(SCENARIOS_RESOURCES_PATH + "proximamente.tres")
 }
 var played_scenarios = {
 	SCENARIOS.CLASSROOM1: false,
 	SCENARIOS.LIBRARY1: false
 }
 
+const ABOUT_INFO: = {
+	"Credits": preload("res://resource/about_info/credits.tres"),
+	"Privacy": preload("res://resource/about_info/privacy.tres"),
+	"Use": preload("res://resource/about_info/use.tres")
+}
+
+var styles = {
+	"animated_button": {
+		"normal": preload("res://resource/styles/animated_button/normal.tres"),
+		"hover": preload("res://resource/styles/animated_button/hover.tres"),
+		"pressed": preload("res://resource/styles/animated_button/pressed.tres"),
+		"focus": preload("res://resource/styles/animated_button/focus.tres")
+	}
+}
+
 var player_name
 var stress_level: int = 0
 
-
-
-var game_variables_dict: Dictionary = {}
-enum GAME_VARIABLES {
-	CORRECT_ANSWER,
-	MEDIUM_ANSWER,
-	BAD_ANSWER
+var scenario_variables := {
+	"Classroom1": {
+		stress_level: 0,
+		already_skipped: false
+	}
 }
 
 var game_sessions: Array [Dictionary]
-
 
 enum {
 	CHARACTER,
@@ -65,8 +85,6 @@ var dialogue_textures: Dictionary = {
 func _ready() -> void:
 	player_name_changed.connect(_on_player_name_changed)
 	_on_player_name_changed()
-	for game_variable in GAME_VARIABLES:
-		game_variables_dict[game_variable] = 0
 	
 func get_scenarios_resources() -> Array[CarouselScenarioRes]:
 	var array: Array[CarouselScenarioRes] = []
@@ -77,8 +95,3 @@ func get_scenarios_resources() -> Array[CarouselScenarioRes]:
 
 func _on_player_name_changed():
 	player_name = ConfigFileHandler.load_config_settings("settings").get("useralias")
-
-func manage_variable(variable: String, amount: int):
-	if game_variables_dict.has(variable):
-		game_variables_dict[variable] += amount
-		print(game_variables_dict[variable])

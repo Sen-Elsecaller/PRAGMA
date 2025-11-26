@@ -8,22 +8,13 @@ extends ScreenState
 
 # ========== INICIALIZACIÓN ==========
 
-func Enter():
-	Utils.tween_slide_in(self, Vector2.DOWN)
-	visible = true
-
-func Exit():
-	var tween = Utils.tween_slide_out(self, Vector2.DOWN)
-	tween.tween_callback(hide)
-
-
 func _ready() -> void:
-	register_node.visible = false
-	login_node.visible = true
-	
-	await get_tree().process_frame
+	visible = true
+	var tween = Utils.tween_scale_bounce_out(self)
 	_setup_navigation()
-
+	register_node.visible = true
+	login_node.visible = false
+	
 func _setup_navigation() -> void:
 	# Conectar señales de navegación desde Login
 	if login_node.has_signal("go_to_register"):
@@ -54,4 +45,9 @@ func _on_show_login() -> void:
 
 
 func _on_close_menu_pressed() -> void:
-	change_screen.emit(ScreenStateMachine.SCREENS.SETTINGS)
+	register_node.visible = true
+	login_node.visible = false
+	var tween = Utils.tween_scale_bounce_in(self)
+	tween.tween_callback(queue_free)
+	if Utils.onboard_created:
+		Utils.onboard_exited.emit()

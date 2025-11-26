@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AboutInfo" load_steps=2 format=3 uid="uid://comomh3yqrx8r"]
+
+[ext_resource type="Script" uid="uid://c621otlqsqhh4" path="res://resource/about_info.gd" id="1_vqj34"]
+
+[resource]
+script = ExtResource("1_vqj34")
+section_name = "Politicas de Privacidad"
+description = "res://assets/txt/privacy.txt"
+metadata/_custom_type_script = "uid://c621otlqsqhh4"

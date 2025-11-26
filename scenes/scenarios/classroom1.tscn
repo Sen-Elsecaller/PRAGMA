@@ -1,10 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://bysqqqtqyvu0"]
+[gd_scene load_steps=18 format=3 uid="uid://bysqqqtqyvu0"]
 
 [ext_resource type="PackedScene" uid="uid://co1ratfpk0ju8" path="res://scenes/ui/game_ui.tscn" id="1_452pb"]
 [ext_resource type="Script" uid="uid://7pwdv6cgu6hg" path="res://scripts/scenarios/classroom_1.gd" id="1_rw1mm"]
 [ext_resource type="Theme" uid="uid://5lacq73qg3pw" path="res://resource/styles/theme.tres" id="1_vcs8o"]
 [ext_resource type="PackedScene" uid="uid://4cyajmpvya0t" path="res://scenes/dialogue_box.tscn" id="2_b0gqd"]
-[ext_resource type="Texture2D" uid="uid://spxac1w5vhjy" path="res://assets/backgrounds/classroom1.png" id="3_5h52x"]
+[ext_resource type="Texture2D" uid="uid://spxac1w5vhjy" path="res://assets/backgrounds/classroom_chair.png" id="3_5h52x"]
 [ext_resource type="Script" uid="uid://ckqr52cu5nflw" path="res://scripts/characters.gd" id="4_cpsr0"]
 [ext_resource type="SpriteFrames" uid="uid://cch124g5y3qju" path="res://resource/animations/alumno1.tres" id="5_uiipq"]
 [ext_resource type="SpriteFrames" uid="uid://ekdgihaau7av" path="res://resource/animations/profesor_felipe.tres" id="6_ama0l"]
@@ -15,8 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://c2k5sqx0lswhk" path="res://scenes/ui/outcome_text.tscn" id="13_ookd1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cpsr0"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vcs8o"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wx3lt"]
 
@@ -43,6 +41,7 @@ theme = ExtResource("1_vcs8o")
 script = ExtResource("1_rw1mm")
 
 [node name="Background" type="TextureRect" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,6 +54,18 @@ grow_vertical = 2
 texture = ExtResource("3_5h52x")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="FadeEffect" type="ColorRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.18039216, 0.1254902, 0.20392157, 1)
 
 [node name="Characters" type="Node2D" parent="."]
 position = Vector2(367, 333)
@@ -100,7 +111,6 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="Frame" type="TextureRect" parent="Images"]
-material = SubResource("ShaderMaterial_vcs8o")
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("7_ookd1")

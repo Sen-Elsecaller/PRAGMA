@@ -2,19 +2,19 @@ class_name ScreenStateMachine extends Node
 
 
 # Enumeración que define los identificadores de las pestañas principales.
-enum SCREENS {MAIN, SCENARIOSELECTOR, SETTINGS, LOGIN, NOTES}
+enum SCREENS {MAIN, SCENARIOSELECTOR, SETTINGS, NOTES}
 
 # Diccionario que asocia cada tipo de screen con su nodo correspondiente dentro del árbol de la escena.
 @onready var screens: Dictionary = {
 	SCREENS.MAIN: $MainMenu,
 	SCREENS.SCENARIOSELECTOR: $ScenarioSelector,
 	SCREENS.SETTINGS: $Settings,
-	SCREENS.LOGIN: $login_controller,
 	SCREENS.NOTES: $Notes
 }
 
 # Referencia al screen actualmente activo.
 var current_screen: ScreenState
+var last_screen: SCREENS
 
 # Tab inicial que se mostrará al cargar la escena.
 @export var initial_screen: SCREENS = SCREENS.MAIN
@@ -39,7 +39,7 @@ func _ready():
 			screen.change_screen.connect(change_screen)
 	
 	# Activa el screen inicial al iniciar la escena.
-	screens[initial_screen].Enter()
+	screens[initial_screen].Enter(Vector2.ZERO)
 	current_screen = screens[initial_screen]
 	
 # Función destinada a apilar un nuevo screen sobre el actual (no implementada).
@@ -70,6 +70,20 @@ func get_topmost_screen() -> ScreenState:
 	
 # Cambia de una screen a otra, ejecutando la animación de salida de la actual y la de entrada de la nueva.
 func change_screen(screen: SCREENS):
+	var enter_vector: Vector2 = _get_enter_direction(current_screen)
 	current_screen.Exit()
 	current_screen = screens[screen]
-	screens[screen].Enter()
+	screens[screen].Enter(enter_vector)
+
+func _get_enter_direction(screen: ScreenState) -> Vector2:
+	match screen.name:
+		"ScenarioSelector":
+			return Vector2.DOWN
+		"Login":
+			return Vector2.ZERO
+		"Notes":
+			return Vector2.RIGHT
+		"Settings":
+			return Vector2.UP
+		_:
+			return Vector2.ZERO

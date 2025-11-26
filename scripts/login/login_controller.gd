@@ -12,8 +12,8 @@ signal validation_success(message: String)
 @onready var user_input: LineEdit = %UserInputLogin
 @onready var password_input: LineEdit = %PasswordInputLogin
 @onready var validation_label: Label = %ValidationLabelLogin
-@onready var login_button: TextureButton = %LoginButtonLogin
-@onready var register_button: TextureButton = %RegisterButtonLogin
+@onready var login_button: BaseButton = %LoginButtonLogin
+@onready var register_button: BaseButton = %RegisterButtonLogin
 
 # ========== INSTANCIA LOCAL DE CLIENT ==========
 var client = null

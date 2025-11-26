@@ -1,0 +1,143 @@
+[font_size=24][b]1. ACEPTACIÓN DE LOS TÉRMINOS[/b][/font_size]
+
+Al acceder y usar PRAGMA, aceptas estar sujeto a estos Términos de Uso. Si no estás de acuerdo con estos términos, no uses la aplicación.
+
+[center]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/center]
+
+[font_size=24][b]2. DESCRIPCIÓN DEL SERVICIO[/b][/font_size]
+
+PRAGMA es un simulador educativo de ambientes académicos diseñado para ayudar a estudiantes universitarios a practicar y desarrollar habilidades sociales en entornos controlados.
+
+[center]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/center]
+
+[font_size=24][b]3. PROPIEDAD INTELECTUAL[/b][/font_size]
+
+[font_size=20][b]3.1 Derechos de PRAGMA[/b][/font_size]
+
+Todos los derechos, títulos e intereses sobre PRAGMA, incluyendo pero no limitado a:
+
+[indent]• Código fuente y arquitectura de software
+• Diseño de interfaz y gráficos
+• Escenarios, diálogos y contenido narrativo
+• Mecánicas de juego y sistemas de retroalimentación
+• Marca, logotipo y nombre PRAGMA[/indent]
+
+Son propiedad exclusiva de Tomas Benjamin Sepulveda Oñate y Juan Sebastian Hernandez Rincon y están protegidos por leyes de propiedad intelectual.
+
+[font_size=20][b]3.2 Licencia de Uso[/b][/font_size]
+
+Te otorgamos una licencia personal, no exclusiva, no transferible y revocable para usar PRAGMA únicamente para fines educativos y de desarrollo personal.
+
+[font_size=20][b]3.3 Restricciones[/b][/font_size]
+
+No puedes:
+
+[indent]• Copiar, modificar o crear trabajos derivados de PRAGMA
+• Realizar ingeniería inversa, descompilar o desensamblar la aplicación
+• Revender, distribuir o sublicenciar el acceso a PRAGMA
+• Usar PRAGMA para fines comerciales sin autorización previa
+• Extraer o copiar contenido de los escenarios para uso externo[/indent]
+
+[center]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/center]
+
+[font_size=24][b]4. USO ACEPTABLE[/b][/font_size]
+
+Al usar PRAGMA, te comprometes a:
+
+[indent]• Usar la aplicación únicamente para su propósito educativo previsto
+• No intentar acceder a cuentas de otros usuarios
+• No intentar interferir con el funcionamiento normal de la aplicación
+• No usar métodos automatizados (bots, scripts) para interactuar con PRAGMA
+• No compartir tu cuenta con terceros
+• Proporcionar información veraz si decides vincular tu cuenta con una institución[/indent]
+
+[center]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/center]
+
+[font_size=24][b]5. CONTENIDO DEL USUARIO[/b][/font_size]
+
+[font_size=20][b]5.1 Tus Notas y Datos[/b][/font_size]
+
+Las notas personales que creas dentro de PRAGMA son de tu propiedad. Conservas todos los derechos sobre el contenido que generas.
+
+[font_size=20][b]5.2 Licencia Limitada[/b][/font_size]
+
+Nos otorgas una licencia limitada para almacenar y procesar tus notas con el único propósito de proporcionarte el servicio de PRAGMA y, si has vinculado tu cuenta, compartirlas con tu institución académica según nuestra Política de Privacidad.
+
+[center]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/center]
+
+[font_size=24][b]6. DISPONIBILIDAD DEL SERVICIO[/b][/font_size]
+
+PRAGMA se proporciona "tal cual" y "según disponibilidad". No garantizamos que:
+
+[indent]• La aplicación estará disponible en todo momento sin interrupciones
+• Todos los errores serán corregidos
+• El servicio cumplirá con tus expectativas específicas[/indent]
+
+Nos reservamos el derecho de modificar, suspender o discontinuar PRAGMA (o cualquier parte del mismo) en cualquier momento, con o sin previo aviso.
+
+[center]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/center]
+
+[font_size=24][b]7. LIMITACIÓN DE RESPONSABILIDAD[/b][/font_size]
+
+[font_size=20][b]7.1 Uso Educativo[/b][/font_size]
+
+PRAGMA es una herramienta educativa y de práctica. No reemplaza:
+
+[indent]• Asesoramiento psicológico profesional
+• Terapia o tratamiento médico
+• Orientación profesional certificada[/indent]
+
+[font_size=20][b]7.2 Exclusión de Garantías[/b][/font_size]
+
+En la medida máxima permitida por la ley:
+
+[indent]• No somos responsables por daños directos, indirectos, incidentales o consecuentes derivados del uso de PRAGMA
+• No garantizamos resultados específicos en el desarrollo de habilidades sociales
+• No somos responsables por decisiones tomadas basándose en la retroalimentación de PRAGMA
+• No somos responsables por pérdida de datos, aunque haremos esfuerzos razonables para protegerlos[/indent]
+
+[center]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/center]
+
+[font_size=24][b]8. TERMINACIÓN[/b][/font_size]
+
+[font_size=20][b]8.1 Por tu Parte[/b][/font_size]
+
+Puedes dejar de usar PRAGMA y eliminar tu cuenta en cualquier momento desde la configuración de la aplicación.
+
+[font_size=20][b]8.2 Por Nuestra Parte[/b][/font_size]
+
+Podemos suspender o terminar tu acceso a PRAGMA si:
+
+[indent]• Violas estos Términos de Uso
+• Usas la aplicación de manera que pueda causar daño a otros usuarios o a la plataforma
+• Lo requerimos por razones legales o regulatorias[/indent]
+
+[center]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/center]
+
+[font_size=24][b]9. MODIFICACIONES A LOS TÉRMINOS[/b][/font_size]
+
+Podemos actualizar estos Términos de Uso ocasionalmente. Te notificaremos de cambios significativos mediante:
+
+[indent]• Notificación dentro de la aplicación
+• Correo electrónico (si nos lo has proporcionado)[/indent]
+
+El uso continuado de PRAGMA después de los cambios constituye tu aceptación de los nuevos términos.
+
+[center]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/center]
+
+[font_size=24][b]10. LEY APLICABLE[/b][/font_size]
+
+Estos términos se rigen por las leyes de Chile.
+
+[center]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/center]
+
+[font_size=24][b]11. CONTACTO[/b][/font_size]
+
+Si tienes preguntas sobre estos Términos de Uso:
+
+Email: tomas.sepulveda11@inacapmail.cl
+
+[center]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/center]
+Última actualización: 25/11/2025
+Desarrolladores: Tomas Benjamin Sepulveda Oñate y Juan Sebastian Hernandez Rincon
+Contacto: tomas.sepulveda11@inacapmail.cl

@@ -15,6 +15,7 @@ func _on_choice_changed(choice: PlayerChoice) -> void:
 func _on_back_to_menu_pressed() -> void:
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_BACK)
 	Utils.game_controller.return_to_main_menu()
+	AudioManager.toggle_bgm_music()
 
 func _on_add_to_pressed() -> void:
 	ConfigFileHandler.add_note(carousel_container._get_current_player_choice().to_dict())

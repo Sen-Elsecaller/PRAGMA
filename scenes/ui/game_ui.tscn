@@ -1,16 +1,18 @@
-[gd_scene load_steps=22 format=3 uid="uid://co1ratfpk0ju8"]
+[gd_scene load_steps=27 format=3 uid="uid://co1ratfpk0ju8"]
 
 [ext_resource type="Script" uid="uid://cpiee8jsiyuf2" path="res://scripts/ui/game_ui.gd" id="1_bma8u"]
 [ext_resource type="Theme" uid="uid://bfqpykpplmek7" path="res://resource/styles/game_ui.tres" id="1_fftnl"]
 [ext_resource type="Texture2D" uid="uid://bmjblvxw6qv31" path="res://assets/nueva_interfaz/Icon_Menu.svg" id="3_bxde6"]
 [ext_resource type="Texture2D" uid="uid://b4tt0xg0gfn12" path="res://assets/nueva_interfaz/Icon_Menu_Activado.svg" id="4_opxtl"]
 [ext_resource type="Texture2D" uid="uid://ba7b5v2y8fvxu" path="res://assets/nueva_interfaz/Fondo_Opciones.svg" id="5_crnce"]
+[ext_resource type="Script" uid="uid://djl4knccepaso" path="res://scripts/nodes/animated_texture_button.gd" id="5_opxtl"]
 [ext_resource type="Texture2D" uid="uid://c75vyykpuo21l" path="res://assets/nueva_interfaz/Boton_Menu_Opciones.svg" id="7_bxde6"]
 [ext_resource type="FontFile" uid="uid://oha0sxnndksa" path="res://assets/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf" id="8_bxde6"]
 [ext_resource type="Texture2D" uid="uid://csf8i8nbxw1n6" path="res://assets/nueva_interfaz/Boton_Menu_Opciones_Activado.svg" id="8_opxtl"]
 [ext_resource type="Texture2D" uid="uid://cqut15hl54bqu" path="res://assets/nueva_interfaz/Icon_Cerrar.svg" id="9_oqj4c"]
 [ext_resource type="Texture2D" uid="uid://ceqojpwdxwff8" path="res://assets/nueva_interfaz/Icon_Cerrar_Activado.svg" id="10_pbku6"]
 [ext_resource type="Texture2D" uid="uid://d1j8jho5cgwcc" path="res://assets/nueva_interfaz/Fondo_Chat.svg" id="11_i3ans"]
+[ext_resource type="Theme" uid="uid://ckm5gw1dv6pnl" path="res://resource/styles/settings.tres" id="13_crnce"]
 
 [sub_resource type="FontVariation" id="FontVariation_opxtl"]
 
@@ -19,6 +21,9 @@
 [sub_resource type="FontVariation" id="FontVariation_x0n6o"]
 
 [sub_resource type="FontVariation" id="FontVariation_aq72h"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_x0n6o"]
+color = Color(0, 0, 0, 0)
 
 [sub_resource type="Animation" id="Animation_v1bdg"]
 length = 0.001
@@ -53,6 +58,18 @@ tracks/2/path = NodePath("GameMenu/DialogueHistoryMenu:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(522, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameMenu/SettingsMenu:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -171,13 +188,71 @@ tracks/1/keys = {
 "values": [Vector2(522, 0), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_crnce"]
+resource_name = "close_settings_menu"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameMenu/OptionsMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(522, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameMenu/SettingsMenu:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(522, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_x0n6o"]
+resource_name = "open_settings_menu"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameMenu/OptionsMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(522, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameMenu/SettingsMenu:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(522, 0), Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qrkc0"]
 _data = {
 &"RESET": SubResource("Animation_v1bdg"),
 &"close_dialogue_history": SubResource("Animation_fftnl"),
 &"close_game_menu": SubResource("Animation_fct72"),
+&"close_settings_menu": SubResource("Animation_crnce"),
 &"open_dialogue_history": SubResource("Animation_bxde6"),
-&"open_game_menu": SubResource("Animation_ru5ln")
+&"open_game_menu": SubResource("Animation_ru5ln"),
+&"open_settings_menu": SubResource("Animation_x0n6o")
 }
 
 [node name="GameUI" type="Control"]
@@ -191,7 +266,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 8
 mouse_filter = 2
-theme = ExtResource("1_fftnl")
 script = ExtResource("1_bma8u")
 
 [node name="GameMenu" type="Control" parent="."]
@@ -226,6 +300,8 @@ texture_normal = ExtResource("3_bxde6")
 texture_pressed = ExtResource("4_opxtl")
 ignore_texture_size = true
 stretch_mode = 5
+script = ExtResource("5_opxtl")
+metadata/_custom_type_script = "uid://djl4knccepaso"
 
 [node name="OptionsMenu" type="MarginContainer" parent="GameMenu"]
 layout_mode = 1
@@ -233,9 +309,10 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 522.0
-offset_right = 521.99915
+offset_right = 521.999
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_fftnl")
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -278,6 +355,8 @@ texture_normal = ExtResource("9_oqj4c")
 texture_pressed = ExtResource("10_pbku6")
 ignore_texture_size = true
 stretch_mode = 5
+script = ExtResource("5_opxtl")
+metadata/_custom_type_script = "uid://djl4knccepaso"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameMenu/OptionsMenu/MarginContainer"]
 layout_mode = 2
@@ -285,7 +364,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 12
 
-[node name="Jugabilidad" type="TextureButton" parent="GameMenu/OptionsMenu/MarginContainer/VBoxContainer"]
+[node name="Settings" type="TextureButton" parent="GameMenu/OptionsMenu/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(320, 80)
 layout_mode = 2
 size_flags_vertical = 3
@@ -293,8 +372,10 @@ texture_normal = ExtResource("7_bxde6")
 texture_pressed = ExtResource("8_opxtl")
 ignore_texture_size = true
 stretch_mode = 0
+script = ExtResource("5_opxtl")
+metadata/_custom_type_script = "uid://djl4knccepaso"
 
-[node name="Label" type="RichTextLabel" parent="GameMenu/OptionsMenu/MarginContainer/VBoxContainer/Jugabilidad"]
+[node name="Label" type="RichTextLabel" parent="GameMenu/OptionsMenu/MarginContainer/VBoxContainer/Settings"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -314,40 +395,7 @@ theme_override_fonts/bold_italics_font = SubResource("FontVariation_crnce")
 theme_override_fonts/italics_font = SubResource("FontVariation_x0n6o")
 theme_override_fonts/mono_font = SubResource("FontVariation_aq72h")
 bbcode_enabled = true
-text = "[b]Jugabilidad"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Audio" type="TextureButton" parent="GameMenu/OptionsMenu/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(320, 80)
-layout_mode = 2
-size_flags_vertical = 3
-texture_normal = ExtResource("7_bxde6")
-texture_pressed = ExtResource("8_opxtl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="Label" type="RichTextLabel" parent="GameMenu/OptionsMenu/MarginContainer/VBoxContainer/Audio"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -137.0
-offset_top = -22.5
-offset_right = 137.0
-offset_bottom = 22.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("8_bxde6")
-theme_override_fonts/bold_font = SubResource("FontVariation_opxtl")
-theme_override_fonts/bold_italics_font = SubResource("FontVariation_crnce")
-theme_override_fonts/italics_font = SubResource("FontVariation_x0n6o")
-theme_override_fonts/mono_font = SubResource("FontVariation_aq72h")
-bbcode_enabled = true
-text = "[b]Audio"
+text = "[b]Ajustes"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -359,6 +407,8 @@ texture_normal = ExtResource("7_bxde6")
 texture_pressed = ExtResource("8_opxtl")
 ignore_texture_size = true
 stretch_mode = 0
+script = ExtResource("5_opxtl")
+metadata/_custom_type_script = "uid://djl4knccepaso"
 
 [node name="Label" type="RichTextLabel" parent="GameMenu/OptionsMenu/MarginContainer/VBoxContainer/DialogueHistory"]
 layout_mode = 1
@@ -392,6 +442,8 @@ texture_normal = ExtResource("7_bxde6")
 texture_pressed = ExtResource("8_opxtl")
 ignore_texture_size = true
 stretch_mode = 0
+script = ExtResource("5_opxtl")
+metadata/_custom_type_script = "uid://djl4knccepaso"
 
 [node name="Label" type="RichTextLabel" parent="GameMenu/OptionsMenu/MarginContainer/VBoxContainer/Exit"]
 layout_mode = 1
@@ -426,6 +478,7 @@ offset_left = 522.0
 offset_right = 521.9998
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_fftnl")
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 15
@@ -471,6 +524,8 @@ texture_normal = ExtResource("9_oqj4c")
 texture_pressed = ExtResource("10_pbku6")
 ignore_texture_size = true
 stretch_mode = 5
+script = ExtResource("5_opxtl")
+metadata/_custom_type_script = "uid://djl4knccepaso"
 
 [node name="MarginContainer" type="MarginContainer" parent="GameMenu/DialogueHistoryMenu/MarginContainer"]
 layout_mode = 2
@@ -489,6 +544,124 @@ size_flags_vertical = 3
 mouse_filter = 2
 theme_override_constants/separation = 20
 
+[node name="SettingsMenu" type="MarginContainer" parent="GameMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 522.0
+offset_right = 521.9994
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="TextureRect" type="TextureRect" parent="GameMenu/SettingsMenu"]
+layout_mode = 2
+texture = ExtResource("5_crnce")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GameMenu/SettingsMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="RichTextLabel" parent="GameMenu/SettingsMenu/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme = ExtResource("1_fftnl")
+theme_override_fonts/normal_font = ExtResource("8_bxde6")
+theme_override_fonts/bold_font = SubResource("FontVariation_opxtl")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_crnce")
+theme_override_fonts/italics_font = SubResource("FontVariation_x0n6o")
+theme_override_fonts/mono_font = SubResource("FontVariation_aq72h")
+theme_override_font_sizes/bold_font_size = 34
+bbcode_enabled = true
+text = "[b]Ajustes"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseSettings" type="TextureButton" parent="GameMenu/SettingsMenu/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("9_oqj4c")
+texture_pressed = ExtResource("10_pbku6")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("5_opxtl")
+metadata/_custom_type_script = "uid://djl4knccepaso"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameMenu/SettingsMenu/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+
+[node name="MarginContainer" type="MarginContainer" parent="GameMenu/SettingsMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ConsejosHbox" type="HBoxContainer" parent="GameMenu/SettingsMenu/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="Label" type="Label" parent="GameMenu/SettingsMenu/MarginContainer/VBoxContainer/MarginContainer/ConsejosHbox"]
+layout_mode = 2
+theme = ExtResource("13_crnce")
+theme_override_font_sizes/font_size = 32
+text = "¿Consejos?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="GameMenu/SettingsMenu/MarginContainer/VBoxContainer/MarginContainer/ConsejosHbox"]
+layout_mode = 2
+icon_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="GameMenu/SettingsMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+theme_override_styles/separator = SubResource("StyleBoxLine_x0n6o")
+
+[node name="Label" type="Label" parent="GameMenu/SettingsMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("13_crnce")
+theme_override_font_sizes/font_size = 32
+text = "Musica"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="GameMenu/SettingsMenu/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 10.0
+
+[node name="HSeparator" type="HSeparator" parent="GameMenu/SettingsMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+theme_override_styles/separator = SubResource("StyleBoxLine_x0n6o")
+
+[node name="Label2" type="Label" parent="GameMenu/SettingsMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("13_crnce")
+theme_override_font_sizes/font_size = 32
+text = "Efectos de sonido"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="GameMenu/SettingsMenu/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_qrkc0")
@@ -496,6 +669,10 @@ libraries = {
 
 [connection signal="pressed" from="GameMenu/MenuButtonContainer/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="GameMenu/OptionsMenu/MarginContainer/CloseMenu" to="." method="_on_close_menu_pressed"]
+[connection signal="pressed" from="GameMenu/OptionsMenu/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="GameMenu/OptionsMenu/MarginContainer/VBoxContainer/DialogueHistory" to="." method="_on_dialogue_history_pressed"]
 [connection signal="pressed" from="GameMenu/OptionsMenu/MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="GameMenu/DialogueHistoryMenu/MarginContainer/CloseMenu" to="." method="_on_close_dialogue_history_pressed"]
+[connection signal="pressed" from="GameMenu/SettingsMenu/MarginContainer/CloseSettings" to="." method="_on_close_settings_pressed"]
+[connection signal="value_changed" from="GameMenu/SettingsMenu/MarginContainer/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="GameMenu/SettingsMenu/MarginContainer/VBoxContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]

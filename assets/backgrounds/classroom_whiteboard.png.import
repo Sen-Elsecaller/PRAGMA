@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddodst8k2e455"
-path="res://.godot/imported/classroom2.png-05e9de5206838959afb4230334f39cdd.ctex"
+path="res://.godot/imported/classroom_whiteboard.png-57b4a9a1acba97ff9f39318357a6d12a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/classroom2.png"
-dest_files=["res://.godot/imported/classroom2.png-05e9de5206838959afb4230334f39cdd.ctex"]
+source_file="res://assets/backgrounds/classroom_whiteboard.png"
+dest_files=["res://.godot/imported/classroom_whiteboard.png-57b4a9a1acba97ff9f39318357a6d12a.ctex"]
 
 [params]
 

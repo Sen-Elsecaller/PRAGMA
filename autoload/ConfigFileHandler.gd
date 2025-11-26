@@ -22,8 +22,10 @@ func _init():
 	#TODO ELIMINAR RESET save_file Y TERMINAR DE CONFIGURAR EL GUARDADO
 	#ConfigFile
 	if !FileAccess.file_exists(SETTINGS_FILE_PATH):
-		config.set_value("settings", "sound", 3)
-		config.set_value("settings", "useralias", "Gerald")
+		config.set_value("settings", "sfx_volume", 0.5)
+		config.set_value("settings", "music_volume", 0.5)
+		config.set_value("settings", "useralias", "default")
+		config.set_value("settings", "logged", false)
 		config.save(SETTINGS_FILE_PATH)
 	else:
 		config.load(SETTINGS_FILE_PATH)

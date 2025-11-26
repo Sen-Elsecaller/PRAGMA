@@ -15,9 +15,13 @@ func animate_fx(fx_name: String, property: String, duration: float = 2, ease_typ
 	match fx_name:
 		"ChromaticAberrationFX":
 			max_value = 8
+			ease_type = Tween.EASE_OUT
+			trans_type = Tween.TRANS_CUBIC
 		"ShakeFX":
 			max_value = 0.05
-	
+			ease_type = Tween.EASE_OUT
+			trans_type = Tween.TRANS_CUBIC
+			
 	var fx := post_fx.get_fx(fx_name)
 	if fx == null:
 		push_warning("Efecto %s no encontrado." % fx_name)

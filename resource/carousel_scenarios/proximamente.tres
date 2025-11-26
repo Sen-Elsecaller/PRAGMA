@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CarouselScenarioRes" load_steps=3 format=3 uid="uid://cf1b0k4th7alc"]
+
+[ext_resource type="Script" uid="uid://cmq63fqdo5u2k" path="res://resource/carousel_scenario.gd" id="1_1a7am"]
+[ext_resource type="Texture2D" uid="uid://c2v8j0q5g0f1s" path="res://assets/backgrounds/menu/center.jpg" id="1_dc35j"]
+
+[resource]
+script = ExtResource("1_1a7am")
+main_photo = ExtResource("1_dc35j")
+scenario_name = "Proximamente"
+metadata/_custom_type_script = "uid://cmq63fqdo5u2k"

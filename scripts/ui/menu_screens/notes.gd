@@ -3,7 +3,7 @@ extends ScreenState
 @onready var feedback_label: RichTextLabel = %FeedbackLabel
 @onready var carousel_container: FeedbackCarouselContainer = %CarouselContainer
 
-func Enter():
+func Enter(enter_vector: Vector2):
 	Utils.tween_slide_in(self, Vector2.LEFT)
 	visible = true
 

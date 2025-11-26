@@ -1,10 +1,16 @@
 extends Node
 
+const NOTIFICATION_SCENE = preload("res://scenes/ui/notification.tscn")
+
 var carousel_scenarios_array: Array[CarouselScenarioRes]
 var game_controller: GameController = null
 var rng: RandomNumberGenerator = null
 var balloon_instance: CanvasLayer
-const NOTIFICATION_SCENE = preload("res://scenes/ui/notification.tscn")
+var main_menu_shader = preload("uid://tjlab8kl611m")
+
+var onboard_created = false
+
+signal onboard_exited
 
 enum PivotPosition {
 	TOP_LEFT,
@@ -22,10 +28,9 @@ enum PivotPosition {
 var game_variables_dict: Dictionary = {}
 
 func _ready() -> void:
-	DialogueManager.dialogue_started.connect(_set_balloon_instance)
 	game_controller = get_node("/root/GameController")
 	rng = RandomNumberGenerator.new()
-	
+
 func show_notification(
 		message: String,
 		type: int = NotificationText.NotificationType.SUCCESS,
@@ -177,16 +182,22 @@ func tween_fade_out_simple(
 func tween_slide_in(
 	node: Node,
 	direction: Vector2,
-	duration: float = 0.12,
-	distance: float = 650
+	duration: float = 0.4,
+	distance: float = 648
 ) -> Tween:
-	var tween = node.get_tree().create_tween()
 	
+	if direction.y == 0:
+		distance = 1152
+		
+	elif direction.x == 0:
+		distance = 648
+	print(distance)
+	var tween = node.get_tree().create_tween()
 	var start_offset = direction * distance
 	var target_pos = node.position
 	
-	tween.set_ease(Tween.EASE_IN)  # ← Mismo ease
-	tween.set_trans(Tween.TRANS_SINE)   # ← Misma transición
+	tween.set_ease(Tween.EASE_IN_OUT)  # ← Mismo ease
+	tween.set_trans(Tween.TRANS_EXPO)   # ← Misma transición
 	tween.tween_property(node, "position", target_pos, duration).from(target_pos + start_offset)
 	
 	return tween
@@ -195,24 +206,35 @@ func tween_slide_in(
 func tween_slide_out(
 	node: Node,
 	direction: Vector2,
-	duration: float = 0.12,
+	duration: float = 0.4,
 	distance: float = 650
 ) -> Tween:
+	
+	if direction.y == 0:
+		distance = 1152
+		
+	elif direction.x == 0:
+		distance = 648
+	
 	var tween = node.get_tree().create_tween()
 	var initial_position = node.position
 	var end_position = node.position + (direction * distance)
 	
-	tween.set_ease(Tween.EASE_IN)  # ← Mismo ease
-	tween.set_trans(Tween.TRANS_SINE)   # ← Misma transición
+	tween.set_ease(Tween.EASE_IN_OUT)  # ← Mismo ease
+	tween.set_trans(Tween.TRANS_EXPO)   # ← Misma transición
 	tween.tween_property(node, "position", end_position, duration)
 	
 	tween.tween_callback(func(): node.position = initial_position)
 	return tween
+
+func shader_effect(effect_name: String, property: String, duration):
+	EffectsManager.animate_fx(effect_name, property, duration)
 
 func strip_bbcode(source:String) -> String:
 	var regex = RegEx.new()
 	regex.compile("\\[.+?\\]")
 	return regex.sub(source, "", true)
 
-func _set_balloon_instance(_dialogue):
-	balloon_instance = game_controller.find_child("ExampleBalloon", true, false)
+func toggle_color_main_screen():
+	var current_state = main_menu_shader.get_shader_parameter("enabled")
+	main_menu_shader.set_shader_parameter("enabled", not current_state)

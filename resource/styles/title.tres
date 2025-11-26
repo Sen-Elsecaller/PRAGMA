@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cgj5r52tn5rff"]
+
+[ext_resource type="FontFile" uid="uid://di6usrmxba8gm" path="res://assets/fonts/FingerPaint-Regular.ttf" id="1_cluqi"]
+
+[resource]
+Label/colors/font_color = Color(0.95686275, 0.8235294, 0.54509807, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0.14614367, 0.09654691, 0.16597766, 1)
+Label/constants/shadow_offset_x = 4
+Label/constants/shadow_offset_y = 4
+Label/constants/shadow_outline_size = 8
+Label/font_sizes/font_size = 85
+Label/fonts/font = ExtResource("1_cluqi")

@@ -1,0 +1,245 @@
+[gd_scene load_steps=13 format=3 uid="uid://880mdok80m4r"]
+
+[ext_resource type="Script" uid="uid://dqch3uakw3hll" path="res://scripts/about.gd" id="1_mgwij"]
+[ext_resource type="Texture2D" uid="uid://c75vyykpuo21l" path="res://assets/nueva_interfaz/Boton_Menu_Opciones.svg" id="1_ylmpx"]
+[ext_resource type="Texture2D" uid="uid://csf8i8nbxw1n6" path="res://assets/nueva_interfaz/Boton_Menu_Opciones_Activado.svg" id="2_mgwij"]
+[ext_resource type="Script" uid="uid://djl4knccepaso" path="res://scripts/nodes/animated_texture_button.gd" id="3_e46dr"]
+[ext_resource type="Theme" uid="uid://ckm5gw1dv6pnl" path="res://resource/styles/settings.tres" id="4_m04wf"]
+[ext_resource type="Script" uid="uid://rii2phyuhpdi" path="res://scripts/auto_size_label.gd" id="5_wdjd7"]
+[ext_resource type="FontFile" uid="uid://oha0sxnndksa" path="res://assets/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf" id="6_r8dfx"]
+[ext_resource type="Texture2D" uid="uid://cqut15hl54bqu" path="res://assets/nueva_interfaz/Icon_Cerrar.svg" id="8_m04wf"]
+[ext_resource type="Script" uid="uid://b7c8g1uo4jfaq" path="res://scripts/nodes/animated_button.gd" id="9_wdjd7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0fih"]
+bg_color = Color(1, 0.83137256, 0.5294118, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_tirfi"]
+grow_begin = -80.0
+grow_end = -80.0
+thickness = 2
+vertical = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1mcep"]
+bg_color = Color(1, 0.89393574, 0.71036, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="About" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 324)
+script = ExtResource("1_mgwij")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 40
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r0fih")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Credits" type="TextureButton" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(240, 50)
+layout_mode = 2
+texture_normal = ExtResource("1_ylmpx")
+texture_pressed = ExtResource("2_mgwij")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_e46dr")
+metadata/_custom_type_script = "uid://djl4knccepaso"
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Credits"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.5
+offset_top = -17.5
+offset_right = 146.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_m04wf")
+theme_override_font_sizes/font_size = 26
+text = "Creditos"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_wdjd7")
+max_font_size = 32
+
+[node name="Privacy" type="TextureButton" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(240, 50)
+layout_mode = 2
+texture_normal = ExtResource("1_ylmpx")
+texture_pressed = ExtResource("2_mgwij")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_e46dr")
+metadata/_custom_type_script = "uid://djl4knccepaso"
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Privacy"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.5
+offset_top = -17.5
+offset_right = 146.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_m04wf")
+theme_override_font_sizes/font_size = 16
+text = "Politicas de Privacidad"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_wdjd7")
+max_font_size = 30
+
+[node name="Use" type="TextureButton" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(240, 50)
+layout_mode = 2
+texture_normal = ExtResource("1_ylmpx")
+texture_pressed = ExtResource("2_mgwij")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_e46dr")
+metadata/_custom_type_script = "uid://djl4knccepaso"
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Use"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.5
+offset_top = -17.5
+offset_right = 146.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_m04wf")
+theme_override_font_sizes/font_size = 24
+text = "Terminos de uso"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_wdjd7")
+min_font_size = 20
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_tirfi")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_m04wf")
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("6_r8dfx")
+theme_override_font_sizes/font_size = 34
+text = "Politicas de privacidad"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Panel" type="Panel" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1mcep")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Text" type="RichTextLabel" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[url]https://www.instagram.com/mrkeink/[/url]"
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 30
+
+[node name="CloseMenu" type="Button" parent="MarginContainer2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+icon = ExtResource("8_m04wf")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("9_wdjd7")
+metadata/_custom_type_script = "uid://b7c8g1uo4jfaq"
+
+[connection signal="pressed" from="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Credits" to="." method="_on_about_pressed"]
+[connection signal="pressed" from="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Privacy" to="." method="_on_privacy_pressed"]
+[connection signal="pressed" from="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Use" to="." method="_on_use_pressed"]
+[connection signal="meta_clicked" from="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/MarginContainer/Text" to="." method="_on_text_meta_clicked"]
+[connection signal="pressed" from="MarginContainer2/CloseMenu" to="." method="_on_close_menu_pressed"]

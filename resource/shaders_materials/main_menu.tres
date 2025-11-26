@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://tjlab8kl611m"]
+
+[ext_resource type="Shader" uid="uid://c3wtvf3ud7vqr" path="res://resource/shaders/main_menu.gdshader" id="1_3yh0s"]
+[ext_resource type="Gradient" uid="uid://misedop2udr0" path="res://resource/blue_gradient.tres" id="2_1whvg"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r06k5"]
+gradient = ExtResource("2_1whvg")
+width = 512
+height = 512
+
+[resource]
+shader = ExtResource("1_3yh0s")
+shader_parameter/gradient = SubResource("GradientTexture2D_r06k5")
+shader_parameter/enabled = false

@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bk0ok7dhbcruf"]
+[gd_scene load_steps=11 format=3 uid="uid://bk0ok7dhbcruf"]
 
 [ext_resource type="Script" uid="uid://crub426w2dcig" path="res://scripts/ui/feedback_screen.gd" id="1_knyh8"]
 [ext_resource type="Texture2D" uid="uid://d1j8jho5cgwcc" path="res://assets/nueva_interfaz/Fondo_Chat.svg" id="2_hutip"]
 [ext_resource type="Script" uid="uid://bghjavy0eo3f7" path="res://scripts/ui/vertical_carousel_container.gd" id="2_k7o2x"]
 [ext_resource type="Script" uid="uid://2cewafsho1n5" path="res://scripts/ui/vertical_carousel_node.gd" id="3_phfix"]
+[ext_resource type="Theme" uid="uid://c0jcpjda3cxye" path="res://resource/styles/feedback_text.tres" id="4_1iffo"]
 [ext_resource type="Texture2D" uid="uid://c75vyykpuo21l" path="res://assets/nueva_interfaz/Boton_Menu_Opciones.svg" id="4_d2ehq"]
-[ext_resource type="Texture2D" uid="uid://csf8i8nbxw1n6" path="res://assets/nueva_interfaz/Boton_Menu_Opciones_Activado.svg" id="5_1iffo"]
 [ext_resource type="Texture2D" uid="uid://ba7b5v2y8fvxu" path="res://assets/nueva_interfaz/Fondo_Opciones.svg" id="5_d2ehq"]
+[ext_resource type="Script" uid="uid://b7c8g1uo4jfaq" path="res://scripts/nodes/animated_button.gd" id="6_myy66"]
+[ext_resource type="Theme" uid="uid://ckm5gw1dv6pnl" path="res://resource/styles/settings.tres" id="7_myy66"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2ehq"]
 bg_color = Color(0.1764706, 0.12156863, 0.20392157, 1)
@@ -78,70 +80,61 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 18
-theme_override_font_sizes/bold_font_size = 18
-theme_override_font_sizes/bold_italics_font_size = 18
-theme_override_font_sizes/italics_font_size = 18
-theme_override_font_sizes/mono_font_size = 18
+theme = ExtResource("4_1iffo")
 bbcode_enabled = true
 text = "HOLA QUE TAL SOY UNA RETROALIMENTACION"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AddTo" type="TextureButton" parent="MarginContainer/HBoxContainer/Menu"]
+[node name="AddTo" type="Button" parent="MarginContainer/HBoxContainer/Menu"]
 custom_minimum_size = Vector2(450, 90)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("4_d2ehq")
-texture_pressed = ExtResource("5_1iffo")
-ignore_texture_size = true
-stretch_mode = 5
+icon = ExtResource("4_d2ehq")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("6_myy66")
+metadata/_custom_type_script = "uid://b7c8g1uo4jfaq"
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Menu/AddTo"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
+theme = ExtResource("7_myy66")
+theme_override_font_sizes/font_size = 32
 text = "Guardar Nota"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="BackToMenu" type="TextureButton" parent="MarginContainer/HBoxContainer/Menu"]
+[node name="BackToMenu" type="Button" parent="MarginContainer/HBoxContainer/Menu"]
 custom_minimum_size = Vector2(450, 90)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("4_d2ehq")
-texture_pressed = ExtResource("5_1iffo")
-ignore_texture_size = true
-stretch_mode = 5
+icon = ExtResource("4_d2ehq")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("6_myy66")
+metadata/_custom_type_script = "uid://b7c8g1uo4jfaq"
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Menu/BackToMenu"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
+theme = ExtResource("7_myy66")
+theme_override_font_sizes/font_size = 32
 text = "Volver al menu principal"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CarouselContainer" type="Node2D" parent="."]
 unique_name_in_owner = true

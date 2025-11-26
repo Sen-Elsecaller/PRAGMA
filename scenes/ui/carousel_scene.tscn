@@ -1,12 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgnkpu453b2sd"]
+[gd_scene load_steps=9 format=3 uid="uid://bgnkpu453b2sd"]
 
 [ext_resource type="Script" uid="uid://tg645x7je8px" path="res://scripts/ui/carousel_scene.gd" id="1_6bwx1"]
 [ext_resource type="Texture2D" uid="uid://c4dms5ypmvhvm" path="res://assets/cozy icons/Assets/Backgound/Background_pink.png" id="1_afp2l"]
 [ext_resource type="Texture2D" uid="uid://cxeig1v1i4qa3" path="res://assets/nueva_interfaz/Icon_Info.svg" id="2_025h6"]
 [ext_resource type="Texture2D" uid="uid://1w08ofriih81" path="res://assets/nueva_interfaz/Icon_Info_Activado.svg" id="3_5f6f4"]
-[ext_resource type="Texture2D" uid="uid://coe1u412nsc0u" path="res://assets/cozy icons/Assets/Menu Buttons/Clear Menu Buttons/Grass-Buttons-arrow.png" id="5_3rjxu"]
-[ext_resource type="Texture2D" uid="uid://b5j6i8bduco51" path="res://assets/cozy icons/Assets/Menu Buttons/Clear Menu Buttons/Pressed/Buttons-pressed-arrow.png" id="6_025h6"]
+[ext_resource type="Script" uid="uid://djl4knccepaso" path="res://scripts/nodes/animated_texture_button.gd" id="4_025h6"]
+[ext_resource type="Script" uid="uid://b7c8g1uo4jfaq" path="res://scripts/nodes/animated_button.gd" id="6_5f6f4"]
 [ext_resource type="Theme" uid="uid://bfqpykpplmek7" path="res://resource/styles/game_ui.tres" id="7_025h6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2b7sn"]
+bg_color = Color(1, 0.83137256, 0.5294118, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.9182749, 0.6673438, 0, 1)
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [node name="CarouselScene" type="MarginContainer"]
 custom_minimum_size = Vector2(500, 360)
@@ -28,12 +41,15 @@ layout_mode = 2
 alignment = 2
 
 [node name="InfoButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture_normal = ExtResource("2_025h6")
 texture_pressed = ExtResource("3_5f6f4")
 ignore_texture_size = true
 stretch_mode = 5
+script = ExtResource("4_025h6")
+metadata/_custom_type_script = "uid://djl4knccepaso"
 
 [node name="Photo" type="TextureRect" parent="VBoxContainer"]
 unique_name_in_owner = true
@@ -42,24 +58,35 @@ texture = ExtResource("1_afp2l")
 expand_mode = 5
 stretch_mode = 4
 
-[node name="PlayButton" type="TextureButton" parent="VBoxContainer/Photo"]
-custom_minimum_size = Vector2(40, 40)
+[node name="PlayButton" type="Button" parent="VBoxContainer/Photo"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 60)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("5_3rjxu")
-texture_pressed = ExtResource("6_025h6")
-ignore_texture_size = true
-stretch_mode = 5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_2b7sn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2b7sn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2b7sn")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_2b7sn")
+theme_override_styles/focus = SubResource("StyleBoxFlat_2b7sn")
+text = " Comenzar "
+script = ExtResource("6_5f6f4")
+metadata/_custom_type_script = "uid://b7c8g1uo4jfaq"
 
 [node name="ScenarioName" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
@@ -72,4 +99,5 @@ theme_override_constants/shadow_offset_y = 2
 text = "Placeholder"
 horizontal_alignment = 1
 
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/InfoButton" to="." method="_on_info_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Photo/PlayButton" to="." method="_on_play_button_pressed"]

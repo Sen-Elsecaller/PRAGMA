@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://p00axi4vljc6"]
+
+[ext_resource type="Script" uid="uid://cjtni7y10t1" path="res://resource/sound_effect.gd" id="1_8ltyc"]
+[ext_resource type="AudioStream" uid="uid://saqtp1dnkuw2" path="res://assets/sfx/UI/Modern4.wav" id="2_ncx7a"]
+
+[resource]
+script = ExtResource("1_8ltyc")
+type = 10
+sound_effect = ExtResource("2_ncx7a")
+volume = -7.5
+metadata/_custom_type_script = "uid://cjtni7y10t1"

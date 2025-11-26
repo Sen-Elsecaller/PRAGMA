@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c6g3jqxtqcjye"]
+[gd_scene load_steps=19 format=3 uid="uid://c6g3jqxtqcjye"]
 
 [ext_resource type="Script" uid="uid://scdror3bmdgr" path="res://autoload/audio_manager.gd" id="1_u6vuv"]
 [ext_resource type="Script" uid="uid://cjtni7y10t1" path="res://resource/sound_effect.gd" id="2_0kjgv"]
@@ -10,12 +10,24 @@
 [ext_resource type="Resource" uid="uid://dpiad1tlqebxx" path="res://resource/SoundEffects/ui_back.tres" id="8_q0reb"]
 [ext_resource type="Resource" uid="uid://wv2eowm0yec2" path="res://resource/SoundEffects/ui_select.tres" id="9_iyo06"]
 [ext_resource type="Resource" uid="uid://bpp6wnskyahim" path="res://resource/SoundEffects/speaking.tres" id="10_eg3rh"]
+[ext_resource type="Resource" uid="uid://dr46642jl3maq" path="res://resource/SoundEffects/ui_item1.tres" id="11_4ofsv"]
+[ext_resource type="Resource" uid="uid://cd74pbkxtap3s" path="res://resource/SoundEffects/ui_item2.tres" id="12_lodk7"]
+[ext_resource type="Resource" uid="uid://d17x86rrn8ux7" path="res://resource/SoundEffects/ui_item3.tres" id="13_bojae"]
+[ext_resource type="Resource" uid="uid://p00axi4vljc6" path="res://resource/SoundEffects/ui_item4.tres" id="14_he1cp"]
+[ext_resource type="Resource" uid="uid://cm14d2nvi2xcl" path="res://resource/SoundEffects/ui_item5.tres" id="15_fhhxt"]
+[ext_resource type="Resource" uid="uid://hksdrqxkkypo" path="res://resource/SoundEffects/laugh_short.tres" id="16_bojae"]
+[ext_resource type="AudioStream" uid="uid://d3tci8e86qo21" path="res://assets/music/4am - Lucas Rasente.wav" id="16_lodk7"]
 
-[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_u6vuv"]
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_bojae"]
+shuffle = true
+stream_count = 1
+stream_0 = ExtResource("16_lodk7")
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_u6vuv")
-sound_effects = Array[ExtResource("2_0kjgv")]([ExtResource("3_5l778"), ExtResource("4_f0pwr"), ExtResource("5_kipf1"), ExtResource("6_pp21f"), ExtResource("7_eg3rh"), ExtResource("8_q0reb"), ExtResource("9_iyo06"), ExtResource("10_eg3rh")])
+sound_effects = Array[ExtResource("2_0kjgv")]([ExtResource("3_5l778"), ExtResource("4_f0pwr"), ExtResource("5_kipf1"), ExtResource("6_pp21f"), ExtResource("7_eg3rh"), ExtResource("8_q0reb"), ExtResource("9_iyo06"), ExtResource("10_eg3rh"), ExtResource("11_4ofsv"), ExtResource("12_lodk7"), ExtResource("13_bojae"), ExtResource("14_he1cp"), ExtResource("15_fhhxt"), ExtResource("16_bojae")])
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamInteractive_u6vuv")
+stream = SubResource("AudioStreamPlaylist_bojae")
+volume_db = -10.0
+bus = &"Music"

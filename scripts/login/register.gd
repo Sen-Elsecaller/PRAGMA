@@ -11,7 +11,7 @@ signal volver_a_login
 @onready var email_input_r: LineEdit = %EmailInputR
 @onready var password_input_r: LineEdit = %PasswordInputR
 @onready var password_confirm_input: LineEdit = %PasswordInputR2
-@onready var register_button_r: TextureButton = %RegisterButtonR
+@onready var register_button_r: BaseButton = %RegisterButtonR
 @onready var validation_label_r: Label = %ValidationLabelR
 
 # ========== CONFIGURACIÓN ==========
@@ -428,7 +428,3 @@ func _clear_fields() -> void:
 func _exit_tree() -> void:
 	if http_request:
 		http_request.queue_free()
-
-
-func _on_register_pressed() -> void:
-	pass

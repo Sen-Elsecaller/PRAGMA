@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0q1nwm6l051j"]
+[gd_scene load_steps=6 format=3 uid="uid://b0q1nwm6l051j"]
 
 [ext_resource type="Script" uid="uid://vemur1745npq" path="res://scripts/custom_response.gd" id="1_7n5ix"]
 [ext_resource type="Texture2D" uid="uid://c5s0pjn7coptp" path="res://assets/nueva_interfaz/Boton_Opcion.svg" id="2_binjn"]
 [ext_resource type="Texture2D" uid="uid://7tyr8jxtipi4" path="res://assets/nueva_interfaz/Boton_Opcion_Activado.svg" id="3_tgd6f"]
 [ext_resource type="Theme" uid="uid://c6x0uvrt3fadx" path="res://resource/styles/custom_response.tres" id="4_binjn"]
+[ext_resource type="Script" uid="uid://djl4knccepaso" path="res://scripts/nodes/animated_texture_button.gd" id="4_tgd6f"]
 
 [node name="CustomResponse" type="MarginContainer"]
 custom_minimum_size = Vector2(180, 120)
@@ -23,6 +24,28 @@ texture_normal = ExtResource("2_binjn")
 texture_pressed = ExtResource("3_tgd6f")
 ignore_texture_size = true
 stretch_mode = 0
+script = ExtResource("4_tgd6f")
+metadata/_custom_type_script = "uid://djl4knccepaso"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -60.0
+offset_right = 90.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_binjn")
+bbcode_enabled = true
+text = "[b]Bold [/b] [i] Italic [/i] Normal Oooh la vola cuatica hermano"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -31,12 +54,3 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
-
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
-layout_mode = 2
-mouse_filter = 2
-theme = ExtResource("4_binjn")
-bbcode_enabled = true
-text = "[b]Bold [/b] [i] Italic [/i] Normal Oooh la vola cuatica hermano"
-horizontal_alignment = 1
-vertical_alignment = 1

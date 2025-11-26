@@ -1,0 +1,163 @@
+[gd_scene load_steps=9 format=3 uid="uid://dsn4a4jobam56"]
+
+[ext_resource type="Script" uid="uid://mk0rnwurn8t5" path="res://scripts/onboard.gd" id="1_n3x7g"]
+[ext_resource type="Theme" uid="uid://ckm5gw1dv6pnl" path="res://resource/styles/settings.tres" id="1_yutuc"]
+[ext_resource type="FontFile" uid="uid://oha0sxnndksa" path="res://assets/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf" id="2_n3x7g"]
+[ext_resource type="Script" uid="uid://b7c8g1uo4jfaq" path="res://scripts/nodes/animated_button.gd" id="3_14l5t"]
+[ext_resource type="Texture2D" uid="uid://c75vyykpuo21l" path="res://assets/nueva_interfaz/Boton_Menu_Opciones.svg" id="4_pmssg"]
+[ext_resource type="Script" uid="uid://rii2phyuhpdi" path="res://scripts/auto_size_label.gd" id="5_1f076"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cy8q4"]
+bg_color = Color(1, 0.83137256, 0.5294118, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_5s4xi"]
+color = Color(0, 0, 0, 0)
+
+[node name="Onboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 325)
+script = ExtResource("1_n3x7g")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cy8q4")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_yutuc")
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_n3x7g")
+theme_override_font_sizes/font_size = 46
+text = "¡Bienvenido!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_yutuc")
+theme_override_font_sizes/font_size = 32
+text = "¿Cual es tu nombre?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_yutuc")
+alignment = 1
+
+[node name="Useralias" type="LineEdit" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+placeholder_text = "Tu nombre"
+alignment = 1
+
+[node name="ConfirmName" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+visible = false
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("3_14l5t")
+metadata/_custom_type_script = "uid://b7c8g1uo4jfaq"
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxLine_5s4xi")
+
+[node name="Text" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_yutuc")
+theme_override_font_sizes/font_size = 22
+text = "PRAGMA es un videojuego educativo que simula situaciones academicas para estudiantes con dificultades sociales."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Text2" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_yutuc")
+theme_override_font_sizes/font_size = 22
+text = "Podras simular varios escenarios y saber como pequeñas decisiones pueden afectar una interacción."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Text3" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_yutuc")
+theme_override_font_sizes/font_size = 22
+text = "Para aprovechar al maximo esta herramienta, pregunta en tu liceo o universidad al area de bienestar estudiantil sobre el codigo PRAGMA."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxLine_5s4xi")
+
+[node name="Continue" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+icon = ExtResource("4_pmssg")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("3_14l5t")
+metadata/_custom_type_script = "uid://b7c8g1uo4jfaq"
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/Continue"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.5
+offset_top = -17.5
+offset_right = 146.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yutuc")
+theme_override_font_sizes/font_size = 30
+text = "Continuar"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_1f076")
+
+[connection signal="text_submitted" from="MarginContainer/MarginContainer/VBoxContainer/HBoxContainer2/Useralias" to="." method="_on_useralias_text_submitted"]
+[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
