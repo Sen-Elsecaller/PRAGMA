@@ -49,5 +49,6 @@ func _on_close_menu_pressed() -> void:
 	login_node.visible = false
 	var tween = Utils.tween_scale_bounce_in(self)
 	tween.tween_callback(queue_free)
+	Utils.onboard_present = false
 	if Utils.onboard_created:
 		Utils.onboard_exited.emit()

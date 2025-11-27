@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://0fxrhieww8y3"]
+[gd_scene load_steps=16 format=3 uid="uid://0fxrhieww8y3"]
 
 [ext_resource type="Script" uid="uid://cqno7bsqpuloq" path="res://scripts/ui/menu_screens/main_menu.gd" id="2_0oog2"]
 [ext_resource type="Texture2D" uid="uid://c2v8j0q5g0f1s" path="res://assets/backgrounds/menu/center.jpg" id="3_0oog2"]
@@ -65,6 +65,308 @@ scale_max = 2.5
 color = Color(0.972549, 0.8784314, 0.57254905, 1)
 color_ramp = SubResource("GradientTexture1D_iy33p")
 
+[sub_resource type="Animation" id="Animation_iy33p"]
+resource_name = "show_buttons"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ButtonsContainer/MarginStart:theme_override_constants/margin_bottom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [-650, 185]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ButtonsContainer/MarginDict:theme_override_constants/margin_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 1.6),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [-650, -150]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ButtonsContainer/MarginSettings:theme_override_constants/margin_bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 1.8),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [-650, 25]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ButtonsContainer/MarginLeave:theme_override_constants/margin_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.75, 2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [-650, -270]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ButtonsContainer/MarginStart:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ButtonsContainer/MarginDict:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ButtonsContainer/MarginSettings:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.5, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ButtonsContainer/MarginLeave:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.75, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TitlesContainer/MarginTitle2/Label:theme_override_font_sizes/font_size")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [180, 85]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TitlesContainer/MarginTitle/Label:theme_override_font_sizes/font_size")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [180, 85]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("TitlesContainer/MarginTitle2:theme_override_constants/margin_top")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [110, 56]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("TitlesContainer/MarginTitle:theme_override_constants/margin_top")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [-36, -21]
+}
+
+[sub_resource type="Animation" id="Animation_jdahc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ButtonsContainer/MarginStart:theme_override_constants/margin_bottom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-735]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ButtonsContainer/MarginDict:theme_override_constants/margin_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-735]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ButtonsContainer/MarginSettings:theme_override_constants/margin_bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-735]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ButtonsContainer/MarginLeave:theme_override_constants/margin_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-735]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ButtonsContainer/MarginStart:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ButtonsContainer/MarginDict:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ButtonsContainer/MarginSettings:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ButtonsContainer/MarginLeave:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TitlesContainer/MarginTitle2/Label:theme_override_font_sizes/font_size")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [180]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TitlesContainer/MarginTitle/Label:theme_override_font_sizes/font_size")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [180]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("TitlesContainer/MarginTitle2:theme_override_constants/margin_top")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [110]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("TitlesContainer/MarginTitle:theme_override_constants/margin_top")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-36]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r06k5"]
+_data = {
+&"RESET": SubResource("Animation_jdahc"),
+&"show_buttons": SubResource("Animation_iy33p")
+}
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -107,7 +409,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_top = 35
 theme_override_constants/margin_right = 535
-theme_override_constants/margin_bottom = 185
+theme_override_constants/margin_bottom = -735
 
 [node name="SelectScene" type="Button" parent="ButtonsContainer/MarginStart"]
 custom_minimum_size = Vector2(280, 80)
@@ -124,7 +426,7 @@ metadata/_custom_type_script = "uid://b7c8g1uo4jfaq"
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_right = 770
-theme_override_constants/margin_bottom = -150
+theme_override_constants/margin_bottom = -735
 
 [node name="SocialDict" type="Button" parent="ButtonsContainer/MarginDict"]
 custom_minimum_size = Vector2(260, 70)
@@ -140,7 +442,7 @@ metadata/_custom_type_script = "uid://b7c8g1uo4jfaq"
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 560
-theme_override_constants/margin_bottom = 25
+theme_override_constants/margin_bottom = -735
 
 [node name="Settings" type="Button" parent="ButtonsContainer/MarginSettings"]
 custom_minimum_size = Vector2(240, 60)
@@ -156,7 +458,7 @@ metadata/_custom_type_script = "uid://b7c8g1uo4jfaq"
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_right = -890
-theme_override_constants/margin_bottom = -270
+theme_override_constants/margin_bottom = -735
 
 [node name="Leave" type="Button" parent="ButtonsContainer/MarginLeave"]
 custom_minimum_size = Vector2(150, 40)
@@ -168,34 +470,69 @@ text = "Salir"
 script = ExtResource("5_0oog2")
 metadata/_custom_type_script = "uid://b7c8g1uo4jfaq"
 
-[node name="MarginTitle" type="MarginContainer" parent="ButtonsContainer"]
+[node name="TitlesContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="MarginTitle" type="MarginContainer" parent="TitlesContainer"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_top = -21
+theme_override_constants/margin_top = -36
 theme_override_constants/margin_right = 95
 
-[node name="Label" type="Label" parent="ButtonsContainer/MarginTitle"]
+[node name="Label" type="Label" parent="TitlesContainer/MarginTitle"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme = ExtResource("4_0oog2")
+theme_override_font_sizes/font_size = 180
 text = "Don't"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginTitle2" type="MarginContainer" parent="ButtonsContainer"]
+[node name="MarginTitle2" type="MarginContainer" parent="TitlesContainer"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_top = 56
+theme_override_constants/margin_top = 110
 
-[node name="Label" type="Label" parent="ButtonsContainer/MarginTitle2"]
+[node name="Label" type="Label" parent="TitlesContainer/MarginTitle2"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme = ExtResource("4_0oog2")
+theme_override_font_sizes/font_size = 180
 text = "Overthink"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MarginPressText" type="MarginContainer" parent="TitlesContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 100
+
+[node name="PressAnyKey" type="Label" parent="TitlesContainer/MarginPressText"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_0oog2")
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 36
+text = "Presiona cualquier tecla para continuar"
+
+[node name="PressTimer" type="Timer" parent="TitlesContainer/MarginPressText/PressAnyKey"]
+unique_name_in_owner = true
+wait_time = 3.0
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 scale = Vector2(0.8, 0.8)
@@ -204,6 +541,11 @@ amount_ratio = 0.8
 lifetime = 3.5
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_jdahc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_r06k5")
+}
 
 [connection signal="pressed" from="ButtonsContainer/MarginStart/SelectScene" to="." method="_on_select_scene_pressed"]
 [connection signal="pressed" from="ButtonsContainer/MarginDict/SocialDict" to="." method="_on_social_dict_pressed"]

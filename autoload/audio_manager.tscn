@@ -29,5 +29,5 @@ sound_effects = Array[ExtResource("2_0kjgv")]([ExtResource("3_5l778"), ExtResour
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamPlaylist_bojae")
-volume_db = -10.0
+volume_db = -20.0
 bus = &"Music"

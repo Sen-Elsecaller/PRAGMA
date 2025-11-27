@@ -9,7 +9,7 @@ var balloon_instance: CanvasLayer
 var main_menu_shader = preload("uid://tjlab8kl611m")
 
 var onboard_created = false
-
+var onboard_present = false
 signal onboard_exited
 
 enum PivotPosition {
