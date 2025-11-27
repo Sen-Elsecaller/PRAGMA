@@ -14,7 +14,7 @@ config/name="PRAGMA"
 run/main_scene="uid://dw3r131lp707i"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 run/max_fps=144
-config/icon="res://icon.svg"
+config/icon="uid://dop5coc8lfc5w"
 
 [autoload]
 

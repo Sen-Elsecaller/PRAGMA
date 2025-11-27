@@ -10,6 +10,8 @@ class_name ScenarioBase extends Control
 @onready var characters_node: Characters = $Characters
 @onready var outcome_text_node: OutcomeText = $OutcomeText
 @onready var fade_rect: ColorRect = %FadeEffect
+@onready var frame_blue: TextureRect = $Images/FrameBlue
+@onready var frame_purple: TextureRect = $Images/FramePurple
 
 var DIALOGUE_RESOURCE: DialogueResource
 var responses_menu_visible: bool = false
@@ -201,4 +203,7 @@ func change_background(texture: Texture):
 	tween = create_tween()
 	tween.tween_property(fade_rect, "modulate:a", 0, 0.5 / 2.0)
 
-	
+func increase_blue():
+	var value = 1
+	var tween = create_tween()
+	tween.tween_property(frame_purple, "modulate:a", value, 1)

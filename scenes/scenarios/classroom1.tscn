@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bysqqqtqyvu0"]
+[gd_scene load_steps=50 format=3 uid="uid://bysqqqtqyvu0"]
 
 [ext_resource type="PackedScene" uid="uid://co1ratfpk0ju8" path="res://scenes/ui/game_ui.tscn" id="1_452pb"]
 [ext_resource type="Script" uid="uid://7pwdv6cgu6hg" path="res://scripts/scenarios/classroom_1.gd" id="1_rw1mm"]
@@ -8,13 +8,142 @@
 [ext_resource type="Script" uid="uid://ckqr52cu5nflw" path="res://scripts/characters.gd" id="4_cpsr0"]
 [ext_resource type="SpriteFrames" uid="uid://cch124g5y3qju" path="res://resource/animations/alumno1.tres" id="5_uiipq"]
 [ext_resource type="SpriteFrames" uid="uid://ekdgihaau7av" path="res://resource/animations/profesor_felipe.tres" id="6_ama0l"]
+[ext_resource type="Texture2D" uid="uid://bt05noov1agua" path="res://assets/characters/animations/alumna2 neutra/P2_00000.png" id="6_obquq"]
+[ext_resource type="Texture2D" uid="uid://cxpbwuyjyfj2l" path="res://assets/characters/animations/alumna2 neutra/P2_00001.png" id="7_76cpg"]
 [ext_resource type="Texture2D" uid="uid://bvkeo3vltqyeo" path="res://assets/nueva_interfaz/Fondo_Escenario_Personajes_Extendido.png" id="7_ookd1"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="8_5h52x"]
+[ext_resource type="Texture2D" uid="uid://dc2x8alm7umr3" path="res://assets/characters/animations/alumna2 neutra/P2_00002.png" id="8_twmb8"]
 [ext_resource type="Shader" uid="uid://bml3y1uj7b6ie" path="res://resource/shaders/burn.gdshader" id="8_wx3lt"]
 [ext_resource type="PackedScene" uid="uid://b0q1nwm6l051j" path="res://scenes/custom_response.tscn" id="9_5h52x"]
+[ext_resource type="Texture2D" uid="uid://c8l484pkasxe8" path="res://assets/characters/animations/alumna2 neutra/P2_00003.png" id="9_b8wuv"]
+[ext_resource type="Texture2D" uid="uid://d2l4kfocamhgt" path="res://assets/characters/animations/alumna2 neutra/P2_00004.png" id="10_f5ufw"]
+[ext_resource type="Texture2D" uid="uid://decpk3tjfcv1s" path="res://assets/characters/animations/alumna2 neutra/P2_00005.png" id="11_kv35o"]
+[ext_resource type="Texture2D" uid="uid://m51qybui8ans" path="res://assets/characters/animations/alumna2 neutra/P2_00006.png" id="12_vi5t7"]
+[ext_resource type="Texture2D" uid="uid://br5p5vye3hfux" path="res://assets/characters/animations/alumna2 neutra/P2_00007.png" id="13_7fhi5"]
 [ext_resource type="PackedScene" uid="uid://c2k5sqx0lswhk" path="res://scenes/ui/outcome_text.tscn" id="13_ookd1"]
+[ext_resource type="Texture2D" uid="uid://cd5610pf84nu" path="res://assets/characters/animations/alumna2 neutra/P2_00008.png" id="14_60j76"]
+[ext_resource type="Texture2D" uid="uid://bi534ep38vhhm" path="res://assets/characters/animations/alumna2 neutra/P2_00009.png" id="15_j5bm6"]
+[ext_resource type="Texture2D" uid="uid://cxp8fmwac7ubl" path="res://assets/characters/animations/alumna2 neutra/P2_00010.png" id="16_m4b7d"]
+[ext_resource type="Texture2D" uid="uid://b3wdaeu0o723r" path="res://assets/characters/animations/alumna2 neutra/P2_00011.png" id="17_e0liw"]
+[ext_resource type="Texture2D" uid="uid://30yweeojhig7" path="res://assets/characters/animations/alumna2 neutra/P2_00012.png" id="18_6h1e0"]
+[ext_resource type="Texture2D" uid="uid://bgt8j3yehb76q" path="res://assets/characters/animations/alumna2 neutra/P2_00013.png" id="19_tavy7"]
+[ext_resource type="Texture2D" uid="uid://bsg6mwmx0dl27" path="res://assets/characters/animations/alumna2 neutra/P2_00014.png" id="20_ljo8k"]
+[ext_resource type="Texture2D" uid="uid://bwl028qi6d838" path="res://assets/characters/animations/alumna2 neutra/P2_00015.png" id="21_kpysj"]
+[ext_resource type="Texture2D" uid="uid://dyfs108w8u2k4" path="res://assets/characters/animations/alumna2 neutra/P2_00016.png" id="22_53ywi"]
+[ext_resource type="Texture2D" uid="uid://bvo0hmnp0ffui" path="res://assets/characters/animations/alumna2 neutra/P2_00017.png" id="23_754o3"]
+[ext_resource type="Texture2D" uid="uid://cdn01d6315lg5" path="res://assets/characters/animations/alumna2 neutra/P2_00018.png" id="24_1olky"]
+[ext_resource type="Texture2D" uid="uid://bjld16jlcvdcr" path="res://assets/characters/animations/alumna2 neutra/P2_00019.png" id="25_6we4k"]
+[ext_resource type="Texture2D" uid="uid://bhrmn5hngdx01" path="res://assets/characters/animations/alumna2 neutra/P2_00020.png" id="26_dbeva"]
+[ext_resource type="Texture2D" uid="uid://ye1o21th02je" path="res://assets/characters/animations/alumna2 neutra/P2_00021.png" id="27_0qgy1"]
+[ext_resource type="Texture2D" uid="uid://dhvgfr7dpyofh" path="res://assets/characters/animations/alumna2 neutra/P2_00022.png" id="28_jn7eu"]
+[ext_resource type="Texture2D" uid="uid://dt8qvrwogve1i" path="res://assets/characters/animations/alumna2 neutra/P2_00023.png" id="29_sja42"]
+[ext_resource type="Texture2D" uid="uid://8vuufve501a8" path="res://assets/characters/animations/alumna2 neutra/P2_00024.png" id="30_4ufgo"]
+[ext_resource type="Texture2D" uid="uid://5kxkb2x0hdue" path="res://assets/characters/animations/alumna2 neutra/P2_00025.png" id="31_v40to"]
+[ext_resource type="Texture2D" uid="uid://sgkcvp5ocgnh" path="res://assets/characters/animations/alumna2 neutra/P2_00026.png" id="32_rmral"]
+[ext_resource type="Texture2D" uid="uid://bwf0sk7dhm8og" path="res://assets/characters/animations/alumna2 neutra/P2_00027.png" id="33_7nthv"]
+[ext_resource type="Texture2D" uid="uid://dlou6pue8u4e3" path="res://assets/characters/animations/alumna2 neutra/P2_00028.png" id="34_hkb16"]
+[ext_resource type="Texture2D" uid="uid://y2un8i4j8sfv" path="res://assets/characters/animations/alumna2 neutra/P2_00029.png" id="35_x8ol5"]
+[ext_resource type="Texture2D" uid="uid://brgdt05vaf2t0" path="res://assets/nueva_interfaz/Fondo_Escenario_Personajes_Extendido_azul.png" id="37_76cpg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cpsr0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y6vlt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_obquq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_76cpg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_twmb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_b8wuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_f5ufw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_kv35o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_vi5t7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7fhi5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_60j76")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_j5bm6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_m4b7d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_e0liw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_6h1e0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_tavy7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ljo8k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_kpysj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_53ywi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_754o3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_1olky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_6we4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_dbeva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_0qgy1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_jn7eu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_sja42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_4ufgo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_v40to")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_rmral")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_7nthv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_hkb16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_x8ol5")
+}],
+"loop": true,
+"name": &"neutro",
+"speed": 12.0
+}]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wx3lt"]
 
@@ -88,8 +217,10 @@ animation = &"neutro"
 [node name="Alumno2" type="AnimatedSprite2D" parent="Characters"]
 material = SubResource("ShaderMaterial_cpsr0")
 scale = Vector2(0.5, 0.5)
-sprite_frames = ExtResource("5_uiipq")
+sprite_frames = SubResource("SpriteFrames_y6vlt")
 animation = &"neutro"
+frame = 2
+frame_progress = 0.8887261
 
 [node name="ProfesorFelipe" type="AnimatedSprite2D" parent="Characters"]
 material = SubResource("ShaderMaterial_cpsr0")
@@ -110,7 +241,14 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
-[node name="Frame" type="TextureRect" parent="Images"]
+[node name="FrameBlue" type="TextureRect" parent="Images"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("37_76cpg")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="FramePurple" type="TextureRect" parent="Images"]
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("7_ookd1")

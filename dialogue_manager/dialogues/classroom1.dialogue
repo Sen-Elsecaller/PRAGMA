@@ -119,8 +119,8 @@ Profesor Felipe: Disculpa {{Database.player_name}}, no me quedó claro el diagra
 - ...
 	Profesor Felipe: Siga su presentación joven.
 	Narrador: ¿Qué es lo primero que se te pasa por la cabeza?
-	- Tranqui, un error lo comete cualquiera
-	- Cómo no voy a recordar eso, soy idiota
+	- Tranqui, un error lo comete cualquiera [#emotion=good,#outcome_text=Te calmas notoriamente, #feedback=Un dialogo interno positivo es una de las cosas mas valiosas que se puede tener. Todos cometemos errores y cuando somos conscientes de ello; vivimos mucho mas tranquilos.]
+	- Cómo no voy a recordar eso, soy idiota [#emotion=bad,#outcome_text=Te frustras; te sientes peor, #feedback=Lo peor que podemos hacer es tener un dialogo interno negativo. Todos nos equivocamos y eso no nos define.]
 
 Narrador: Termina la presentación.
 Narrador: Te sientas. Un par de chicos detrás tuyo con quienes a veces hablas están susurrando. 
@@ -140,17 +140,17 @@ Narrador: ¿Qué piensas?
 - ¿Estarán hablando de mí? [#emotion=bad, #outcome_text=Empiezas a sobrepensar y sentirte incómodo, #feedback=A veces nos echamos encima el peso de las miradas o los susurros de los demás. La verdad es que cada uno está en lo suyo, y el único que realmente te juzga eres tú.] => END
 
 ~ compas_chiste
-Compa 2: De un chiste malísimo que se tiró este cabro [#character_enter=Alumno2]
-Compa 1: Me lo contó el Julián, cúlpalo a él [#character_enter=Alumno1]
+Emi: De un chiste malísimo que se tiró este cabro [#character_enter=Alumno2]
+Jorge: Me lo contó el Julián, cúlpalo a él [#character_enter=Alumno1]
 - Player: ¿Cómo es el chiste? => chiste
 - Player: Me quedo callado
-	% Compa 1: Mira te cuento pa ver qué te parece
+	% Jorge: Mira te cuento pa ver qué te parece
 	% Narrador: Todos se miran raro sin decir nada, hasta que cada uno vuelve a lo suyo [#emotion=good, #outcome_text=El ambiente se tensa, #feedback=Tal vez hubiera sido mejor decir algo] => END
 
 ~ chiste
-Compa 1: Iban dos soldados rajaos en una moto en carretera, llegan a una curva y queda la embarra, sale la moto volando y to' pero ninguno se cae de la moto. ¿Cómo?
+Jorge: Iban dos soldados rajaos en una moto en carretera, llegan a una curva y queda la embarra, sale la moto volando y to' pero ninguno se cae de la moto. ¿Cómo?
 - Player: Ahm... No cacho, ¿cómo?
-	Compa 1: Porque iban [speed=0.2][i]soldados[/i]
+	Jorge: Porque iban [speed=0.2][i]soldados[/i]
 	- Me río [#emotion=good, #outcome_text=Te relajas y bajan los nervios, #feedback=Se dice que reír es la mejor medicina; el cuerpo literalmente libera oxitocina y otros químicos que ayudan a aliviar la tensión y sentirse mejor. Aunque sea reírse de alguna estupidez.] => pre_final
 	- ...
 		%3 Narrador: El silencio incómodo hace que todos se terminen riendo => pre_final
@@ -162,11 +162,11 @@ Compa 1: Iban dos soldados rajaos en una moto en carretera, llegan a una curva y
 #	Compa 1: [wave]kajskjaskjask[wave]
 	
 ~ malisimo
-Compa 2: Malísimo hermano ajsjasj
+Emi: Malísimo hermano ajsjasj
 %3 Narrador: Cada uno sigue con lo suyo
 %2 => pre_final
 
 ~ pre_final
-Compa 1: [[Oye y estuvo piola tu presentación|Espérate que tengo otro peor| ¿Oye y cómo estái pa la prueba de mañana?|Oye yo tampoco me aprendí del diagrama del que te preguntó, ¿Cómo lo aprendiste tú?]]
+Jorge: [[Oye y estuvo piola tu presentación|Espérate que tengo otro peor| ¿Oye y cómo estái pa la prueba de mañana?|Oye yo tampoco me aprendí del diagrama del que te preguntó, ¿Cómo lo aprendiste tú?]]
 
 => END

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ci383xsy48l2e"]
+[gd_scene load_steps=15 format=3 uid="uid://ci383xsy48l2e"]
 
 [ext_resource type="Theme" uid="uid://ckm5gw1dv6pnl" path="res://resource/styles/settings.tres" id="1_6a2nt"]
 [ext_resource type="Script" uid="uid://bxjn2pu3t0upm" path="res://scripts/ui/settings.gd" id="1_nadmn"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://b7c8g1uo4jfaq" path="res://scripts/nodes/animated_button.gd" id="4_uhqlu"]
 [ext_resource type="Script" uid="uid://rii2phyuhpdi" path="res://scripts/auto_size_label.gd" id="5_1eq3g"]
 [ext_resource type="Texture2D" uid="uid://cxeig1v1i4qa3" path="res://assets/nueva_interfaz/Icon_Info.svg" id="5_5o77p"]
+[ext_resource type="Texture2D" uid="uid://1jqtbnbb8cjc" path="res://assets/nueva_interfaz/Icon_Idioma.svg" id="8_v1ppl"]
+[ext_resource type="Texture2D" uid="uid://p4a63jaqwpkv" path="res://assets/nueva_interfaz/Icon_Interrogación.svg" id="10_l0y2l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nadmn"]
 bg_color = Color(1, 0.83137256, 0.5294118, 1)
@@ -149,20 +151,10 @@ custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_constants/separation = -36
 
-[node name="TextureButton" type="Button" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Language" type="Button" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-icon = ExtResource("5_5o77p")
-flat = true
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("4_uhqlu")
-metadata/_custom_type_script = "uid://b7c8g1uo4jfaq"
-
-[node name="TextureButton2" type="Button" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-icon = ExtResource("5_5o77p")
+icon = ExtResource("8_v1ppl")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -182,7 +174,7 @@ metadata/_custom_type_script = "uid://b7c8g1uo4jfaq"
 [node name="AboutButton" type="Button" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-icon = ExtResource("5_5o77p")
+icon = ExtResource("10_l0y2l")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -281,7 +273,7 @@ metadata/_custom_type_script = "uid://b7c8g1uo4jfaq"
 [connection signal="pressed" from="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Register" to="." method="_on_login_pressed"]
 [connection signal="text_submitted" from="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Useralias" to="." method="_on_useralias_text_submitted"]
 [connection signal="pressed" from="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/ConfirmName" to="." method="_on_confirm_name_pressed"]
-[connection signal="pressed" from="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Language" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/TextureButton3" to="." method="_on_texture_button_3_pressed"]
 [connection signal="pressed" from="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/AboutButton" to="." method="_on_about_button_pressed"]
 [connection signal="value_changed" from="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/MusicSlider" to="." method="_on_music_slider_value_changed"]

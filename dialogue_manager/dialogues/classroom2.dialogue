@@ -2,23 +2,26 @@
 Profesor Felipe: Bueno clase ahora que las instrucciones quedaron claras pueden empezar a ordenarse para ver con quien realizaran el informe. Recuerden que es solamente de dos.
 Narrador: Hacer grupos puede ser estresante. Sobretodo en primer año donde no conoces aun a casi nadie.
 Narrador: Hay mucho movimiento abruptamente y ruido abruptamente. Algunas parejas ya parecen estar decididas
-Narrador: Miras alrededor y cruzas miradas con una compañera con la que has hablado un par de veces.
+Narrador: Miras alrededor y cruzas miradas con una compañera con la que has hablado un par de veces. [#character_enter=]
 - La saludo [#emotion=good, #outcome_text=Te sientes amigable, #feedback=Independiente de que quisieras hacer grupo o no con dicha compañera; nunca esta de mas saludar a alguien con quien cruzas miradas.]
-	%1 => saludo_exitoso
+	%7 => saludo_exitoso
 	%2 => saludo_medias
-	%7 => saludo_ignorado
+	%1 => saludo_ignorado
 - Miro para otro lado rapidamente [#emotion=bad, #outcome_text=Te pones nervioso, #feedback=Es de buena educacion al cruzar miradas el saludar cuan simple el saludo. Reconocer la existencia del otro.]=> que_hacer
-- Me gustaría preguntarle al profesor si puedo hacer el trabajo solo [#emotion=neutral, #outcome_text=Te aislas, #feedback=Una de las ventajas de una universidad es justamente el trabajar en grupo; conocer gente. Algunos los olvidaras; pero otros podrian ser futuros colegas o hasta amigos. Nunca lo sabras si no lo intentas.]=> preguntar_trabajo_solo
+- Me gustaría preguntarle al profesor si puedo hacer el trabajo solo [#emotion=neutral, #outcome_text=Te aislas, #feedback=Una de las ventajas de una universidad es justamente el trabajar en grupo; conocer gente. Algunos los olvidaras; pero otros podrian ser futuros colegas o hasta amigos. Nunca lo sabras si no lo intentas.]
+	Narrador: ¿Por que?
+	- No quiero tener que hablar con alguien => preguntar_trabajo_solo
+	- Trabajaria mejor solo => preguntar_trabajo_solo
 
 ~ saludo_exitoso
 Narrador: Te saluda y te hace señas.
-- Lo ignoro => ignorar_compa
+- La ignoro [#emotion=bad, #outcome_text=Te sientes raro, #feedback=Si no querias ser con ella; podrias haberle hecho señas negativas.] => que_hacer
 - Voy a donde está => ir_donde_esta
 
 ~ saludo_medias
 Narrador: Te saluda y sigue mirando alrededor
-- Voy a donde ella. Podriamos hacer grupo. [#emotion=good, #outcome_text=Proactivo] => ir_donde_esta_medias
-- Intento hablarle a alguien que esté solo cerca mío [#emotion=good, #outcome_text=Intentas tomar control] => buscar_otro_grupo
+- Voy a donde ella. Podriamos hacer grupo. [#emotion=good, #outcome_text=Proactivo] => ir_donde_esta
+- Intento hablarle a alguien que esté solo cerca mío [#emotion=good, #outcome_text=Intentas tomar control] => buscar_otro
 - Me quedo viendo a la pizarra con la mente en blanco [#emotion=bad, #outcome_text=Empiezas a divagar] => mente_en_blanco
 
 ~ saludo_ignorado
@@ -26,160 +29,78 @@ Narrador: Te ignora.
 - Player: Auch [#emotion=bad, #outcome_text=Auch] => que_hacer
 - Player: Auch [#emotion=bad, #outcome_text=Auch] => que_hacer 
 
-~ ir_donde_esta_medias
-- Player: Buena compi
-
-
 ~ que_hacer
 Narrador: ¿Que haces?
+- Intento mirar cerca mio si hay alguien solo => buscar_otro
+- Me quedo viendo a la nada => mente_en_blanco
 
 ~ ir_donde_esta
-Narrador: Te acercas al compañero.
-Player: ¿Hacemos el trabajo juntos?
-Compañero: Dale, justo estaba pensando en preguntarte.
-=> formar_grupo
-
-~ ignorar_compa
-Narrador: Decides no hacer nada.
-Narrador: El compañero se va con otro grupo.
-=> buscar_grupo_tarde
-
-~ apostar_cabeza
-Narrador: Apoyas la cabeza en el pupitre y cierras los ojos.
-Narrador: Esperas que alguien te hable.
-%5 => alguien_te_habla
-%5 => nadie_te_habla
-
-~ alguien_te_habla
-Compañero: Oye, ¿hacemos el trabajo juntos?
-- Sí [#emotion=good, #outcome_text=Encuentras grupo] => formar_grupo
-- Prefiero hacerlo solo => rechazar_grupo
-
-~ nadie_te_habla
-Narrador: Nadie se acerca.
-Narrador: Levantas la cabeza y ves que ya casi todos tienen grupo.
-=> buscar_grupo_tarde
-
+Narrador: Llegas donde ella. [#character_enter=Alumno2]
+- Player: Bueena, ¿como estai? Oye, ¿te tinca hacer el trabajo los dos?
+	% Emi: Holaa, si dale, entiendes lo que hay que hacer? Yo estoy media perdida
+	% Emi: Holi, ya estoy con alguien disculpa
+- Player: Hola... ¿te tinca si hacemos el trabajo juntos?
+	% Emi: Holaa, si dale, entiendes lo que hay que hacer? Yo estoy media perdida
+	% Emi: Holi, ya estoy con alguien disculpa
+- Player: Ehm... Oye, tienes grupo?
+	%
+		Emi: Si, estoy con alguien que falto hoy.
+	%
+		Emi: No, ¿quieres que seamos juntos?
+	
 ~ preguntar_trabajo_solo
-Narrador: Levantas la mano.
-Profesor: ¿Sí?
-Player: Profesor, ¿puedo hacer el trabajo solo?
-Profesor: ¿Por qué?
-- No quiero tener que hablar con alguien [#emotion=bad, #outcome_text=Respuesta poco diplomática] => respuesta_poco_diplomatica
-- Trabajo mejor solo [#emotion=neutral, #outcome_text=Respuesta ambigua] => respuesta_ambigua
+Narrador: Vas a preguntarle al profesor [#character_enter=profesor_felipe]
+Player: Profe disculpe, ¿podria trabajar solo?
+%45
+	Profesor Felipe: Eh... Ya que el curso es de 28, tiene que ser si o si en grupos de dos
+	Narrador: Vuelves a donde estabas sentado. => que_hacer
+%45
+	Profesor Felipe: Lo lamento joven, la gracia de esta actividad es que sea en grupos
+	Narrador: Vuelves a donde estabas sentado. => que_hacer
+%10
+	Profesor Felipe: Bueno joven, puede ser solo si quiere. [#character_enter=profesor_felipe]
+	Narrador: Vuelves a tu puesto.
+	Narrador: Ahora tienes que hacer solo el trabajo.
+	Narrador: Te sientes tranquilo. Pero, ¿Habra sido lo mejor? [#emotion=bad, #outcome_text=Estas solo, #feedback=A veces lo que mas nos acomoda no es lo mejor. Hay que salir de la zona de comfort para poder crecer y aprender.] => END
 
-~ respuesta_poco_diplomatica
-%45 => profesor_acepta_con_condicion
-%45 => profesor_rechaza_rotundo
-%10 => profesor_acepta_directo
-
-~ respuesta_ambigua
-%45 => profesor_acepta_con_condicion
-%45 => profesor_rechaza_diplomatico
-%10 => profesor_acepta_directo
-
-~ profesor_acepta_con_condicion
-Profesor: Eh... No sé si el curso es de 28 o 29 alumnos. Si son 29 y sobra alguien puedes hacerlo solo. Si son 28 todos deben estar en grupos de dos.
-=> ver_si_sobra
-
-~ profesor_rechaza_rotundo
-Profesor: No. Los trabajos son de a dos. Si no te gusta la idea que sea en grupos de dos entonces haz el ramo en otro curso.
-Narrador: El ambiente se siente tenso.
-=> buscar_grupo_forzado
-
-~ profesor_rechaza_diplomatico
-Profesor: Entiendo, pero el trabajo es de a dos. Es importante que aprendas a trabajar en equipo.
-=> buscar_grupo_forzado
-
-~ profesor_acepta_directo
-Profesor: Bueno joven, puede ser solo si quiere.
-Narrador: Te quedas trabajando solo.
-=> END
-
-~ ver_si_sobra
-Narrador: El profesor cuenta a los alumnos.
-%50 => sobra_alumno
-%50 => no_sobra_alumno
-
-~ sobra_alumno
-Profesor: Bueno, son 29. Puedes hacerlo solo.
-Narrador: Te quedas trabajando solo.
-=> END
-
-~ no_sobra_alumno
-Profesor: Son 28, así que todos en grupos de dos por favor.
-=> buscar_grupo_forzado
-
-~ buscar_grupo_tarde
-Narrador: Miras alrededor. La mayoría ya tiene grupo.
-Narrador: Ves a alguien que también está solo.
-- Me acerco [#emotion=good, #outcome_text=Tomas la iniciativa] => acercarse_solo
-- Espero a que alguien me hable [#emotion=bad, #outcome_text=Pierdes tiempo valioso] => esperar_pasivo
-
-~ acercarse_solo
-Player: Oye, ¿hacemos el trabajo juntos?
-Compañero Solitario: Dale, sí.
-=> formar_grupo
-
-~ esperar_pasivo
-Narrador: Esperas unos momentos.
-%6 => alguien_se_acerca
-%4 => profesor_interviene
-
-~ alguien_se_acerca
-Compañero Solitario: Oye, ¿quieres hacer el trabajo conmigo?
-- Sí => formar_grupo
-- Prefiero estar solo => ultimo_rechazo
-
-~ ultimo_rechazo
-Compañero Solitario: Ah, bueno...
-Narrador: Se va con otro grupo que tenía tres personas.
-=> profesor_interviene
-
-~ buscar_grupo_forzado
-Narrador: Miras alrededor buscando con quién trabajar.
-Narrador: Quedan pocas opciones.
-=> buscar_grupo_tarde
-
-~ profesor_interviene
-Profesor: A ver, ¿quiénes no tienen grupo todavía?
-Narrador: Levantas la mano junto con otra persona.
-Profesor: Perfecto, ustedes dos entonces.
-=> formar_grupo
-
-~ formar_grupo
-Narrador: Ya tienes grupo para el trabajo.
-=> END
-
-~ rechazar_grupo
-Compañero: Ah, bueno... suerte entonces.
-Narrador: Se va a buscar otro compañero.
-=> buscar_grupo_tarde
-
-~ buscar_otro_grupo
-Narrador: Miras alrededor y te acercas a alguien que está solo.
-Player: ¿Hacemos el trabajo juntos?
-%7 Compañero Nuevo: Sí, dale. [#emotion=good, #outcome_text=Encuentras grupo] => formar_grupo
-%3 Compañero Nuevo: Ya tengo grupo, sorry. => buscar_grupo_tarde
+~ buscar_otro
+Narrador: Van quedando pocas personas solas.
+Narrador: Te quedas viendo a uno en particular que se ve amigable.
+Narrador: No has hablado con el antes, solo lo escuchaste preguntar algo la clase pasada.
+- Voy a hablarle. [#emotion=good, #outcome_text=Proactivo, #feedback=] => ir_donde_jorge
+- ¿Empezar por voluntad propia una conversacion? ¿Yo? [#emotion=neutral, #outcome_text=Sincero, #feedback=Si estas lo suficientemente consciente de la situacion como para bromear al respecto, tambien puedes actuar al respecto. Sal de tu zona de confort.] => mente_en_blanco
 
 ~ mente_en_blanco
 Narrador: Te quedas mirando fijamente la pizarra.
 Narrador: Tu mente divaga mientras todos se organizan.
 Narrador: El ruido de la sala se vuelve lejano.
-%4 => alguien_te_saca_trance
-%6 => profesor_te_saca_trance
+Narrador: Te aburres.
+- Me pongo a ver instagram, tiktok o a jugar algo.
+	Narrador: Pasan los minutos.
+	Narrador: Pasa media hora.
+	%
+		=> jorge_aparece
+	%
+		Narrador: Se acaba la clase.
+		Narrador: Ahora tienes que avanzar el trabajo en tu tiempo libre.
+		Narrador: Sin nadie.
+		Narrador: ¿Valio la pena? [#emotion=bad, #outcome_text=Te sientes desconectado, #feedback=Ya es costumbre tomar el telefono en 'ratos muertos'. Esto puede distraerte facilmente de avanzar cosas del dia a dia. Y cuando se acomula puedes poco a poco empezar a sentir como se te escapan horas y horas todas las semanas. Ten cuidado.] => END
+- Me quedo pensando...
+	Narrador: ¿En que piensas?
+	- Odio trabajar en grupo. [#emotion=neutral, #outcome_text=Te sientes molesto, #feedback=]
+	- En nada. [#emotion=neutral, #outcome_text=Te sientes desconectado,#feedback=]
+	- Que dificil es hablar con gente. [#emotion=neutral, #outcome_text=A veces si lo es.,#feedback=]
+	- Deberia estar buscando con quien trabajar... [#emotion=neutral, #outcome_text=Estas consciente de lo que debes hacer, #feedback=]
+	Narrador: Pasan los minutos.
+	Narrador: Se acerca un compañero a hablarte => jorge_aparece
 
-~ alguien_te_saca_trance
-Compañero: Oye, ¿estás bien?
-Narrador: Vuelves en sí.
-Player: Sí, sí.
-Compañero: ¿Quieres hacer el trabajo conmigo?
-- Sí [#emotion=good, #outcome_text=Sales del bloqueo] => formar_grupo
-- Prefiero hacerlo solo => rechazar_grupo
+~ ir_donde_jorge
+Player: Buena rey, tienes grupo? [#character_enter=Alumno1]
+Jorge: Nop, ¿Lo hacemos juntos?
 
-~ profesor_te_saca_trance
-Profesor: A ver, ¿quién no tiene grupo?
-Narrador: Levantas la cabeza.
-=> profesor_interviene
 
+~ jorge_aparece
+Jorge: Buena mi pana, tienes grupo? [#character_enter=Alumno1]
+- Player: No, pero quiero ver si lo puedo hacer solo.
+- Player: No, ¿Lo hacemos juntos?
 => END
