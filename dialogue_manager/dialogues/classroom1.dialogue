@@ -9,7 +9,7 @@ set Database.stress_level += 1
 
 ~ esperando_presentacion
 Narrador: ¿Qué haces mientras esperas?
-- Respiro lentamente [if true == false] => respirar_lentamente
+- Respiro lentamente => respirar_lentamente
 - Voy a repasar la materia => repasar_materia
 - Mi mente divaga [#emotion=bad, #outcome_text=Los nervios empeoran, #feedback=Dejar los pensamientos correr libremente en situaciones de ansiedad es una invitación al malestar] 
 	set Database.stress_level += 1

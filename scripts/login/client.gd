@@ -1,6 +1,6 @@
 # login_controller.gd
 # Controlador que SOLO maneja la lógica, NO accede directamente a los nodos UI
-class_name LoginControl extends MarginContainer
+extends MarginContainer
 
 # ========== SEÑALES ==========
 signal go_to_register

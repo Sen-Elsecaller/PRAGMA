@@ -1,5 +1,5 @@
 # login_controller.gd
-# Controlador que SOLO maneja la lógica, NO accede directamente a los nodos UI
+# Controlador que usa AuthManager directamente (sin client.gd local)
 class_name LoginControl extends MarginContainer
 
 # ========== SEÑALES ==========
@@ -15,50 +15,64 @@ signal validation_success(message: String)
 @onready var login_button: BaseButton = %LoginButtonLogin
 @onready var register_button: BaseButton = %RegisterButtonLogin
 
-# ========== INSTANCIA LOCAL DE CLIENT ==========
-var client = null
-
 # ========== INICIALIZACIÓN ==========
 func _ready() -> void:
-	_setup_client()
+	_connect_signals()
 	_connect_controller_signals()
-
-func _setup_client() -> void:
-	var ClientClass = load("res://scripts/login/client.gd")
-	client = ClientClass.new()
-	add_child(client)
 	
-	# Conectar señales del client
-	client.login_success.connect(_on_login_success)
-	client.login_failed.connect(_on_login_failed)
+	# Intentar auto-login si hay sesión guardada
+	await get_tree().process_frame
+	_try_auto_login()
 
+# ========== CONECTAR SEÑALES ==========
+func _connect_signals() -> void:
+	# Conectar señales de AuthManager
+	AuthManager.login_success.connect(_on_login_success)
+	AuthManager.login_failed.connect(_on_login_failed)
+	AuthManager.session_restored.connect(_on_session_restored)
+	AuthManager.token_refreshed.connect(_on_token_refreshed)
+	AuthManager.token_refresh_failed.connect(_on_token_refresh_failed)
 
-# ========== CONECTAR SEÑALES DEL LABEL ==========
 func _connect_controller_signals() -> void:
 	validation_error.connect(_update_validation_label_error)
 	validation_success.connect(_update_validation_label_success)
+
+# ========== AUTO-LOGIN ==========
+func _try_auto_login() -> void:
+	if AuthManager.has_active_session():
+		validation_success.emit("Restaurando sesión...")
+		# AuthManager ya restauró la sesión automáticamente
+		# Solo esperamos confirmación
+		await get_tree().create_timer(0.5).timeout
+		login_completed.emit()
+
+func _on_session_restored() -> void:
+	validation_success.emit("¡Sesión restaurada!")
+	await get_tree().create_timer(0.5).timeout
+	login_completed.emit()
+
+func _on_token_refreshed() -> void:
+	print("[LoginControl] Token refrescado exitosamente")
+
+func _on_token_refresh_failed() -> void:
+	validation_error.emit("Sesión expirada. Inicia sesión nuevamente.")
+	clear_fields()
 
 # ========== EVENTOS DE LOS NODOS UI ==========
 func _on_user_text_submitted(_text: String) -> void:
 	password_input.grab_focus()
 
-# Cuando el usuario está escribiendo en "User"
 func _on_user_text_changed(new_text: String) -> void:
-	# Opcional: Validación en tiempo real
 	if new_text.length() > 0:
 		validation_label.text = ""
 
-# Cuando el usuario termina de escribir en "Password" (presiona Enter)
 func _on_password_text_submitted(_text: String) -> void:
 	_attempt_login()
 
-# Cuando el usuario está escribiendo en "Password"
 func _on_password_text_changed(new_text: String) -> void:
-	# Opcional: Validación en tiempo real
 	if new_text.length() > 0:
 		validation_label.text = ""
 
-# Cuando presiona el botón Login
 func _on_login_button_pressed() -> void:
 	_attempt_login()
 
@@ -75,8 +89,8 @@ func _attempt_login() -> void:
 	validation_success.emit("Iniciando sesión...")
 	login_button.disabled = true
 	
-	# Llamar al cliente para hacer login
-	client.login(email, password)
+	# Usar AuthManager para hacer login
+	AuthManager.login(email, password)
 
 func _validate_fields(email: String, password: String) -> bool:
 	if email.is_empty():
@@ -98,13 +112,11 @@ func _is_valid_email(email: String) -> bool:
 	regex.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")
 	return regex.search(email) != null
 
-# ========== CALLBACKS DEL CLIENT ==========
+# ========== CALLBACKS DE AUTHMANAGER ==========
 func _on_login_success(user_data: Dictionary) -> void:
 	validation_success.emit("¡Login exitoso!")
 	login_button.disabled = false
 	await get_tree().create_timer(0.5).timeout
-	
-	# Emitir señal para login_nav.gd
 	login_completed.emit()
 
 func _on_login_failed(error_message: String) -> void:
@@ -127,12 +139,20 @@ func clear_fields() -> void:
 	password_input.text = ""
 	validation_label.text = ""
 
-# ========== ACCESO A TOKENS ==========
+# ========== ACCESO A TOKENS (usando AuthManager) ==========
 func get_access_token() -> String:
-	return client.get_access_token() if client else ""
+	return AuthManager.access_token
 
 func get_refresh_token() -> String:
-	return client.get_refresh_token() if client else ""
+	return AuthManager.refresh_token
 
 func has_active_session() -> bool:
-	return client.has_active_session() if client else false
+	return AuthManager.has_active_session()
+
+func get_user_email() -> String:
+	return AuthManager.user_email
+
+# ========== LOGOUT ==========
+func logout() -> void:
+	AuthManager.logout()
+	clear_fields()
