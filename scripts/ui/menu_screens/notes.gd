@@ -31,5 +31,10 @@ func _on_back_to_menu_pressed() -> void:
 
 func _on_change_notes_pressed() -> void:
 	if current_notes_types == NOTES_TYPES.CUSTOM:
+		current_notes_types = NOTES_TYPES.DEFAULT
 		notes_label.text = "Ver notas guardadas"
+		carousel_node.load_default_notes()
+	else:
+		current_notes_types = NOTES_TYPES.CUSTOM
+		notes_label.text = "Ver notas de regalo"
 		carousel_node.load_default_notes()

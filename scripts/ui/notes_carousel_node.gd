@@ -8,9 +8,13 @@ func _ready() -> void:
 
 
 func load_default_notes():
-	pass
+	for child in get_children():
+		child.queue_free()
 	
 func load_custom_notes():
+	for child in get_children():
+		child.queue_free()
+		
 	var notas = ConfigFileHandler.get_notes()
 	for nota_dict in notas:
 		var choice_scene_instance: ChoiceScene = base_choice_scene.instantiate()
