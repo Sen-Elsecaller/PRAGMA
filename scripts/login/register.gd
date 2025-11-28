@@ -1,11 +1,10 @@
 # register_controller.gd
 # Controlador de la interfaz de Registro
-extends MarginContainer
+class_name RegisterControl extends MarginContainer
 
 # ========== SEÑALES ==========
 signal registro_completado(user_data: Dictionary)
-signal volver_a_login
-
+signal register_completed
 # ========== REFERENCIAS A NODOS ==========
 @onready var user_input_r: LineEdit = %UserInputR
 @onready var email_input_r: LineEdit = %EmailInputR
@@ -15,7 +14,7 @@ signal volver_a_login
 @onready var validation_label_r: Label = %ValidationLabelR
 
 # ========== CONFIGURACIÓN ==========
-const API_URL = "http://127.0.0.1:8000/api/usuarios/registro/"
+const API_URL = "http://98.87.220.175:8000/api/v1/dashboard/auth/register/"
 const MIN_NOMBRE_LENGTH = 3
 const MAX_NOMBRE_LENGTH = 150
 const MIN_PASSWORD_LENGTH = 8
@@ -77,13 +76,10 @@ func _attempt_register() -> void:
 	
 	# Preparar datos para enviar
 	var body = JSON.stringify({
-		"username": email,  # Usar email como username
+		"nombre": nombre,
 		"email": email,
 		"password": password,
-		"password2": password_confirm,
-		"nombre_completo": nombre,
-		"institucion": "",
-		"carrera": ""
+		"password_confirm": password_confirm
 	})
 	
 	# Realizar petición HTTP
@@ -330,20 +326,21 @@ func _is_common_password(password: String) -> bool:
 
 func _on_request_completed(result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
 	register_button_r.disabled = false
-	
+	print("Result: " + str(result))
+	print("Response Code: " + str(response_code))
 	if result != HTTPRequest.RESULT_SUCCESS:
 		_show_error("Error de conexión con el servidor")
 		return
 	
 	var json = JSON.new()
 	var error = json.parse(body.get_string_from_utf8())
-	
+	print("Error: " + str(error))
 	if error != OK:
 		_show_error("Error al procesar la respuesta del servidor")
 		return
 	
 	var response = json.get_data()
-	
+	print("Response: " + str(response))
 	match response_code:
 		201:  # Created
 			_on_registro_success(response)
@@ -368,8 +365,8 @@ func _on_registro_success(response: Dictionary) -> void:
 	_clear_fields()
 	
 	# Esperar un momento y volver al login
-	await get_tree().create_timer(1.5).timeout
-	volver_a_login.emit()
+	await get_tree().create_timer(0.5).timeout
+	register_completed.emit()
 
 func _on_registro_failed(response: Dictionary) -> void:
 	# Manejar diferentes tipos de errores del servidor

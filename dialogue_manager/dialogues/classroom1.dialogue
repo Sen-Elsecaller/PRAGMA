@@ -84,15 +84,30 @@ Narrador: Tú decides cómo tomarte su ayuda.
 	- [i]Viejo #$%&[i] [#Emotion=bad, #outcome_text=Acumulas frustración; molestia, #feedback=No puedes controlar las acciones de los demás; pero puedes controlar cómo las recibes e interpretas. No permitas que se acumulen los malos sentimientos.]
 		Player: Ya. [set Database.stress_level += 1]=> empieza_presentacion
 - No
-	- Player: Profesor, discúlpeme pero de verdad necesito unos minutos. No me siento bien. [#emotion=good, #outcome_text=Te sientes en control. #feedback=Ocupaste un lenguaje asertivo; y fuiste sincero con cómo te sentías y lo que necesitabas en ese momento de manera respetuosa.] => no_presentas
+	- Player: Profesor, discúlpeme pero de verdad necesito unos minutos. No me siento bien. [#emotion=good, #outcome_text=Te sientes en control., #feedback=Ocupaste un lenguaje asertivo; y fuiste sincero con cómo te sentías y lo que necesitabas en ese momento de manera respetuosa.] => no_presentas
 	- Player: No voy a pasar ahora profe. Permiso. [#emotion=bad, #outcome_text=Se tensa el ambiente., #feedback=Una forma de hablar y de actuar que puede entenderse como confrontativa. Además de dificultar el diálogo con los demás, tú mismo te tensas y sientes más incómodo. Todo es conversable si se mantiene la calma y se habla de la manera correcta.] => no_presentas
 
 ~ no_presentas
 Narrador: Mientras esperas, piensas en lo que ocurrió.
+Narrador: ¿Que pensamientos te vienen a la cabeza?
+Narrador: ¿Que pensamientos se mantienen?
+- Vere tiktok un rato
+- Soy un inutil
+- Voy a tomar aire y calmarme
+- Es normal que pasen estas cosas
+Narrador: Han pasado ya varios minutos.
+Narrador: Tienes que volver a la sala.
+Narrador: Dudas un segundo...
+- Player: Debo ir.
+- Player: No quiero ir...
+	Player: Pero tengo que hacerlo.
+Narrador: Llegas justo cuando termina de pasar el ultimo grupo. El profesor te hace señas para que entres.
+
 #Aquí falta agregar la lógica de las elecciones múltiples y demás texto de esta ruta
 
 ~ empieza_presentacion
-Narrador: Todos te miran fijamente. [#background=Sala de Clases - Pizarra]
+Narrador: Estas al frente. Algunos te miran, otros estan en sus telefonos. [#background=Sala de Clases - Pizarra]
+Narrador: Empiezas a presentar.
 Narrador: ¿Qué es lo primero que se te pasa por la cabeza?
 - Concentrarme en mi presentación. [#emotion=good, #outcome_text=Te concentras en tu presentación,#feedback=Tienes que enfocarte en tu presentación y lo que sabes; enfocarse en los demás solo sería un error.]
 - "Están esperando a que me equivoque." [#emotion=bad, #outcome_text=Te pones nervioso, #feedback=Cuando está presentando alguien más ¿Te preocupas de él? ¿Notas si se equivoca? Aunque así fuera; ¿Lo recordarías por más de unos minutos? No. Porque estás preocupado de ti. Lo mismo le pasa al resto. No tienes nada de qué preocuparte]

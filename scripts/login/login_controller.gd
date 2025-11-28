@@ -1,10 +1,10 @@
 # login_controller.gd
 # Controlador que SOLO maneja la lógica, NO accede directamente a los nodos UI
-extends MarginContainer
+class_name LoginControl extends MarginContainer
 
 # ========== SEÑALES ==========
 signal go_to_register
-signal login_completed(user_data: Dictionary)
+signal login_completed
 signal validation_error(message: String)
 signal validation_success(message: String)
 
@@ -102,13 +102,10 @@ func _is_valid_email(email: String) -> bool:
 func _on_login_success(user_data: Dictionary) -> void:
 	validation_success.emit("¡Login exitoso!")
 	login_button.disabled = false
+	await get_tree().create_timer(0.5).timeout
 	
 	# Emitir señal para login_nav.gd
-	login_completed.emit(user_data)
-	
-	# Cambiar a escena principal
-	await get_tree().create_timer(0.5).timeout
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	login_completed.emit()
 
 func _on_login_failed(error_message: String) -> void:
 	validation_error.emit(error_message)

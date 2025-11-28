@@ -13,7 +13,7 @@ func _ready() -> void:
 	if parent:
 		parent.item_rect_changed.connect(_on_item_rect_changed)
 
-func _set(property: StringName, value: Variant) -> bool:
+func _set(property: StringName, _value: Variant) -> bool:
 	if property == "text":
 		update_font_size()
 	return false

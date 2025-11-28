@@ -11,7 +11,7 @@ func _ready() -> void:
 	music_slider.set_value_no_signal(ConfigFileHandler.load_config_settings("settings").get("music_volume"))
 	useralias.placeholder_text = ConfigFileHandler.load_config_settings("settings").get("useralias")
 	
-func Enter(enter_vector: Vector2):
+func Enter(_enter_vector: Vector2):
 	Utils.tween_slide_in(self, Vector2.DOWN)
 	visible = true
 

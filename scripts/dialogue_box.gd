@@ -80,7 +80,7 @@ func _on_dialogue_label_finished_typing() -> void:
 	if is_inside_tree():
 		finished_typing.emit()
 
-func _on_spoke(letter: String, letter_index: int, speed: float):
+func _on_spoke(_letter: String, letter_index: int, speed: float):
 	if dialogue_line.character != "Narrador":
 		if is_multiple(letter_index, 3) or letter_index == 0 or speed < 0.3:
 			AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SPEAKING)

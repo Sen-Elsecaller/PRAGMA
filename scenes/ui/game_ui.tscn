@@ -132,6 +132,34 @@ tracks/1/keys = {
 "values": [Vector2(0, 0), Vector2(522, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_crnce"]
+resource_name = "close_settings_menu"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameMenu/OptionsMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(522, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameMenu/SettingsMenu:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(522, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_bxde6"]
 resource_name = "open_dialogue_history"
 length = 0.2
@@ -186,34 +214,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(522, 0), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_crnce"]
-resource_name = "close_settings_menu"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GameMenu/OptionsMenu:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.19999999),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(522, 0), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GameMenu/SettingsMenu:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(522, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_x0n6o"]
@@ -309,7 +309,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 522.0
-offset_right = 521.999
+offset_right = 522.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_fftnl")
@@ -469,7 +469,42 @@ text = "[b]Volver al menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SendData" type="TextureButton" parent="GameMenu/OptionsMenu/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(320, 80)
+layout_mode = 2
+texture_normal = ExtResource("7_bxde6")
+texture_pressed = ExtResource("8_opxtl")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("5_opxtl")
+metadata/_custom_type_script = "uid://djl4knccepaso"
+
+[node name="Label" type="RichTextLabel" parent="GameMenu/OptionsMenu/MarginContainer/VBoxContainer/SendData"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -22.5
+offset_right = 137.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("8_bxde6")
+theme_override_fonts/bold_font = SubResource("FontVariation_opxtl")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_crnce")
+theme_override_fonts/italics_font = SubResource("FontVariation_x0n6o")
+theme_override_fonts/mono_font = SubResource("FontVariation_aq72h")
+bbcode_enabled = true
+text = "[b]Enviar sesion actual"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="DialogueHistoryMenu" type="MarginContainer" parent="GameMenu"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -545,6 +580,7 @@ mouse_filter = 2
 theme_override_constants/separation = 20
 
 [node name="SettingsMenu" type="MarginContainer" parent="GameMenu"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -672,6 +708,7 @@ libraries = {
 [connection signal="pressed" from="GameMenu/OptionsMenu/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="GameMenu/OptionsMenu/MarginContainer/VBoxContainer/DialogueHistory" to="." method="_on_dialogue_history_pressed"]
 [connection signal="pressed" from="GameMenu/OptionsMenu/MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="GameMenu/OptionsMenu/MarginContainer/VBoxContainer/SendData" to="." method="_on_send_data_pressed"]
 [connection signal="pressed" from="GameMenu/DialogueHistoryMenu/MarginContainer/CloseMenu" to="." method="_on_close_dialogue_history_pressed"]
 [connection signal="pressed" from="GameMenu/SettingsMenu/MarginContainer/CloseSettings" to="." method="_on_close_settings_pressed"]
 [connection signal="value_changed" from="GameMenu/SettingsMenu/MarginContainer/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]

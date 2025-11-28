@@ -38,13 +38,13 @@ func show_notification(
 		duration: float = 3.0
 	) -> void:
 		
-	var notification = NOTIFICATION_SCENE.instantiate()
-	notification.message = message
-	notification.type = type
-	notification.notification_position = position
-	notification.duration = duration
+	var notification_msg = NOTIFICATION_SCENE.instantiate()
+	notification_msg.message = message
+	notification_msg.type = type
+	notification_msg.notification_position = position
+	notification_msg.duration = duration
 	
-	game_controller.get_current_scene().add_child(notification)
+	game_controller.get_current_scene().add_child(notification_msg)
 
 func set_pivot(node: Control, pivot_pos: PivotPosition) -> Vector2:
 	match pivot_pos:

@@ -10,8 +10,8 @@ class_name ScenarioBase extends Control
 @onready var characters_node: Characters = $Characters
 @onready var outcome_text_node: OutcomeText = $OutcomeText
 @onready var fade_rect: ColorRect = %FadeEffect
-@onready var frame_blue: TextureRect = $Images/FrameBlue
-@onready var frame_purple: TextureRect = $Images/FramePurple
+@onready var frame_blue: TextureRect = %FrameBlue
+@onready var frame_purple: TextureRect = %FramePurple
 
 var DIALOGUE_RESOURCE: DialogueResource
 var responses_menu_visible: bool = false
@@ -32,8 +32,8 @@ func setup_signals() -> void:
 	update_history.connect(game_ui._on_update_dialogue_history)
 	DialogueManager.dialogue_started.connect(_on_dialogue_started)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
-	game_ui.returned_to_main_menu.connect(_on_dialogue_ended)
 	game_ui.dialogue_history_pressed.connect(_on_dialogue_history_pressed)
+	game_ui.send_current_data.connect(send_current_data)
 	DialogueManager.got_dialogue.connect(_use_tags)
 	gui_input.connect(_on_gui_input)
 	dialogue_box.dialogue_line = await DIALOGUE_RESOURCE.get_next_dialogue_line("start", [self])
@@ -48,6 +48,12 @@ func _on_dialogue_ended(_dialogue):
 	Utils.game_controller.scenario_ended.emit()
 	Utils.game_controller.change_gui_scene(load("uid://bk0ok7dhbcruf"))
 
+func send_current_data():
+	EffectsManager.post_fx.toggle_fx("VignetteFX", false)
+	current_feedback.finalizar_sesion()
+	Utils.game_controller.current_feedback = current_feedback
+	Utils.game_controller.scenario_ended.emit()
+	Utils.game_controller.change_gui_scene(load("uid://bk0ok7dhbcruf"))
 func _on_dialogue_history_pressed():
 	game_ui.update_dialogue_history(dialogue_history)
 

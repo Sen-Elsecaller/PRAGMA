@@ -8,7 +8,7 @@ extends ScreenState
 @onready var description_scenario: RichTextLabel = %DescriptionScenario
 @onready var return_button: AnimatedTextureButton = $MarginContainer/Return
 
-func Enter(enter_vector: Vector2):
+func Enter(_enter_vector: Vector2):
 	Utils.tween_slide_in(self, Vector2.UP)
 	visible = true
 

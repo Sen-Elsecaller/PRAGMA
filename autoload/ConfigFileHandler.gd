@@ -71,7 +71,33 @@ func load_data() -> void:
 		return
 	if typeof(result) == TYPE_DICTIONARY:
 		save_file = result
+
+func send_save_file_to_webhook() -> void:
+	if !FileAccess.file_exists(DATA_FILE_PATH):
+		push_error("Archivo de guardado no existe")
+		return
+	
+	var file = FileAccess.open(DATA_FILE_PATH, FileAccess.READ)
+	var text = file.get_as_text()
+	file.close()
+	
+	var result = JSON.parse_string(text)
+	if result == null:
+		push_error("Error parseando JSON")
+		return
+	
+	if typeof(result) == TYPE_DICTIONARY:
+		var http = HTTPRequest.new()
+		add_child(http)
 		
+		var url = "https://athxx.app.n8n.cloud/webhook/savefile-created"
+		var headers = ["Content-Type: application/json"]
+		var body = JSON.stringify(result)
+		
+		http.request(url, headers, HTTPClient.METHOD_POST, body)
+		await http.request_completed
+		http.queue_free()
+
 func set_data() -> void:
 	load_data()
 	

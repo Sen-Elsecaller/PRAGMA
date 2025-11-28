@@ -9,7 +9,7 @@ signal change_screen
 @onready var close_animations: AnimationPlayer
 @onready var open_animations: AnimationPlayer
 
-func Enter(enter_vector: Vector2):
+func Enter(_enter_vector: Vector2):
 	pass
 	#open_animations.play("open_" + str(name))
 

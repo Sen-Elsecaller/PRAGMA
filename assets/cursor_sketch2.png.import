@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddodst8k2e455"
-path="res://.godot/imported/classroom_whiteboard.png-57b4a9a1acba97ff9f39318357a6d12a.ctex"
+uid="uid://lriuyc2lnkhm"
+path="res://.godot/imported/cursor_sketch2.png-0541862e2074fbb289a96501ff2909d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/classroom_whiteboard.png"
-dest_files=["res://.godot/imported/classroom_whiteboard.png-57b4a9a1acba97ff9f39318357a6d12a.ctex"]
+source_file="res://assets/cursor_sketch2.png"
+dest_files=["res://.godot/imported/cursor_sketch2.png-0541862e2074fbb289a96501ff2909d6.ctex"]
 
 [params]
 

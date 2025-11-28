@@ -20,14 +20,14 @@ func _ready() -> void:
 	if ConfigFileHandler.load_config_settings("settings").get("useralias") == "default":
 		Utils.onboard_created = true
 		var onboard = ONBOARD.instantiate()
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.2).timeout
 		Utils.onboard_present = true
 		add_child(onboard)
 		Utils.tween_scale_bounce_out(onboard)
-	
+	else:
+		_on_onboard_exited()
 
 func Enter(enter_vector: Vector2):
-	print(enter_vector)
 	if enter_vector == Vector2.ZERO:
 		show()
 	Utils.tween_slide_in(self, enter_vector)
@@ -40,7 +40,7 @@ func Exit():
 	tween.tween_callback(hide)
 
 func _on_onboard_exited():
-	press_timer.start()
+	press_timer.start(3)
 	await press_timer.timeout
 	if not did_press_any_button:
 		animation_started = true

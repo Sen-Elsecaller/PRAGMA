@@ -3,26 +3,19 @@
 extends ScreenState
 
 # ========== REFERENCIAS A NODOS ==========
-@onready var login_node: MarginContainer = $Login
-@onready var register_node: MarginContainer = $Register
+@onready var login_node: LoginControl = $Login
+@onready var register_node: RegisterControl = $Register
 
 # ========== INICIALIZACIÓN ==========
 
 func _ready() -> void:
+	login_node.login_completed.connect(_on_close_menu_pressed)
+	register_node.register_completed.connect(_on_close_menu_pressed)
 	visible = true
-	var tween = Utils.tween_scale_bounce_out(self)
-	_setup_navigation()
+	Utils.tween_scale_bounce_out(self)
 	register_node.visible = true
 	login_node.visible = false
 	
-func _setup_navigation() -> void:
-	# Conectar señales de navegación desde Login
-	if login_node.has_signal("go_to_register"):
-		login_node.go_to_register.connect(_on_show_register)
-	
-	# Conectar señales de navegación desde Register
-	if register_node.has_signal("volver_a_login"):
-		register_node.volver_a_login.connect(_on_show_login)
 
 # ========== NAVEGACIÓN ==========
 func _on_show_register() -> void:

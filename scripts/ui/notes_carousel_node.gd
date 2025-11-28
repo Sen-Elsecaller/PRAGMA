@@ -1,9 +1,16 @@
 # carousel_node.gd (en Notes)
-extends Control
+class_name CarouselNode extends Control
 
 var base_choice_scene = preload("res://scenes/ui/choice_scene.tscn")
 
 func _ready() -> void:
+	load_custom_notes()
+
+
+func load_default_notes():
+	pass
+	
+func load_custom_notes():
 	var notas = ConfigFileHandler.get_notes()
 	for nota_dict in notas:
 		var choice_scene_instance: ChoiceScene = base_choice_scene.instantiate()

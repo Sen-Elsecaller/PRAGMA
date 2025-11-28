@@ -109,7 +109,8 @@ expand_icon = true
 script = ExtResource("5_ekbet")
 metadata/_custom_type_script = "uid://b7c8g1uo4jfaq"
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Menu/ChangeNotes"]
+[node name="NotesLabel" type="Label" parent="MarginContainer/HBoxContainer/Menu/ChangeNotes"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -173,4 +174,5 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("7_2td1e")
 
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Menu/ChangeNotes" to="." method="_on_change_notes_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Menu/BackToMenu" to="." method="_on_back_to_menu_pressed"]

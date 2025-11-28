@@ -14,14 +14,14 @@ enum SCENARIOS {
 const SCENARIOS_BACKGROUNDS_PATH = "res://assets/backgrounds/"
 const SCENARIOS_BACKGROUNDS := {
 	"Sala de Clases - Silla": preload(SCENARIOS_BACKGROUNDS_PATH + "classroom_chair.png"),
-	"Sala de Clases - Pizarra": preload(SCENARIOS_BACKGROUNDS_PATH + "classroom_whiteboard.png"),
+	"Sala de Clases - Pizarra": preload(SCENARIOS_BACKGROUNDS_PATH + "classroom_whiteboard.jpg"),
 }
 
 const SCENARIOS_RESOURCES_PATH = "res://resource/carousel_scenarios/"
 const SCENARIOS_RESOURCES := {
-	SCENARIOS.CLASSROOM1: preload(SCENARIOS_RESOURCES_PATH + "classroom1.tres"),
-	SCENARIOS.CLASSROOM2: preload(SCENARIOS_RESOURCES_PATH + "classroom2.tres"),
-	SCENARIOS.NA: preload(SCENARIOS_RESOURCES_PATH + "proximamente.tres")
+	SCENARIOS.CLASSROOM1: SCENARIOS_RESOURCES_PATH + "classroom1.tres",
+	SCENARIOS.CLASSROOM2: SCENARIOS_RESOURCES_PATH + "classroom2.tres",
+	SCENARIOS.NA: SCENARIOS_RESOURCES_PATH + "proximamente.tres"
 }
 var played_scenarios = {
 	SCENARIOS.CLASSROOM1: false,
@@ -89,7 +89,7 @@ func _ready() -> void:
 func get_scenarios_resources() -> Array[CarouselScenarioRes]:
 	var array: Array[CarouselScenarioRes] = []
 	for scenario in SCENARIOS_RESOURCES.values():
-		array.append(scenario)
+		array.append(load(scenario))
 	return array
 	
 

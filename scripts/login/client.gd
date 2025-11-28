@@ -3,10 +3,10 @@
 extends Node
 
 # ========== CONFIGURACIÓN ==========
-const BASE_URL = "http://127.0.0.1:8000"
-const LOGIN_ENDPOINT = "/api/token/"
-const REFRESH_ENDPOINT = "/api/token/refresh/"
-const VERIFY_ENDPOINT = "/api/token/verify/"
+const BASE_URL = "http://98.87.220.175:8000"
+const LOGIN_ENDPOINT = "/api/v1/dashboard/auth/login/"
+const REFRESH_ENDPOINT = "/api/v1/dashboard/auth/refresh/"
+const VERIFY_ENDPOINT = "/api/v1/dashboard/auth/verify/"
 
 # ========== VARIABLES DE AUTENTICACIÓN ==========
 var access_token: String = ""
@@ -71,6 +71,7 @@ func _handle_login_response(result: int, response_code: int, body: PackedByteArr
 		else:
 			login_failed.emit("Error al procesar respuesta del servidor")
 	else:
+		print(response_code)
 		var error_msg = "Error de autenticación"
 		var json = JSON.new()
 		if json.parse(response_text) == OK:

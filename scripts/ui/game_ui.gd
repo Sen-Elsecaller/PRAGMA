@@ -8,6 +8,8 @@ const DIALOGUE_RECORD = preload("uid://bn3ejoudgfx7e")
 
 signal returned_to_main_menu
 signal dialogue_history_pressed
+signal send_current_data
+
 
 func _ready() -> void:
 	sfx_slider.set_value_no_signal(ConfigFileHandler.load_config_settings("settings").get("sfx_volume"))
@@ -51,3 +53,7 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 func _on_music_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_linear(1, value)
 	ConfigFileHandler.save_config_settings("settings", "sfx_volume", value)
+
+
+func _on_send_data_pressed() -> void:
+	send_current_data.emit()
