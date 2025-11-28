@@ -1,31 +1,38 @@
+# ConfigFileHandler.gd
 extends Node
 
 var config = ConfigFile.new()
-var save_file:  = {
+var save_file: Dictionary = {
 	"user_data": {
 		"nombre": "Gerald"
-		},
-		
+	},
 	"sesiones": [],
-	
 	"notas": []
-	
 }
 
 const SETTINGS_FILE_PATH = "user://settings.ini"
 const DATA_FILE_PATH = "user://SaveDataFile.json"
 
+# ========== NUEVAS SEÑALES PARA AUTH ==========
 signal repeated_note
 signal note_saved
+signal session_restored(access_token: String, refresh_token: String, email: String)
+signal session_cleared()
 
 func _init():
-	#TODO ELIMINAR RESET save_file Y TERMINAR DE CONFIGURAR EL GUARDADO
-	#ConfigFile
+	# ConfigFile
 	if !FileAccess.file_exists(SETTINGS_FILE_PATH):
 		config.set_value("settings", "sfx_volume", 0.5)
 		config.set_value("settings", "music_volume", 0.5)
 		config.set_value("settings", "useralias", "default")
 		config.set_value("settings", "logged", false)
+		
+		# ========== NUEVAS CONFIGURACIONES DE AUTH ==========
+		config.set_value("auth", "access_token", "")
+		config.set_value("auth", "refresh_token", "")
+		config.set_value("auth", "user_email", "")
+		config.set_value("auth", "last_login", "")
+		
 		config.save(SETTINGS_FILE_PATH)
 	else:
 		config.load(SETTINGS_FILE_PATH)
@@ -34,7 +41,8 @@ func _init():
 		set_data()
 	else:
 		save_data_all()
-	
+
+# ========== MÉTODOS DE CONFIGURACIÓN EXISTENTES ==========
 func save_config_settings(section: String, key: String, value) -> void:
 	config.load(SETTINGS_FILE_PATH)
 	config.set_value(section, key, value)
@@ -47,6 +55,67 @@ func load_config_settings(section: String) -> Dictionary:
 		settings[key] = config.get_value(section, key)
 	return settings
 
+# ========== NUEVOS MÉTODOS PARA GESTIÓN DE AUTH ==========
+
+# Guardar tokens y datos de sesión
+func save_auth_session(access_token: String, refresh_token: String, email: String) -> void:
+	config.load(SETTINGS_FILE_PATH)
+	config.set_value("auth", "access_token", access_token)
+	config.set_value("auth", "refresh_token", refresh_token)
+	config.set_value("auth", "user_email", email)
+	config.set_value("auth", "last_login", Time.get_datetime_string_from_system())
+	config.set_value("settings", "logged", true)
+	config.save(SETTINGS_FILE_PATH)
+
+# Actualizar solo el access token (útil para refresh)
+func update_access_token(access_token: String) -> void:
+	config.load(SETTINGS_FILE_PATH)
+	config.set_value("auth", "access_token", access_token)
+	config.save(SETTINGS_FILE_PATH)
+
+# Obtener datos de autenticación guardados
+func load_auth_session() -> Dictionary:
+	config.load(SETTINGS_FILE_PATH)
+	return {
+		"access_token": config.get_value("auth", "access_token", ""),
+		"refresh_token": config.get_value("auth", "refresh_token", ""),
+		"user_email": config.get_value("auth", "user_email", ""),
+		"last_login": config.get_value("auth", "last_login", ""),
+		"logged": config.get_value("settings", "logged", false)
+	}
+
+# Verificar si hay una sesión guardada
+func has_saved_session() -> bool:
+	config.load(SETTINGS_FILE_PATH)
+	var logged = config.get_value("settings", "logged", false)
+	var access_token = config.get_value("auth", "access_token", "")
+	var refresh_token = config.get_value("auth", "refresh_token", "")
+	return logged and access_token != "" and refresh_token != ""
+
+# Limpiar tokens y cerrar sesión
+func clear_auth_session() -> void:
+	config.load(SETTINGS_FILE_PATH)
+	config.set_value("auth", "access_token", "")
+	config.set_value("auth", "refresh_token", "")
+	config.set_value("auth", "user_email", "")
+	config.set_value("auth", "last_login", "")
+	config.set_value("settings", "logged", false)
+	config.save(SETTINGS_FILE_PATH)
+	session_cleared.emit()
+
+# Intentar restaurar sesión automáticamente
+func try_restore_session() -> bool:
+	if has_saved_session():
+		var auth_data = load_auth_session()
+		session_restored.emit(
+			auth_data["access_token"],
+			auth_data["refresh_token"],
+			auth_data["user_email"]
+		)
+		return true
+	return false
+
+# ========== MÉTODOS DE DATOS EXISTENTES ==========
 func save_data(section: String, key: String, value) -> void:
 	if not save_file.has(section):
 		save_file[section] = {}
@@ -57,7 +126,7 @@ func save_data_all() -> void:
 	var file = FileAccess.open(DATA_FILE_PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify(save_file))
 	file.close()
-	
+
 func load_data() -> void:
 	if !FileAccess.file_exists(DATA_FILE_PATH):
 		return
@@ -71,6 +140,37 @@ func load_data() -> void:
 		return
 	if typeof(result) == TYPE_DICTIONARY:
 		save_file = result
+
+func set_data() -> void:
+	load_data()
+
+func reset_data() -> void:
+	save_file = {
+		"user_data": {
+			"nombre": "Gerald"
+		},
+		"sesiones": [],
+		"notas": []
+	}
+	save_data_all()
+
+func save_session(feedback_data) -> void:
+	var session_dict = feedback_data.to_dict()
+	save_file["sesiones"].append(session_dict)
+	save_data_all()
+
+func add_note(nota_dict: Dictionary) -> void:
+	for nota in save_file["notas"]:
+		if nota.get("feedback", "") == nota_dict.get("feedback", ""):
+			repeated_note.emit()
+			return
+	
+	save_file["notas"].append(nota_dict)
+	note_saved.emit()
+	save_data_all()
+
+func get_notes() -> Array:
+	return save_file["notas"]
 
 func send_save_file_to_webhook() -> void:
 	if !FileAccess.file_exists(DATA_FILE_PATH):
@@ -97,37 +197,3 @@ func send_save_file_to_webhook() -> void:
 		http.request(url, headers, HTTPClient.METHOD_POST, body)
 		await http.request_completed
 		http.queue_free()
-
-func set_data() -> void:
-	load_data()
-	
-# Actualmente reinicia el savefile, pero no el estado del juego
-func reset_data() -> void:
-	save_file = {
-		"user_data": {
-			"nombre": "Gerald"
-			},
-			
-		"sesiones": [],
-		
-		"notas": []
-	}
-	save_data_all()
-
-func save_session(feedback_data: FeedbackData) -> void:
-	var session_dict = feedback_data.to_dict()
-	save_file["sesiones"].append(session_dict)
-	save_data_all()
-
-func add_note(nota_dict: Dictionary) -> void:
-	for nota in save_file["notas"]:
-		if nota.get("feedback", "") == nota_dict.get("feedback", ""):
-			repeated_note.emit()
-			return
-	
-	save_file["notas"].append(nota_dict)
-	note_saved.emit()
-	save_data_all()
-	
-func get_notes() -> Array:
-	return save_file["notas"]

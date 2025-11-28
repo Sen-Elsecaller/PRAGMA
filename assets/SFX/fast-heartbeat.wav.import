@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bfl8jxrf7jodj"
-path="res://.godot/imported/fast-heartbeat.wav-b87dcaa72ae013ed2aef03dd7f383015.sample"
+path="res://.godot/imported/fast-heartbeat.wav-2dd76564f25c15f2dac373abc55b33b1.sample"
 
 [deps]
 
-source_file="res://assets/sfx/fast-heartbeat.wav"
-dest_files=["res://.godot/imported/fast-heartbeat.wav-b87dcaa72ae013ed2aef03dd7f383015.sample"]
+source_file="res://assets/SFX/fast-heartbeat.wav"
+dest_files=["res://.godot/imported/fast-heartbeat.wav-2dd76564f25c15f2dac373abc55b33b1.sample"]
 
 [params]
 

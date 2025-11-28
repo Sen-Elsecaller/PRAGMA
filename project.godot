@@ -24,6 +24,7 @@ AudioManager="*res://autoload/audio_manager.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Database="*res://autoload/database.gd"
 ConfigFileHandler="*res://autoload/ConfigFileHandler.gd"
+AuthManager="*res://autoload/AuthManager.gd"
 
 [debug]
 
