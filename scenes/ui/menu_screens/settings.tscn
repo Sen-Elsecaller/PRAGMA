@@ -192,6 +192,7 @@ theme_override_constants/separation = 10
 alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+visible = false
 layout_mode = 2
 
 [node name="ConsejosHbox" type="HBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer"]
