@@ -99,7 +99,7 @@ func _get_plugin_name() -> String:
 
 
 func _get_plugin_icon() -> Texture2D:
-	return load(get_plugin_path() + "/assets/icon.svg")
+	return load(get_plugin_path() + "/assets/icon.png")
 
 
 func _handles(object) -> bool:

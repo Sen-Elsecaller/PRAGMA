@@ -245,6 +245,7 @@ theme_override_constants/margin_bottom = -2
 
 [node name="FrameBlue" type="TextureRect" parent="Images"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("37_76cpg")
@@ -253,7 +254,6 @@ stretch_mode = 5
 
 [node name="FramePurple" type="TextureRect" parent="Images"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("7_ookd1")

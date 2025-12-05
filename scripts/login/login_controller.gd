@@ -113,7 +113,7 @@ func _is_valid_email(email: String) -> bool:
 	return regex.search(email) != null
 
 # ========== CALLBACKS DE AUTHMANAGER ==========
-func _on_login_success(user_data: Dictionary) -> void:
+func _on_login_success(_user_data: Dictionary) -> void:
 	validation_success.emit("¡Login exitoso!")
 	login_button.disabled = false
 	await get_tree().create_timer(0.5).timeout

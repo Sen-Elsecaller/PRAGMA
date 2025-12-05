@@ -43,7 +43,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("4_binjn")
 bbcode_enabled = true
-text = "[b]Bold [/b] [i] Italic [/i] Normal Oooh la vola cuatica hermano"
+text = "[b]Bold[/b] [i] Italic [/i] Normal aaaaaaa aaaaaaaa aaaaa"
 horizontal_alignment = 1
 vertical_alignment = 1
 

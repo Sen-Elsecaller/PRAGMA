@@ -63,7 +63,7 @@ func login(email: String, password: String) -> void:
 	var http := HTTPRequest.new()
 	add_child(http)
 	
-	http.request_completed.connect(func(result, response_code, response_headers, body):
+	http.request_completed.connect(func(result, response_code, _response_headers, body):
 		_handle_login_response(result, response_code, body, email)
 		http.queue_free()
 	)
@@ -73,7 +73,7 @@ func login(email: String, password: String) -> void:
 		login_failed.emit("Error de conexión")
 		http.queue_free()
 
-func _handle_login_response(result: int, response_code: int, body: PackedByteArray, email: String) -> void:
+func _handle_login_response(_result: int, response_code: int, body: PackedByteArray, email: String) -> void:
 	var response_text = body.get_string_from_utf8()
 	
 	if response_code == 200:
@@ -131,7 +131,7 @@ func refresh_access_token() -> void:
 	var http := HTTPRequest.new()
 	add_child(http)
 	
-	http.request_completed.connect(func(result, response_code, response_headers, body):
+	http.request_completed.connect(func(result, response_code, _response_headers, body):
 		_handle_refresh_response(result, response_code, body)
 		http.queue_free()
 	)
@@ -141,7 +141,7 @@ func refresh_access_token() -> void:
 		token_refresh_failed.emit()
 		http.queue_free()
 
-func _handle_refresh_response(result: int, response_code: int, body: PackedByteArray) -> void:
+func _handle_refresh_response(_result: int, response_code: int, body: PackedByteArray) -> void:
 	var response_text = body.get_string_from_utf8()
 	
 	if response_code == 200:
@@ -182,7 +182,7 @@ func verify_token() -> void:
 	var http := HTTPRequest.new()
 	add_child(http)
 	
-	http.request_completed.connect(func(result, response_code, response_headers, body):
+	http.request_completed.connect(func(_result, response_code, _response_headers, _body):
 		if response_code == 200:
 			print("[AuthManager] Token válido")
 		else:

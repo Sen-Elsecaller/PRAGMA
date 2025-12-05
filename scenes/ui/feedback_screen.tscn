@@ -82,7 +82,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_1iffo")
 bbcode_enabled = true
-text = "HOLA QUE TAL SOY UNA RETROALIMENTACION"
+text = "Retroalimentacion"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -270,15 +270,15 @@ func _is_strong_password(password: String) -> bool:
 	var special_chars = "!@#$%^&*()_+-=[]{}|;:,.<>?"
 	
 	for i in range(password.length()):
-		var char = password[i]
+		var chara = password[i]
 		
-		if char >= 'A' and char <= 'Z':
+		if chara >= 'A' and chara <= 'Z':
 			has_uppercase = true
-		elif char >= 'a' and char <= 'z':
+		elif chara >= 'a' and chara <= 'z':
 			has_lowercase = true
-		elif char >= '0' and char <= '9':
+		elif chara >= '0' and chara <= '9':
 			has_digit = true
-		elif special_chars.contains(char):
+		elif special_chars.contains(chara):
 			has_special = true
 	
 	# Verificar requisitos
