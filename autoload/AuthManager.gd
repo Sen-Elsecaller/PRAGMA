@@ -3,7 +3,7 @@
 extends Node
 
 # ========== CONFIGURACIÓN ==========
-const BASE_URL = "http://98.87.220.175:8000"
+const BASE_URL = "https://pragmabackend-production.up.railway.app"
 const LOGIN_ENDPOINT = "/api/v1/dashboard/auth/login/"
 const REFRESH_ENDPOINT = "/api/v1/dashboard/auth/refresh/"
 const VERIFY_ENDPOINT = "/api/v1/dashboard/auth/verify/"

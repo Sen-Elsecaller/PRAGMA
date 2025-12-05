@@ -54,6 +54,7 @@ func send_current_data():
 	Utils.game_controller.current_feedback = current_feedback
 	Utils.game_controller.scenario_ended.emit()
 	Utils.game_controller.change_gui_scene(load("uid://bk0ok7dhbcruf"))
+	
 func _on_dialogue_history_pressed():
 	game_ui.update_dialogue_history(dialogue_history)
 

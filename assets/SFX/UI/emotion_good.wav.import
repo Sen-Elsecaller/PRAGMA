@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dxrvug6eu2k6v"
-path="res://.godot/imported/emotion_good.wav-c4167227596fb1e00f151669818c76ca.sample"
+path="res://.godot/imported/emotion_good.wav-6273d6e0ec151c1dddf208e408bdaafd.sample"
 
 [deps]
 
-source_file="res://assets/SFX/UI/emotion_good.wav"
-dest_files=["res://.godot/imported/emotion_good.wav-c4167227596fb1e00f151669818c76ca.sample"]
+source_file="res://assets/sfx/UI/emotion_good.wav"
+dest_files=["res://.godot/imported/emotion_good.wav-6273d6e0ec151c1dddf208e408bdaafd.sample"]
 
 [params]
 

@@ -1,11 +1,8 @@
-# ConfigFileHandler.gd
 extends Node
 
 var config = ConfigFile.new()
 var save_file: Dictionary = {
-	"user_data": {
-		"nombre": "Gerald"
-	},
+	"user_data": { },
 	"sesiones": [],
 	"notas": []
 }
@@ -13,7 +10,6 @@ var save_file: Dictionary = {
 const SETTINGS_FILE_PATH = "user://settings.ini"
 const DATA_FILE_PATH = "user://SaveDataFile.json"
 
-# ========== NUEVAS SEÑALES PARA AUTH ==========
 signal repeated_note
 signal note_saved
 signal session_restored(access_token: String, refresh_token: String, email: String)
@@ -172,7 +168,7 @@ func add_note(nota_dict: Dictionary) -> void:
 func get_notes() -> Array:
 	return save_file["notas"]
 
-func send_save_file_to_webhook() -> void:
+func send_sesion_to_webhook() -> void:
 	if !FileAccess.file_exists(DATA_FILE_PATH):
 		push_error("Archivo de guardado no existe")
 		return

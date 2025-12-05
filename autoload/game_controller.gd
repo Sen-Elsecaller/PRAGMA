@@ -19,9 +19,8 @@ func _ready() -> void:
 
 
 func _on_scenario_ended():
-	print("Llego")
 	ConfigFileHandler.save_session(current_feedback)
-	ConfigFileHandler.send_save_file_to_webhook()
+	ConfigFileHandler.send_session_to_webhook()
 	
 func change_gui_scene(new_scene: PackedScene, delete: bool = true, keep_running: bool = false) -> void:
 	await _fade_out()

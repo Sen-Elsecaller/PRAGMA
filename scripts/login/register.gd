@@ -14,7 +14,7 @@ signal register_completed
 @onready var validation_label_r: Label = %ValidationLabelR
 
 # ========== CONFIGURACIÓN ==========
-const API_URL = "http://98.87.220.175:8000/api/v1/dashboard/auth/register/"
+const API_URL = "https://pragmabackend-production.up.railway.app/api/v1/dashboard/auth/register/"
 const MIN_NOMBRE_LENGTH = 3
 const MAX_NOMBRE_LENGTH = 150
 const MIN_PASSWORD_LENGTH = 8
@@ -22,7 +22,7 @@ const MAX_PASSWORD_LENGTH = 128
 
 # ========== INSTANCIA DE HTTP REQUEST ==========
 var http_request: HTTPRequest
-
+var nuevo_nombre: String
 # ========== INICIALIZACIÓN ==========
 func _ready() -> void:
 	_setup_http_request()
@@ -64,6 +64,7 @@ func _on_text_changed(_new_text: String) -> void:
 
 func _attempt_register() -> void:
 	var nombre = user_input_r.text.strip_edges()
+	nuevo_nombre = user_input_r.text.strip_edges()
 	var email = email_input_r.text.strip_edges()
 	var password = password_input_r.text
 	var password_confirm = password_confirm_input.text
@@ -357,7 +358,8 @@ func _on_request_completed(result: int, response_code: int, _headers: PackedStri
 
 func _on_registro_success(response: Dictionary) -> void:
 	_show_message("¡Registro exitoso! Redirigiendo al login...")
-	
+	ConfigFileHandler.save_config_settings("settings", "useralias", nuevo_nombre)
+	Database.player_name_changed.emit()
 	# Emitir señal con datos del usuario
 	registro_completado.emit(response)
 	

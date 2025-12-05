@@ -15,7 +15,6 @@ Narrador: ¿Qué haces mientras esperas?
 	set Database.stress_level += 1
 	do Utils.shader_effect("ShakeFX", "strength", 2)
 	=> siguiente_presentacion
-#TODO: Aquí arriba se está creando una línea vacía, lo que puede ser un problema a futuro
 
 ~ respirar_lentamente
 Narrador: ¿Cuántas respiraciones haces?
