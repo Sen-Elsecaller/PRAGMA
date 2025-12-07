@@ -8,7 +8,6 @@
 [ext_resource type="Resource" uid="uid://bo7skn2rq0pg1" path="res://resource/shaders/ShakeFX.tres" id="7_2bw1p"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e43wv"]
-load_path = "res://.godot/imported/placeholder_game_ui.jpeg-75d1ca8a624d1ad4c02ef71095f8cd48.ctex"
 
 [node name="Effects" type="CanvasLayer"]
 script = ExtResource("1_1d2mk")
