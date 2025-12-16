@@ -11,4 +11,4 @@ height = 512
 [resource]
 shader = ExtResource("1_3yh0s")
 shader_parameter/gradient = SubResource("GradientTexture2D_r06k5")
-shader_parameter/enabled = false
+shader_parameter/enabled = true

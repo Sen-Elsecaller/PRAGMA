@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b7uen6mnyb5of"
-path="res://.godot/imported/clearing-throat.wav-936bef8e6eb1237bf51d8cc4aa7677ca.sample"
+path="res://.godot/imported/clearing-throat.wav-3fd56d53c0d284ac0d9c0d32ae7c606c.sample"
 
 [deps]
 
-source_file="res://assets/sfx/clearing-throat.wav"
-dest_files=["res://.godot/imported/clearing-throat.wav-936bef8e6eb1237bf51d8cc4aa7677ca.sample"]
+source_file="res://assets/SFX/clearing-throat.wav"
+dest_files=["res://.godot/imported/clearing-throat.wav-3fd56d53c0d284ac0d9c0d32ae7c606c.sample"]
 
 [params]
 

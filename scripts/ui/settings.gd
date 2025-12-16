@@ -10,6 +10,7 @@ func _ready() -> void:
 	sfx_slider.set_value_no_signal(ConfigFileHandler.load_config_settings("settings").get("sfx_volume"))
 	music_slider.set_value_no_signal(ConfigFileHandler.load_config_settings("settings").get("music_volume"))
 	useralias.placeholder_text = ConfigFileHandler.load_config_settings("settings").get("useralias")
+	Database.player_name_changed.connect(on_player_name_changed)
 	
 func Enter(_enter_vector: Vector2):
 	Utils.tween_slide_in(self, Vector2.DOWN)
@@ -18,6 +19,9 @@ func Enter(_enter_vector: Vector2):
 func Exit():
 	var tween = Utils.tween_slide_out(self, Vector2.DOWN)
 	tween.tween_callback(hide)
+
+func on_player_name_changed():
+	useralias.placeholder_text = Database.player_name
 
 func _on_useralias_text_submitted(new_text: String) -> void:
 	ConfigFileHandler.save_config_settings("settings", "useralias", new_text)

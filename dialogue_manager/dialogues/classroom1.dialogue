@@ -3,8 +3,9 @@ Profesor Felipe: ¡Excelente presentación Juan! [#character_enter=profesor_feli
 Narrador: Hoy es día de evaluación. Están en el tercer alumno, tú eres el quinto. 
 	Queda poco para tu turno. [#character_exit=profesor_felipe]
 Narrador: Conoces tu presentación, pero como suele ocurrir empiezas a ponerte nervioso. 
-	Te sudan las manos, tu corazón se acelera. 
-	[#sound=HEARTBEAT_FAST, #effect=ChromaticAberrationFX, #effect_duration=3, #effect_overall=true]
+	Te sudan las manos, tu corazón se acelera. [#sound=HEARTBEAT_FAST] 
+do Utils.shader_effect("ShakeFX", "strength", 2)
+	##effect=ChromaticAberrationFX, #effect_duration=3, #effect_overall=true]
 set Database.stress_level += 1
 
 ~ esperando_presentacion
@@ -136,7 +137,7 @@ Profesor Felipe: Disculpa {{Database.player_name}}, no me quedó claro el diagra
 	- Tranqui, un error lo comete cualquiera [#emotion=good,#outcome_text=Te calmas notoriamente, #feedback=Un dialogo interno positivo es una de las cosas mas valiosas que se puede tener. Todos cometemos errores y cuando somos conscientes de ello; vivimos mucho mas tranquilos.]
 	- Cómo no voy a recordar eso, soy idiota [#emotion=bad,#outcome_text=Te frustras; te sientes peor, #feedback=Lo peor que podemos hacer es tener un dialogo interno negativo. Todos nos equivocamos y eso no nos define.]
 
-Narrador: Termina la presentación.
+Narrador: Termina la presentación. [#background=Sala de Clases - Silla]
 Narrador: Te sientas. Un par de chicos detrás tuyo con quienes a veces hablas están susurrando. 
 Narrador: Escuchas unas leves risas. Ellos aún no presentan.
 - Haré un poco de conversación [#emotion=good, #outcome_text=Conversar ayuda a relajarse, #feedback=Socializar puede ser bueno para volver al presente y recordar que ninguna situación es tan mala como parece.] => compas_presentacion

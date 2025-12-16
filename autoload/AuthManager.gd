@@ -3,10 +3,11 @@
 extends Node
 
 # ========== CONFIGURACIÓN ==========
-const BASE_URL = "https://pragmabackend-production.up.railway.app"
+var BASE_URL = ConfigFileHandler.config.get_value("urls", "base")
 const LOGIN_ENDPOINT = "/api/v1/dashboard/auth/login/"
 const REFRESH_ENDPOINT = "/api/v1/dashboard/auth/refresh/"
 const VERIFY_ENDPOINT = "/api/v1/dashboard/auth/verify/"
+const REGISTER_ENDPOINT = "/api/v1/dashboard/auth/register/"
 
 # ========== VARIABLES DE AUTENTICACIÓN ==========
 var access_token: String = ""
@@ -17,11 +18,14 @@ var is_authenticated: bool = false
 # ========== SEÑALES ==========
 signal login_success(user_data: Dictionary)
 signal login_failed(error_message: String)
+signal register_success(user_data: Dictionary)
+signal register_failed(error_message: String)
 signal token_refreshed()
 signal token_refresh_failed()
 signal logout_completed()
 signal session_restored()
 signal authentication_required()
+
 
 # ========== INICIALIZACIÓN ==========
 func _ready() -> void:
@@ -72,6 +76,64 @@ func login(email: String, password: String) -> void:
 	if error != OK:
 		login_failed.emit("Error de conexión")
 		http.queue_free()
+
+func register(nombre: String, email: String, password: String, password_confirm: String) -> void:
+	var url = BASE_URL + REGISTER_ENDPOINT
+	var data = {
+		"nombre": nombre,
+		"email": email,
+		"password": password,
+		"password_confirm": password_confirm
+	}
+	var headers = ["Content-Type: application/json"]
+	
+	var http := HTTPRequest.new()
+	add_child(http)
+	
+	http.request_completed.connect(func(result, response_code, _response_headers, body):
+		_handle_register_response(result, response_code, body, email, nombre)
+		http.queue_free()
+	)
+	
+	var error = http.request(url, headers, HTTPClient.METHOD_POST, JSON.stringify(data))
+	if error != OK:
+		register_failed.emit("Error de conexión")
+		http.queue_free()
+
+func _handle_register_response(_result: int, response_code: int, body: PackedByteArray, email: String, nombre: String) -> void:
+	var response_text = body.get_string_from_utf8()
+	
+	if response_code == 201:  # Created
+		var json = JSON.new()
+		if json.parse(response_text) == OK:
+			var response_data = json.data
+			
+			# Guardar nombre de usuario en configuración
+			ConfigFileHandler.save_config_settings("settings", "useralias", nombre)
+			
+			print("[AuthManager] Registro exitoso: ", email)
+			
+			var user_data = {
+				"email": email,
+				"nombre": nombre
+			}
+			register_success.emit(user_data)
+		else:
+			register_failed.emit("Error al procesar respuesta del servidor")
+	else:
+		var error_msg = "Error en el registro"
+		var json = JSON.new()
+		if json.parse(response_text) == OK:
+			var error_data = json.data
+			if error_data.has("email"):
+				error_msg = "Email: " + str(error_data["email"])
+			elif error_data.has("detail"):
+				error_msg = error_data["detail"]
+			elif error_data.has("error"):
+				error_msg = error_data["error"]
+		
+		print("[AuthManager] Registro fallido: ", error_msg)
+		register_failed.emit(error_msg)
 
 func _handle_login_response(_result: int, response_code: int, body: PackedByteArray, email: String) -> void:
 	var response_text = body.get_string_from_utf8()

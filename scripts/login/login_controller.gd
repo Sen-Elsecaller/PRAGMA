@@ -1,5 +1,5 @@
 # login_controller.gd
-# Controlador que usa AuthManager directamente (sin client.gd local)
+# Controlador que usa AuthManager directamente
 class_name LoginControl extends MarginContainer
 
 # ========== SEÑALES ==========

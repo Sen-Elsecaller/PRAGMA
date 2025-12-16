@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0m6q1745jvqx"]
+
+[ext_resource type="Texture2D" uid="uid://ctpqjj5fwbmbx" path="res://assets/noname.png" id="1_8imdt"]
+[ext_resource type="Script" uid="uid://bpw0sq4p5e4xi" path="res://scripts/diagram_test.gd" id="1_dxo4t"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dxo4t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960.09357, 3173.3767)
+scale = Vector2(0.5287283, 0.52872825)
+texture = ExtResource("1_8imdt")

@@ -38,7 +38,8 @@ func _initialize_config_file():
 		config.set_value("auth", "refresh_token", "")
 		config.set_value("auth", "user_email", "")
 		config.set_value("auth", "last_login", "")
-		
+		config.set_value("urls", "base", "https://pragmabackend-production.up.railway.app")
+		config.set_value("urls", "api", "https://pragmabackend-production.up.railway.app/api/v1/dashboard/auth/register/")
 		config.save(SETTINGS_FILE_PATH)
 	else:
 		config.load(SETTINGS_FILE_PATH)
@@ -48,10 +49,6 @@ func _initialize_data_file():
 		set_data()
 	else:
 		save_data_all()
-
-# ========================================
-# CONFIGURACIONES GENERALES (audio, usuario, etc)
-# ========================================
 
 # Guarda un valor específico en la configuración
 func save_config_settings(section: String, key: String, value) -> void:
